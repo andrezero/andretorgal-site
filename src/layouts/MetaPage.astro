@@ -4,18 +4,17 @@ import NodeDate from "../components/NodeDate.astro";
 import NodeMeta from "../components/NodeMeta.astro";
 import PageFooter from "../components/PageFooter.astro";
 import PageHeader from "../components/PageHeader.astro";
-import PageHero from "../components/PageHero.astro";
 import PageTitle from "../components/PageTitle.astro";
 import Document from "../document/Document.astro";
 import Head from "../document/Head.astro";
-import type { BlogPost } from "../types";
+import type { MetaPage } from "../types";
 
 export interface Props {
-  content: BlogPost;
+  content: MetaPage;
 }
 
 const { content: node } = Astro.props;
-const { title, heroImage } = node;
+const { title } = node;
 ---
 
 <Document>
@@ -27,7 +26,6 @@ const { title, heroImage } = node;
         <header>
           <NodeDate node={node} />
           <PageTitle>{title}</PageTitle>
-          <PageHero src={heroImage} />
         </header>
         <NodeAbstract node={node} />
         <hr />

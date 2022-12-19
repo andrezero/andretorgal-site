@@ -1,0 +1,52 @@
+---
+import { allTags } from "../queries/tags";
+import PageFooter from "../components/PageFooter.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Document from "../document/Document.astro";
+import Head from "../document/Head.astro";
+import type { AstroNode, BaseNode, BlogPost } from "../types";
+import { today } from "../utils/date";
+import PageSubTitle from "../components/PageSubTitle.astro";
+import PageTitle from "../components/PageTitle.astro";
+import TagList from "../components/TagList.astro";
+
+const TOP_TAGS_COUNT = 10;
+
+const allPosts = await Astro.glob<AstroNode<BaseNode>>("./**/*.{md,mdx}");
+
+const sortedTags = allTags(allPosts as AstroNode<BlogPost>[]);
+const topTags = sortedTags.slice(0, TOP_TAGS_COUNT);
+const moreTags = sortedTags.slice(TOP_TAGS_COUNT);
+
+const node: BaseNode = {
+  url: Astro.url.toString(),
+  type: "page",
+  title: "All the tags",
+  description: "All the content on my website is tagged. Even the tags are tagged. Old school like that.",
+  published: today(),
+};
+---
+
+<Document>
+  <Head node={node} />
+  <body>
+    <PageHeader />
+    <main>
+      <section>
+        <header>
+          <PageTitle>Top tags</PageTitle>
+        </header>
+        <TagList tags={topTags} />
+        {
+          !!moreTags.length && (
+            <>
+              <PageSubTitle>Other tags</PageSubTitle>
+              <TagList tags={moreTags} />
+            </>
+          )
+        }
+      </section>
+    </main>
+    <PageFooter />
+  </body>
+</Document>

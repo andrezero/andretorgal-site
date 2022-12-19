@@ -1,17 +1,15 @@
 ---
-import NodeAbstract from "../components/NodeAbstract.astro";
 import NodeDate from "../components/NodeDate.astro";
-import NodeMeta from "../components/NodeMeta.astro";
 import PageFooter from "../components/PageFooter.astro";
 import PageHeader from "../components/PageHeader.astro";
 import PageHero from "../components/PageHero.astro";
 import PageTitle from "../components/PageTitle.astro";
 import Document from "../document/Document.astro";
 import Head from "../document/Head.astro";
-import type { BlogPost } from "../types";
+import type { BaseNode } from "../types";
 
 export interface Props {
-  content: BlogPost;
+  content: BaseNode;
 }
 
 const { content: node } = Astro.props;
@@ -29,11 +27,8 @@ const { title, heroImage } = node;
           <PageTitle>{title}</PageTitle>
           <PageHero src={heroImage} />
         </header>
-        <NodeAbstract node={node} />
         <hr />
         <slot />
-        <hr />
-        <NodeMeta node={node} />
       </article>
     </main>
     <PageFooter />

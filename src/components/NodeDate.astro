@@ -1,0 +1,29 @@
+---
+import type { BaseNode } from "../types";
+
+export type Props = { node: BaseNode };
+
+const { node } = Astro.props;
+const { published, updated } = node;
+
+const publishedDate = published && new Date(published);
+const updatedDate = updated && new Date(updated);
+---
+
+{
+  publishedDate && (
+    <time class="node-date" datetime={publishedDate.toISOString()}>
+      {publishedDate.toLocaleString()}
+    </time>
+  )
+}
+{
+  updatedDate && (
+    <>
+      Last updated on{" "}
+      <time class="node-date" datetime={updatedDate.toISOString()}>
+        {updatedDate.toLocaleString()}
+      </time>
+    </>
+  )
+}

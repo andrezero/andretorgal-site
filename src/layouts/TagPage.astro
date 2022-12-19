@@ -1,21 +1,28 @@
 ---
 import NodeAbstract from "../components/NodeAbstract.astro";
 import NodeDate from "../components/NodeDate.astro";
+import NodeList from "../components/NodeList.astro";
 import NodeMeta from "../components/NodeMeta.astro";
 import PageFooter from "../components/PageFooter.astro";
 import PageHeader from "../components/PageHeader.astro";
-import PageHero from "../components/PageHero.astro";
+import PageSubTitle from "../components/PageSubTitle.astro";
 import PageTitle from "../components/PageTitle.astro";
 import Document from "../document/Document.astro";
 import Head from "../document/Head.astro";
-import type { BlogPost } from "../types";
+import type { AstroNode, BaseNode, TagNode } from "../types";
 
 export interface Props {
-  content: BlogPost;
+  content: TagNode;
 }
 
 const { content: node } = Astro.props;
-const { title, heroImage } = node;
+
+const allNodes = await Astro.glob<AstroNode<BaseNode>>("../**/*.{md,mdx}");
+
+const nodes = allNodes.filter((n) =>
+  n.frontmatter.tags?.includes(node.title)
+);
+
 ---
 
 <Document>
@@ -26,15 +33,14 @@ const { title, heroImage } = node;
       <article>
         <header>
           <NodeDate node={node} />
-          <PageTitle>{title}</PageTitle>
-          <PageHero src={heroImage} />
+          <PageTitle><span aria-hidden="true">{nodes.length}</span> #{node.title}</PageTitle>
         </header>
         <NodeAbstract node={node} />
-        <hr />
-        <slot />
-        <hr />
+        <slot/>
         <NodeMeta node={node} />
       </article>
+      <PageSubTitle>All items under #{node.title} ({nodes.length})</PageSubTitle>
+      <NodeList nodes={nodes} />
     </main>
     <PageFooter />
   </body>

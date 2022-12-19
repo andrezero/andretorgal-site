@@ -1,0 +1,40 @@
+---
+import type { BaseNode } from "../types";
+
+export type Props = { node: BaseNode };
+
+const { node } = Astro.props;
+const { type, url, published, tags } = node;
+
+const publishedDate = published && new Date(published);
+---
+
+<div class="node-meta">
+  <p class="node-published">
+    <span class="verbose">this <em>{type}</em> was</span> published <a
+      href={url}
+      class="node-permalink"
+      >{
+        publishedDate && (
+          <time class="date" datetime={publishedDate.toISOString()}>
+            {publishedDate.toLocaleString()}
+          </time>
+        )
+      }
+    </a>
+    {
+      tags && tags.length && (
+        <>
+          <span> under the following tags:</span>
+          <ul class="tag-list">
+            {tags.map((tag) => (
+              <li class={`tag ${tag}`}>
+                <a href={`/tags/${tag}`}>{tag}</a>
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+  </p>
+</div>
