@@ -7,15 +7,14 @@ export interface BaseNode {
   updated?: string;
   heroImage?: string;
   tags?: string[];
+  featured?: boolean;
 }
 
 export type TagNode = BaseNode & {
   count: number;
 };
 
-export type BlogPost = BaseNode & {
-  featured?: boolean;
-};
+export type BlogPost = BaseNode;
 
 export type MetaPage = BaseNode;
 

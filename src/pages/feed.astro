@@ -1,0 +1,52 @@
+---
+import NodeList from "../components/NodeList.astro";
+import PageFooter from "../components/PageFooter.astro";
+import PageHeader from "../components/PageHeader.astro";
+import PageSubTitle from "../components/PageSubTitle.astro";
+import PageTitle from "../components/PageTitle.astro";
+import Document from "../document/Document.astro";
+import Head from "../document/Head.astro";
+import type { AstroNode, BaseNode } from "../types";
+import { today } from "../utils/date";
+
+const RECENT_NODES_COUNT = 10;
+
+const nodes = (
+  await Astro.glob<AstroNode<BaseNode>>("./**/*.{md,mdx}")
+).sort(
+  (a, b) =>
+    new Date(b.frontmatter.published).valueOf() -
+    new Date(a.frontmatter.published).valueOf()
+);
+
+const featuredNodes = nodes.filter(n => n.frontmatter.featured)
+const otherNodes = nodes.filter(n => !n.frontmatter.featured)
+const recentNodes = otherNodes.slice(0, RECENT_NODES_COUNT);
+
+const node: BaseNode = {
+  url: Astro.url.toString(),
+  type: "page",
+  title: "Featured and latest content",
+  description: "A bit of everything happening on this website. Some featured stuff but noise as well.",
+  published: today(),
+};
+---
+
+<Document>
+  <Head node={node} />
+  <body>
+    <PageHeader />
+    <main>
+      <section>
+        <header>
+          <PageTitle>A bit of everything</PageTitle>
+        </header>
+        <PageSubTitle>Featured content</PageSubTitle>
+        <NodeList nodes={featuredNodes} />
+        <PageSubTitle>Recently published</PageSubTitle>
+        <NodeList nodes={recentNodes} />
+      </section>
+    </main>
+    <PageFooter />
+  </body>
+</Document>
