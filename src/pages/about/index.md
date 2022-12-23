@@ -2,11 +2,13 @@
 layout: ../../layouts/AboutPage.astro
 title: This website
 description: My name is André Torgal and this is my website, a place where I blog some thoughts and run a few experiments. Here, you can learn more about me, my work as software engineer and other stuff I have been up to.
+tags:
+  - personal
+  - andretorgal-com
 published: 2017 Nov 02
 updated: 2018 Feb 11
 heroImage: ./assets/hero/about-hero.jpg
 featured: true
-tags: [personal, andretorgal-com]
 ---
 
 <Abstract>
@@ -47,7 +49,7 @@ Bare with me while I collect my old stuff. Meanwhile, check out the latest track
 
 ### One is a lie
 
-- I once worked in an obscure, surreal, movie production, so my name is on [Imdb](https://imdb.com).
+- I once worked in an obscure, surreal, movie production, so my name is on [IMDB](https://imdb.com).
 - I am afraid of heights, but I once bungee jumped from 68 meters high.
 - Cristiano Ronaldo used to chill at my neighbor's house, but I never really talked to him.
 - I got a tattoo of a French character done by an American dude in the Czech Republic.
@@ -66,4 +68,4 @@ Bare with me while I collect my old stuff. Meanwhile, check out the latest track
 
 If you are curious about how this website ~~was built~~ is being built, take a look at [the docs](/meta).
 
-_Spoiler_: it's a static site, entirely generated from Markdown files [here's the source code for the page you are currently reading](https://github.com/andrezero/andretorgal.site/blob/master/content/pages/about/index.md). I'm using [React Static](https://github.com/nozzle/react-static) as a generator, and on top of that, my models, collectors, transformers, and views, entirely written in Typescript and Scss.
+_Spoiler_: it's a static site, entirely generated from Markdown files [here's the source code for the page you are currently reading](https://github.com/andrezero/andretorgal.site/blob/master/content/pages/about/index.md). I'm using [React Static](https://github.com/nozzle/react-static) as a generator, and on top of that, my models, collectors, transformers, and views, entirely written in Typescript and SCSS.

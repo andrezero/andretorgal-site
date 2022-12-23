@@ -2,9 +2,11 @@
 layout: ../../layouts/AboutPage.astro
 title: My Music
 description: This page is about my music.
+tags:
+  - personal
+  - music
 published: 2017 Feb 13
 updated: 2022 Dec 22
-tags: [personal, music]
 ---
 
 ## Ambivalent Red
@@ -25,7 +27,7 @@ Some tunes from the last 10 years or so. From the 40~50 "song" ideas I have seat
 
 ## Espírito da Paz (Redux)
 
-Another attempt, at [Madredeus 1994's Espirito da Paz](https://play.spotify.com/album/7ksuir9e0otEfmJGylzqSF?play=true&utm_source=open.spotify.com&utm_medium=open) this time recorded at home in Barcelona.
+Another attempt, at [Madredeus 1994's Espírito da Paz](https://play.spotify.com/album/7ksuir9e0otEfmJGylzqSF?play=true&utm_source=open.spotify.com&utm_medium=open) this time recorded at home in Barcelona.
 
 <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1274618398&color=%23040404&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/andrezero" title="andrezero" target="_blank" style="color: #cccccc; text-decoration: none;">andrezero</a> · <a href="https://soundcloud.com/andrezero/concertino-minuete" title="Concertino - Minuete" target="_blank" style="color: #cccccc; text-decoration: none;">Concertino - Minuete</a></div>
 

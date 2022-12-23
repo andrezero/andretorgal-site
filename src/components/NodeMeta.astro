@@ -15,30 +15,35 @@ const show = publishedDate || (tags && tags.length);
 {
     show && (
         <div>
-            <span>
-                This <em>{type}</em> was published
-            </span>{' '}
-            {publishedDate && (
-                <>
-                    on
-                    <a href={url} class="node-permalink">
-                        <time class="date" datetime={publishedDate.toISOString()}>
-                            {shortDate(publishedDate)}
-                        </time>
-                    </a>
-                </>
-            )}
+            <p>
+                <span>
+                    This <em>{type}</em> was published
+                </span>{' '}
+                {publishedDate && (
+                    <>
+                        on
+                        <a href={url} class="node-permalink">
+                            <time class="date" datetime={publishedDate.toISOString()}>
+                                {shortDate(publishedDate)}
+                            </time>
+                        </a>
+                    </>
+                )}
+                {tags && tags.length && (
+                    <span>
+                        <br />
+                        under the following tags:
+                    </span>
+                )}
+            </p>
             {tags && tags.length && (
-                <>
-                    <span class="tags">&nbsp;under the following tags:</span>
-                    <ul class="tag-list">
-                        {tags.map(tag => (
-                            <li class={`tag ${tag}`}>
-                                <TagLink tag={tag} />
-                            </li>
-                        ))}
-                    </ul>
-                </>
+                <ul class="tag-list">
+                    {tags.map(tag => (
+                        <li class={`tag ${tag}`}>
+                            <TagLink tag={tag} />
+                        </li>
+                    ))}
+                </ul>
             )}
         </div>
     )
@@ -50,7 +55,8 @@ const show = publishedDate || (tags && tags.length);
     }
 
     ul,
-    li {
+    li,
+    p {
         display: inline;
     }
 

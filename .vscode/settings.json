@@ -2,6 +2,9 @@
     "editor.tabSize": 4,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
+    "files.associations": {
+        "*.astro": "astro"
+    },
     "search.useIgnoreFiles": false,
     "search.exclude": {
         "**/node_modules": true,
@@ -28,6 +31,9 @@
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "[astro]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -36,12 +42,22 @@
         "extensions": [".astro", ".js", ".jsx", ".mdx", ".ts", ".tsx"]
     },
     "eslint.validate": [
-        "astro",
         "mdx",
         "javascript",
         "javascriptreact",
         "html",
         "typescript",
         "typescriptreact"
-    ]
+    ],
+    "spellright.language": ["en"],
+    "spellright.documentTypes": ["markdown", "plaintext", "astro", "mdx"],
+    "spellright.notificationClass": "warning",
+    "spellright.parserByClass": {
+        "astro": {
+            "parser": "code"
+        },
+        "mdx": {
+            "parser": "markdown"
+        }
+    }
 }

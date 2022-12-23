@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
+        "lint": "eslint . -c .eslintrc.cjs",
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro"

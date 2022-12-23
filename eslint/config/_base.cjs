@@ -14,6 +14,8 @@ const base = {
     },
     env: {
         node: true,
+        es2022: true,
+        browser: true,
     },
     settings: {
         react: {

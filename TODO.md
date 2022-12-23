@@ -7,13 +7,19 @@
 - Port blog
 - Blog list
 - Homepage latest posts
+- Images
+- Og:image
+- Image Caption
+- Embeds https://github.com/astro-community/astro-embed/tree/main/packages/astro-embed-youtube
+- md https://github.com/astro-community/md
+- testing https://github.com/astro-community/component-template/blob/main/test/example.test.js
+- seo https://github.com/astro-community/astro-seo
 - Blog section header
 - Port meta
 - Meta section header
 - Port tags
 - Tag styles
 - Tags section header
-- Images
 - Media stream
 - All posts
 - Port experiments
@@ -22,7 +28,6 @@
 - Images/Media nodes
 - About/story style
 - Heros
-- Og:image
 
 ## Later
 
@@ -45,3 +50,5 @@
 - Color schemes
 
 - https://snyk.io/advisor/npm-package/eslint-plugin-astro
+
+S3 https://primitive.dev/blog/aws-s3-redirects/
