@@ -1,0 +1,176 @@
+---
+import '../styles/reset.css';
+import '../styles/typography.css';
+import '../styles/spacing.css';
+import '../styles/color.css';
+import '../styles/global.css';
+
+const hasSection = Astro.slots.has('section');
+---
+
+<div class={`layout${hasSection ? ' has-section' : ''}`}>
+    <slot name="header" />
+    <slot name="section" />
+    <slot name="main" />
+    <slot name="footer" />
+</div>
+
+<style is:global>
+    .layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'head'
+            'sect'
+            'main'
+            'foot';
+        height: 100%;
+    }
+
+    .layout > * {
+        color: var(--scheme-fg);
+        background-color: var(--scheme-bg);
+    }
+
+    .container {
+        margin: 0 var(--layout-space);
+    }
+
+    .layout-header {
+        grid-area: head;
+        padding-top: var(--layout-gap);
+        padding-bottom: var(--layout-gap);
+    }
+
+    .layout-section {
+        display: none;
+        grid-area: sect;
+        padding-top: var(--layout-gap);
+        padding-bottom: var(--layout-gap);
+        border-top: var(--layout-border-thin) solid var(--scheme-edge);
+    }
+
+    .has-section .layout-section {
+        display: block;
+    }
+
+    .layout-main {
+        overflow: hidden;
+        grid-area: main;
+        min-height: 80vh;
+        padding-top: var(--layout-headroom);
+        padding-bottom: var(--layout-legroom);
+        border-top: var(--layout-border-wide) solid var(--scheme-edge);
+    }
+
+    .layout-footer {
+        grid-area: foot;
+    }
+
+    @media screen and (min-width: 620px) {
+        .container {
+            max-width: var(--layout-container-width);
+            margin: 0 auto;
+        }
+    }
+
+    @media screen and (min-width: 960px) {
+        .layout {
+            grid-template-areas:
+                'head main'
+                'foot foot';
+            grid-template-columns: var(--layout-col-1) 1fr;
+            max-width: initial;
+        }
+
+        .has-section {
+            grid-template-areas:
+                'head sect'
+                'head main'
+                'foot foot';
+        }
+
+        .container {
+            margin: 0 var(--layout-gap) 0 var(--layout-space);
+        }
+
+        .layout-header {
+            min-height: 90vh;
+        }
+
+        .layout-header .container {
+            margin-left: var(--layout-gap);
+        }
+
+        .layout-header,
+        .layout-section {
+            padding-top: var(--layout-headroom);
+            padding-bottom: var(--layout-gap);
+        }
+
+        .layout-section .container {
+            margin-left: var(--layout-space);
+        }
+
+        .layout-main,
+        .layout-section {
+            border-top: none;
+        }
+
+        .layout-section,
+        .layout-main {
+            border-left: var(--layout-border-wide) solid var(--scheme-edge);
+        }
+
+        .layout-footer .container {
+            max-width: initial;
+            margin: 0 var(--layout-space) 0
+                calc(var(--layout-col-1) + var(--layout-border-wide) + var(--layout-space));
+        }
+    }
+
+    @media screen and (min-width: 1420px) {
+        .layout {
+            grid-template-areas:
+                'head main'
+                'foot foot';
+            grid-template-columns: var(--layout-col-1-max) 1fr;
+            grid-template-rows: repeat(2, min-content);
+        }
+
+        .has-section {
+            grid-template-areas:
+                'head sect main'
+                'foot foot foot';
+            grid-template-columns: var(--layout-col-1-max) var(--layout-col-2) 1fr;
+            grid-template-rows: repeat(2, min-content);
+        }
+
+        .layout-section {
+            display: none;
+            border-left: var(--layout-border-thin) solid var(--scheme-edge);
+        }
+
+        .layout-section .container {
+            margin-left: var(--layout-gap);
+        }
+
+        .has-section .layout-section {
+            display: block;
+        }
+
+        .layout-footer .container {
+            max-width: initial;
+            margin: 0 var(--layout-space) 0 calc(var(--layout-col-1) + var(--layout-border-wide));
+        }
+
+        .has-section .layout-footer .container {
+            max-width: initial;
+            margin: 0 var(--layout-space) 0
+                calc(
+                    var(--layout-col-1-max) + var(--layout-col-2) + var(--layout-border-wide) +
+                        var(--layout-space)
+                );
+        }
+    }
+</style>

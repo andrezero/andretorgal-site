@@ -1,39 +1,41 @@
 ---
-import NodeAbstract from "../components/NodeAbstract.astro";
-import NodeDate from "../components/NodeDate.astro";
-import NodeMeta from "../components/NodeMeta.astro";
-import PageFooter from "../components/PageFooter.astro";
-import PageHeader from "../components/PageHeader.astro";
-import PageTitle from "../components/PageTitle.astro";
-import Document from "../document/Document.astro";
-import Head from "../document/Head.astro";
-import type { MetaPage } from "../types";
+import Article from '../components/Article.astro';
+import ArticleHeader from '../components/ArticleHeader.astro';
+import Markup from '../components/Markup.astro';
+import NodeAbstract from '../components/NodeAbstract.astro';
+import NodeMeta from '../components/NodeMeta.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteMain from '../components/SiteMain.astro';
+import Body from '../document/Body.astro';
+import Document from '../document/Document.astro';
+import Head from '../document/Head.astro';
+import Layout from '../document/Layout.astro';
+import type { MetaPage } from '../types';
 
 export interface Props {
-  content: MetaPage;
+    content: MetaPage;
 }
 
-const { content: node } = Astro.props;
-const { title } = node;
+const { frontmatter: node } = Astro.props;
 ---
 
 <Document>
-  <Head node={node} />
-  <body>
-    <PageHeader />
-    <main>
-      <article>
-        <header>
-          <PageTitle>{title}</PageTitle>
-          <NodeDate node={node} />
-        </header>
-        <NodeAbstract node={node} />
-        <hr />
-        <slot />
-        <hr />
-        <NodeMeta node={node} />
-      </article>
-    </main>
-    <PageFooter />
-  </body>
+    <Head node={node} />
+    <Body>
+        <Layout>
+            <SiteHeader slot="header" />
+            <SiteMain slot="main">
+                <Article>
+                    <ArticleHeader node={node} />
+                    <NodeAbstract node={node} />
+                    <hr />
+                    <Markup><slot /></Markup>
+                    <hr />
+                    <NodeMeta node={node} />
+                </Article>
+            </SiteMain>
+            <SiteFooter slot="footer" />
+        </Layout>
+    </Body>
 </Document>

@@ -1,0 +1,29 @@
+<body>
+    <p>
+        <a id="top" class="sr-only focusable" href="#main">Skip to content</a>
+    </p>
+    <slot />
+    <p>
+        <a class="sr-only focusable" href="#top">
+            <span>Go back to top of the page</span>
+        </a>
+    </p>
+</body>
+
+<style>
+    p {
+        position: relative;
+        top: 0.5rem;
+        margin: 0;
+    }
+
+    p:last-child {
+        top: -3.5rem;
+    }
+
+    a {
+        color: var(--scheme-fg);
+        text-decoration: none;
+        background-color: var(--scheme-bg);
+    }
+</style>

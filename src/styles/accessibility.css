@@ -1,0 +1,39 @@
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.sr-only.focusable {
+    z-index: 11;
+    position: absolute;
+    width: max-content;
+    padding: var(--layout-shift) var(--layout-gap) var(--layout-shift);
+    inset: var(--layout-unit) auto auto var(--layout-gap);
+    font-family: var(--t-type-family-nav);
+    font-weight: bold;
+}
+
+.sr-only.focusable:focus-visible,
+.sr-only.focusable:focus {
+    width: initial;
+    height: initial;
+    clip: initial;
+}
+
+:focus-visible {
+    outline-style: solid;
+    outline-color: var(--scheme-a-active);
+    outline-width: 0.2rem;
+    outline-offset: var(--layout-shift-fixed);
+}
+
+::selection {
+    color: var(--scheme-bg);
+    background: var(--scheme-fg);
+}

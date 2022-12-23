@@ -1,47 +1,52 @@
 ---
-import NodeAbstract from "../components/NodeAbstract.astro";
-import NodeDate from "../components/NodeDate.astro";
-import NodeList from "../components/NodeList.astro";
-import NodeMeta from "../components/NodeMeta.astro";
-import PageFooter from "../components/PageFooter.astro";
-import PageHeader from "../components/PageHeader.astro";
-import PageSubTitle from "../components/PageSubTitle.astro";
-import PageTitle from "../components/PageTitle.astro";
-import Document from "../document/Document.astro";
-import Head from "../document/Head.astro";
-import type { AstroNode, BaseNode, TagNode } from "../types";
+import Article from '../components/Article.astro';
+import ArticleHeader from '../components/ArticleHeader.astro';
+import Markup from '../components/Markup.astro';
+import NodeAbstract from '../components/NodeAbstract.astro';
+import NodeList from '../components/NodeList.astro';
+import NodeMeta from '../components/NodeMeta.astro';
+import PageSubTitle from '../components/PageSubTitle.astro';
+import PageTitle from '../components/PageTitle.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteMain from '../components/SiteMain.astro';
+import Body from '../document/Body.astro';
+import Document from '../document/Document.astro';
+import Head from '../document/Head.astro';
+import Layout from '../document/Layout.astro';
+import type { AstroNode, BaseNode, TagNode } from '../types';
 
 export interface Props {
-  content: TagNode;
+    frontmatter: TagNode;
 }
 
-const { content: node } = Astro.props;
+const { frontmatter: node } = Astro.props;
 
-const allNodes = await Astro.glob<AstroNode<BaseNode>>("../**/*.{md,mdx}");
+const allNodes = await Astro.glob<AstroNode<BaseNode>>('../**/*.{md,mdx}');
 
-const nodes = allNodes.filter((n) =>
-  n.frontmatter.tags?.includes(node.title)
-);
-
+const nodes = allNodes.filter(n => n.frontmatter.tags?.includes(node.title));
 ---
 
 <Document>
-  <Head node={node} />
-  <body>
-    <PageHeader />
-    <main>
-      <article>
-        <header>
-          <PageTitle><span aria-hidden="true">{nodes.length}</span> #{node.title}</PageTitle>
-          <NodeDate node={node} />
-        </header>
-        <NodeAbstract node={node} />
-        <slot/>
-        <NodeMeta node={node} />
-      </article>
-      <PageSubTitle>All items under #{node.title} ({nodes.length})</PageSubTitle>
-      <NodeList nodes={nodes} />
-    </main>
-    <PageFooter />
-  </body>
+    <Head node={node} />
+    <Body>
+        <Layout>
+            <SiteHeader slot="header" />
+            <SiteMain slot="main">
+                <Article>
+                    <ArticleHeader node={node} override>
+                        <PageTitle
+                            ><span aria-hidden="true">{nodes.length}</span> #{node.title}</PageTitle
+                        >
+                    </ArticleHeader>
+                    <NodeAbstract node={node} />
+                    <Markup><slot /></Markup>
+                    <NodeMeta node={node} />
+                </Article>
+                <PageSubTitle>All {nodes.length} items under #{node.title}</PageSubTitle>
+                <NodeList nodes={nodes} />
+            </SiteMain>
+            <SiteFooter slot="footer" />
+        </Layout>
+    </Body>
 </Document>

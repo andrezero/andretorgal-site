@@ -1,40 +1,60 @@
 ---
-import type { BaseNode } from "../types";
+import type { BaseNode } from '../types';
+import { shortDate } from '../utils/date';
+import TagLink from './TagLink.astro';
 
 export type Props = { node: BaseNode };
 
 const { node } = Astro.props;
-const { type, url, published, tags } = node;
+const { type = 'page', url, published, tags } = node;
 
 const publishedDate = published && new Date(published);
+const show = publishedDate || (tags && tags.length);
 ---
 
-<div class="node-meta">
-  <p class="node-published">
-    <span class="verbose">this <em>{type}</em> was</span> published <a
-      href={url}
-      class="node-permalink"
-      >{
-        publishedDate && (
-          <time class="date" datetime={publishedDate.toISOString()}>
-            {publishedDate.toLocaleString()}
-          </time>
-        )
-      }
-    </a>
-    {
-      tags && tags.length && (
-        <>
-          <span> under the following tags:</span>
-          <ul class="tag-list">
-            {tags.map((tag) => (
-              <li class={`tag ${tag}`}>
-                <a href={`/tags/${tag}`}>{tag}</a>
-              </li>
-            ))}
-          </ul>
-        </>
-      )
+{
+    show && (
+        <div>
+            <span>
+                This <em>{type}</em> was published
+            </span>{' '}
+            {publishedDate && (
+                <>
+                    on
+                    <a href={url} class="node-permalink">
+                        <time class="date" datetime={publishedDate.toISOString()}>
+                            {shortDate(publishedDate)}
+                        </time>
+                    </a>
+                </>
+            )}
+            {tags && tags.length && (
+                <>
+                    <span class="tags">&nbsp;under the following tags:</span>
+                    <ul class="tag-list">
+                        {tags.map(tag => (
+                            <li class={`tag ${tag}`}>
+                                <TagLink tag={tag} />
+                            </li>
+                        ))}
+                    </ul>
+                </>
+            )}
+        </div>
+    )
+}
+
+<style>
+    a {
+        display: inline-flex;
     }
-  </p>
-</div>
+
+    ul,
+    li {
+        display: inline;
+    }
+
+    li {
+        padding-right: var(--t-space-2xs);
+    }
+</style>

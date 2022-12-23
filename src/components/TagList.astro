@@ -1,21 +1,23 @@
 ---
-import type { TagNode } from "../types";
+import type { TagNode } from '../types';
 
 export interface Props {
-  tags: TagNode[];
+    tags: TagNode[];
 }
 
 const { tags } = Astro.props;
 ---
 
 <ul>
-  {
-    tags.map((tag) => (
-      <li>
-        <a href={`/tags/${tag.title}`}>
-          {tag.title} ({tag.count})
-        </a>
-      </li>
-    ))
-  }
+    {
+        tags.map(tag => (
+            <li>
+                <h3>
+                    <a href={`/tags/${tag.title}`}>
+                        #{tag.title} ({tag.count})
+                    </a>
+                </h3>
+            </li>
+        ))
+    }
 </ul>

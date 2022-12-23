@@ -1,0 +1,56 @@
+---
+export interface Props {
+    href: string;
+    exact?: boolean;
+}
+
+const { exact, href } = Astro.props;
+
+const { pathname } = Astro.url;
+const current = pathname.replace(/\/$/, '');
+const isHome = href === '/';
+const isActive = isHome
+    ? pathname === '/'
+    : exact
+    ? current === href
+    : current.startsWith(href + '');
+const tabIndex = isActive ? -1 : 0;
+---
+
+<a tabindex={tabIndex} href={href} class:list={['nav', { active: isActive }]}>
+    <slot />
+</a>
+
+<style>
+    .nav {
+        display: inline-block;
+        line-height: inherit;
+    }
+
+    .nav.active {
+        text-decoration: none;
+    }
+
+    .nav {
+        padding: 0 var(--layout-shift);
+        margin-left: calc(-1 * var(--layout-shift));
+        text-decoration: underline;
+        transition: background-color 0.1s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .nav {
+            transition: none;
+        }
+    }
+
+    .nav:hover {
+        color: var(--scheme-bg);
+        background-color: var(--scheme-a-on);
+    }
+
+    .nav:active {
+        color: var(--scheme-bg);
+        background-color: var(--scheme-a-active);
+    }
+</style>

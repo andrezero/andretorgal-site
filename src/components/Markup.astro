@@ -1,0 +1,41 @@
+<div class="markup">
+    <slot />
+</div>
+
+<style>
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-unit);
+    }
+</style>
+
+<style is:global>
+    .markup h3 {
+        margin: var(--layout-unit) 0 var(--layout-unit);
+    }
+
+    .markup h4 {
+        margin: var(--layout-unit) 0 var(--layout-unit);
+    }
+
+    .markup ul {
+        margin: 0 0 0 var(--layout-gap);
+    }
+
+    .markup li {
+        list-style-type: square;
+    }
+
+    .markup h4 {
+        margin: var(--layout-unit) 0 var(--layout-unit);
+    }
+
+    .markup iframe {
+        margin: var(--layout-unit) 0 var(--layout-gap);
+    }
+
+    .markup iframe + div {
+        display: none;
+    }
+</style>

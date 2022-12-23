@@ -1,21 +1,21 @@
 ---
-layout: "../../layouts/AboutPage.astro"
-title: "This website"
-description: "My name is André Torgal and this is my website, a place where I blog some thoughts and run a few experiments. Here, you can learn more about me, my work as software engineer and other stuff I have been up to."
-published: "2017 Nov 02"
-updated: "2018 Feb 11"
-heroImage: "./assets/hero/about-hero.jpg"
+layout: ../../layouts/AboutPage.astro
+title: This website
+description: My name is André Torgal and this is my website, a place where I blog some thoughts and run a few experiments. Here, you can learn more about me, my work as software engineer and other stuff I have been up to.
+published: 2017 Nov 02
+updated: 2018 Feb 11
+heroImage: ./assets/hero/about-hero.jpg
 featured: true
-tags: ["personal", "andretorgal-com"]
+tags: [personal, andretorgal-com]
 ---
 
-<abstract>
+<Abstract>
 
 My name is André Torgal and this is my website, a place where I [blog](/posts) some thoughts and run a few experiments.
 
 Here, you can learn more about me, [my work as software engineer](/about/work), and other stuff I have been up to.
 
-</abstract>
+</Abstract>
 
 ## House rules
 
@@ -54,13 +54,10 @@ Bare with me while I collect my old stuff. Meanwhile, check out the latest track
 
 ## See you around
 
-<div tabindex="-1" class="banner banner-contact" role="navigation" arial-label="contacts">
-  <sronly>Here are some ways of contacting me:</sronly>
+<div tabindex="-1" class="banner banner-contact" role="navigation" arial-label="My contacts on the Internet">
   <ul class="nav-extenral">
     <li><a class="email" href="mailto:info@andretorgal.com">Email</a></li>
     <li><a class="github" href="https://github.com/andrezero">Github</a></li>
-    <li><a class="twitter" href="https://twitter.com/andrezero">Twitter</a></li>
-    <li><a class="facebook" href="https://facebook.com/andrezero">Facebook</a></li>
     <li><a class="linkedin" href="https://linkedin.com/in/andretorgal">Linkedin</a></li>
   </ul>
 </div>

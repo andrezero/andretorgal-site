@@ -1,0 +1,89 @@
+---
+import { SITE_TITLE } from '../config';
+---
+
+<h1 class="title">
+    <a href="/">
+        <span>{SITE_TITLE}</span>
+        <picture>
+            <img
+                src="/logo.svg"
+                alt="A black and white, high contrast, picture of a person's silhouette in front of a huge crescent moon"
+            />
+        </picture>
+    </a>
+</h1>
+
+<style>
+    .title {
+        margin: 0;
+        font-size: var(--t-type-size-4);
+        line-height: var(--t-type-size-4);
+    }
+
+    h1 a {
+        display: inline-flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: center;
+        gap: var(--t-space-xs);
+        padding: 0 var(--layout-shift);
+        margin-left: calc(-1 * var(--layout-shift));
+        text-decoration: none;
+        transition: background-color 0.1s;
+    }
+
+    h1 a:hover {
+        color: var(--scheme-alt-fg);
+        background-color: var(--scheme-alt-bg);
+    }
+
+    h1 span {
+        padding-right: var(--layout-shift);
+    }
+
+    picture {
+        display: inline-block;
+    }
+
+    picture img {
+        display: block;
+        width: var(--t-type-size-5);
+        height: var(--t-type-size-5);
+        overflow: hidden;
+        object-fit: cover;
+        object-position: 0px 0px;
+        border-radius: 50%;
+    }
+
+    @media screen and (min-width: 960px) {
+        div {
+            gap: var(--t-space-s);
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        h1 a {
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: var(--layout-unit);
+            padding: var(--layout-shift);
+            padding-bottom: var(--t-space-2xs);
+        }
+
+        h1 span {
+            writing-mode: sideways-lr;
+            margin-left: var(--layout-unshift);
+            padding-right: 0;
+            padding-bottom: var(--layout-shift);
+        }
+
+        h1 picture {
+            display: flex;
+            align-items: center;
+            height: var(--t-type-size-7);
+        }
+    }
+</style>

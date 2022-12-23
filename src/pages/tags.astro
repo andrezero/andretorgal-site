@@ -1,52 +1,57 @@
 ---
-import { allTags } from "../queries/tags";
-import PageFooter from "../components/PageFooter.astro";
-import PageHeader from "../components/PageHeader.astro";
-import Document from "../document/Document.astro";
-import Head from "../document/Head.astro";
-import type { AstroNode, BaseNode, BlogPost } from "../types";
-import { today } from "../utils/date";
-import PageSubTitle from "../components/PageSubTitle.astro";
-import PageTitle from "../components/PageTitle.astro";
-import TagList from "../components/TagList.astro";
+import { allTags } from '../queries/tags';
+import PageSubTitle from '../components/PageSubTitle.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteMain from '../components/SiteMain.astro';
+import TagList from '../components/TagList.astro';
+import Body from '../document/Body.astro';
+import Document from '../document/Document.astro';
+import Head from '../document/Head.astro';
+import Layout from '../document/Layout.astro';
+import type { AstroNode, BaseNode, BlogPost } from '../types';
+import { today } from '../utils/date';
+import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
 
 const TOP_TAGS_COUNT = 10;
 
-const allPosts = await Astro.glob<AstroNode<BaseNode>>("./**/*.{md,mdx}");
+const allPosts = await Astro.glob<AstroNode<BaseNode>>('./**/*.{md,mdx}');
 
 const sortedTags = allTags(allPosts as AstroNode<BlogPost>[]);
 const topTags = sortedTags.slice(0, TOP_TAGS_COUNT);
 const moreTags = sortedTags.slice(TOP_TAGS_COUNT);
 
 const node: BaseNode = {
-  url: Astro.url.toString(),
-  type: "page",
-  title: "All the tags",
-  description: "All the content on my website is tagged. Even the tags are tagged. Old school like that.",
-  published: today(),
+    url: Astro.url.toString(),
+    type: 'page',
+    title: 'All the tags',
+    description:
+        'All the content on my website is tagged. Even the tags are tagged. Old school like that.',
+    published: today(),
 };
 ---
 
 <Document>
-  <Head node={node} />
-  <body>
-    <PageHeader />
-    <main>
-      <section>
-        <header>
-          <PageTitle>Top tags</PageTitle>
-        </header>
-        <TagList tags={topTags} />
-        {
-          !!moreTags.length && (
-            <>
-              <PageSubTitle>Other tags</PageSubTitle>
-              <TagList tags={moreTags} />
-            </>
-          )
-        }
-      </section>
-    </main>
-    <PageFooter />
-  </body>
+    <Head node={node} />
+    <Body>
+        <Layout>
+            <SiteHeader slot="header" />
+            <SiteMain slot="main">
+                <Section>
+                    <SectionHeader node={node} />
+                    <TagList tags={topTags} />
+                    {
+                        !!moreTags.length && (
+                            <>
+                                <PageSubTitle>Other tags</PageSubTitle>
+                                <TagList tags={moreTags} />
+                            </>
+                        )
+                    }
+                </Section>
+            </SiteMain>
+            <SiteFooter slot="footer" />
+        </Layout>
+    </Body>
 </Document>

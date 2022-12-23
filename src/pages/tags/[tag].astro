@@ -1,23 +1,22 @@
 ---
-import TagPage from "../../layouts/TagPage.astro";
-import { allTags } from "../../queries/tags";
-import type { AstroNode, BlogPost, TagNode } from "../../types";
+import TagPage from '../../layouts/TagPage.astro';
+import { allTags } from '../../queries/tags';
+import type { AstroNode, BlogPost, TagNode } from '../../types';
 
 export interface Props {
-  tag: TagNode;
+    tag: TagNode;
 }
 
 export async function getStaticPaths({}) {
-  const allNodes = await Astro.glob<AstroNode<BlogPost>>("../**/*.{md,mdx}");
-  const sortedTags = allTags(allNodes);
-  return sortedTags.map((tag) => ({
-    params: { tag: tag.title },
-    props: { tag },
-  }));
+    const allNodes = await Astro.glob<AstroNode<BlogPost>>('../**/*.{md,mdx}');
+    const sortedTags = allTags(allNodes);
+    return sortedTags.map(tag => ({
+        params: { tag: tag.title },
+        props: { tag },
+    }));
 }
 
 const { tag } = Astro.props;
-
 ---
 
-<TagPage content={tag} />
+<TagPage frontmatter={tag} />

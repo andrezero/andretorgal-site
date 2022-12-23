@@ -1,0 +1,38 @@
+---
+import type { AstroNode, BaseNode } from '../types';
+import NodeDate from './NodeDate.astro';
+
+export interface Props {
+    node: AstroNode<BaseNode>;
+}
+
+const { node } = Astro.props;
+---
+
+<article>
+    <header>
+        <h3>
+            <a href={node.url}>{node.frontmatter.title}</a>
+        </h3>
+        <NodeDate node={node.frontmatter} compact />
+    </header>
+    <p>{node.frontmatter.description}</p>
+</article>
+
+<style>
+    article {
+        display: flex;
+        flex-direction: column;
+        gap: var(--t-space-s);
+    }
+
+    header {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: var(--t-space-2xs);
+    }
+
+    p {
+        font-size: var(--t-type-size-1);
+    }
+</style>

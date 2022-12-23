@@ -1,42 +1,43 @@
 ---
-import NodeList from "../components/NodeList.astro";
-import PageFooter from "../components/PageFooter.astro";
-import PageHeader from "../components/PageHeader.astro";
-import PageTitle from "../components/PageTitle.astro";
-import Document from "../document/Document.astro";
-import Head from "../document/Head.astro";
-import type { AstroNode, BaseNode, BlogPost } from "../types";
-import { today } from "../utils/date";
+import NodeList from '../components/NodeList.astro';
+import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteMain from '../components/SiteMain.astro';
+import Body from '../document/Body.astro';
+import Document from '../document/Document.astro';
+import Head from '../document/Head.astro';
+import Layout from '../document/Layout.astro';
+import type { AstroNode, BaseNode, BlogPost } from '../types';
+import { today } from '../utils/date';
 
-const posts = (
-  await Astro.glob<AstroNode<BlogPost>>("./posts/**/*.{md,mdx}")
-).sort(
-  (a, b) =>
-    new Date(b.frontmatter.published).valueOf() -
-    new Date(a.frontmatter.published).valueOf()
+const posts = (await Astro.glob<AstroNode<BlogPost>>('./posts/**/*.{md,mdx}')).sort(
+    (a, b) =>
+        new Date(b.frontmatter.published).valueOf() - new Date(a.frontmatter.published).valueOf(),
 );
 
 const node: BaseNode = {
-  url: Astro.url.toString(),
-  type: "page",
-  title: "Featured and latest posts",
-  description: "A blog in the old sense and in the old ways: posts, archives, and many tags.",
-  published: today(),
+    url: Astro.url.toString(),
+    type: 'page',
+    title: 'Latest blog posts',
+    description: 'A blog in the old sense and in the old ways: posts, archives, and many tags.',
+    published: today(),
 };
 ---
 
 <Document>
-  <Head node={node} />
-  <body>
-    <PageHeader />
-    <main>
-      <section>
-        <header>
-          <PageTitle>Latest blog posts</PageTitle>
-        </header>
-        <NodeList nodes={posts} />
-      </section>
-    </main>
-    <PageFooter />
-  </body>
+    <Head node={node} />
+    <Body>
+        <Layout>
+            <SiteHeader slot="header" />
+            <SiteMain slot="main">
+                <Section>
+                    <SectionHeader node={node} />
+                    <NodeList nodes={posts} />
+                </Section>
+            </SiteMain>
+            <SiteFooter slot="footer" />
+        </Layout>
+    </Body>
 </Document>

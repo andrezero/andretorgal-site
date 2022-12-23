@@ -1,0 +1,39 @@
+---
+export interface Props {
+    y: number;
+}
+
+const { y } = Astro.props;
+---
+
+<p class="y"><span>{y}</span></p>
+
+<style>
+    .y {
+        margin-top: 10px;
+        font-family: var(--t-type-family-heading);
+        font-size: var(--t-type-size--1);
+    }
+
+    .y span {
+        padding: var(--layout-shift) var(--layout-unit);
+        color: var(--scheme-alt-fg);
+        background-color: var(--scheme-alt-bg);
+        width: min-content;
+    }
+
+    @media screen and (min-width: 800px) {
+        .y {
+            display: block;
+            position: relative;
+            top: var(--t-space-m);
+            left: -1em;
+            margin-bottom: var(--t-space-2xs);
+            margin-left: -35rem;
+            width: 35rem;
+            height: 1em;
+            text-align: right;
+            border-bottom: none;
+        }
+    }
+</style>

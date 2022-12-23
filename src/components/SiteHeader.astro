@@ -1,0 +1,37 @@
+---
+import SiteHeaderHeading from './SiteHeaderHeading.astro';
+import SiteHeaderNav from './SiteHeaderNav.astro';
+---
+
+<header class="layout-header cs-primary">
+    <div class="container">
+        <SiteHeaderHeading />
+        <SiteHeaderNav />
+    </div>
+</header>
+
+<style>
+    header {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--t-space-xs);
+    }
+
+    @media screen and (min-width: 960px) {
+        .container {
+            gap: var(--t-space-s);
+        }
+    }
+
+    @media screen and (min-width: 1420px) {
+        header {
+            gap: var(--t-space-m);
+        }
+    }
+</style>

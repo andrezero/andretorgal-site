@@ -1,5 +1,5 @@
 ---
-import type { BaseNode } from "../types";
+import type { BaseNode } from '../types';
 
 export type Props = { node: BaseNode };
 
@@ -8,9 +8,15 @@ const { description } = node;
 ---
 
 {
-  description && (
-    <div class="node-abstract">
-      <p>{description}</p>
-    </div>
-  )
+    description && (
+        <div>
+            <p>{description}</p>
+        </div>
+    )
 }
+
+<style>
+    div {
+        font-size: var(--t-type-size-1);
+    }
+</style>

@@ -1,24 +1,24 @@
+import type { MarkdownLayoutProps } from 'astro';
+
 export interface BaseNode {
-  url: string;
-  type: string;
-  title: string;
-  description?: string;
-  published: string;
-  updated?: string;
-  heroImage?: string;
-  tags?: string[];
-  featured?: boolean;
+    url: string;
+    type: string;
+    title: string;
+    description?: string;
+    published: string;
+    updated?: string;
+    heroImage?: string;
+    tags?: string[];
+    featured?: boolean;
+    [key: string]: unknown;
 }
 
 export type TagNode = BaseNode & {
-  count: number;
+    count: number;
 };
 
 export type BlogPost = BaseNode;
 
 export type MetaPage = BaseNode;
 
-export interface AstroNode<T> {
-  url: string;
-  frontmatter: T;
-}
+export type AstroNode<T extends Record<string, unknown>> = MarkdownLayoutProps<T>;

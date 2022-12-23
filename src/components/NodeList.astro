@@ -1,19 +1,37 @@
 ---
-import type { AstroNode, BaseNode } from "../types";
+import type { AstroNode, BaseNode } from '../types';
+import NodeListItem from './NodeListItem.astro';
 
 export interface Props {
-  nodes: AstroNode<BaseNode>[];
+    nodes: AstroNode<BaseNode>[];
 }
 
 const { nodes } = Astro.props;
 ---
 
 <ul>
-  {
-    nodes.map((post) => (
-      <li>
-        <a href={post.url}>{post.frontmatter.title}</a>
-      </li>
-    ))
-  }
+    {
+        nodes.map(node => (
+            <li>
+                <NodeListItem node={node} />
+            </li>
+        ))
+    }
 </ul>
+
+<style>
+    ul,
+    li {
+        display: flex;
+        flex-direction: column;
+        gap: var(--t-space-l);
+    }
+
+    li {
+        gap: var(--t-space-2xs);
+    }
+
+    p {
+        font-size: var(--t-type-size-1);
+    }
+</style>

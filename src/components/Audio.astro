@@ -1,0 +1,31 @@
+---
+export interface Props {
+    url: string;
+    title?: string;
+    duration?: string;
+}
+
+const { url, title, duration } = Astro.props;
+---
+
+<div>
+    <audio controls src={url}></audio>
+
+    {
+        (title || duration) && (
+            <em>
+                {title && <span>{title}</span>}
+                {duration && <span>({duration})</span>}
+            </em>
+        )
+    }
+</div>
+
+<style>
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-unit);
+        margin: var(--layout-unit) 0;
+    }
+</style>

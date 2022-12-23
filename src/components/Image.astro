@@ -1,0 +1,32 @@
+---
+import { Picture } from '@astrojs/image/components';
+
+export interface Props {
+    url: string;
+    title?: string;
+}
+
+const { url, title } = Astro.props;
+---
+
+<figure>
+    <Picture
+        src={url}
+        alt={title || ''}
+        widths={[200, 400, 800]}
+        sizes="(max-width: 800px) 100vw, 800px"
+        fit="cover"
+        position="center"
+        aspectRatio="3358:1724"
+    />
+    {title && <figcaption>{title}</figcaption>}
+</figure>
+
+<style>
+    figure {
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-unit);
+        margin: var(--layout-unit) 0;
+    }
+</style>

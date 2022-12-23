@@ -1,14 +1,41 @@
 ---
-
 export interface Props {
-  src: string | undefined;
+    src: string | undefined;
 }
 
 const { src } = Astro.props;
-
 ---
+
 {
-  src && (
-    <img width={720} height={360} src={src} alt="" />
-  )
+    src && (
+        <picture class="hero">
+            <img src={src} alt="" />
+        </picture>
+    )
 }
+
+<style>
+    .hero img {
+        width: auto;
+        max-width: initial;
+        width: 100vw;
+        margin-left: calc(-1 * var(--layout-space));
+        object-fit: cover;
+        object-position: -5vw;
+    }
+
+    @media screen and (min-width: 600px) {
+        .hero img {
+            margin-left: calc(-1 * (50vw - var(--layout-container-width) / 2));
+        }
+    }
+
+    @media screen and (min-width: 960px) {
+        .hero img {
+            width: calc(100vw - var(--layout-space) - var(--layout-space));
+            max-width: 2000px;
+            margin-left: calc(-1 * var(--layout-space));
+            max-height: 50vh;
+        }
+    }
+</style>

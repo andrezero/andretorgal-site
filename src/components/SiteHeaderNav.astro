@@ -1,0 +1,36 @@
+---
+import NavLink from './NavLink.astro';
+---
+
+<nav>
+    <NavLink href="/">Home</NavLink>
+    <NavLink href="/posts">Blog</NavLink>
+    <NavLink href="/feed">Feed</NavLink>
+    <NavLink href="/tags">Tags</NavLink>
+    <NavLink href="/about">About</NavLink>
+    <NavLink href="/meta">Meta</NavLink>
+</nav>
+
+<style>
+    nav {
+        display: flex;
+        gap: var(--t-space-2xs);
+        font-family: var(--t-type-family-nav);
+    }
+
+    @media screen and (min-width: 480px) {
+        nav {
+            gap: var(--t-space-s);
+        }
+    }
+
+    @media screen and (min-width: 960px) {
+        nav {
+            flex-direction: column;
+            align-items: center;
+            gap: var(--t-space-2xs);
+            font-size: var(--t-type-size-1);
+            line-height: var(--t-type-size-4);
+        }
+    }
+</style>

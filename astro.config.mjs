@@ -1,10 +1,10 @@
-import { defineConfig } from "astro/config";
-import mdx from "@astrojs/mdx";
+import { defineConfig } from 'astro/config';
+import image from '@astrojs/image';
+import mdx from '@astrojs/mdx';
+import preact from '@astrojs/preact';
+import sitemap from '@astrojs/sitemap';
 
-import sitemap from "@astrojs/sitemap";
-
-// https://astro.build/config
 export default defineConfig({
-  site: "https://andretorgal.com",
-  integrations: [mdx(), sitemap()],
+    site: 'https://andretorgal.com',
+    integrations: [preact(), mdx(), sitemap(), image()],
 });

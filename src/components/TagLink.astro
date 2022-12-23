@@ -1,0 +1,35 @@
+---
+export interface Props {
+    tag: string;
+}
+
+const { tag } = Astro.props;
+---
+
+<a class="tag" href={`/tags/${tag}`}>#{tag}</a>
+
+<style>
+    .tag {
+        padding: var(--layout-shift) var(--layout-unit);
+        font-size: var(--t-type-family-alt);
+        color: var(--scheme-bg);
+        background-color: var(--scheme-fg);
+        border-radius: var(--radius-action);
+        text-decoration: none;
+    }
+
+    .tag::selection {
+        color: var(--scheme-bg);
+        background-color: var(--scheme-a-on);
+    }
+
+    .tag:hover {
+        color: var(--scheme-bg);
+        background-color: var(--scheme-a-on);
+    }
+
+    .tag:active {
+        color: var(--scheme-fg);
+        background-color: var(--scheme-bg);
+    }
+</style>

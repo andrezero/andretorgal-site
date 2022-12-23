@@ -1,10 +1,10 @@
 ---
-layout: "../../layouts/AboutPage.astro"
-title: "My Music"
-description: "This page is about my music."
-published: "2017 Feb 13"
-updated: "2022 Dec 22"
-tags: ["personal", "music"]
+layout: ../../layouts/AboutPage.astro
+title: My Music
+description: This page is about my music.
+published: 2017 Feb 13
+updated: 2022 Dec 22
+tags: [personal, music]
 ---
 
 ## Ambivalent Red

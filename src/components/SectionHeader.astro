@@ -1,0 +1,25 @@
+---
+import type { BaseNode } from '../types';
+import PageTitle from './PageTitle.astro';
+
+export interface Props {
+    node: BaseNode;
+    override?: boolean;
+}
+
+const { node, override } = Astro.props;
+const { title } = node;
+---
+
+<header>
+    {!override && <PageTitle>{title}</PageTitle>}
+    <slot />
+</header>
+
+<style>
+    header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-unit);
+    }
+</style>

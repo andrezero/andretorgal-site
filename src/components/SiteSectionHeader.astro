@@ -1,0 +1,49 @@
+---
+export interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="layout-section cs-secondary">
+    <header class="container">
+        <h2 aria-label="Current section">{title}</h2>
+    </header>
+    <nav class="container">
+        <slot />
+    </nav>
+</div>
+
+<style>
+    div {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-unit);
+    }
+
+    header h2 {
+        font-size: var(--t-type-size-3);
+        line-height: var(--t-type-size-7);
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: var(--t-space-2xs);
+        font-family: var(--t-type-family-nav);
+        font-size: var(--t-type-size-0);
+        line-height: var(--t-type-size-3);
+    }
+
+    @media screen and (min-width: 960px) {
+        nav {
+            font-size: var(--t-type-size-1);
+            line-height: var(--t-type-size-4);
+        }
+    }
+</style>

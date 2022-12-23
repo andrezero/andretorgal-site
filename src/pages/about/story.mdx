@@ -1,9 +1,11 @@
 ---
-layout: "../../layouts/AboutPage.astro"
-title: "My story"
-tags: ["personal", "music", "web-development"]
-published: "2017 Feb 11"
+layout: ../../layouts/AboutPage.astro
+title: My story
+tags: [personal, music, web-development]
+published: 2017 Feb 11
 ---
+
+import Year from '../../components/Year.astro';
 
 This is my personal story.
 
@@ -11,7 +13,7 @@ I don't expect you to read this. :-) This is mostly a writing exercise, a reflec
 
 So if you do read it, drop me a line, I'd love to hear what you make of it. ;-)
 
-<!-- abstract -->
+---
 
 ## 8 inch floppy disks
 
@@ -19,7 +21,7 @@ My name is Andre Torgal and I was born in 1973 in Lisbon, Portugal.
 
 My parents were both academics, physicists involved in the early stages of computing in Portugal. I remember the freezing rooms, the whirring tape reels, the screeching dot matrix printers. I remember punch cards and 8 inch floppy disks and how I was taught they contained "data" and were not to be messed with.
 
-<p class="year">1981</p>
+<Year y={1981} />
 
 I remember that first, monochrome green, home computer. As long as I carefully parked the hard drive before shutting it down, I was even allowed to play with it.
 
@@ -29,7 +31,7 @@ Today, a toddler can tap and swipe away on a tablet before they learn to speak. 
 
 ## ZX Spectrum 48K
 
-<p class="year">1982</p>
+<Year y={1982} />
 
 It wasn't long before I got my own computer to play with. My dad brought home this stupendous microcomputer from the UK and got me learning its rudimentary [Basic](http://www.worldofspectrum.org/ZXBasicManual/).
 
@@ -39,7 +41,7 @@ In a couple of years there would be hundreds of games and a handful of mates to 
 
 Consoles were finally breaking into mass market and everyone was piling up audio tapes, cartridges and floppy disks with games.
 
-<p class="year">1985</p>
+<Year y={1985} />
 
 Thanks to my father constantly upgrading his PC, I was once again ahead of the game. From 8086/8 to 80286, 386, blazing fast at 20Mhz and immense at 20Mb. I was all over the first driving simulators and football managers.
 
@@ -51,7 +53,7 @@ Meanwhile, I had become a teenager. I started riding my BMX around the block, bu
 
 During high-school, music seized my entire life. I learned how to listen, how to feel, how to play. The tapes became the medium where we captured each other's vinyl collections and the mixtapes, the most real, p2p music discovery system ever invented, was at the center of everything we did.
 
-<p class="year">1988</p>
+<Year y={1988} />
 
 I had been learning how to play guitar for 2 years now. Very slowly at first. But as soon as met other people learning instruments, we started a pop band.
 
@@ -59,7 +61,7 @@ And then a rock band, and then a punk one, and on to metal and several flavours 
 
 ## Full-duplex sound cards
 
-<p class="year">1991</p>
+<Year y={1991} />
 
 Going to college, my friends were taking on Psychology, Linguistics, Sociology, Art. I was in love with all of it, but music was my real passion. Pragmatically, I chose Economics, the social science with a perverse twist and a better outlook into the job market.
 
@@ -67,7 +69,7 @@ Meanwhile, I kept throwing myself at every single calling: student association, 
 
 And music, always the music: took on the bass, then the drums. Played in a few more alt-rock and alt-metal bands, almost graduating from Lisbon's underground scene. A hundred more shows and some more demos, a lot of sweat and a few scars.
 
-<p class="year">1993</p>
+<Year y={1993} />
 
 Eventually I discovered MIDI, trackers and audio editing. I had my own nifty Pentium at the time and all it took was a AWE32 to get started composing, recording and mixing at home.
 
@@ -77,7 +79,7 @@ This primitive home studio would later evolve to a shiny full-duplex Terratec wi
 
 Meanwhile, the Internet had appeared. Some of my friends went straight to the bulletin boards, asking diligent questions, avid to learn how to build the web. But I was too busy finishing my degree and, at the same time, committed to a rock band and a drama group.
 
-<p class="year">1994</p>
+<Year y={1994} />
 
 Don't get me wrong, the Internet was awesome. It had lyrics, tablatures, discographies and photos of setlists. There were fan clubs for all my favourite bands, both living and defunct ones.
 
@@ -89,13 +91,13 @@ Well, MP2 sounded terrible. But you could totally see the future coming.
 
 When I learned about Adam Curry's unofficial MTV website, I gave it a go and learned just enough HTML to uploaded my band's lyrics and concert dates to [Geocities](https://geocities). But it was a pointless exercise, I thought. The people attending our shows were the least interested in the school library.
 
-<p class="year">1995</p>
+<Year y={1995} />
 
 Besides, the rock life was in decline. The 90s were a glorious rock decade, but ironically, MTV, the Internet, digital access and the massive summer festivals did nothing for the local music scene. On the contrary, small live venues were closing doors, bands were dissolving, band members were getting jobs and not turning back.
 
 ## Systems theory
 
-<p class="year">1996</p>
+<Year y={1996} />
 
 Despite all the art in my life, I did learn a lot during my Economics degree. The insane amount of maths, statistics and econometrics was too much for me to cope with. But I did acquire an incredible set of tools for modeling reality and developed strong analytical skills.
 
@@ -103,7 +105,7 @@ My favourite subjects were Behavioural Economics, Political Economy and History 
 
 ## Junior person with a tie
 
-<p class="year">1997</p>
+<Year y={1997} />
 
 Not surprisingly, I soon found myself in a suit, making enough money to muddle through early independence. But my lack of academic focus through college got me the job I deserved. An irrelevant position in a stalling company with antiquated methods and backwards values.
 
@@ -111,7 +113,7 @@ Despite being no business visionary, I knew for sure this wasn't the future. But
 
 ## Referendum
 
-<p class="year">1998</p>
+<Year y={1998} />
 
 The next chapter was triggered by political events across the globe. East-Timor was on the verge of independence from Indonesia. The neighbouring countries were pressuring the occupiers and the situation was delicate. A tragedy like the 1991 Santa Cruz massacre felt eminent.
 
@@ -125,7 +127,7 @@ These people were now relaying the news in other networks and communities.
 
 I was having an impact.
 
-<p class="year">1999</p>
+<Year y={1999} />
 
 I understood the power of those simple tags and set out to find what else was out there to tame.
 
