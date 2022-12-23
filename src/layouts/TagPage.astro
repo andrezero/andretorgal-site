@@ -32,8 +32,8 @@ const nodes = allNodes.filter((n) =>
     <main>
       <article>
         <header>
-          <NodeDate node={node} />
           <PageTitle><span aria-hidden="true">{nodes.length}</span> #{node.title}</PageTitle>
+          <NodeDate node={node} />
         </header>
         <NodeAbstract node={node} />
         <slot/>

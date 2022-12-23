@@ -1,5 +1,7 @@
 ---
+import SectionHeaderAbout from "../components/about/SectionHeaderAbout.astro";
 import NodeDate from "../components/NodeDate.astro";
+import NodeMeta from "../components/NodeMeta.astro";
 import PageFooter from "../components/PageFooter.astro";
 import PageHeader from "../components/PageHeader.astro";
 import PageHero from "../components/PageHero.astro";
@@ -20,6 +22,7 @@ const { title, heroImage } = node;
   <Head node={node} />
   <body>
     <PageHeader />
+    <SectionHeaderAbout />
     <main>
       <article>
         <header>
@@ -29,6 +32,8 @@ const { title, heroImage } = node;
         </header>
         <hr />
         <slot />
+        <hr />
+        <NodeMeta node={node} />
       </article>
     </main>
     <PageFooter />

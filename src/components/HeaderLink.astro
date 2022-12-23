@@ -1,12 +1,14 @@
 ---
-export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  exact?: boolean
+}
 
-const { href, class: className, ...props } = Astro.props;
+const { exact, href, class: className, ...props } = Astro.props;
 
 const { pathname } = Astro.url;
 const current = pathname.replace(/\/$/, "");
 const isHome = href === "/";
-const isActive = isHome ? pathname === "/" : current.startsWith(href + "");
+const isActive = isHome ? pathname === "/" : (exact ? current === href : current.startsWith(href + ""));
 ---
 
 <a href={href} class:list={[className, { active: isActive }]} {...props}>

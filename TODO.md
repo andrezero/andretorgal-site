@@ -1,9 +1,19 @@
 # TODO.md
 
-- Port content
-- Post card src/components/NodeList.astro
+- Port meta
+- Meta header
+- Port tags
 - Tag styles
+- Tags headers
+- Images
+- Media stream
+- Port blog
+- Blog header
 - All posts
+- Port experiments
+- Node card src/components/NodeList.astro
+- Feed archive
 - Images/Media nodes
+- About/story style
 - Heros
 - Og:image
