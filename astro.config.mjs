@@ -6,5 +6,12 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
     site: 'https://andretorgal.com',
-    integrations: [preact(), mdx(), sitemap(), image()],
+    integrations: [
+        preact(),
+        mdx(),
+        sitemap(),
+        image({
+            serviceEntryPoint: '@astrojs/image/sharp',
+        }),
+    ],
 });
