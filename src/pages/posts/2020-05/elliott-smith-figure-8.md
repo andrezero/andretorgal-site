@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogPost.astro
+layout: ../../../templates/BlogPost.astro
 type: post
 title: Elliott Smith - Figure 8
 tags:

@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogPost.astro
+layout: ../../../templates/BlogPost.astro
 type: post
 tags:
   - album

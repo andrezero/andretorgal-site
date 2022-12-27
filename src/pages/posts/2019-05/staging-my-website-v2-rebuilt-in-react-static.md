@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogPost.astro
+layout: ../../../templates/BlogPost.astro
 type: post
 title: Staging My Website V2 Rebuilt In React Static
 tags:

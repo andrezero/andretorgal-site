@@ -1,8 +1,8 @@
 ---
-import SiteSectionHeader from '../components/about/SiteSectionHeader.astro';
 import Article from '../components/Article.astro';
 import ArticleHeader from '../components/ArticleHeader.astro';
 import Markup from '../components/Markup.astro';
+import NodeAbstract from '../components/NodeAbstract.astro';
 import NodeMeta from '../components/NodeMeta.astro';
 import PageHero from '../components/PageHero.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -12,10 +12,10 @@ import Body from '../document/Body.astro';
 import Document from '../document/Document.astro';
 import Head from '../document/Head.astro';
 import Layout from '../document/Layout.astro';
-import type { BaseNode } from '../types';
+import type { BlogPost } from '../types';
 
 export interface Props {
-    content: BaseNode;
+    content: BlogPost;
 }
 
 const { frontmatter: node } = Astro.props;
@@ -26,14 +26,13 @@ const { heroImage } = node;
     <Head node={node} />
     <Body>
         <Layout>
-            <span>Foo Benfica Olé asddkm34r</span>
             <SiteHeader slot="header" />
-            <SiteSectionHeader slot="section" />
             <SiteMain slot="main">
                 <Article>
                     <ArticleHeader node={node}>
                         <PageHero src={heroImage} />
                     </ArticleHeader>
+                    <NodeAbstract node={node} />
                     <hr />
                     <Markup><slot /></Markup>
                     <hr />
@@ -44,3 +43,11 @@ const { heroImage } = node;
         </Layout>
     </Body>
 </Document>
+
+<style>
+    header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--t-space-2xs);
+    }
+</style>

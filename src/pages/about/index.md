@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/AboutPage.astro
+layout: ../../templates/AboutPage.astro
 title: This website
 description: My name is André Torgal and this is my website, a place where I blog some thoughts and run a few experiments. Here, you can learn more about me, my work as software engineer and other stuff I have been up to.
 tags:

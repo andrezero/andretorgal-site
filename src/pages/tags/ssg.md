@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/TagPage.astro
+layout: ../../templates/TagPage.astro
 type: tag
 title: ssg
 tags:

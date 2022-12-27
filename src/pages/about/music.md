@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/AboutPage.astro
+layout: ../../templates/AboutPage.astro
 title: My Music
 description: This page is about my music.
 tags:

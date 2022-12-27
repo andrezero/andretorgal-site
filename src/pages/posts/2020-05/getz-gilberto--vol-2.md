@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogPost.astro
+layout: ../../../templates/BlogPost.astro
 type: post
 title: Getz/Gilberto Vol. 2, Live from Carnegie Hall
 tags:

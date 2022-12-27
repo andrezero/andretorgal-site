@@ -1,35 +1,10 @@
----
-import Article from '../components/Article.astro';
-import ArticleHeader from '../components/ArticleHeader.astro';
-import Markup from '../components/Markup.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteMain from '../components/SiteMain.astro';
-import Body from '../document/Body.astro';
-import Document from '../document/Document.astro';
-import Head from '../document/Head.astro';
-import Layout from '../document/Layout.astro';
-import type { BaseNode } from '../types';
+<!-- without this file
 
-export interface Props {
-    content: BaseNode;
-}
+    this happens:
 
-const { frontmatter: node } = Astro.props;
----
+failed to load module for ssr:
+/Users/andretorgal/code/a/site/src/layouts/Index.astro Error: failed to load module for ssr:
+/Users/andretorgal/code/a/site/src/layouts/Index.astro at instantiateModule
+(file:///Users/andretorgal/code/a/site/node_modules/vite/dist/node/chunks/dep-5605cfa4.js:53281:15)
 
-<Document>
-    <Head node={node} />
-    <Body>
-        <Layout>
-            <SiteHeader slot="header" />
-            <SiteMain slot="main">
-                <Article>
-                    <ArticleHeader node={node} />
-                    <Markup><slot /></Markup>
-                </Article>
-            </SiteMain>
-            <SiteFooter slot="footer" />
-        </Layout>
-    </Body>
-</Document>
+-->
