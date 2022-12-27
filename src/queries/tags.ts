@@ -1,5 +1,6 @@
-import type { AstroNode, BaseNode, TagNode } from '../types';
-import { today } from '../utils/date';
+import { today } from '@utils/date';
+
+import type { AstroNode, BaseNode, TagNode } from './types';
 
 const newTag = (name: string): TagNode => ({
     type: ' tag',

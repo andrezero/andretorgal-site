@@ -1,18 +1,18 @@
 ---
-import Article from '../components/Article.astro';
-import ArticleHeader from '../components/ArticleHeader.astro';
-import Markup from '../components/Markup.astro';
-import NodeAbstract from '../components/NodeAbstract.astro';
-import NodeMeta from '../components/NodeMeta.astro';
-import PageHero from '../components/PageHero.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteMain from '../components/SiteMain.astro';
-import Body from '../document/Body.astro';
-import Document from '../document/Document.astro';
-import Head from '../document/Head.astro';
-import Layout from '../document/Layout.astro';
-import type { BlogPost } from '../types';
+import Body from '@components/document/Body.astro';
+import Document from '@components/document/Document.astro';
+import Head from '@components/document/Head.astro';
+import Layout from '@components/document/Layout.astro';
+import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
+import NodeMeta from '@components/node/parts/NodeMeta.astro';
+import Article from '@components/page/Article.astro';
+import ArticleHeader from '@components/page/ArticleHeader.astro';
+import Markup from '@components/page/Markup.astro';
+import PageHero from '@components/page/PageHero.astro';
+import SiteFooter from '@components/site/SiteFooter.astro';
+import SiteHeader from '@components/site/SiteHeader.astro';
+import SiteMain from '@components/site/SiteMain.astro';
+import type { BlogPost } from '@queries/types';
 
 export interface Props {
     content: BlogPost;

@@ -1,5 +1,6 @@
 ---
-import type { BaseNode } from '../types';
+import type { BaseNode } from '@queries/types';
+import NodeDate from '@components/node/parts/NodeDate.astro';
 import PageTitle from './PageTitle.astro';
 
 export interface Props {
@@ -14,6 +15,7 @@ const { title } = node;
 <header>
     {!override && <PageTitle>{title}</PageTitle>}
     <slot />
+    <NodeDate node={node} />
 </header>
 
 <style>

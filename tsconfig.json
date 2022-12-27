@@ -1,6 +1,17 @@
 {
     "extends": "astro/tsconfigs/strictest",
     "compilerOptions": {
-        "types": ["@astrojs/image/client"]
+        "types": ["@astrojs/image/client"],
+        "baseUrl": ".",
+        "paths": {
+            "~/*": ["src/*"],
+            "@assets/*": ["src/assets/*"],
+            "@components/*": ["src/components/*"],
+            "@queries/*": ["src/queries/*"],
+            "@styles/*": ["src/styles/*"],
+            "@templates/*": ["src/templates/*"],
+            "@utils/*": ["src/utils/*"],
+            "@model/*": ["src/model/*"]
+        }
     }
 }

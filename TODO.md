@@ -2,32 +2,25 @@
 
 ## Feature: blog home
 
-- Refactor: categorise components
-
-  - use `@components/` shortcut in import statements
-  - `mdx/` Abstract, Year, Audio, Image
-  - `node/parts` NodeDate, NodeMeta, NodeAbstract, NodeMeta, TagLink
-  - `node/lists` TagList, NodeList, NodeListItem
-  - `document/` Document, Head, Body
-  - `navigation/` NavLink
-  - `page/` Article, ArticleHeader, Section, SectionHeader, Page\*, Markup
-  - `site/` SiteLayout, Site\*
-
 - Cleanup: remove feed (will come back later)
 - UI: navigation of `blog/**` section header - previous, next
 - UI: make NodeDate compact for use in list items vs articles
 - Feature: blog home
 - Feature: homepage latest posts
 
-## Port media from `andretorgal.com`
+## Feature: images
 
 - Content: port all images from `andretorgal.com`
 - Optimisation: SEO og:image
 - IA: images/media nodes, easy?
+  - "unblocks remark / rehype plugins appending to frontmatter"
+  - as seen in https://github.com/withastro/astro/pull/4137
 - UI: Content component
   - `<Hero>`
   - `<ImageCaption>`
   - `<Blockquote>`
+
+## Feature:
 
 ## Abstract component
 
@@ -125,3 +118,14 @@
 
   - keep controllers in `pages/**/.astro`
   - move those views to `template/*.astro`
+
+- Refactor: categorise components by how they are used
+
+  - use `@components/` - shortcut in import statements
+  - `mdx/` - Abstract, Year, Audio, Image
+  - `node/parts` NodeDate, NodeMeta, NodeAbstract, NodeMeta, TagLink
+  - `node/lists` TagList, NodeList, NodeListItem
+  - `document/` - Document, Head, Body
+  - `navigation/` - NavLink
+  - `page/` - Page\*, Article\*, Section\*, Markup
+  - `site/` - SiteLayout, Site\*
