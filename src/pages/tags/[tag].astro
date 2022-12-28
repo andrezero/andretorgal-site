@@ -9,8 +9,8 @@ export interface Props {
 
 export async function getStaticPaths({}) {
     const allNodes = await Astro.glob<AstroNode<BlogPost>>('../**/*.{md,mdx}');
-    const sortedTags = allTags(allNodes);
-    return sortedTags.map(tag => ({
+    const tags = allTags(allNodes);
+    return tags.map(tag => ({
         params: { tag: tag.title },
         props: { tag },
     }));
@@ -19,4 +19,4 @@ export async function getStaticPaths({}) {
 const { tag } = Astro.props;
 ---
 
-<TagPage frontmatter={tag} />
+<TagPage content={tag} />

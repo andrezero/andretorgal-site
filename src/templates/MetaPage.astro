@@ -17,22 +17,22 @@ export interface Props {
     content: MetaPage;
 }
 
-const { frontmatter: node } = Astro.props;
+const { content: page } = Astro.props;
 ---
 
 <Document>
-    <Head node={node} />
+    <Head node={page} />
     <Body>
         <Layout>
             <SiteHeader slot="header" />
             <SiteMain slot="main">
                 <Article>
-                    <ArticleHeader node={node} />
-                    <NodeAbstract node={node} />
+                    <ArticleHeader node={page} />
+                    <NodeAbstract node={page} />
                     <hr />
                     <Markup><slot /></Markup>
                     <hr />
-                    <NodeMeta node={node} />
+                    <NodeMeta node={page} />
                 </Article>
             </SiteMain>
             <SiteFooter slot="footer" />

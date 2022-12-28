@@ -1,10 +1,7 @@
 ---
-import Article from '../components/Article.astro';
-import ArticleHeader from '../components/ArticleHeader.astro';
-import Markup from '../components/Markup.astro';
-import NodeAbstract from '../components/NodeAbstract.astro';
-import NodeMeta from '../components/NodeMeta.astro';
-import PageHero from '../components/PageHero.astro';
+import NodeList from '../components/NodeList.astro';
+import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteMain from '../components/SiteMain.astro';
@@ -12,14 +9,18 @@ import Body from '../document/Body.astro';
 import Document from '../document/Document.astro';
 import Head from '../document/Head.astro';
 import Layout from '../document/Layout.astro';
-import type { BlogPost } from '../types';
+import type { AstroNode, BlogPost } from '../types';
 
 export interface Props {
     content: BlogPost;
 }
 
-const { frontmatter: node } = Astro.props;
-const { heroImage } = node;
+const { content: node } = Astro.props;
+
+const posts = (await Astro.glob<AstroNode<BlogPost>>('../pages/posts/**/*.{md,mdx}')).sort(
+    (a, b) =>
+        new Date(b.frontmatter.published).valueOf() - new Date(a.frontmatter.published).valueOf(),
+);
 ---
 
 <Document>
@@ -28,26 +29,12 @@ const { heroImage } = node;
         <Layout>
             <SiteHeader slot="header" />
             <SiteMain slot="main">
-                <Article>
-                    <ArticleHeader node={node}>
-                        <PageHero src={heroImage} />
-                    </ArticleHeader>
-                    <NodeAbstract node={node} />
-                    <hr />
-                    <Markup><slot /></Markup>
-                    <hr />
-                    <NodeMeta node={node} />
-                </Article>
+                <Section>
+                    <SectionHeader node={node} />
+                    <NodeList nodes={posts} />
+                </Section>
             </SiteMain>
             <SiteFooter slot="footer" />
         </Layout>
     </Body>
 </Document>
-
-<style>
-    header {
-        display: flex;
-        flex-direction: column;
-        gap: var(--t-space-2xs);
-    }
-</style>

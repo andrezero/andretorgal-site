@@ -1,12 +1,12 @@
 ---
 layout: ../../../templates/BlogPost.astro
 type: post
+title: Massive Attack - Eutopia EP
 tags:
   - massive-attack
   - music
   - 2020
 published: 2020 Jul 11
-title: Massive Attack - Eutopia EP
 work-title: Eutopia
 author: Massive Attack
 ---

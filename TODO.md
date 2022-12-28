@@ -1,11 +1,6 @@
 # TODO.md
 
-## Port `blog/**` content
-
-- Refactor: extract views from `pages/` because easier to navigate
-
-  - keep controllers in `pages/**/.astro`
-  - move those views to `template/*.astro`
+## Feature: blog home
 
 - Refactor: categorise components
 
@@ -123,3 +118,10 @@
 - Fix: switch to sharp to fix build https://github.com/withastro/astro/issues/5473
 - Refactor: rename `layouts` to `templates` because more semantic
 - Benchmark: 59 page(s) built in 7.93s
+
+## Feature: blog home
+
+- Refactor: extract views from `pages/` because easier to navigate
+
+  - keep controllers in `pages/**/.astro`
+  - move those views to `template/*.astro`

@@ -9,37 +9,32 @@ import Body from '../document/Body.astro';
 import Document from '../document/Document.astro';
 import Head from '../document/Head.astro';
 import Layout from '../document/Layout.astro';
-import type { AstroNode, BaseNode, BlogPost } from '../types';
-import { today } from '../utils/date';
+import type { AstroNode, BaseNode, BlogPost, PageNode } from '../types';
 import Section from '../components/Section.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 
+export interface Props {
+    content: PageNode;
+}
+
 const TOP_TAGS_COUNT = 10;
 
-const allPosts = await Astro.glob<AstroNode<BaseNode>>('./**/*.{md,mdx}');
-
-const sortedTags = allTags(allPosts as AstroNode<BlogPost>[]);
+const allNodes = await Astro.glob<AstroNode<BaseNode>>('../pages/**/*.{md,mdx}');
+const sortedTags = allTags(allNodes as AstroNode<BlogPost>[]);
 const topTags = sortedTags.slice(0, TOP_TAGS_COUNT);
 const moreTags = sortedTags.slice(TOP_TAGS_COUNT);
 
-const node: BaseNode = {
-    url: Astro.url.toString(),
-    type: 'page',
-    title: 'All the tags',
-    description:
-        'All the content on my website is tagged. Even the tags are tagged. Old school like that.',
-    published: today(),
-};
+const { content: page } = Astro.props;
 ---
 
 <Document>
-    <Head node={node} />
+    <Head node={page} />
     <Body>
         <Layout>
             <SiteHeader slot="header" />
             <SiteMain slot="main">
                 <Section>
-                    <SectionHeader node={node} />
+                    <SectionHeader node={page} />
                     <TagList tags={topTags} />
                     {
                         !!moreTags.length && (

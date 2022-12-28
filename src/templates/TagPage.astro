@@ -17,33 +17,33 @@ import Layout from '../document/Layout.astro';
 import type { AstroNode, BaseNode, TagNode } from '../types';
 
 export interface Props {
-    frontmatter: TagNode;
+    content: TagNode;
 }
 
-const { frontmatter: node } = Astro.props;
+const { content: page } = Astro.props;
 
 const allNodes = await Astro.glob<AstroNode<BaseNode>>('../**/*.{md,mdx}');
 
-const nodes = allNodes.filter(n => n.frontmatter.tags?.includes(node.title));
+const nodes = allNodes.filter(n => n.frontmatter.tags?.includes(page.title));
 ---
 
 <Document>
-    <Head node={node} />
+    <Head node={page} />
     <Body>
         <Layout>
             <SiteHeader slot="header" />
             <SiteMain slot="main">
                 <Article>
-                    <ArticleHeader node={node} override>
+                    <ArticleHeader node={page} override>
                         <PageTitle
-                            ><span aria-hidden="true">{nodes.length}</span> #{node.title}</PageTitle
+                            ><span aria-hidden="true">{nodes.length}</span> #{page.title}</PageTitle
                         >
                     </ArticleHeader>
-                    <NodeAbstract node={node} />
+                    <NodeAbstract node={page} />
                     <Markup><slot /></Markup>
-                    <NodeMeta node={node} />
+                    <NodeMeta node={page} />
                 </Article>
-                <PageSubTitle>All {nodes.length} items under #{node.title}</PageSubTitle>
+                <PageSubTitle>All {nodes.length} items under #{page.title}</PageSubTitle>
                 <NodeList nodes={nodes} />
             </SiteMain>
             <SiteFooter slot="footer" />

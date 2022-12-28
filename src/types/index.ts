@@ -13,6 +13,8 @@ export interface BaseNode {
     [key: string]: unknown;
 }
 
+export type PageNode = BaseNode;
+
 export type TagNode = BaseNode & {
     count: number;
 };
