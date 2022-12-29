@@ -2,7 +2,6 @@
 
 ## Feature: blog home
 
-- Cleanup: remove feed (will come back later)
 - UI: navigation of `blog/**` section header - previous, next
 - UI: make NodeDate compact for use in list items vs articles
 - Feature: blog home
@@ -129,3 +128,5 @@
   - `navigation/` - NavLink
   - `page/` - Page\*, Article\*, Section\*, Markup
   - `site/` - SiteLayout, Site\*
+
+- Cleanup: remove feed (will come back later)

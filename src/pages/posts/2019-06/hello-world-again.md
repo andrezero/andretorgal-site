@@ -44,7 +44,6 @@ That's when I decided to port my static website to [React Static + Typescript](/
 - [Posts](/posts)
 - [Pages](/about)
 - [Tags](/tags)
-- [Feed](/feed) (WIP)
 - [Meta](/meta)
 
 Feels like 2008 again (don't confuse with [1998](https://24ways.org/2018/designing-your-site-like-its-1998/)). But unlike a decade ago, these days, the tools just seem to work, and provide you a great experience. And the browsers seem to be all [Yes you can!](https://caniuse.com/#feat=css-grid) whereas before, they'd be all like [Oh no, you don't!](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills).
