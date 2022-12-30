@@ -1,15 +1,16 @@
 ---
-import TagPage from '@templates/TagPage.astro';
 import { allTags } from '@queries/tags';
 import type { AstroNode, BlogPost, TagNode } from '@queries/types';
+import TagPage from '@templates/TagPage.astro';
 
 export interface Props {
     tag: TagNode;
 }
 
-export async function getStaticPaths({}) {
+export async function getStaticPaths() {
     const allNodes = await Astro.glob<AstroNode<BlogPost>>('../**/*.{md,mdx}');
     const tags = allTags(allNodes);
+
     return tags.map(tag => ({
         params: { tag: tag.title },
         props: { tag },

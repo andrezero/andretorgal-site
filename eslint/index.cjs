@@ -10,7 +10,6 @@ const config = {
     ...base,
     ignorePatterns: ['node_modules/', 'coverage/', 'dist/'],
     overrides: [...typescript, ...astro, ...react, ...mdx, ...configs, ...scripts],
-    // overrides: [...typescript, ...react, ...mdx, ...configs, ...scripts],
 };
 
 module.exports = config;
