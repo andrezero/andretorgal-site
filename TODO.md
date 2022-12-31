@@ -7,6 +7,12 @@
 - Feature: blog home
 - Feature: homepage latest posts
 
+## Tools
+
+- Testing: research
+  - see https://github.com/astro-community/component-template/blob/main/test/example.test.js
+- Husky: lint, test, build
+
 ## Feature: images
 
 - Content: port all images from `andretorgal.com`
@@ -52,8 +58,6 @@
   - search
   - rss: https://github.com/withastro/astro/tree/main/packages/astro-rss
   - site map: https://github.com/withastro/astro/tree/main/packages/integrations/sitemap
-- Testing: research
-  - see https://github.com/astro-community/component-template/blob/main/test/example.test.js
 - Optimisation: prefetch:
   - benchmark first, interesting to document
   - see https://docs.astro.build/en/guides/integrations-guide/prefetch/
