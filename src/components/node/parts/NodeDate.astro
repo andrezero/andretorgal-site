@@ -2,19 +2,23 @@
 import type { BaseNode } from '@queries/types';
 import { shortDate } from '@utils/date';
 
+export type DateSize = 's' | 'm';
+
 export interface Props {
     node: BaseNode;
+    size?: DateSize;
 }
 
 const { node } = Astro.props;
 const { published } = node;
-
 const publishedDate = published && new Date(published);
+
+const { size = 'm' } = Astro.props;
 ---
 
 {
     publishedDate && (
-        <span>
+        <span class={size}>
             {publishedDate && (
                 <time datetime={publishedDate.toISOString()}>{shortDate(publishedDate)}</time>
             )}
@@ -26,12 +30,18 @@ const publishedDate = published && new Date(published);
     span {
         display: block;
         font-size: var(--t-type-size--1);
+        text-transform: uppercase;
+    }
+
+    .s {
+        font-size: var(--t-type-size--2);
     }
 
     time {
         display: inline-block;
         padding: var(--layout-shift) var(--layout-unit);
         font-family: var(--t-type-family-alt);
+        font-weight: var(--t-type-weight-alt-bold);
         color: var(--scheme-alt-fg);
         background-color: var(--scheme-alt-bg);
     }

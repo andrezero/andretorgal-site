@@ -2,7 +2,6 @@
 
 ## Feature: blog home
 
-- UI: make NodeDate compact for use in list items vs articles
 - Feature: blog home
 - Feature: homepage latest posts
 
@@ -135,3 +134,4 @@
 - Cleanup: remove feed (will come back later)
 - UI: new TopLine and Divider components aligned with global layout
 - UI: navigation of `blog/**` section header - previous, next
+- UI: make NodeDate compact for use in list items vs articles
