@@ -1,0 +1,36 @@
+---
+import NodePreviousNext from '@components/node/parts/NodePreviousNext.astro';
+import SiteSectionHeader from '@components/site/SiteSectionHeader.astro';
+
+import type { BlogPost } from '@queries/types';
+import NavLink from '~/components/navigation/NavLink.astro';
+
+export type Props = {
+    previous: BlogPost | undefined;
+    next: BlogPost | undefined;
+};
+
+const { previous, next } = Astro.props;
+---
+
+<SiteSectionHeader title="Blog">
+    <ul>
+        <li>
+            <NavLink href="/posts">Latest posts</NavLink>
+        </li>
+    </ul>
+    <div>
+        <NodePreviousNext {...{previous, next}} />
+    </div>
+</SiteSectionHeader>
+
+<style>
+    ul {
+        padding-bottom: var(--layout-gap);
+    }
+
+    div {
+        font-size: var(--t-type-size-0);
+        line-height: var(--t-type-size-2);
+    }
+</style>

@@ -1,0 +1,58 @@
+---
+import Icon from '@components/atoms/Icon.astro';
+
+import ChevronLeft from '@icons/ChevronLeft.astro';
+import ChevronRight from '@icons/ChevronRight.astro';
+
+import type { BlogPost } from '@queries/types';
+
+export type Props = {
+    previous: BlogPost | undefined;
+    next: BlogPost | undefined;
+};
+
+const { previous, next } = Astro.props;
+
+const show = previous || next;
+---
+
+{
+    show && (
+        <div>
+            {(previous && (
+                <p>
+                    <Icon size="auto">
+                        <ChevronLeft />
+                    </Icon>{' '}
+                    Previous post <a href={previous.url}>{previous.title}</a>
+                </p>
+            )) || <>&nbsp;</>}
+            {next && (
+                <p>
+                    <Icon size="auto">
+                        <ChevronRight />
+                    </Icon>{' '}
+                    Next post <a href={next.url}>{next.title}</a>
+                </p>
+            )}
+        </div>
+    )
+}
+
+<style>
+    div {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--t-space-s);
+        flex-wrap: wrap;
+    }
+
+    a {
+        gap: var(--t-space-2xs);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+</style>

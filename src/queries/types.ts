@@ -1,4 +1,6 @@
-import type { MarkdownLayoutProps } from 'astro';
+import type { MarkdownInstance, MarkdownLayoutProps } from 'astro';
+
+export type GlobResult<T extends BaseNode> = Record<string, () => Promise<MarkdownInstance<T>>>;
 
 export interface BaseNode {
     url: string;

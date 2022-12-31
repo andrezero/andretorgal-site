@@ -1,9 +1,9 @@
 ---
-import type { AstroNode, BaseNode } from '@queries/types';
+import type { BaseNode } from '@queries/types';
 import NodeListItem from './NodeListItem.astro';
 
 export interface Props {
-    nodes: AstroNode<BaseNode>[];
+    nodes: BaseNode[];
 }
 
 const { nodes } = Astro.props;

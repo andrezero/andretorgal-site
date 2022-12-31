@@ -132,7 +132,7 @@ const hasSection = Astro.slots.has('section');
             grid-template-areas:
                 'head main'
                 'foot foot';
-            grid-template-columns: var(--layout-col-1-max) 1fr;
+            grid-template-columns: var(--layout-col-1) 1fr;
             grid-template-rows: repeat(2, min-content);
         }
 
@@ -140,7 +140,7 @@ const hasSection = Astro.slots.has('section');
             grid-template-areas:
                 'head sect main'
                 'foot foot foot';
-            grid-template-columns: var(--layout-col-1-max) var(--layout-col-2) 1fr;
+            grid-template-columns: var(--layout-bi-col-1) var(--layout-bi-col-2) 1fr;
             grid-template-rows: repeat(2, min-content);
         }
 
@@ -150,7 +150,7 @@ const hasSection = Astro.slots.has('section');
         }
 
         .layout-section .container {
-            margin-left: var(--layout-gap);
+            margin-left: var(--layout-space-min);
         }
 
         .has-section .layout-section {
@@ -159,16 +159,19 @@ const hasSection = Astro.slots.has('section');
 
         .layout-footer .container {
             max-width: initial;
-            margin: 0 var(--layout-space) 0 calc(var(--layout-col-1) + var(--layout-border-wide));
+            margin: 0 var(--layout-space) 0;
+            margin-left: calc(
+                var(--layout-col-1) + var(--layout-border-wide) + var(--layout-space)
+            );
         }
 
         .has-section .layout-footer .container {
             max-width: initial;
-            margin: 0 var(--layout-space) 0
-                calc(
-                    var(--layout-col-1-max) + var(--layout-col-2) + var(--layout-border-wide) +
-                        var(--layout-space)
-                );
+            margin: 0 var(--layout-space) 0;
+            margin-left: calc(
+                var(--layout-bi-col-1) + var(--layout-bi-col-2) + var(--layout-border-wide) +
+                    var(--layout-space)
+            );
         }
     }
 </style>

@@ -1,9 +1,9 @@
 ---
-import type { AstroNode, BaseNode } from '@queries/types';
 import NodeDate from '@components/node/parts/NodeDate.astro';
+import type { BaseNode } from '@queries/types';
 
 export interface Props {
-    node: AstroNode<BaseNode>;
+    node: BaseNode;
 }
 
 const { node } = Astro.props;
@@ -12,11 +12,11 @@ const { node } = Astro.props;
 <article>
     <header>
         <h3>
-            <a href={node.url}>{node.frontmatter.title}</a>
+            <a href={node.url}>{node.title}</a>
         </h3>
-        <NodeDate node={node.frontmatter} />
+        <NodeDate node={node} />
     </header>
-    <p>{node.frontmatter.description}</p>
+    <p>{node.description}</p>
 </article>
 
 <style>

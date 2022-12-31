@@ -1,6 +1,8 @@
 import { today } from '@utils/date';
+import type { MarkdownInstance } from 'astro';
 
-import type { AstroNode, BaseNode, TagNode } from './types';
+import type { BaseNode, TagNode } from './types';
+import { globResultToArray } from './utils';
 
 const newTag = (name: string): TagNode => ({
     type: ' tag',
@@ -14,19 +16,24 @@ type TagMap = {
     [key: string]: TagNode;
 };
 
-export const allTags = (allNodes: AstroNode<BaseNode>[]): TagNode[] => {
-    const tagNodes = allNodes.filter(node => node.frontmatter.type === 'tag');
+export const importAllTags = async (): Promise<TagNode[]> => {
+    const allNodes = await globResultToArray<BaseNode>(
+        import.meta.glob<MarkdownInstance<BaseNode>>('../pages/**/*.(md|mdx)'),
+    );
+
+    const tagNodes = allNodes.filter(node => node.type === 'tag');
+
     const tagAccumulator = tagNodes.reduce((acc, node) => {
-        const tag = node.frontmatter.title || '!';
+        const tag = node.title || '!';
         // eslint-disable-next-line security/detect-object-injection
-        acc[tag] = { ...node.frontmatter, count: 0 };
+        acc[tag] = { ...node, count: 0 };
         return acc;
     }, {} as TagMap);
 
     const tags = allNodes
-        .filter(item => item.frontmatter.tags?.length)
+        .filter(item => item.tags?.length)
         .reduce((acc, item) => {
-            item.frontmatter.tags?.forEach((tag: string) => {
+            item.tags?.forEach((tag: string) => {
                 // eslint-disable-next-line security/detect-object-injection
                 const node = acc[tag] || newTag(tag);
                 node.count++;

@@ -14,8 +14,9 @@ import PageTitle from '@components/page/PageTitle.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
-import type { AstroNode, BaseNode, TagNode } from '@queries/types';
+import type { TagNode } from '@queries/types';
 import Divider from '~/components/page/Divider.astro';
+import { importAllNodes } from '~/queries/nodes';
 
 export interface Props {
     content: TagNode;
@@ -23,9 +24,9 @@ export interface Props {
 
 const { content: page } = Astro.props;
 
-const allNodes = await Astro.glob<AstroNode<BaseNode>>('../**/*.{md,mdx}');
+const allNodes = await importAllNodes();
 
-const nodes = allNodes.filter(n => n.frontmatter.tags?.includes(page.title));
+const nodes = allNodes.filter(n => n.tags?.includes(page.title));
 ---
 
 <Document>

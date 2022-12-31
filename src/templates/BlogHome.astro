@@ -9,8 +9,9 @@ import SectionHeader from '@components/page/SectionHeader.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
-import type { AstroNode, BlogPost } from '@queries/types';
+import type { BlogPost } from '@queries/types';
 import TopLine from '~/components/page/TopLine.astro';
+import { importAllPosts, sortedPosts } from '~/queries/posts';
 
 export interface Props {
     content: BlogPost;
@@ -18,10 +19,8 @@ export interface Props {
 
 const { content: node } = Astro.props;
 
-const posts = (await Astro.glob<AstroNode<BlogPost>>('../pages/posts/**/*.{md,mdx}')).sort(
-    (a, b) =>
-        new Date(b.frontmatter.published).valueOf() - new Date(a.frontmatter.published).valueOf(),
-);
+const nodes = await importAllPosts();
+const posts = sortedPosts(nodes as BlogPost[]);
 ---
 
 <Document>

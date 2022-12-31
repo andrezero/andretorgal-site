@@ -1,0 +1,45 @@
+---
+export type IconSize = 's' | 'm' | 'l' | 'auto';
+
+export interface Props {
+    size?: IconSize;
+}
+
+const { size = 'm' } = Astro.props;
+---
+
+<span class={size}>
+    <slot />
+</span>
+
+<style>
+    span {
+        --size: 24px;
+        display: inline-flex;
+        width: var(--size);
+        min-width: var(--size);
+        height: var(--size);
+        min-height: var(--size);
+    }
+
+    .auto {
+        --size: 0.66em;
+    }
+
+    .s {
+        --size: 16px;
+    }
+
+    .m {
+        --size: 24px;
+    }
+
+    .l {
+        --size: 32px;
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+</style>

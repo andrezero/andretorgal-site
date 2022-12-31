@@ -3,15 +3,17 @@ import Body from '@components/document/Body.astro';
 import Document from '@components/document/Document.astro';
 import Head from '@components/document/Head.astro';
 import Layout from '@components/document/Layout.astro';
+import NodeMeta from '@components/node/parts/NodeMeta.astro';
 import Article from '@components/page/Article.astro';
 import ArticleHeader from '@components/page/ArticleHeader.astro';
+import Divider from '@components/page/Divider.astro';
 import Markup from '@components/page/Markup.astro';
 import PageHero from '@components/page/PageHero.astro';
+import SiteSectionHeader from '@components/site/about/SiteSectionHeader.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
-import SiteSectionHeader from '@components/about/SiteSectionHeader.astro';
-import NodeMeta from '@components/node/parts/NodeMeta.astro';
+
 import type { BaseNode } from '@queries/types';
 
 export interface Props {
@@ -33,9 +35,8 @@ const { heroImage } = node;
                     <ArticleHeader node={node}>
                         <PageHero src={heroImage} />
                     </ArticleHeader>
-                    <hr />
                     <Markup><slot /></Markup>
-                    <hr />
+                    <Divider />
                     <NodeMeta node={node} />
                 </Article>
             </SiteMain>

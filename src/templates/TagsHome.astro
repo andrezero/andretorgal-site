@@ -10,9 +10,8 @@ import SectionHeader from '@components/page/SectionHeader.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
-import { allTags } from '@queries/tags';
-import type { AstroNode, BaseNode, BlogPost, PageNode } from '@queries/types';
-import TopLine from '~/components/page/TopLine.astro';
+import { importAllTags } from '@queries/tags';
+import type { PageNode } from '@queries/types';
 
 export interface Props {
     content: PageNode;
@@ -20,8 +19,7 @@ export interface Props {
 
 const TOP_TAGS_COUNT = 10;
 
-const allNodes = await Astro.glob<AstroNode<BaseNode>>('../pages/**/*.{md,mdx}');
-const sortedTags = allTags(allNodes as AstroNode<BlogPost>[]);
+const sortedTags = await importAllTags();
 const topTags = sortedTags.slice(0, TOP_TAGS_COUNT);
 const moreTags = sortedTags.slice(TOP_TAGS_COUNT);
 
@@ -36,7 +34,6 @@ const { content: page } = Astro.props;
             <SiteMain slot="main">
                 <Section>
                     <SectionHeader node={page} />
-                    <TopLine />
                     <TagList tags={topTags} />
                     {
                         !!moreTags.length && (
