@@ -3,18 +3,19 @@ import Body from '@components/document/Body.astro';
 import Document from '@components/document/Document.astro';
 import Head from '@components/document/Head.astro';
 import Layout from '@components/document/Layout.astro';
-import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
 import NodeList from '@components/node/lists/NodeList.astro';
+import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
 import NodeMeta from '@components/node/parts/NodeMeta.astro';
 import Article from '@components/page/Article.astro';
 import ArticleHeader from '@components/page/ArticleHeader.astro';
+import Markup from '@components/page/Markup.astro';
 import PageSubTitle from '@components/page/PageSubTitle.astro';
 import PageTitle from '@components/page/PageTitle.astro';
-import Markup from '@components/page/Markup.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import type { AstroNode, BaseNode, TagNode } from '@queries/types';
+import Divider from '~/components/page/Divider.astro';
 
 export interface Props {
     content: TagNode;
@@ -40,6 +41,7 @@ const nodes = allNodes.filter(n => n.frontmatter.tags?.includes(page.title));
                         >
                     </ArticleHeader>
                     <NodeAbstract node={page} />
+                    <Divider />
                     <Markup><slot /></Markup>
                     <NodeMeta node={page} />
                 </Article>

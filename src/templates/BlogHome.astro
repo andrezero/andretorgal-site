@@ -10,6 +10,7 @@ import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import type { AstroNode, BlogPost } from '@queries/types';
+import TopLine from '~/components/page/TopLine.astro';
 
 export interface Props {
     content: BlogPost;
@@ -31,6 +32,7 @@ const posts = (await Astro.glob<AstroNode<BlogPost>>('../pages/posts/**/*.{md,md
             <SiteMain slot="main">
                 <Section>
                     <SectionHeader node={node} />
+                    <TopLine />
                     <NodeList nodes={posts} />
                 </Section>
             </SiteMain>

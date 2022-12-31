@@ -12,6 +12,7 @@ import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import { allTags } from '@queries/tags';
 import type { AstroNode, BaseNode, BlogPost, PageNode } from '@queries/types';
+import TopLine from '~/components/page/TopLine.astro';
 
 export interface Props {
     content: PageNode;
@@ -35,6 +36,7 @@ const { content: page } = Astro.props;
             <SiteMain slot="main">
                 <Section>
                     <SectionHeader node={page} />
+                    <TopLine />
                     <TagList tags={topTags} />
                     {
                         !!moreTags.length && (

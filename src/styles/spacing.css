@@ -34,6 +34,9 @@
     --layout-shift-fixed: 2px;
     --layout-unshift: -0.1em;
     --layout-border-thin: var(--layout-shift-fixed);
+    --layout-border-medium: clamp(0.38rem, calc(0.34rem + 1vw), 1rem);
+    --layout-border-medium: var(--t-space-2xs-xs);
+    /* --layout-border-medium: var(--t-space-2xs); */
     --layout-border-wide: var(--t-space-s);
     --layout-container-width: 35em; /* 560px - 68ch ~ 75ch */
 }
@@ -55,7 +58,7 @@
         --layout-pause: var(--t-space-xl);
         --layout-space: var(--t-space-2xl);
         --layout-gap: var(--t-space-m);
-        --layout-border-thin: 8px;
+        --layout-border-thin: calc(2 * var(--layout-shift-fixed));
         --layout-border-wide: var(--t-space-m);
     }
 }

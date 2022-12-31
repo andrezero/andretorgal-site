@@ -11,6 +11,7 @@ import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import type { BaseNode } from '@queries/types';
+import Divider from '~/components/page/Divider.astro';
 
 export interface Props {
     content: BaseNode;
@@ -30,7 +31,7 @@ const { heroImage } = node;
                     <ArticleHeader node={node}>
                         <PageHero src={heroImage} />
                     </ArticleHeader>
-                    <hr />
+                    <Divider />
                     <Markup><slot /></Markup>
                 </Article>
             </SiteMain>

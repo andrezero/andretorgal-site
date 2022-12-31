@@ -7,7 +7,6 @@ tags:
   - andretorgal-com
 published: 2017 Nov 02
 updated: 2018 Feb 11
-heroImage: ./assets/hero/about-hero.jpg
 featured: true
 ---
 

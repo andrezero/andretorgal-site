@@ -134,3 +134,4 @@
   - `site/` - SiteLayout, Site\*
 
 - Cleanup: remove feed (will come back later)
+- UI: new TopLine and Divider components aligned with global layout
