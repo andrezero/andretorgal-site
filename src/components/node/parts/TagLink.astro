@@ -10,7 +10,8 @@ const { tag } = Astro.props;
 
 <style>
     .tag {
-        padding: var(--layout-shift) var(--layout-unit);
+        padding: calc(var(--layout-shift) + 0.05rem) var(--layout-unit)
+            calc(var(--layout-shift) - 0.05rem);
         font-size: var(--t-type-family-alt);
         color: var(--scheme-bg);
         background-color: var(--scheme-fg);

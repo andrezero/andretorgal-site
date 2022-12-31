@@ -35,7 +35,7 @@
     --layout-unshift: -0.1em;
     --layout-border-thin: var(--layout-shift-fixed);
     --layout-border-wide: var(--t-space-s);
-    --layout-container-width: 35rem; /* 560px - 68ch ~ 75ch */
+    --layout-container-width: 35em; /* 560px - 68ch ~ 75ch */
 }
 
 @media screen and (min-width: 480px) {
