@@ -1,0 +1,55 @@
+---
+layout: ../../templates/MetaPage.astro
+title: Why not Husky? What else then?
+description: I want the git hook feedback loops, but I definitely don't want to bring Husky into the package dependencies.
+published: 2023 Jan 02
+tags:
+  - git
+  - git-hooks
+links:
+  - type: software
+    name: Husky
+  - type: software
+    name: Lefthook
+  - type: software
+    name: simple-git-hooks
+---
+
+## Why?
+
+Husky was great but it's getting a bit out of hand. Needs a replacement.
+
+It's easy to find people that agree with this: [Alternatives to Husky](https://www.reddit.com/r/node/comments/mgaa3a/alternative_to_husky/).
+
+## Decision: use [Lefthook](https://github.com/evilmartians/lefthook)
+
+- fast! written in Go :notbad:
+- maintained: 56 contributors, steady code frequency
+- great docs
+- :yuck: `yml` config
+- :happy: run commands in parallel.
+
+## Other options considered
+
+### Just `git-hooks`
+
+Possibly. See [no need for Husky](https://dev.to/krzysztofkaczy9/do-you-really-need-husky-247b)
+
+But on the other I also don't need:
+
+```
+RED="\033[1;31m"
+GREEN="\033[1;32m"
+NC="\033[0m"
+linter_exit_code=1
+all_ts_files=$(git diff --cached --
+```
+
+### [Simple Git hooks](https://github.com/toplenboren/simple-git-hooks)
+
+- popular! used by 6K
+- :meh: built in 2021 but stale
+- :like: simple config, `json`, `js`, or `cjs`
+- :sad: limited:
+  - requires you to manually apply the changes to git hooks.
+  - only one command per git hook.

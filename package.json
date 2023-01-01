@@ -8,6 +8,7 @@
         "start": "astro dev",
         "lint": "eslint . -c .eslintrc.cjs",
         "build": "astro build",
+        "build:ci": "npm run build && npm run lint && npm run test:ci",
         "test": "playwright test",
         "test:report": "export REPORT=true && playwright test",
         "test:ci": "CI=true && playwright test",
@@ -40,6 +41,7 @@
         "eslint-plugin-react": "^7.31.11",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-security": "^1.5.0",
+        "lefthook": "^1.2.6",
         "prettier": "^2.8.1",
         "prettier-plugin-astro": "^0.7.2"
     }
