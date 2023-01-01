@@ -1,7 +1,7 @@
 ---
 layout: ../../../templates/BlogPost.astro
 type: post
-title: Staging My Website V2 Rebuilt In React Static
+title: Staging My Website Rebuilt In React Static
 tags:
   - static-websites
   - react-static
@@ -11,7 +11,7 @@ tags:
 published: 2019 May 23
 ---
 
-Today my website V2 is uploaded to https://staging.andretorgal.com/.
+Today my website is uploaded to https://staging.andretorgal.com/.
 
 What is happening, what is new, and what comes next.
 

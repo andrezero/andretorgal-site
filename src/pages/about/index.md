@@ -14,9 +14,11 @@ featured: true
 
 My name is André Torgal and this is my website, a place where I [blog](/posts) some thoughts and run a few experiments.
 
+</Abstract>
+
 Here, you can learn more about me, [my work as software engineer](/about/work), and other stuff I have been up to.
 
-</Abstract>
+---
 
 ## House rules
 
@@ -29,22 +31,22 @@ If you find something that resonates with you, or otherwise object to, feel free
 You can find:
 
 - some longer form [blog posts](/posts)
-- as well as [a bit of everything](/feed) all at once
-- or neatly organised by [tags](/tags)
+- neatly organised by [tags](/tags)
+- some [meta](/meta) notes about this website and its development
 
 ## About Me
 
 ### Work
 
-A seasoned web developer and agile practitioner with a diverse background in engineering and management. I have been coding, leading, mentoring and facilitating for 20 years. [Read more](/about/work).
+A seasoned web developer and agile practitioner with a diverse background in engineering and management. I have been coding, leading, mentoring and facilitating for almost 30 years. [Read more about my work](/about/work).
 
 ### Personal
 
-A curious and passionate person. My story includes computers, bicycles and skateboards. Guitars, drums, theater and photography. Economics, management, more computers. Software, methodologies, frameworks. [Read more](/about/story).
+A curious and passionate person. My story includes computers, bicycles and skateboards. Guitars, drums, theater and photography. Economics, management, more computers. Software, methodologies, frameworks. [Read my story](/about/story).
 
 ### Music
 
-Bare with me while I collect my old stuff. Meanwhile, check out the latest tracks I recorded. [Read more](/about/music).
+Bear with me while I collect my old stuff. Meanwhile, check out the latest tracks I recorded. [Listen to some of my music](/about/music).
 
 ### One is a lie
 

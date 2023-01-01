@@ -45,6 +45,12 @@ These two tracks, in particular, I was quite happy with the result.
 
 <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/68409108&color=%23804c44&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/andrezero" title="andrezero" target="_blank" style="color: #cccccc; text-decoration: none;">andrezero</a> · <a href="https://soundcloud.com/andrezero/02-ao-longe-o-mar-2012" title="02. Ao Longe o Mar" target="_blank" style="color: #cccccc; text-decoration: none;">02. Ao Longe o Mar</a></div>
 
-## Soon
+## Soon (or never)
 
-Bare with me while I collect my old stuff. I am trying to get in touch with old band mates and find out what they managed to keep and port to digital.
+This list is incomplete.
+
+I recorded a lot more since I left Portugal. Back there I had a whole studio in our basement. I mean: 24 track analogue Mackie, monitors, full mic'ed drums, headphone mixers, pre-amps, the works..
+
+I was also in bands, pre web, even pre CD time. There were many demos, all recorded on tape, and I currently have none of that with me.
+
+I have been trying to get in touch with old band mates and find out what they managed to keep, port to digital. I'll get there one day.
