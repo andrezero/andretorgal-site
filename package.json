@@ -19,7 +19,7 @@
     "dependencies": {
         "@astrojs/image": "^0.12.1",
         "@astrojs/mdx": "^0.13.0",
-        "@astrojs/preact": "^1.2.0",
+        "@astrojs/preact": "^0.2.0",
         "@astrojs/rss": "^1.2.1",
         "@astrojs/sitemap": "^1.0.0",
         "astro": "^1.7.2",
