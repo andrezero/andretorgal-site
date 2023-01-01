@@ -1,0 +1,220 @@
+/* reset  */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color:hsl(169, 22%, 85%);
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+/* palette WIP https://coolors.co/76c1d5-fcfeff-5b5150-76c1d5-625f63 */
+
+/* typography */
+
+@font-face {
+  font-family: medusa;
+  src: url("medusa.ttf");
+}
+
+body {
+  font-family: ABeeZee, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  color: hsl(24, 79%, 7%);
+}
+
+h1 {
+  margin: 0;
+  font-size: calc(32px + 1vw);
+  font-weight: normal;
+}
+
+h2 {
+  margin: 0;
+  font-size: calc(24px + 1vw);
+  font-weight: normal;
+}
+
+/* layout */
+
+.layout {
+  overflow: hidden;
+}
+
+header,
+main {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: 50px 1fr;
+}
+
+@media (min-width: 640px) {
+  body {
+    padding: 40px 20px 80px 40px;
+  }
+
+  .layout {
+    width: calc(100vw - 90px);
+  }
+
+  header,
+  main {
+    grid-column-gap: 20px;
+    grid-template-columns: 150px 1fr;
+  }
+}
+
+/* header */
+
+header {
+  align-items: flex-end;
+}
+
+.index,
+.title {
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.index {
+  display: flex;
+  transform: rotate(180deg);
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 16px;
+  writing-mode: vertical-lr;
+  text-transform: uppercase;
+  color: hsl(200, 100%, 99%);
+  background-color: hsl(5, 6%, 34%);
+}
+
+.title h1 {
+  text-transform: uppercase;
+}
+
+.index em,
+.title h1 {
+  font-family: medusa, Helvetica, Arial, sans-serif;
+  font-size: calc(32px + 1vw);
+  line-height: calc(46px + 1vw);
+  font-weight: 100;
+}
+
+/* main */
+
+/* aside */
+
+aside {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: hsl(193, 53%, 65%);
+  transition: background-color 1s ease-out;
+}
+
+aside em {
+  display: inline-block;
+  transform: rotate(-90deg);
+  padding-right: 35vh;
+  font-style: normal;
+  text-align: center;
+  font-size: calc(16px + 1vw);
+  transition: color 0.5s ease-out;
+}
+
+@media (min-width: 640px) {
+  aside em {
+    font-size: calc(32px + 1vw);
+  }
+}
+
+/* card */
+
+article {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 0;
+}
+
+article h2 {
+  margin: 0 10px 20px;
+}
+
+@media (min-width: 640px) {
+  article h2 {
+    margin: 0 0 20px;
+  }
+}
+
+article .content {
+  flex: 1;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+article footer {
+  position: relative;
+  z-index: 3;
+}
+
+article .summary {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 20px 10px 40px;
+  font-style: italic;
+  background-color: hsl(200, 25%, 95%);
+  border-top: 1px solid hsl(240, 18%, 17%);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
+}
+
+article .summary p {
+  max-width: 900px;
+  margin-bottom: 0;
+  font-weight: 100;
+  color: hsl(240, 18%, 17%);
+  font-size: calc(20px + 0.5vw);
+  line-height: 150%;
+}
+
+article .summary footer {
+  padding: 20px 0 0 40px;
+  font-weight: 700;
+  font-style: normal;
+}
+
+article .frame {
+  position: relative;
+  margin-top: -40px;
+}
+
+article img {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  transition: transform 0.1s ease-out;
+  cursor: pointer;
+}
+
+article img.is-zoomed {
+  transition: transform 0.5s ease-out;
+}
