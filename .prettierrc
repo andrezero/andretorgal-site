@@ -4,7 +4,14 @@
     "singleQuote": true,
     "tabWidth": 4,
     "arrowParens": "avoid",
+    "plugins": ["./node_modules/prettier-plugin-astro"],
     "overrides": [
+        {
+            "files": "*.astro",
+            "options": {
+                "parser": "astro"
+            }
+        },
         {
             "files": "*.md",
             "options": {

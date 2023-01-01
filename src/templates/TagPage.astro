@@ -10,7 +10,6 @@ import Article from '@components/page/Article.astro';
 import ArticleHeader from '@components/page/ArticleHeader.astro';
 import Markup from '@components/page/Markup.astro';
 import PageSubTitle from '@components/page/PageSubTitle.astro';
-import PageTitle from '@components/page/PageTitle.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
@@ -36,20 +35,16 @@ const nodes = allNodes.filter(n => n.tags?.includes(page.title));
             <SiteHeader slot="header" />
             <SiteMain slot="main">
                 <Article>
-                    <ArticleHeader node={page} override slot="header">
-                        <PageTitle
-                            ><span aria-hidden="true">{nodes.length}</span> #{page.title}</PageTitle
-                        >
-                    </ArticleHeader>
+                    <ArticleHeader node={page} slot="header" />
                     <Section>
                         <NodeMeta node={page} />
                         <NodeAbstract node={page} />
                         <Markup><slot /></Markup>
                     </Section>
                     <Section>
-                        <PageSubTitle slot="header"
-                            >All {nodes.length} items under #{page.title}</PageSubTitle
-                        >
+                        <PageSubTitle slot="header">
+                            All {nodes.length} items under #{page.title}
+                        </PageSubTitle>
                         <NodeList nodes={nodes} />
                     </Section>
                 </Article>

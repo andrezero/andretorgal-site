@@ -2,8 +2,6 @@
 
 ## Tools
 
-- Testing: research
-  - see https://github.com/astro-community/component-template/blob/main/test/example.test.js
 - Husky: lint, test, build
 
 ## Feature: images
@@ -39,12 +37,26 @@
 
 - UI: navigation: `things/**`: section header:
 
+## Migration
+
+- Ops: S3 redirects (required to migrate some url schemes) https://primitive.dev/blog/aws-s3-redirects/
+- Accessibility: audit and tweaks
+
+## Feature: Links
+
+- Content: Add links to existing posts
+- Feature: show links in article
+- Feature: Link page
+- Feature: Links home
+
+## Feature: Experiments
+
+- Content: port `experiments/**` from `andretorgal.com`
+
 ## Later
 
-- Accessibility: audit and tweaks
 - Feature: Media stream
 - Feature: pagination
-- Content: port `experiments/**` from `andretorgal.com`
 - UI: content components: `NodeCard`, `NodeList`
 - Features:
   - feed archive
@@ -58,14 +70,7 @@
 - see https://github.com/astro-community/astro-embed/tree/main/packages/astro-embed-youtube
 - SEO: audit and tweaks
   - see https://github.com/astro-community/astro-seo
-
-## Navigation
-
 - UI: navigation: `blog/**`: section footer: related
-
-## Deployment
-
-- Ops: S3 redirects (required to migrate some url schemes) https://primitive.dev/blog/aws-s3-redirects/
 
 # Done
 
@@ -133,3 +138,9 @@
 - UI: separate Page from Section components
 - Feature: blog home
 - Feature: homepage latest posts
+- Benchmark: 58 page(s) built in 5.90s
+
+## Tools
+
+- Testing: setup playwright
+- Testing: tested title in `/` and screenshot in `/about`

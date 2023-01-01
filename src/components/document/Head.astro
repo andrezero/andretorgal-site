@@ -1,18 +1,19 @@
 ---
-import '@styles/reset.css';
-import '@styles/typography.css';
-import '@styles/spacing.css';
+import '@styles/accessibility.css';
 import '@styles/color.css';
 import '@styles/global.css';
-import '@styles/accessibility.css';
+import '@styles/reset.css';
+import '@styles/spacing.css';
+import '@styles/typography.css';
 
 import type { BaseNode } from '@queries/types';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../config';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../config';
 
 export type Props = { node: BaseNode };
 
 const { node } = Astro.props;
-const { title = SITE_TITLE, description = SITE_DESCRIPTION } = node;
+const { title: maybeTitle, description = SITE_DESCRIPTION } = node;
+const title = `${maybeTitle || 'Home'} | ${SITE_TITLE}`;
 // const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
 ---
 
