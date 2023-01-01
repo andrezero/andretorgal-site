@@ -14,11 +14,11 @@
 }
 
 :root {
-    --t-type-family-base: 'Source Serif Pro', serif;
-    --t-type-family-alt: 'Mulish', sans-serif;
-    --t-type-family-nav: 'Mulish', sans-serif;
-    --t-type-family-heading: 'Mulish', sans-serif;
-    --t-type-family-deco: 'Mulish', sans-serif;
+    --t-type-family-base: 'Source Serif Pro', 'TimesFallback', serif;
+    --t-type-family-alt: 'Mulish', 'ArialFallback', sans-serif;
+    --t-type-family-nav: 'Mulish', 'ArialFallback', sans-serif;
+    --t-type-family-heading: 'Mulish', 'ArialFallback', sans-serif;
+    --t-type-family-deco: 'Mulish', 'ArialFallback', sans-serif;
 }
 
 :root {
@@ -34,6 +34,18 @@
     --t-type-height-large: 2;
 }
 
+@font-face {
+    font-family: 'TimesFallback';
+    size-adjust: 101%;
+    src: local('Georgia');
+}
+
+@font-face {
+    font-family: 'ArialFallback';
+    size-adjust: 108.5%;
+    src: local('Arial');
+}
+
 h1,
 h2,
 h3,
@@ -41,6 +53,7 @@ h4,
 h5 {
     line-height: var(--t-type-height-small);
     font-family: var(--t-type-family-heading);
+    font-weight: var(--t-type-weight-alt-black);
 }
 
 h1 {
