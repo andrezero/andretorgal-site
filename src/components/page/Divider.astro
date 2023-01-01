@@ -1,4 +1,12 @@
-<hr />
+---
+export interface Props {
+    compact?: boolean;
+}
+
+const { compact } = Astro.props;
+---
+
+<hr class={compact ? 'compact' : ''} />
 
 <style>
     hr {
@@ -6,5 +14,9 @@
         margin: var(--layout-gap) 0;
         border: none;
         border-bottom: var(--layout-border-thin) solid var(--scheme-edge);
+    }
+
+    .compact {
+        margin: var(--layout-unit) 0;
     }
 </style>

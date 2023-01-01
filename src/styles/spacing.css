@@ -24,16 +24,17 @@
     --layout-col-1: calc(10rem + 10vw);
     --layout-bi-col-1: 13rem;
     --layout-bi-col-2: calc(10rem + 10vw);
-    --layout-headroom: var(--t-space-m);
-    --layout-legroom: var(--t-space-m);
-    --layout-pause: var(--t-space-m);
-    --layout-space: var(--t-space-s);
-    --layout-space-min: var(--t-space-s);
+    --layout-headroom: var(--t-space-xl);
+    --layout-legroom: var(--t-space-xl);
+    --layout-pause: var(--t-space-l);
+    --layout-space: var(--t-space-xl);
     --layout-gap: var(--t-space-xs);
     --layout-unit: var(--t-space-2xs);
     --layout-shift: 0.1em;
     --layout-shift-fixed: 2px;
     --layout-unshift: -0.1em;
+    --layout-gutter: var(--t-space-m);
+    --layout-gutter-min: var(--t-space-s);
     --layout-border-thin: var(--layout-shift-fixed);
     --layout-border-medium: clamp(0.38rem, calc(0.34rem + 1vw), 1rem);
     --layout-border-medium: var(--t-space-2xs-xs);
@@ -44,12 +45,8 @@
 
 @media screen and (min-width: 480px) {
     :root {
-        --layout-headroom: var(--t-space-l);
-        --layout-legroom: var(--t-space-xl);
-        --layout-pause: var(--t-space-l);
-        --layout-space: var(--t-space-m);
-        --layout-space-min: var(--t-space-m);
-        --layout-gap: var(--t-space-s);
+        --layout-gutter: var(--t-space-l);
+        --layout-gutter-min: var(--t-space-m);
     }
 }
 
@@ -58,9 +55,10 @@
         --layout-headroom: var(--t-space-m);
         --layout-legroom: var(--t-space-3xl);
         --layout-pause: var(--t-space-xl);
-        --layout-space: var(--t-space-xl-2xl);
-        --layout-space-min: var(--t-space-l);
+        --layout-space: var(--t-space-xl);
         --layout-gap: var(--t-space-m);
+        --layout-gutter: var(--t-space-xl-2xl);
+        --layout-gutter-min: var(--t-space-l);
         --layout-border-thin: calc(2 * var(--layout-shift-fixed));
         --layout-border-wide: var(--t-space-m);
     }

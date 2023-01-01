@@ -1,21 +1,21 @@
-<article>
+<div class="page">
     <slot name="header" />
     <div class="content">
         <slot />
     </div>
-</article>
+</div>
 
 <style>
-    article {
+    .page {
         display: flex;
         flex-direction: column;
-        gap: var(--layout-space);
+        gap: var(--layout-unit);
         padding-bottom: var(--layout-space);
     }
 
     .content {
         display: flex;
         flex-direction: column;
-        gap: var(--layout-gap);
+        gap: var(--layout-pause);
     }
 </style>

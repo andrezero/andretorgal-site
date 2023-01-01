@@ -8,7 +8,7 @@ export interface Props {
 const { size = 'm' } = Astro.props;
 ---
 
-<span class={size}>
+<span class={size} aria-hidden="true">
     <slot />
 </span>
 

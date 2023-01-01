@@ -16,9 +16,7 @@ const show = publishedDate || (tags && tags.length);
     show && (
         <div>
             <p>
-                <span>
-                    This <em>{type}</em> was published
-                </span>{' '}
+                <span>This {type} was published</span>{' '}
                 {publishedDate && (
                     <>
                         on
@@ -50,6 +48,10 @@ const show = publishedDate || (tags && tags.length);
 }
 
 <style>
+    div {
+        font-size: var(--t-type-size--1);
+    }
+
     a {
         display: inline-flex;
     }

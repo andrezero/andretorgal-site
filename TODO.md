@@ -23,7 +23,7 @@
   - `<ImageCaption>`
   - `<Blockquote>`
 
-## Feature:
+## UI: footer
 
 ## Abstract component
 
@@ -135,3 +135,4 @@
 - UI: new TopLine and Divider components aligned with global layout
 - UI: navigation of `blog/**` section header - previous, next
 - UI: make NodeDate compact for use in list items vs articles
+- UI: separate Page from Section components

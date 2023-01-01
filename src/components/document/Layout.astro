@@ -33,7 +33,7 @@ const hasSection = Astro.slots.has('section');
     }
 
     .container {
-        margin: 0 var(--layout-space);
+        margin: 0 var(--layout-gutter);
     }
 
     .layout-header {
@@ -90,7 +90,7 @@ const hasSection = Astro.slots.has('section');
         }
 
         .container {
-            margin: 0 var(--layout-gap) 0 var(--layout-space);
+            margin: 0 var(--layout-gap) 0 var(--layout-gutter);
         }
 
         .layout-header {
@@ -108,7 +108,7 @@ const hasSection = Astro.slots.has('section');
         }
 
         .layout-section .container {
-            margin-left: var(--layout-space);
+            margin-left: var(--layout-gutter);
         }
 
         .layout-main {
@@ -122,8 +122,8 @@ const hasSection = Astro.slots.has('section');
 
         .layout-footer .container {
             max-width: initial;
-            margin: 0 var(--layout-space) 0
-                calc(var(--layout-col-1) + var(--layout-border-wide) + var(--layout-space));
+            margin: 0 var(--layout-gutter) 0
+                calc(var(--layout-col-1) + var(--layout-border-wide) + var(--layout-gutter));
         }
     }
 
@@ -150,7 +150,7 @@ const hasSection = Astro.slots.has('section');
         }
 
         .layout-section .container {
-            margin-left: var(--layout-space-min);
+            margin-left: var(--layout-gutter-min);
         }
 
         .has-section .layout-section {
@@ -159,18 +159,18 @@ const hasSection = Astro.slots.has('section');
 
         .layout-footer .container {
             max-width: initial;
-            margin: 0 var(--layout-space) 0;
+            margin: 0 var(--layout-gutter) 0;
             margin-left: calc(
-                var(--layout-col-1) + var(--layout-border-wide) + var(--layout-space)
+                var(--layout-col-1) + var(--layout-border-wide) + var(--layout-gutter)
             );
         }
 
         .has-section .layout-footer .container {
             max-width: initial;
-            margin: 0 var(--layout-space) 0;
+            margin: 0 var(--layout-gutter) 0;
             margin-left: calc(
                 var(--layout-bi-col-1) + var(--layout-bi-col-2) + var(--layout-border-wide) +
-                    var(--layout-space)
+                    var(--layout-gutter)
             );
         }
     }

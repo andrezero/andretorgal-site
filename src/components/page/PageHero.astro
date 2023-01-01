@@ -19,7 +19,7 @@ const { src } = Astro.props;
         width: auto;
         max-width: initial;
         width: 100vw;
-        margin-left: calc(-1 * var(--layout-space));
+        margin-left: calc(-1 * var(--layout-gutter));
         object-fit: cover;
         object-position: -5vw;
     }
@@ -32,9 +32,9 @@ const { src } = Astro.props;
 
     @media screen and (min-width: 960px) {
         .hero img {
-            width: calc(100vw - var(--layout-space) - var(--layout-space));
+            width: calc(100vw - var(--layout-gutter) - var(--layout-gutter));
             max-width: 2000px;
-            margin-left: calc(-1 * var(--layout-space));
+            margin-left: calc(-1 * var(--layout-gutter));
             max-height: 50vh;
         }
     }

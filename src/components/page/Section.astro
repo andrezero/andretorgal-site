@@ -1,11 +1,20 @@
 <section>
-    <slot />
+    <slot name="header" />
+    <div class="content">
+        <slot />
+    </div>
 </section>
 
 <style>
     section {
         display: flex;
         flex-direction: column;
-        gap: var(--layout-unit);
+        gap: var(--layout-space);
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-gap);
     }
 </style>

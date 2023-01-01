@@ -1,5 +1,35 @@
+---
+import Icon from '@components/atoms/Icon.astro';
+
+import ArrowUp from '@icons/ArrowUp.astro';
+
+export interface Props {
+    hideUp?: boolean;
+}
+
+const { hideUp } = Astro.props;
+---
+
 <main id="main" class="layout-main">
     <div class="container">
         <slot />
+        {
+            !hideUp && (
+                <p>
+                    <a href="#main" title="Back to the top of the page">
+                        <Icon size="l">
+                            <ArrowUp />
+                        </Icon>
+                    </a>
+                </p>
+            )
+        }
     </div>
 </main>
+
+<style>
+    p {
+        margin-top: var(--layout-pause);
+        text-align: left;
+    }
+</style>
