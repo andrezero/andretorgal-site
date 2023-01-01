@@ -10,11 +10,13 @@ import Article from '@components/page/Article.astro';
 import ArticleHeader from '@components/page/ArticleHeader.astro';
 import Markup from '@components/page/Markup.astro';
 import PageSubTitle from '@components/page/PageSubTitle.astro';
+import PageTitle from '@components/page/PageTitle.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import type { TagNode } from '@queries/types';
 import Section from '~/components/page/Section.astro';
+import TopLine from '~/components/page/TopLine.astro';
 import { importAllNodes } from '~/queries/nodes';
 
 export interface Props {
@@ -35,8 +37,13 @@ const nodes = allNodes.filter(n => n.tags?.includes(page.title));
             <SiteHeader slot="header" />
             <SiteMain slot="main">
                 <Article>
-                    <ArticleHeader node={page} slot="header" />
+                    <ArticleHeader node={page} slot="header" override noDate>
+                        <PageTitle>
+                            #{page.title}
+                        </PageTitle>
+                    </ArticleHeader>
                     <Section>
+                        <TopLine />
                         <NodeMeta node={page} />
                         <NodeAbstract node={page} />
                         <Markup><slot /></Markup>

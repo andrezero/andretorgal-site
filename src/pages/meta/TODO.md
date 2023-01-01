@@ -1,8 +1,9 @@
-# TODO.md
-
-## Tools
-
-- Husky: lint, test, build
+---
+layout: ../../templates/BaseLayout.astro
+title: TO DO
+tags:
+  - foo
+---
 
 ## Feature: images
 
@@ -144,3 +145,4 @@
 
 - Testing: setup playwright
 - Testing: tested title in `/` and screenshot in `/about`
+- Tools: pre-commit hooks with Lefthook

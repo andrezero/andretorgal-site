@@ -1,15 +1,14 @@
 ---
 import { SITE_TITLE } from '../../config';
+
+import Logo from './SiteLogo.astro';
 ---
 
 <h1 class="title">
     <a href="/">
         <span>{SITE_TITLE}</span>
         <picture>
-            <img
-                src="/logo.svg"
-                alt="A black and white, high contrast, picture of a person's silhouette in front of a huge crescent moon"
-            />
+            <Logo />
         </picture>
     </a>
 </h1>

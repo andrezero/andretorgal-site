@@ -1,6 +1,14 @@
-<div class="markup">
-    <slot />
-</div>
+---
+const show = Astro.slots.has('default');
+---
+
+{
+    show && (
+        <div class="markup">
+            <slot />
+        </div>
+    )
+}
 
 <style>
     div {

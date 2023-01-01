@@ -71,6 +71,10 @@ iframe {
     border: none;
 }
 
+img {
+    color: transparent;
+}
+
 input,
 button,
 textarea,

@@ -36,8 +36,8 @@ const posts = sortedPosts(nodes).slice(0, 3);
                     <PageHeader node={page} slot="header" />
                     <Section>
                         <Markup><slot /></Markup>
-                        <TopLine />
                     </Section>
+                    <TopLine />
                     <Section>
                         <PageSubTitle slot="header">Latest posts</PageSubTitle>
                         <NodeList nodes={posts} />
