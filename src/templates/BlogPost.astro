@@ -18,6 +18,7 @@ import SiteMain from '@components/site/SiteMain.astro';
 
 import { findPreviousAndNextPosts, importAllPosts, sortedPosts } from '@queries/posts';
 import type { BlogPost } from '@queries/types';
+import Section from '~/components/page/Section.astro';
 
 export interface Props {
     content: BlogPost;
@@ -39,16 +40,22 @@ const { previous, next } = findPreviousAndNextPosts(posts, node);
             <SiteSectionHeader slot="section" {...{previous, next}} />
             <SiteMain slot="main">
                 <Article>
-                    <ArticleHeader node={node}>
+                    <ArticleHeader node={node} slot="header">
                         <PageHero src={heroImage} />
                     </ArticleHeader>
-                    <NodeAbstract node={node} />
-                    <Divider />
+                    <Section>
+                        <NodeAbstract node={node} />
+                        <Divider />
+                    </Section>
                     <Markup><slot /></Markup>
-                    <Divider />
-                    <NodeMeta node={node} />
-                    <Divider />
-                    <NodePreviousNext {...{previous, next}} />
+                    <Section>
+                        <Divider />
+                        <NodeMeta node={node} />
+                    </Section>
+                    <Section>
+                        <Divider />
+                        <NodePreviousNext {...{previous, next}} />
+                    </Section>
                 </Article>
             </SiteMain>
             <SiteFooter slot="footer" />

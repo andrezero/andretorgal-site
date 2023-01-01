@@ -4,26 +4,28 @@ import Document from '@components/document/Document.astro';
 import Head from '@components/document/Head.astro';
 import Layout from '@components/document/Layout.astro';
 import TagList from '@components/node/lists/TagList.astro';
+import Page from '@components/page/Page.astro';
+import PageHeader from '@components/page/PageHeader.astro';
 import PageSubTitle from '@components/page/PageSubTitle.astro';
-import Section from '@components/page/Section.astro';
-import SectionHeader from '@components/page/SectionHeader.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import { importAllTags } from '@queries/tags';
 import type { PageNode } from '@queries/types';
+import Section from '~/components/page/Section.astro';
+import TopLine from '~/components/page/TopLine.astro';
 
 export interface Props {
     content: PageNode;
 }
+
+const { content: page } = Astro.props;
 
 const TOP_TAGS_COUNT = 10;
 
 const sortedTags = await importAllTags();
 const topTags = sortedTags.slice(0, TOP_TAGS_COUNT);
 const moreTags = sortedTags.slice(TOP_TAGS_COUNT);
-
-const { content: page } = Astro.props;
 ---
 
 <Document>
@@ -32,18 +34,21 @@ const { content: page } = Astro.props;
         <Layout>
             <SiteHeader slot="header" />
             <SiteMain slot="main">
-                <Section>
-                    <SectionHeader node={page} />
-                    <TagList tags={topTags} />
+                <Page>
+                    <PageHeader node={page} slot="header" />
+                    <TopLine />
+                    <Section>
+                        <TagList tags={topTags} />
+                    </Section>
                     {
                         !!moreTags.length && (
-                            <>
-                                <PageSubTitle>Other tags</PageSubTitle>
+                            <Section>
+                                <PageSubTitle slot="header">Other tags</PageSubTitle>
                                 <TagList tags={moreTags} />
-                            </>
+                            </Section>
                         )
                     }
-                </Section>
+                </Page>
             </SiteMain>
             <SiteFooter slot="footer" />
         </Layout>

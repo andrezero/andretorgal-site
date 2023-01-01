@@ -15,7 +15,7 @@ import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import type { TagNode } from '@queries/types';
-import Divider from '~/components/page/Divider.astro';
+import Section from '~/components/page/Section.astro';
 import { importAllNodes } from '~/queries/nodes';
 
 export interface Props {
@@ -36,18 +36,23 @@ const nodes = allNodes.filter(n => n.tags?.includes(page.title));
             <SiteHeader slot="header" />
             <SiteMain slot="main">
                 <Article>
-                    <ArticleHeader node={page} override>
+                    <ArticleHeader node={page} override slot="header">
                         <PageTitle
                             ><span aria-hidden="true">{nodes.length}</span> #{page.title}</PageTitle
                         >
                     </ArticleHeader>
-                    <NodeAbstract node={page} />
-                    <Divider />
-                    <Markup><slot /></Markup>
-                    <NodeMeta node={page} />
+                    <Section>
+                        <NodeMeta node={page} />
+                        <NodeAbstract node={page} />
+                        <Markup><slot /></Markup>
+                    </Section>
+                    <Section>
+                        <PageSubTitle slot="header"
+                            >All {nodes.length} items under #{page.title}</PageSubTitle
+                        >
+                        <NodeList nodes={nodes} />
+                    </Section>
                 </Article>
-                <PageSubTitle>All {nodes.length} items under #{page.title}</PageSubTitle>
-                <NodeList nodes={nodes} />
             </SiteMain>
             <SiteFooter slot="footer" />
         </Layout>

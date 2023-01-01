@@ -6,16 +6,17 @@ import PageTitle from './PageTitle.astro';
 export interface Props {
     node: BaseNode;
     override?: boolean;
+    noDate?: boolean;
 }
 
-const { node, override } = Astro.props;
+const { node, override, noDate } = Astro.props;
 const { title } = node;
 ---
 
 <header>
     {!override && <PageTitle>{title}</PageTitle>}
     <slot />
-    <NodeDate node={node} />
+    {!noDate && <NodeDate node={node} />}
 </header>
 
 <style>

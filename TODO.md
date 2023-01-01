@@ -1,10 +1,5 @@
 # TODO.md
 
-## Feature: blog home
-
-- Feature: blog home
-- Feature: homepage latest posts
-
 ## Tools
 
 - Testing: research
@@ -113,7 +108,7 @@
 - Refactor: rename `layouts` to `templates` because more semantic
 - Benchmark: 59 page(s) built in 7.93s
 
-## Feature: blog home
+## Feature: blog
 
 - Refactor: extract views from `pages/` because easier to navigate
 
@@ -136,3 +131,5 @@
 - UI: navigation of `blog/**` section header - previous, next
 - UI: make NodeDate compact for use in list items vs articles
 - UI: separate Page from Section components
+- Feature: blog home
+- Feature: homepage latest posts

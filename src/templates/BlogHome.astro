@@ -4,12 +4,13 @@ import Document from '@components/document/Document.astro';
 import Head from '@components/document/Head.astro';
 import Layout from '@components/document/Layout.astro';
 import NodeList from '@components/node/lists/NodeList.astro';
-import Section from '@components/page/Section.astro';
-import SectionHeader from '@components/page/SectionHeader.astro';
+import Page from '@components/page/Page.astro';
+import PageHeader from '@components/page/PageHeader.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import type { BlogPost } from '@queries/types';
+import Section from '~/components/page/Section.astro';
 import TopLine from '~/components/page/TopLine.astro';
 import { importAllPosts, sortedPosts } from '~/queries/posts';
 
@@ -17,23 +18,25 @@ export interface Props {
     content: BlogPost;
 }
 
-const { content: node } = Astro.props;
+const { content: page } = Astro.props;
 
 const nodes = await importAllPosts();
 const posts = sortedPosts(nodes as BlogPost[]);
 ---
 
 <Document>
-    <Head node={node} />
+    <Head node={page} />
     <Body>
         <Layout>
             <SiteHeader slot="header" />
             <SiteMain slot="main">
-                <Section>
-                    <SectionHeader node={node} />
+                <Page>
+                    <PageHeader node={page} slot="header" />
                     <TopLine />
-                    <NodeList nodes={posts} />
-                </Section>
+                    <Section>
+                        <NodeList nodes={posts} />
+                    </Section>
+                </Page>
             </SiteMain>
             <SiteFooter slot="footer" />
         </Layout>
