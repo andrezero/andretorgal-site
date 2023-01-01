@@ -6,7 +6,7 @@ import { globResultToArray } from './utils';
 
 const newTag = (name: string): TagNode => ({
     type: ' tag',
-    url: `/tag/${name}`,
+    url: `/tags/${name}`,
     title: name,
     published: today(),
     count: 0,

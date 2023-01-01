@@ -7,7 +7,7 @@ tags:
 
 ## Feature: images
 
-- Content: port all images from `andretorgal.com`
+- Content: port all images from `andretorgal.com
 - Optimisation: SEO og:image
 - IA: images/media nodes, easy?
   - "unblocks remark / rehype plugins appending to frontmatter"
@@ -146,3 +146,8 @@ tags:
 - Testing: setup playwright
 - Testing: tested title in `/` and screenshot in `/about`
 - Tools: pre-commit hooks with Lefthook
+- Testing: more visual regression tests, will be useful while we iterate (soon)
+
+## Feature: images
+
+- Meta: optimise favicon pack, clean up public folder

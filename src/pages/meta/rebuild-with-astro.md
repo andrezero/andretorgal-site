@@ -32,8 +32,6 @@ This is the static site generator I have always been looking for. I have been ha
 while helping friends build the [Button School website](https://buttonschool.com/) and it can certainly
 handle the
 
-### Features:
-
 - :check: Markdown & MDX support
 - :check: Fully SSG first, with opt-in client-side
 - :check: SEO-friendly with canonical URLs and OpenGraph data
@@ -41,7 +39,7 @@ handle the
 - :check: RSS Feed support
 - :check: 100/100 Lighthouse performance
 
-### Trade-offs
+## Trade-offs
 
 - the way that you query for data
 - coupling URL with file-structure

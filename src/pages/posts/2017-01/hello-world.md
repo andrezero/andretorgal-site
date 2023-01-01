@@ -3,13 +3,11 @@ layout: ../../../templates/BlogPost.astro
 type: post
 title: Hello World
 tags:
-  - internet
   - social-web
   - social-networks
   - blogging
   - personal
-  - perspective
-  - the-intent
+  - andretorgal-com
 published: 2017 Jan 03
 updated: 2017 Mar 12
 ---
