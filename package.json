@@ -22,7 +22,7 @@
         "@astrojs/preact": "^0.2.0",
         "@astrojs/rss": "^1.2.1",
         "@astrojs/sitemap": "^1.0.0",
-        "astro": "^1.7.2",
+        "astro": "^1.9.1",
         "preact": "^10.11.3",
         "sharp": "^0.31.3"
     },

@@ -7,8 +7,8 @@ tags:
 
 ## Feature: images
 
-- Optimisation: SEO og:image
 - IA: images/media nodes, easy?
+- Optimisation: SEO og:image
   - "unblocks remark / rehype plugins appending to frontmatter"
   - as seen in https://github.com/withastro/astro/pull/4137
 - UI: Content component
@@ -151,3 +151,4 @@ tags:
 
 - Meta: optimise favicon pack, clean up public folder
 - Content: port all images from `andretorgal.com`
+- Chore: update astro to `1.9.1` ... 2.0.0 is coming very soon!
