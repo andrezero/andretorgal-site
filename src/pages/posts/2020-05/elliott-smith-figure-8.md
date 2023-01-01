@@ -19,7 +19,7 @@ An impossible album. How can an album made in such a dark place be so inspiring?
 
 I have been listening to this album for 20 years and the more I listen to it the farther away I will be from ever having answers to any of these questions. And this is daunting because the answers seem to be all there in the album, while at the same time, they're obviously not. And it's one of those Schrödinger's albums, one where the author is simultaneously both dead and alive, plus a few more twists to the mind, the heart, and the soul.
 
-![Elliott Smith - Figure 8 - Album cover https://en.wikipedia.org/wiki/Figure_8_(album)#/media/File:Elliott_smith_figure_8_cover.jpg](./blog/figure-8/Elliott_smith_figure_8_cover.jpg)
+![Elliott Smith - Figure 8 - Album cover https://en.wikipedia.org/wiki/Figure_8_(album)#/media/File:Elliott_smith_figure_8_cover.jpg](/media/blog/2020-05/elliott-smith-figure-8-cover.jpg)
 
 Just like Jeff Buckley's Grace and Blind Melon's Soup, and countless others, from the first chords, first words, you are reminded how epic the whole experience of listening to the album is going to be. Like it's suddenly so obvious what it means to say _these people will never really die_.
 
@@ -39,7 +39,7 @@ Of course there is a _but_ in here. For Grace and Soup, even if they revolve ent
 
 In Figure 8, legend says, Elliott Smith alone, was jumping from instrument to instrument, who really knows for how many takes, how many loops, how much time, seeking perfection in lyrics, arrangements. All for the sake of it, "of doing it", round and round like a _figure 8_. There must have been some joy.
 
-![Elliott Smith performing at the Henry Fonda Theater in Los Angeles, CA on 2-1-2003. llaurens@sweetadeline.net CC BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0](./blog/figure-8/Elliott_Smith.jpg)
+![Elliott Smith performing at the Henry Fonda Theater in Los Angeles, CA on 2-1-2003. llaurens@sweetadeline.net CC BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0](/media/blog/2020-05/elliott-smith.jpg)
 
 And so do I, when I listen to this album back to back. Round and round, _Standing up to sit back down_, deeper and deeper into the intimate _world within a world?_ of this genius that was _King for a day_ but bored and depressed for all eternity.
 
@@ -64,6 +64,6 @@ A long way to go, getting further away. Can't make a sound. And then a wordless 
 
 _Figure 8 is the fifth studio album by American singer-songwriter Elliott Smith, and the final album he completed before his death_. [Wikipedia](<https://en.wikipedia.org/wiki/Figure_8_(album)>).
 
-![Elliott Smith Wall in Silver Lake MacLeod |au https://www.flickr.com/people/76041334@N00 CC BY 2.0 https://creativecommons.org/licenses/by/2.0/deed.en](./blog/figure-8/Elliott_Smith_Memorial_Wall.jpg)
+![Elliott Smith Wall in Silver Lake MacLeod |au https://www.flickr.com/people/76041334@N00 CC BY 2.0 https://creativecommons.org/licenses/by/2.0/deed.en](/media/blog/2020-05/elliott-smith-memorial-wall.jpg)
 
 This happens 3 years later, while he is recording his next album. _The autopsy evidence was inconclusive as to whether the wounds were self-inflicted or the result of homicide._ A Schrödinger tragedy in itself, Elliott both stabbed himself in the heart and was murdered by who knows who. This ultimate mystery of Elliott's life, adds up to the album, forever going like a figure 8, going all four ways, forever lapping onto itself.

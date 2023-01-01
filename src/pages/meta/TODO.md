@@ -7,7 +7,6 @@ tags:
 
 ## Feature: images
 
-- Content: port all images from `andretorgal.com
 - Optimisation: SEO og:image
 - IA: images/media nodes, easy?
   - "unblocks remark / rehype plugins appending to frontmatter"
@@ -151,3 +150,4 @@ tags:
 ## Feature: images
 
 - Meta: optimise favicon pack, clean up public folder
+- Content: port all images from `andretorgal.com`

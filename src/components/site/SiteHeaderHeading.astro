@@ -1,14 +1,14 @@
 ---
 import { SITE_TITLE } from '../../config';
 
-import Logo from './SiteLogo.astro';
+import SiteLogo from './SiteLogo.astro';
 ---
 
 <h1 class="title">
     <a href="/">
         <span>{SITE_TITLE}</span>
         <picture>
-            <Logo />
+            <SiteLogo />
         </picture>
     </a>
 </h1>
@@ -43,16 +43,6 @@ import Logo from './SiteLogo.astro';
 
     picture {
         display: inline-block;
-    }
-
-    picture img {
-        display: block;
-        width: var(--t-type-size-5);
-        height: var(--t-type-size-5);
-        overflow: hidden;
-        object-fit: cover;
-        object-position: 0px 0px;
-        border-radius: 50%;
     }
 
     @media screen and (min-width: 960px) {

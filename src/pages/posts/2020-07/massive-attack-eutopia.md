@@ -54,7 +54,7 @@ With that I can't disagree.
 
 Second song. Tax havens head on. Countries must collect the taxes from these evasive dodgy multinational krakens. Speech by Gabriel Zucman, UC Berkley, professor of economics & inventor of the _Wealth Tax_ policy.
 
-![No Living Creature - Thomas Moore, Utopia - 1516](./blog/masive-attack-x-saul-williams.jpg)
+![No Living Creature - Thomas Moore, Utopia - 1516](/media/blog/2020-07/masive-attack-x-saul-williams.jpg)
 
 I buy the socialism, fine. But what's with ALL the ALL CAPS, and WHY is EVERYTHING VISUALLY soooo OVERWHELMING? What's with this map ZOOMInG in and out and SPAWnING mountains and lakes, and I am STARtING to feel a tad sick. I have to close my eyes.
 
