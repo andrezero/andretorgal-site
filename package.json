@@ -1,17 +1,17 @@
 {
-    "name": "@example/blog",
+    "name": "@andrezero/website",
     "type": "module",
     "version": "0.0.1",
     "private": true,
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
-        "lint": "eslint . -c .eslintrc.cjs",
+        "lint": "eslint -c .eslintrc.cjs --ext .astro,.cjs,.ts,.tsx,.mdx,.js eslint/ src/ tests/",
         "build": "astro build",
-        "build:ci": "npm run build && npm run lint && npm run test:ci",
+        "build:ci": "npm run lint && npm run build",
         "test": "playwright test",
+        "test:install": "playwright install --with-deps",
         "test:report": "export REPORT=true && playwright test",
-        "test:ci": "CI=true && playwright test",
         "test:serve": "playwright show-report",
         "preview": "astro preview",
         "astro": "astro"
