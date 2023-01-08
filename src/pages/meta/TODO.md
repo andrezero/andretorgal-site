@@ -5,7 +5,12 @@ tags:
   - foo
 ---
 
-## Feature: images
+## Port `meta/**` content
+
+- Content: port all `meta/**` content from `andretorgal.com`
+- UI: navigation: `meta/**` section header - docs, project, decisions
+
+## Feature: advanced images
 
 - IA: images/media nodes, easy?
 - Optimisation: SEO og:image
@@ -21,11 +26,6 @@ tags:
 ## Abstract component
 
 - UI: Abstract component. see https://github.com/astro-community/md
-
-## Port `meta/**` content
-
-- Content: port all `meta/**` content from `andretorgal.com`
-- UI: navigation: `meta/**` section header - docs, project, decisions
 
 ## Port `tag/**` content
 
@@ -147,8 +147,12 @@ tags:
 - Tools: pre-commit hooks with Lefthook
 - Testing: more visual regression tests, will be useful while we iterate (soon)
 
-## Feature: images
+## Feature: image basics
 
 - Meta: optimise favicon pack, clean up public folder
 - Content: port all images from `andretorgal.com`
 - Chore: update astro to `1.9.1` ... 2.0.0 is coming very soon!
+
+## Tools
+
+- configure Github actions
