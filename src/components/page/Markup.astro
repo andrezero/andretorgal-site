@@ -19,12 +19,20 @@ const show = Astro.slots.has('default');
 </style>
 
 <style is:global>
+    .markup h2 {
+        margin: var(--layout-gap) 0 var(--layout-unit);
+    }
+
     .markup h3 {
-        margin: var(--layout-unit) 0 var(--layout-unit);
+        margin: calc(2 * var(--layout-unit)) 0 var(--layout-unit);
     }
 
     .markup h4 {
         margin: var(--layout-unit) 0 var(--layout-unit);
+    }
+
+    .markup p {
+        margin: 0 0 var(--layout-unit);
     }
 
     .markup ul {
@@ -52,5 +60,28 @@ const show = Astro.slots.has('default');
         margin: var(--layout-gap) 0;
         border: none;
         border-bottom: var(--layout-border-thin) solid var(--scheme-edge);
+    }
+
+    .markup blockquote {
+        position: relative;
+        font-style: italic;
+        font-size: var(--t-type-size-1);
+        margin: var(--layout-gap) var(--layout-space);
+    }
+
+    .markup blockquote::before {
+        position: absolute;
+        display: block;
+        text-align: center;
+        font-family: var(--t-type-family-alt);
+        font-size: var(--t-type-size-7);
+        font-weight: var(--t-type-weight-alt-base);
+        font-style: italic;
+        line-height: 1;
+        color: var(--scheme-alt-fg);
+        background-color: var(--scheme-alt-bg);
+        content: '“';
+        left: calc(-1 * var(--layout-space));
+        top: calc(-1 * var(--layout-unit));
     }
 </style>

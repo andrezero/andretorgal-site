@@ -36,9 +36,11 @@ const { heroImage } = node;
                 <Article>
                     <ArticleHeader node={node} noDate slot="header">
                         {heroImage && <PageHero src={heroImage} />}
-                        <TopLine />
                     </ArticleHeader>
-                    <Markup><slot /></Markup>
+                    <Section>
+                        <TopLine />
+                        <Markup><slot /></Markup>
+                    </Section>
                     <Section>
                         <Divider />
                         <NodeMeta node={node} />

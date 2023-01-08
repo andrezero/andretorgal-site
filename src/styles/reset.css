@@ -44,7 +44,6 @@ html:focus-within {
 
 body {
     text-rendering: optimizeSpeed;
-    line-height: 1.5;
 }
 
 a:not([class]) {
