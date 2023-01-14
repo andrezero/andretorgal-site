@@ -1,0 +1,24 @@
+{
+    "files.associations": {
+        "*.astro": "astro",
+        "*.mdx": "markdown"
+    },
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "plaintext",
+        "astro",
+        "mdx"
+    ],
+    "spellright.notificationClass": "warning",
+    "spellright.parserByClass": {
+        "astro": {
+            "parser": "code"
+        },
+        "mdx": {
+            "parser": "markdown"
+        }
+    }
+}
