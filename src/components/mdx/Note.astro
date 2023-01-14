@@ -1,0 +1,37 @@
+---
+type NoteType = 'info' | 'construction';
+
+export interface Props {
+    type?: NoteType;
+}
+
+const { type = 'info' } = Astro.props;
+---
+
+<div class:list={['box', type]}>
+    <slot />
+</div>
+
+<style>
+    .box {
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-unit);
+        padding: 0 0 0 var(--layout-gap);
+        border-left: var(--layout-border-wide) solid var(--scheme-dim);
+    }
+
+    .construction {
+        border-left-color: var(--scheme-alt-bg);
+    }
+</style>
+
+<style is:global>
+    .box :first-child {
+        margin-top: 0;
+    }
+
+    .box :first-child {
+        margin-bottom: 0;
+    }
+</style>
