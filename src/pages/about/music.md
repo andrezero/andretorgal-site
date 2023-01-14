@@ -1,12 +1,14 @@
 ---
 layout: ../../templates/AboutPage.astro
+type: page
 title: My Music
-description: This page is about my music.
+description: This list is incomplete. I recorded a lot more at home in the past 15 years or so. I'll eventually upload more here. Hope you enjoy what I have here so far.
+shyImage: /media/about/ambivalent-red.jpg
 tags:
   - personal
   - music
 published: 2017 Feb 13
-updated: 2022 Dec 22
+updated: 2023 Jan 07
 ---
 
 ## Ambivalent Red
@@ -47,9 +49,13 @@ These two tracks, in particular, I was quite happy with the result.
 
 ## Soon (or never)
 
-This list is incomplete.
+I have a few drives of takes, stems, bounces, whatnot .. but not much is mixed or mixable to be fair.
 
-I recorded a lot more since I left Portugal. Back there I had a whole studio in our basement. I mean: 24 track analogue Mackie, monitors, full mic'ed drums, headphone mixers, pre-amps, the works..
+I am talking about 20 years of recording in computers, since [CoolEdit](https://www.soundonsound.com/reviews/syntrillium-software-cool-edit-pro) circa 1998, through a myriad of of obscure DAWs all the way to my most recent favourite [StudioOne](https://www.presonus.com/products/Studio-One).
+
+Even in the last decade, on the small apartments of London and Barcelona.
+
+Back in Portugal I actually had a fully functional studio in our basement. I mean a 24 track analogue Mackie, monitors, full mic'ed drums, headphone mixers, pre-amps - the works.
 
 I was also in bands, pre web, even pre CD time. There were many demos, all recorded on tape, and I currently have none of that with me.
 

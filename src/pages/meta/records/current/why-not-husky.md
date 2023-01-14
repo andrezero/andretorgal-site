@@ -1,8 +1,7 @@
 ---
-layout: ../../templates/MetaPage.astro
+layout: ../../../../templates/MetaPage.astro
 title: Why not Husky? What else then?
 description: I want the git hook feedback loops, but I definitely don't want to bring Husky into the package dependencies.
-published: 2023 Jan 02
 tags:
   - git
   - git-hooks
@@ -13,6 +12,7 @@ links:
     name: Lefthook
   - type: software
     name: simple-git-hooks
+published: 2023 Jan 02
 ---
 
 ## Why?

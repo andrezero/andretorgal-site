@@ -1,5 +1,6 @@
 ---
-layout: ../../templates/AboutPage.astro
+layout: ../templates/AboutPage.astro
+type: page
 title: This website
 description: My name is André Torgal and this is my website, a place where I blog some thoughts and run a few experiments. Here, you can learn more about me, my work as software engineer and other stuff I have been up to.
 tags:
@@ -8,16 +9,6 @@ tags:
 published: 2017 Nov 02
 updated: 2018 Feb 11
 featured: true
----
-
-<Abstract>
-
-My name is André Torgal and this is my website, a place where I [blog](/posts) some thoughts and run a few experiments.
-
-</Abstract>
-
-Here, you can learn more about me, [my work as software engineer](/about/work), and other stuff I have been up to.
-
 ---
 
 ## House rules
@@ -38,7 +29,7 @@ You can find:
 
 ### Work
 
-A seasoned web developer and agile practitioner with a diverse background in engineering and management. I have been coding, leading, mentoring and facilitating for almost 30 years. [Read more about my work](/about/work).
+A seasoned web developer and agile practitioner with a diverse background in engineering and management. I have been coding, leading, mentoring and facilitating for 25 years. [Read more about my work](/about/work).
 
 ### Personal
 

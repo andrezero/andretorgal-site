@@ -10,6 +10,7 @@ export interface BaseNode {
     published: string;
     updated?: string;
     heroImage?: string;
+    shyImage?: string;
     tags?: string[];
     featured?: boolean;
     [key: string]: unknown;

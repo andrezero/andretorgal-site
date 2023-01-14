@@ -2,8 +2,8 @@
 import NodePreviousNext from '@components/node/parts/NodePreviousNext.astro';
 import SiteSectionHeader from '@components/site/SiteSectionHeader.astro';
 
+import NavLink from '@components/navigation/NavLink.astro';
 import type { BlogPost } from '@queries/types';
-import NavLink from '~/components/navigation/NavLink.astro';
 
 export type Props = {
     previous: BlogPost | undefined;
@@ -16,7 +16,7 @@ const { previous, next } = Astro.props;
 <SiteSectionHeader title="Blog">
     <ul>
         <li>
-            <NavLink href="/posts">Latest posts</NavLink>
+            <NavLink href="/posts" exact>Latest posts</NavLink>
         </li>
     </ul>
     <div>
@@ -26,10 +26,13 @@ const { previous, next } = Astro.props;
 
 <style>
     ul {
-        padding-bottom: var(--layout-gap);
+        flex-shrink: 0;
+        flex-grow: 1;
+        flex-basis: 100%;
     }
 
     div {
+        min-width: 100%;
         font-size: var(--t-type-size-0);
         line-height: var(--t-type-size-2);
     }

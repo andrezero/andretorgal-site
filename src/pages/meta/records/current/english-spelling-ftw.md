@@ -1,14 +1,15 @@
 ---
-layout: ../../templates/MetaPage.astro
+layout: ../../../../templates/MetaPage.astro
+type: decision
 title: Re-build with Astro
 description: I have been playing with Astro for a while now. I am confident this is the static site generator I have always been looking for.
-published: 2023 Jan 02
 tags:
   - language
   - andretorgal-com
 links:
   - type: software
     name: Spell Right
+published: 2023 Jan 02
 ---
 
 ## Why

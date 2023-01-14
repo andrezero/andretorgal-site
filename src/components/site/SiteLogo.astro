@@ -1,4 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+---
+export interface Props {
+    autoSize?: boolean;
+}
+
+const { autoSize } = Astro.props;
+
+const classNames = [{ auto: autoSize }];
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" class:list={classNames}>
     <circle cx="300" cy="300" r="275"></circle>
     <path
         class="moon"
@@ -23,5 +33,10 @@
         object-fit: cover;
         object-position: 0px 0px;
         border-radius: 50%;
+    }
+
+    .auto {
+        width: 100%;
+        height: auto;
     }
 </style>

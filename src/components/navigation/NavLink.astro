@@ -2,9 +2,10 @@
 export interface Props {
     href: string;
     exact?: boolean;
+    inline?: boolean;
 }
 
-const { exact, href } = Astro.props;
+const { href, exact, inline } = Astro.props;
 
 const { pathname } = Astro.url;
 const current = pathname.replace(/\/$/, '');
@@ -17,23 +18,27 @@ const isActive = isHome
 const tabIndex = isActive ? -1 : 0;
 ---
 
-<a tabindex={tabIndex} href={href} class:list={['nav', { active: isActive }]}>
-    <slot />
-</a>
+<a tabindex={tabIndex} href={href} class:list={['nav', { active: isActive, inline }]}><slot /></a>
 
 <style>
     .nav {
         display: inline-block;
         line-height: inherit;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
-    .nav.active {
-        text-decoration: none;
+    .inline {
+        display: inline;
     }
 
     .nav {
-        padding: 0 var(--layout-shift);
+        padding: 0 var(--layout-shift) 0;
         margin-left: calc(-1 * var(--layout-shift));
+        margin-right: var(--layout-shift);
         text-decoration: underline;
         transition: background-color 0.1s;
     }
@@ -49,7 +54,9 @@ const tabIndex = isActive ? -1 : 0;
         background-color: var(--scheme-a-on);
     }
 
+    .nav.active,
     .nav:active {
+        text-decoration: none;
         color: var(--scheme-bg);
         background-color: var(--scheme-a-active);
     }

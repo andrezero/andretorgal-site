@@ -16,9 +16,9 @@ import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 
+import Section from '@components/page/Section.astro';
 import { findPreviousAndNextPosts, importAllPosts, sortedPosts } from '@queries/posts';
 import type { BlogPost } from '@queries/types';
-import Section from '~/components/page/Section.astro';
 
 export interface Props {
     content: BlogPost;

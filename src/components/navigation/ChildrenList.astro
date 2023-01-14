@@ -1,0 +1,42 @@
+---
+import { importAllMeta } from '@queries/meta';
+import type { BaseNode } from '@queries/types';
+import NavLink from './NavLink.astro';
+
+export interface Props {
+    node: BaseNode;
+    scope?: BaseNode[];
+}
+
+const { node, scope } = Astro.props;
+
+// eslint-disable-next-line security/detect-non-literal-regexp
+const pattern = new RegExp(`^${node.url}/[a-z-]+$`);
+
+const allNodes = scope ?? (await importAllMeta());
+const children = allNodes.filter(n => n.url.match(pattern));
+---
+
+<nav>
+    <ul>
+        {
+            children.map(child => (
+                <li>
+                    <NavLink href={child.url} inline>
+                        {child.title}
+                    </NavLink>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
+
+<style>
+    nav ul {
+        margin: 0 0 0 var(--layout-gap);
+    }
+    nav li {
+        font-size: var(--t-type-size-1);
+        list-style-type: square;
+    }
+</style>

@@ -1,0 +1,57 @@
+---
+import Body from '@components/document/Body.astro';
+import Document from '@components/document/Document.astro';
+import Head from '@components/document/Head.astro';
+import Layout from '@components/document/Layout.astro';
+import Breadcrumbs from '@components/navigation/Breadcrumbs.astro';
+import ChildrenList from '@components/navigation/ChildrenList.astro';
+import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
+import NodeMeta from '@components/node/parts/NodeMeta.astro';
+import Article from '@components/page/Article.astro';
+import ArticleHeader from '@components/page/ArticleHeader.astro';
+import Divider from '@components/page/Divider.astro';
+import Markup from '@components/page/Markup.astro';
+import PageSubTitle from '@components/page/PageSubTitle.astro';
+import Section from '@components/page/Section.astro';
+import TopLine from '@components/page/TopLine.astro';
+import SiteSectionHeader from '@components/site/meta/SiteSectionHeader.astro';
+import SiteFooter from '@components/site/SiteFooter.astro';
+import SiteHeader from '@components/site/SiteHeader.astro';
+import SiteMain from '@components/site/SiteMain.astro';
+import type { MetaPage } from '@queries/types';
+
+export interface Props {
+    content: MetaPage;
+}
+
+const { content: page } = Astro.props;
+
+const showBreadcrumbs = page.url !== '/meta';
+---
+
+<Document>
+    <Head node={page} />
+    <Body>
+        <Layout>
+            <SiteHeader slot="header" />
+            <SiteSectionHeader slot="section" />
+            <SiteMain slot="main">
+                <Article>
+                    <ArticleHeader node={page} slot="header" noDate>
+                        {showBreadcrumbs && <Breadcrumbs node={page} />}
+                    </ArticleHeader>
+                    <Section>
+                        <TopLine />
+                        <NodeAbstract node={page} />
+                        <PageSubTitle>In this section</PageSubTitle>
+                        <ChildrenList node={page} />
+                        <Markup><slot /></Markup>
+                        <Divider />
+                        <NodeMeta node={page} />
+                    </Section>
+                </Article>
+            </SiteMain>
+            <SiteFooter slot="footer" />
+        </Layout>
+    </Body>
+</Document>

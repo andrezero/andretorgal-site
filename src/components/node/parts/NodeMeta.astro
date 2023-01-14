@@ -6,16 +6,17 @@ import TagLink from './TagLink.astro';
 export type Props = { node: BaseNode };
 
 const { node } = Astro.props;
-const { type = 'page', url, published, tags } = node;
+const { type = 'page', url, published, updated, tags } = node;
 
 const publishedDate = published && new Date(published);
+const updatedDate = updated && new Date(updated);
 const show = publishedDate || (tags && tags.length);
 ---
 
 {
     show && (
         <div>
-            <p>
+            <p class="published">
                 <span>This {type} was published</span>{' '}
                 {publishedDate && (
                     <>
@@ -27,12 +28,7 @@ const show = publishedDate || (tags && tags.length);
                         </a>
                     </>
                 )}
-                {tags && tags.length && (
-                    <span>
-                        <br />
-                        under the following tags:
-                    </span>
-                )}
+                {tags && tags.length && <span>under the following tags:</span>}
             </p>
             {tags && tags.length && (
                 <ul class="tag-list">
@@ -42,6 +38,16 @@ const show = publishedDate || (tags && tags.length);
                         </li>
                     ))}
                 </ul>
+            )}
+            {updatedDate && (
+                <p class="updated">
+                    Last updated on
+                    <a href={url} class="node-permalink">
+                        <time class="date" datetime={updatedDate.toISOString()}>
+                            {shortDate(updatedDate)}
+                        </time>
+                    </a>
+                </p>
             )}
         </div>
     )
@@ -56,7 +62,7 @@ const show = publishedDate || (tags && tags.length);
         display: inline-flex;
     }
 
-    p,
+    .published,
     ul,
     li {
         display: inline;

@@ -18,7 +18,7 @@ Fast and powerful Git hooks manager for Node.js and more.
 
 ## Thoughts
 
-Stumbled open while working on [alternatives for husky](/meta/why-not-husky).
+Stumbled open while working on [alternatives for husky](/meta/records/current/why-not-husky).
 
 I like that
 

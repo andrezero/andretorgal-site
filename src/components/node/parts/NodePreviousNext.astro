@@ -4,6 +4,7 @@ import Icon from '@components/atoms/Icon.astro';
 import ChevronLeft from '@icons/ChevronLeft.astro';
 import ChevronRight from '@icons/ChevronRight.astro';
 
+import NavLink from '@components/navigation/NavLink.astro';
 import type { BlogPost } from '@queries/types';
 
 export type Props = {
@@ -24,7 +25,10 @@ const show = previous || next;
                     <Icon size="auto">
                         <ChevronLeft />
                     </Icon>{' '}
-                    Previous post <a href={previous.url}>{previous.title}</a>
+                    Previous post{' '}
+                    <span>
+                        <NavLink href={previous.url}>{previous.title}</NavLink>
+                    </span>
                 </p>
             )) || <>&nbsp;</>}
             {next && (
@@ -32,7 +36,10 @@ const show = previous || next;
                     <Icon size="auto">
                         <ChevronRight />
                     </Icon>{' '}
-                    Next post <a href={next.url}>{next.title}</a>
+                    Next post{' '}
+                    <span>
+                        <NavLink href={next.url}>{next.title}</NavLink>
+                    </span>
                 </p>
             )}
         </div>
@@ -43,16 +50,7 @@ const show = previous || next;
     div {
         display: flex;
         justify-content: space-between;
-        gap: var(--layout-gap);
+        gap: var(--layout-unit);
         flex-wrap: wrap;
-    }
-
-    a {
-        gap: var(--t-space-2xs);
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        text-overflow: ellipsis;
-        overflow: hidden;
     }
 </style>

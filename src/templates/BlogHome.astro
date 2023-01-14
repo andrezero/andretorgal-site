@@ -6,13 +6,13 @@ import Layout from '@components/document/Layout.astro';
 import NodeList from '@components/node/lists/NodeList.astro';
 import Page from '@components/page/Page.astro';
 import PageHeader from '@components/page/PageHeader.astro';
+import Section from '@components/page/Section.astro';
+import TopLine from '@components/page/TopLine.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
+import { importAllPosts, sortedPosts } from '@queries/posts';
 import type { BlogPost } from '@queries/types';
-import Section from '~/components/page/Section.astro';
-import TopLine from '~/components/page/TopLine.astro';
-import { importAllPosts, sortedPosts } from '~/queries/posts';
 
 export interface Props {
     content: BlogPost;

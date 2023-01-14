@@ -1,0 +1,23 @@
+---
+export interface Props {
+    color?: string;
+}
+
+const { c: color } = Astro.props;
+---
+
+<span><span style={{ 'background-color': color }}></span><code><slot /> - {color}</code></span>
+
+<style>
+    span {
+        display: block;
+        width: var(--size);
+        min-width: var(--size);
+        height: var(--size);
+        min-height: var(--size);
+    }
+    span span {
+        display: block;
+        height: 40px;
+    }
+</style>

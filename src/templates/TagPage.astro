@@ -11,13 +11,13 @@ import ArticleHeader from '@components/page/ArticleHeader.astro';
 import Markup from '@components/page/Markup.astro';
 import PageSubTitle from '@components/page/PageSubTitle.astro';
 import PageTitle from '@components/page/PageTitle.astro';
+import Section from '@components/page/Section.astro';
+import TopLine from '@components/page/TopLine.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
+import { importAllNodes } from '@queries/nodes';
 import type { TagNode } from '@queries/types';
-import Section from '~/components/page/Section.astro';
-import TopLine from '~/components/page/TopLine.astro';
-import { importAllNodes } from '~/queries/nodes';
 
 export interface Props {
     content: TagNode;

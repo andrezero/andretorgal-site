@@ -1,0 +1,64 @@
+---
+layout: ../../../../templates/MetaPage.astro
+type: decision
+title: 'Browser Support: progressive'
+published: 2019 May 09
+updated: 2023 Dec 20
+---
+
+## Status
+
+Blocked by [missing documentation for using "browserslist" in Astro](https://github.com/withastro/docs/issues/2321)
+
+Attempted the solution described in the attached issue.
+
+Rabbit hole. Nothing prefixed, and warnings polluting the console
+
+```
+[esbuild-plugin-browserslist] Skipping unknown target: entry=and_qq 13.1, browser=and_qq, version=13.1
+```
+
+## Details
+
+This was previously adopted in 2019 for the [previous version of this website](/meta/records/rejected/react-static).
+
+- using [browserslist](https://github.com/browserslist/browserslist) + [post-css-preset-env](https://github.com/csstools/postcss-preset-env)
+- write only good, standards code
+- don't bother with polyfills and fallbacks
+
+**Previously:**
+
+```json
+// package.json > browserslist
+["cover 95%", "not dead"]
+```
+
+**Now**
+
+```json
+// package.json > browserslist
+["last 2 years", "> 1%", "not ie 11", "not ie_mob 11", "not op_mini all"]
+```
+
+## Why
+
+- just auto-prefixing
+- not explicitly supporting any browser that
+
+  - pollutes CSS with fallbacks
+  - requires contorts the CSS
+  - harms the developer experience
+
+## Tradeoffs
+
+- coverage down to 89%
+- very minimal CSS available for IE 11 and Opera Mini
+
+  - CSS is using custom properties very liberally
+  - current technique requires that fallback is always provided to the rule
+  - not up for that
+
+## Read more
+
+- [browserslist](https://github.com/browserslist/browserslist)
+- [postcss-preset-env](https://github.com/csstools/postcss-preset-env)

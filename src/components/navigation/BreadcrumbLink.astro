@@ -1,0 +1,12 @@
+---
+import NavLink from './NavLink.astro';
+
+export interface Props {
+    url: string;
+    title?: string;
+}
+
+const { url, title } = Astro.props;
+---
+
+<NavLink href={url} exact inline>{title}</NavLink>

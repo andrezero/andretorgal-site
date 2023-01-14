@@ -1,0 +1,47 @@
+---
+import type { BaseNode } from '@queries/types';
+import BreadcrumbLink from './BreadcrumbLink.astro';
+
+export interface Props {
+    node: BaseNode;
+    ignoreLevels?: number;
+}
+
+const { node, ignoreLevels = 0 } = Astro.props;
+
+type Link = { url: string; title: string };
+
+const parts = node.url.split('/');
+const crumbs = parts.slice(ignoreLevels + 1);
+const base = parts.slice(0, ignoreLevels + 1);
+
+const items: Link[] = crumbs.reduce((acc, item, index) => {
+    const url = [...base, ...crumbs.slice(0, index + 1)].join('/');
+    const title = item[0]?.toUpperCase() + item.substring(1, item.length);
+    acc.push({ url, title });
+    return acc;
+}, [] as Link[]);
+---
+
+<nav>
+    <ul>
+        {
+            items.map(({ url, title }) => (
+                <li>
+                    {url !== node.url && (
+                        <>
+                            <BreadcrumbLink url={url} title={title} /> /
+                        </>
+                    )}
+                    {url === node.url && <span>{node.title}</span>}
+                </li>
+            ))
+        }
+    </ul>
+</nav>
+
+<style>
+    nav li {
+        display: inline;
+    }
+</style>

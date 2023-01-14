@@ -14,16 +14,18 @@ import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 
+import Section from '@components/page/Section.astro';
+import TopLine from '@components/page/TopLine.astro';
+import SiteLogo from '@components/site/SiteLogo.astro';
 import type { BaseNode } from '@queries/types';
-import Section from '~/components/page/Section.astro';
-import TopLine from '~/components/page/TopLine.astro';
 
 export interface Props {
     content: BaseNode;
+    img?: string;
 }
 
 const { content: node } = Astro.props;
-const { heroImage } = node;
+const { heroImage, shyImage } = node;
 ---
 
 <Document>
@@ -39,15 +41,55 @@ const { heroImage } = node;
                     </ArticleHeader>
                     <Section>
                         <TopLine />
-                        <Markup><slot /></Markup>
+                        <div>
+                            <div class="image">
+                                {shyImage ? <img src={shyImage} alt="" /> : <SiteLogo autoSize />}
+                            </div>
+                            <p>{node.description}</p>
+                        </div>
+                        <Section>
+                            <Divider />
+                            <Markup><slot /></Markup>
+                        </Section>
+                        <Section>
+                            <Divider />
+                            <NodeMeta node={node} />
+                        </Section>
                     </Section>
-                    <Section>
-                        <Divider />
-                        <NodeMeta node={node} />
-                    </Section>
-                    <SiteFooter slot="footer" />
                 </Article>
             </SiteMain>
+            <SiteFooter slot="footer" />
         </Layout>
     </Body>
 </Document>
+
+<style>
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        gap: var(--layout-gap);
+        overflow: hidden;
+    }
+
+    .image {
+        height: 15em;
+        min-width: 100%;
+        object-fit: cover;
+    }
+
+    @media screen and (min-width: 620px) {
+        div {
+            flex-direction: row;
+        }
+
+        .image {
+            min-width: auto;
+            min-width: 10em;
+            max-width: 10em;
+            height: 10em;
+            border-radius: 100%;
+        }
+    }
+</style>

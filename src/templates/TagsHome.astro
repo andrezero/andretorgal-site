@@ -7,13 +7,13 @@ import TagList from '@components/node/lists/TagList.astro';
 import Page from '@components/page/Page.astro';
 import PageHeader from '@components/page/PageHeader.astro';
 import PageSubTitle from '@components/page/PageSubTitle.astro';
+import Section from '@components/page/Section.astro';
+import TopLine from '@components/page/TopLine.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import { importAllTags } from '@queries/tags';
 import type { PageNode } from '@queries/types';
-import Section from '~/components/page/Section.astro';
-import TopLine from '~/components/page/TopLine.astro';
 
 export interface Props {
     content: PageNode;

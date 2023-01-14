@@ -18,7 +18,7 @@ Evil Martians is a product development consultancy that works with startups and 
 
 ## Thoughts
 
-Stumbled open while working on [alternatives for husky](/meta/why-not-husky) as they are the people behind [Lefthook](/links/software/lefthook)
+Stumbled open while working on [alternatives for husky](/meta/records/current/why-not-husky) as they are the people behind [Lefthook](/links/software/lefthook)
 
 Neat website, funny.
 

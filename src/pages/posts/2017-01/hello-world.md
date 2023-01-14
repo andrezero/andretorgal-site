@@ -44,8 +44,6 @@ Finally, how is it going to be, going forward?
 
 This infinite space is still up here to take.
 
-[Everything starts with an intent](https://medium.com/the-dogma/the-dogma-e63050ebfd7).
-
 _Be the change you want to see in the world._
 
 Every journey begins with the first step.

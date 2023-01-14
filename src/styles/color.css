@@ -34,7 +34,7 @@
 }
 
 .cs-primary {
-    --scheme-bg: var(--t-palette-red-2);
+    --scheme-bg: var(--t-palette-red-1);
     --scheme-fg: var(--t-palette-white-1);
     --scheme-a: var(--t-palette-white-2);
     --scheme-a-on: var(--t-palette-white-1);
