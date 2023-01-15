@@ -34,10 +34,10 @@ import Note from '@components/mdx/Note.astro';
 
 ## Why
 
-- My website's core metrics have been degrading over the last 3 years. Not acceptable anymore
-- [React Static](/meta/records/rejected/react-static) is in maintenance mode now, need to replace it with something more modern
+- My website's core metrics have been degrading over the last 3 years. Not acceptable anymore.
+- [React Static](/meta/records/rejected/react-static) is in maintenance mode now, so I need to replace it with something more modern.
 - Could use the opportunity to dream up some exciting new features.
-- I need a holiday project
+- I need a holiday project.
 
 ## Decision
 
@@ -56,11 +56,13 @@ Rebuild the site with Astro.
 
 ## Trade-offs
 
-Astro core maintainers seem to be very focused on "easy to use" use cases and the "non typescript person" out there. I can totally empathise with that and wish the best luck. Hopefully the opinionated parts of Astro don't get too much in the way of building a more bare bones experience. Hopefully I can tag along for a while.
+Astro core maintainers seem to be very focused on "easy to use" use cases and the "non typescript person" out there. I can totally empathise with that and wish the best of luck for them. Hopefully the opinionated parts of Astro don't get too much in the way of building a more bare bones experience. Hopefully I can tag along for a while.
 
-- :frowning: querying for data is not terribly optimised, let's see how this scales
-- :cry: coupling URL with file-structure
-- no (react) context available on SSG time - no miracles
+Things that have me a bit concerned:
+
+- :frowning: querying for data is not terribly optimised. Let's see how this scales.
+- :cry: coupling URL with file-structure.
+- no (react) context available on SSG time - no miracles.
 - embracing `cjs` means some older tools may not be compatible, but let's embrace the future
 
 ## Other options considered

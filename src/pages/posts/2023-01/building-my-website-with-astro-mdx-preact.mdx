@@ -1,5 +1,6 @@
 ---
 layout: ../../../templates/BlogPost.astro
+type: post
 title: (re)Building my website with Astro + MDX + Preact
 description: Relaunching my website, again based on another Typescript SSG framework. Not React-Static anymore, not even React "at all". Introducing the magnificent Astro.
 tags:
@@ -7,7 +8,8 @@ tags:
   - astro
   - mdx
   - andretorgal-com
-published: Jan 16 2023
+published: 2023 Jan 16
+updated: 2023 Jan 17
 ---
 
 import Note from '@components/mdx/Note.astro';
@@ -24,7 +26,7 @@ You are previewing the 2023 version of this site. It's nearly ready to go live, 
 
 ## Backstory
 
-Previous version of the website, back from 2019, was also [SSG](/tags/ssg) but built with [React Static](/meta/records/rejected/react-static), which is meanwhile sponsor-less and in maintenance mode.
+Previous version of the website, back from 2019, was also [SSG](/tags/ssg) but built with [React Static](/meta/records/rejected/react-static), which is now sponsor-less and in maintenance mode.
 
 Meanwhile, my website's core metrics have been degrading over the last 3 years and I could use the opportunity to dream up some exciting new features.
 
@@ -32,7 +34,7 @@ After some [reflection about the (great) react-static + unified.js experience](/
 
 ## Why Astro?
 
-Is this is the static site generator I have _always_ been looking for?
+Is this the static site generator I have _always_ been looking for?
 
 I have been having a great experience while helping friends build the [Button School website](https://buttonschool.com/) and it really delivers on some of the promises.
 
@@ -40,63 +42,44 @@ I have been having a great experience while helping friends build the [Button Sc
 
 - Easy to setup, uncomplicated.
 - Sensible defaults but extensible.
-- Amazing documentation
-- Fast builds
-- Very fast development server
+- Amazing documentation.
+- Fast builds.
+- Very fast development server.
 
 ### It meets all my requirements
 
-- :white_check_mark: (extensible) Markdown & MDX support
-- :white_check_mark: Fully SSG first
-- :white_check_mark: with opt-in, micro client [side islands](https://docs.astro.build/en/concepts/islands/)
-- :white_check_mark: with opt-in route pre-fetching support
-- :white_check_mark: 100/100 Lighthouse performance
-- :white_check_mark: SEO-friendly with canonical URLs / OpenGraph
-- :white_check_mark: Sitemap support
-- :white_check_mark: RSS Feed support
+- :white_check_mark: (extensible) Markdown & MDX support.
+- :white_check_mark: Fully SSG first.
+- :white_check_mark: with opt-in, micro client [side islands](https://docs.astro.build/en/concepts/islands/).
+- :white_check_mark: with opt-in route pre-fetching support.
+- :white_check_mark: 100/100 Lighthouse performance.
+- :white_check_mark: SEO-friendly with canonical URLs / OpenGraph.
+- :white_check_mark: Sitemap support.
+- :white_check_mark: RSS Feed support.
 
 Of course, there are always [some trade-offs](/meta/records/current/build-with-astro) to consider, but no deal breakers there.
 
 ### The project looks very healthy
 
-I did chose the smaller community when I chose React Static. Kudos to [Tanner Linsley](https://tannerlinsley.com/), great work! But eventually React Static died out, and meanwhile its been 4 years :dizzy_face:.
+I did chose the smaller community when I chose React Static. Kudos to [Tanner Linsley](https://tannerlinsley.com/), great work! But eventually React Static died out, and 4 years flew by :dizzy_face: meanwhile.
 
-I wanted to make sure the next iteration of this website doesn't run into the same oops, so I have been watching Astro's community for signs.
+I wanted to make sure the next iteration of this website doesn't run into the same _oops_, so I have been watching Astro's community for signs.
 
 And the signs are all good.
 
+### Solid foundation
+
 First of, Astro is built on a solid, well supported, but also quite modern stack:
 
-It uses [vite](https://vitejs.dev/) as a build orchestrator, famous for already [using ESM during development](https://vitejs.dev/guide/why.html), which noticeably speeds ups HRM. Also under the hood, [rollup.js](https://rollupjs.org/).
+It uses [vite](https://vitejs.dev/) as a build orchestrator, famous for already [using ESM during development](https://vitejs.dev/guide/why.html), which noticeably speeds ups HRM. Also under the hood, [rollup.js](https://rollupjs.org/). The Vite + Rollup pair is definitely mature, well tested, firmly set in our landscape for a while.
 
-Astro is built around MDX available via Unified.js ecosystem. And [Unified.js is going to be around for a long time](/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time).
+Astro's Markdown and MDX capabilities are also built around a super solid ecosystem. As I blogged :writing_hand: recently, in my opinion, [Unified.js is going to be around for a long time](/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time).
 
-Finally, the community looks very healthy, high energy, operating at high performance and with good governance.
+### Plugin architecture
 
-Just take a look at
+Astro has a neat plugin architecture and plenty of tools to plug in already.
 
-- [exploding showcase](https://astro.build/showcase) of awesome websites built with Astro, the best sign there could be
-- [impressive development pace](https://github.com/withastro/astro/commits/main?before=8c100a6fe6cc652c3799d1622e12c2c969f30510+420&branch=main&path%5B%5D=packages&path%5B%5D=astro&path%5B%5D=CHANGELOG.md&qualified_name=refs%2Fheads%2Fmain) since v0 to the recent v2
-- [growing number of integrations](https://astro.build/integrations/) and extensions
-- [comprehensive documentation](https://docs.astro.build/en/getting-started/), accessible, easy to use
-- [volume of issues closed](https://github.com/withastro/astro/issues)
-- [structured, transparent approach via RFCs](https://github.com/withastro/rfcs)
-- [high energy in discord sever](https://discord.com/invite/astro-community-700607091391594567)
-- [exciting community call videos](https://www.youtube.com/@astrodotbuild)
-
-Great dev experience. Fast. An SSG for the next decade.
-
-## Big kudos
-
-Congrats to all the people involved this! Also great to see the community building up.
-
-SSG is kicking ass.
-
-## Under the hood
-
-Astro uses [vite]() as a compiler.
-
-Astro has a neat plugin architecture and plenty of tools to plug in already. I am using the following:
+I am already using the following:
 
 - [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/)
 - [@astrojs/image](https://docs.astro.build/en/guides/integrations-guide/mdx/)
@@ -104,10 +87,34 @@ Astro has a neat plugin architecture and plenty of tools to plug in already. I a
 - [@astrojs/rss](https://docs.astro.build/en/guides/integrations-guide/mdx/)
 - [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/mdx/)
 
-## Why MDX?
+Also, because [Unified.js] has a pipeline architecture, you can plug in any [remark](https://github.com/remarkjs/remark/blob/main/doc/plugins.md) and [rehype](https://github.com/rehypejs/rehype-autolink-headings) plugins as you want.
 
-> MDX is a special flavor of Markdown that supports embedded JavaScript & JSX syntax. This unlocks the ability to [mix JavaScript and UI Components into your Markdown content](https://docs.astro.build/en/guides/markdown-content/#mdx-features) for things like interactive charts or alerts.
+I am already using:
 
-Back in 2019 I took a good look at MDX but
+- [remark-emoji](https://www.npmjs.com/package/remark-emoji)
+- [remark-a11y-emoji](https://github.com/florianeckerstorfer/remark-a11y-emoji)
 
-- [MDX Syntax Documentation](https://mdxjs.com/docs/what-is-mdx)
+### Community
+
+Finally, the community looks very healthy, high energy, operating at high performance, and well governed.
+
+Just take a look at:
+
+- [Exploding showcase](https://astro.build/showcase) of awesome websites built with Astro.
+- [Impressive development pace](https://github.com/withastro/astro/commits/main?before=8c100a6fe6cc652c3799d1622e12c2c969f30510+420&branch=main&path%5B%5D=packages&path%5B%5D=astro&path%5B%5D=CHANGELOG.md&qualified_name=refs%2Fheads%2Fmain) since v0 to the recent v2.
+- [Growing number of integrations](https://astro.build/integrations/) and extensions.
+- [Comprehensive documentation](https://docs.astro.build/en/getting-started/), accessible, easy to use.
+- [Volume of issues closed](https://github.com/withastro/astro/issues).
+- [Structured, transparent approach via RFCs](https://github.com/withastro/rfcs).
+- [High energy in discord sever](https://discord.com/invite/astro-community-700607091391594567).
+- [Exciting community call videos](https://www.youtube.com/@astrodotbuild).
+
+## Big kudos
+
+Congrats to all the people involved this! SSG with Astro is kicking ass!
+
+:heart_eyes: Great dev experience.
+
+:fire: Fast.
+
+:trophy: An SSG for the next decade.
