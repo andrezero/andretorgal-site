@@ -25,7 +25,7 @@ import Note from '@components/mdx/Note.astro';
 
 <Note type="blog">
 
-I blogged about this
+## :writing_hand: I blogged about this
 
 - [(re)Building my website with Astro + MDX + Preact](/posts/2023-01/building-my-website-with-astro-mdx-preact).
 - [Saying goodbye to my React Static website.](/posts/2023-01/saying-goodbye-to-my-react-static-website).
@@ -39,25 +39,27 @@ I blogged about this
 - Could use the opportunity to dream up some exciting new features.
 - I need a holiday project
 
-## Decision: Rebuild the site with Astro
+## Decision
+
+Rebuild the site with Astro.
 
 > [Astro](https://astro.build) is an all-in-one web framework for building fast, content-focused websites.
 
-- :check: (extensible) Markdown & MDX support
-- :check: Fully SSG first
-- :check: with opt-in, micro client side _islands_
-- :check: with opt-in route pre-fetching support
-- :check: 100/100 Lighthouse performance
-- :check: SEO-friendly with canonical URLs / OpenGraph
-- :check: Sitemap support
-- :check: RSS Feed support
+- :white_check_mark: (extensible) Markdown & MDX support
+- :white_check_mark: Fully SSG first
+- :white_check_mark: with opt-in, micro client [side islands](https://docs.astro.build/en/concepts/islands/)
+- :white_check_mark: with opt-in route pre-fetching support
+- :white_check_mark: 100/100 Lighthouse performance
+- :white_check_mark: SEO-friendly with canonical URLs / OpenGraph
+- :white_check_mark: Sitemap support
+- :white_check_mark: RSS Feed support
 
 ## Trade-offs
 
 Astro core maintainers seem to be very focused on "easy to use" use cases and the "non typescript person" out there. I can totally empathise with that and wish the best luck. Hopefully the opinionated parts of Astro don't get too much in the way of building a more bare bones experience. Hopefully I can tag along for a while.
 
-- :fingers-crossed: querying for data is not terribly optimised, let's see how this scales
-- :sad: coupling URL with file-structure
+- :frowning: querying for data is not terribly optimised, let's see how this scales
+- :cry: coupling URL with file-structure
 - no (react) context available on SSG time - no miracles
 - embracing `cjs` means some older tools may not be compatible, but let's embrace the future
 
