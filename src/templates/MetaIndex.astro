@@ -4,14 +4,12 @@ import Document from '@components/document/Document.astro';
 import Head from '@components/document/Head.astro';
 import Layout from '@components/document/Layout.astro';
 import Breadcrumbs from '@components/navigation/Breadcrumbs.astro';
-import ChildrenList from '@components/navigation/ChildrenList.astro';
 import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
 import NodeMeta from '@components/node/parts/NodeMeta.astro';
 import Article from '@components/page/Article.astro';
 import ArticleHeader from '@components/page/ArticleHeader.astro';
 import Divider from '@components/page/Divider.astro';
 import Markup from '@components/page/Markup.astro';
-import PageSubTitle from '@components/page/PageSubTitle.astro';
 import Section from '@components/page/Section.astro';
 import TopLine from '@components/page/TopLine.astro';
 import SiteSectionHeader from '@components/site/meta/SiteSectionHeader.astro';
@@ -19,6 +17,7 @@ import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import type { MetaPage } from '@queries/types';
+import ChildrenList from '~/components/navigation/ChildrenList.astro';
 
 export interface Props {
     content: MetaPage;
@@ -43,7 +42,6 @@ const showBreadcrumbs = page.url !== '/meta';
                     <Section>
                         <TopLine />
                         <NodeAbstract node={page} />
-                        <PageSubTitle>In this section</PageSubTitle>
                         <ChildrenList node={page} />
                         <Markup><slot /></Markup>
                         <Divider />

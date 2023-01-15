@@ -1,0 +1,68 @@
+---
+layout: ../../../templates/BlogPost.astro
+title: Unified.js is going to be around for a long time
+description: This library is powering your linter, prettier, this website, pretty much anything using MDX. It's becoming ubiquitous, it might one day be running in your fridge.
+tags:
+  - mdx
+  - markdown
+  - unified-js
+published: Jan 14 2023
+---
+
+## Context
+
+I stumbled upon this project some 4 years ago. I believe because [Storybook](https://storybook.js.org/), then [Gatsby](https://www.gatsbyjs.com/) were already using it.
+
+## What is it?
+
+From their beautiful site:
+
+> We compile content to syntax trees and syntax trees to content.
+
+An example of this is reading a [Markdown](/tags/markdown) file into a JS variable that you can modify and then output as HTML.
+
+> We also provide hundreds of packages to work on the trees in between.
+
+Yes, hundreds of little transformations, such as [add `target` and `rel` attributes to all external links](https://unifiedjs.com/explore/package/rehype-external-links/), or more complex ones, such as [generate a table of contents.](https://unifiedjs.com/explore/package/remark-toc/). Or render React
+
+You can use them analyse the content, for instance for linting purposes. Strip content, re-arrange, re-format it.
+
+> You can build on the unified collective to make all kinds of interesting things.
+
+## The kudos
+
+The clever functional design, the rigor in principles, and patterns. You could tell that, even 4 years ago, that this was going to be around for a while.
+
+Not only that, the super professional management of the project(s) and community, has been allowing it to grow.
+
+Just look at how beautiful their website is nowadays.
+
+![The unified-js-website is gorgeous](/media/blog/2023-01/unified-js-website.png)
+
+I am just ashamed here, that I am just consumer, a lurker, a fanboy, and not a contributor. The complexity and depth of these projects goes sometimes very _wooooosh_ over my head.
+
+I'll make sure I'll sponsor, that's it!
+
+## The community. Well, more kudos
+
+Finally, the community.
+
+> The unified collective is a federated system of organizations, consisting in turn of projects, governed by the team members steering them.
+
+## Titus
+
+AS far
+
+The biggest kudos to [Titus](https://wooorm.com/) who I believe is _the_ origin of all this.
+
+Their website now reads:
+
+> I work most-time on open source maintaining 550+ projects that are downloaded 22B+ times a year.
+
+Are you mind blown, yet?
+
+At the moment, Prettier, ESLint, MDX, and probably millions of websites and services out there - arguably ALL modern documentation websites - contain some unified code.
+
+## How I use Unified.js
+
+I used it quite a bit while building the [previous version of this website](/posts/2023-01/saying-goodbye-to-my-react-static-website.md). Since then, I reach out for it quite often at work, usually to patch up deficiencies in [Webpack](https://webpack.js.org/) or [Rollup.js](https://rollupjs.org/) builds, as well as for source code generation use cases.

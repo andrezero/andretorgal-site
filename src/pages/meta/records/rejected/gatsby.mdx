@@ -1,0 +1,43 @@
+---
+layout: ../../../../templates/MetaPage.astro
+type: decision-record
+title: 'Stack: Gatsby + Typescript + SASS'
+tags:
+  - decision-rejected
+  - jam-stack
+  - ssg
+  - gatsby
+  - typescript
+  - graphql
+published: 2019 May 16
+---
+
+## Status
+
+Turned down in favor of [React Static](/meta/records/rejected/react-static) + [markdown + unified.js](/meta/records/rejected/content-markdown-unified-remark-rehype)
+
+## Why
+
+- all data sources need a graphql layer
+- data models in components, boilerplate
+- not pure Typescript (many `js` config files)
+- Typescript not compiled strict (not using `tsconfig.json`?) at develop/build time, probably my bad, but defaults and documentation were not helping
+- brittle, multiple compilation issues so far
+
+### Issues
+
+- typed GraphQL queries
+  - https://www.isaacbroyles.com/2018/08/19/gatsbyjs-typescript.html
+- integration with Storybook, expected painful
+
+## Was
+
+- static site generator
+- React + Typescript + SASS
+- Plugin galore (images, attachments, meta, seo, ...)
+
+## Read more
+
+- [guide: gatsby+typescript+sass step by step](https://medium.com/@thetrevorharmon/how-to-make-a-super-fast-static-site-with-gatsby-typescript-and-sass-3742c00d4524)
+- [starter: blog](https://github.com/mhadaily/gatsby-starter-typescript-power-blog)
+- [example: blog](https://github.com/magarcia/magarcia.io/tree/greenkeeper/gatsby-2.3.2)

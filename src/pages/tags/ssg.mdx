@@ -1,0 +1,26 @@
+---
+layout: ../../templates/TagPage.astro
+type: tag
+title: ssg
+description: Static site generation. Not to be confused with server side rendering.
+tags:
+  - web-development
+published: May 05 2019
+---
+
+## What is it?
+
+A static site generator allows you to implement complex information architectures, and performant presentation layers in your language and framework of choice. There are [400 options out there](https://jamstack.org/generators/), including C, C++, C#, and Erlang :explode: so I am betting your preferred tool is in there.
+
+Some of these allow you to chose between [~100 options to manage your website content](https://jamstack.org/headless-cms/)
+with a CMS. And almost all of them allow you to just use [Markdown](/tags/markdown) or [MDX](/tags/mdx) files to store the content.
+
+## How does it work?
+
+Typically, when you run the generator, it pick ups (all) the content from the CMS, or the file system, and it creates all the pages, routes, and endpoints at once.
+
+You can then just upload them to a CDN like Netlify or S3 + Cloudfront to make them available to the world.
+
+Since you only use cloud storage and transfer, you minimise the computing time of every site visit. Saves you money, saves energy, saves time, and contributes to a great UX. Go ahead, click around, is it fast?
+
+You can automate the whole process with something Github, or Netlify - is [Travis](https://www.travis-ci.com/) still around? - so that whenever you publish something, the build and deploy - fancy word for upload - all happen within minutes and zero intervention from you.

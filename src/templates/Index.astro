@@ -15,6 +15,7 @@ import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import { importAllPosts, sortedPosts } from '@queries/posts';
 import type { BaseNode } from '@queries/types';
+import NavLink from '~/components/navigation/NavLink.astro';
 
 export interface Props {
     content: BaseNode;
@@ -41,6 +42,7 @@ const posts = sortedPosts(nodes).slice(0, 3);
                     <Section>
                         <PageSubTitle slot="header">Latest posts</PageSubTitle>
                         <NodeList nodes={posts} />
+                        <NavLink href="/posts">See more posts in the blog</NavLink>
                     </Section>
                 </Page>
             </SiteMain>

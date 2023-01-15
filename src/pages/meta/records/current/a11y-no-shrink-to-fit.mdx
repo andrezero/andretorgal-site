@@ -1,0 +1,32 @@
+---
+layout: ../../../../templates/MetaPage.astro
+type: decision-record
+title: 'A11y: shrink to fit'
+tags:
+  - decision-current
+  - accessibility
+published: 2019 May 16
+---
+
+import Note from '@components/mdx/Note.astro';
+
+<Note type="old">
+
+This was previously adopted in 2019 for the [previous version of this website](/meta/records/rejected/react-static) and requires reviewing.
+
+</Note>
+
+## Details
+
+- not using `shrink-to-fit=no` anymore
+- only `<meta name="viewport" content="width=device-width, initial-scale=1" />`
+
+## Why
+
+- users can pinch to zoom and/or double tap
+
+## Read more
+
+- [shrink-to-fit 2019](https://www.scottohara.me/blog/2018/12/11/shrink-to-fit.html)
+- dropped by: The Guardian, Gov.uk, CSS Tricks, Reddit, Google Search
+- still kept by: New Yorker, Amazon, Twitter, Facebook

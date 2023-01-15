@@ -1,0 +1,115 @@
+---
+layout: ../../../templates/BlogPost.astro
+title: (re)Building my website with Astro + MDX + Preact
+description: Relaunching my website, again based on another Typescript SSG framework. Not React-Static anymore, not even React "at all". Introducing the magnificent Astro.
+tags:
+  - ssg
+  - astro
+  - mdx
+  - andretorgal-com
+published: Jan 16 2023
+---
+
+import Note from '@components/mdx/Note.astro';
+
+<Note type="construction">
+
+## Work in progress!
+
+**Mind your head! Mind the gap!**
+
+You are previewing the 2023 version of this site. It's nearly ready to go live, but meanwhile, please excuse me for the eventual glitches. There are still a few `404 Not Found!` and `Lorem ipsum` placeholders to address.
+
+</Note>
+
+## Backstory
+
+Previous version of the website, back from 2019, was also SSG but built with [React Static](/meta/records/rejected/react-static), which is meanwhile sponsor-less and in maintenance mode.
+
+Meanwhile, my website's core metrics have been degrading over the last 3 years and I could use the opportunity to dream up some exciting new features.
+
+After some [reflection about the (great) react-static + unified.js experience](/posts/2023-01/saying-goodbye-to-my-react-static-website) I am moving on to something newer, faster, better.
+
+## Why Astro?
+
+Is this is the static site generator I have _always_ been looking for?
+
+I have been having a great experience while helping friends build the [Button School website](https://buttonschool.com/) and it really delivers on some of the promises.
+
+### It is a great experience
+
+- Easy to setup, uncomplicated.
+- Sensible defaults but extensible.
+- Amazing documentation
+- Fast builds
+- Very fast development server
+
+### It meets all my requirements
+
+- :check: (extensible) Markdown & MDX support
+- :check: Fully SSG first
+- :check: with opt-in, micro client side _islands_
+- :check: with opt-in route pre-fetching support
+- :check: 100/100 Lighthouse performance
+- :check: SEO-friendly with canonical URLs / OpenGraph
+- :check: Sitemap support
+- :check: RSS Feed support
+
+Of course, there are always [some trade-offs](/meta/records/current/build-with-astro) to consider, but no deal breakers there.
+
+### The project looks very healthy
+
+I did chose the smaller community when I chose React Static. Kudos to [Tanner Linsley](https://tannerlinsley.com/), great work! But eventually React Static died out, and meanwhile its been 4 years :shocked:.
+
+I wanted to make sure the next iteration of this website doesn't run into the same oops, so I have been watching Astro's community for signs.
+
+And the signs are all good.
+
+First of, Astro is built on a solid, well supported, but also quite modern stack:
+
+It uses [vite]() as a compiler, famous for its approach
+
+>
+
+It's built around MDX available via Unified.js ecosystem. And [Unified.js is going to be around for a long time](/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time).
+
+Finally, the community looks very healthy, high energy, operating at high performance and with good governance.
+
+Just take a look at
+
+- [exploding showcase](https://astro.build/showcase) of awesome websites built with Astro, the best sign there could be
+- [impressive development pace](https://github.com/withastro/astro/commits/main?before=8c100a6fe6cc652c3799d1622e12c2c969f30510+420&branch=main&path%5B%5D=packages&path%5B%5D=astro&path%5B%5D=CHANGELOG.md&qualified_name=refs%2Fheads%2Fmain) since v0 to the recent v2
+- [growing number of integrations](https://astro.build/integrations/) and extensions
+- [comprehensive documentation](https://docs.astro.build/en/getting-started/), accessible, easy to use
+- [volume of issues closed](https://github.com/withastro/astro/issues)
+- [structured, transparent approach via RFCs](https://github.com/withastro/rfcs)
+- [high energy in discord sever](https://discord.com/invite/astro-community-700607091391594567)
+- [exciting community call videos](https://www.youtube.com/@astrodotbuild)
+
+Great dev experience. Fast. An SSG for the next decade.
+
+## Big kudos
+
+Congrats to all the people involved this! Also great to see the community building up.
+
+SSG is kicking ass.
+
+## Under the hood
+
+Astro uses [vite]() as a compiler.
+
+Astro has a neat plugin architecture and plenty of tools to plug in already. I am using the following:
+
+- [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/)
+- [@astrojs/image](https://docs.astro.build/en/guides/integrations-guide/mdx/)
+- [@astrojs/preact](https://docs.astro.build/en/guides/integrations-guide/mdx/)
+- [@astrojs/rss](https://docs.astro.build/en/guides/integrations-guide/mdx/)
+- [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/mdx/)
+
+## Why MDX?
+
+> MDX is a special flavor of Markdown that supports embedded JavaScript & JSX syntax. This unlocks the ability to [mix JavaScript and UI Components into your Markdown content](https://docs.astro.build/en/guides/markdown-content/#mdx-features) for things like interactive charts or alerts.
+
+Back in 2019 I took a good look at MDX but
+
+- [MDX Syntax Documentation](https://mdxjs.com/docs/what-is-mdx)

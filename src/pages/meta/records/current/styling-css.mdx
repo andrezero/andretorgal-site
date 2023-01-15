@@ -1,0 +1,32 @@
+---
+layout: ../../../../templates/MetaPage.astro
+type: decision-record
+title: 'Styling: css'
+tags:
+  - decision-current
+  - css
+  - css-modules
+  - astro
+published: 2019 May 16
+updated: 2023 Dec 20
+---
+
+## Decision: pure CSS, scoped by Astro
+
+CSS is awesome.
+
+Not a pun.
+
+### Why
+
+I want to use pure CSS as much as possible, but scoped as in "modules".
+
+With [Astro](/meta/records/current/build-with-astro) you get, out of the box:
+
+- zero config [PostCSS](https://postcss.org/)
+- absolutely scoped modules, you can't even use a `... > *:first-child` to override styles on children
+- ability to escape the scoped modules and affect some global styles where it makes sense
+
+Practical. No fuss.
+
+See implementation details in [Styling](/meta/docs/styling).

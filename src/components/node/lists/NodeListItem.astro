@@ -1,7 +1,7 @@
 ---
 import NodeDate from '@components/node/parts/NodeDate.astro';
 import type { BaseNode } from '@queries/types';
-import NodeMeta from '../parts/NodeMeta.astro';
+import TagLink from '../parts/TagLink.astro';
 
 export interface Props {
     node: BaseNode;
@@ -13,9 +13,15 @@ const { node } = Astro.props;
 <article>
     <header>
         <h3>
-            <a href={node.url}>{node.title}</a>
+            {
+                node.type === 'tag' ? (
+                    <TagLink tag={node.title}>{node.title}</TagLink>
+                ) : (
+                    <a href={node.url}>{node.title}</a>
+                )
+            }
         </h3>
-        <NodeDate size="s" node={node} />
+        {node.type !== 'tag' && <NodeDate size="s" node={node} />}
     </header>
     {
         node.description && (
@@ -24,7 +30,6 @@ const { node } = Astro.props;
             </>
         )
     }
-    <NodeMeta node={node} />
 </article>
 
 <style>

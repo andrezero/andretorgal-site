@@ -8,10 +8,5 @@ utf-8
 img
 currentcolor
 cs-secondary
-cs
-eslint
-regexp
-astrojs
-ssg
-Cloudfront
-Hanseo
+cs-primary
+cs-tertiary

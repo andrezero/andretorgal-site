@@ -1,0 +1,30 @@
+---
+layout: ../../../../templates/MetaPage.astro
+type: decision-record
+title: 'Content: Markdown with Unified.js + Remark + Rehype'
+tags:
+  - decision-rejected
+  - markdown
+  - mdx
+  - unified-js
+published: 2019 May 16
+---
+
+## Status
+
+Replaced by [Astro](/meta/records/current/build-with-astro) which pre-packages [Markdown](/tags/markdown) and [MDX](/tags/mdx) capabilities.
+
+**Note**: 4 years later I eventually wrote a blog post to celebrate [how big and relevant Unified.js has become](/src/pages/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time.md)
+
+## Why
+
+- modular library, many plugins
+- transforms to React
+- works in both directions
+- complete [working implementation](https://github.com/s-thom/website/blob/develop/src/components/MdRenderer/index.tsx)
+
+## Trade-offs
+
+- not written in typescript and no typings supplied for many plugins
+- incomplete/inconsistent docs
+- many repos, different authors

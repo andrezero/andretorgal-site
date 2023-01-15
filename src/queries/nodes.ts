@@ -5,5 +5,5 @@ import { globResultToArray } from './utils';
 
 export const importAllNodes = async (): Promise<BlogPost[]> =>
     globResultToArray<BlogPost>(
-        import.meta.glob<MarkdownInstance<BlogPost>>('../pages/posts/**/*.(md|mdx)'),
+        import.meta.glob<MarkdownInstance<BlogPost>>('../pages/**/*.(md|mdx)'),
     );

@@ -1,0 +1,104 @@
+---
+layout: ../../../templates/BlogPost.astro
+title: Saying goodbye to my React Static website.
+description: Relaunching my website with Astro, so writing down a word or two about the previous version, React Static, and the original "MDX" experience.
+tags:
+  - ssg
+  - react-static
+  - markdown
+  - mdx
+  - andretorgal-com
+published: Jan 12 2023
+---
+
+## Backstory
+
+My previous version of this website, back from 2019, was built with a [static site generator (SSG)](/tags/ssg). This was the first requirement for me in 2019 when selecting the language and framework to bring my site back to life.
+
+React Static is now in maintenance mode and I need to replace it with something more modern.
+
+Maybe you want to skip ahead, and read about how I am [building it again with Astro](/posts/2023-01/building-my-website-with-astro-mdx-preact).
+
+Or stay, and walk with me as I revisit the [decisions records](/meta/records) of 2019, and ask:
+
+- what still stands?
+- what goes away?
+- what else is needed?
+
+## SSG! Of course
+
+[SSG has been around since the early days](/posts/2019-06/static-site-generators-brief-history) and I believe it's the best tool for many types of websites, definitely for _content first_ use cases, such as search engine optimised content, media distribution, documentation, personal websites, ... many more.
+
+:thumbs-up: I was obviously going to stick to [SSG](/tags/ssg) in 2019 and there is no reason to change this now.
+
+## React Static was good, at the time
+
+Even if I entertained the idea, and played around with some classics like [Hugo](https://gohugo.io/) and [Jekyll](https://jekyllrb.com/), Typescript will always be _home_ to me. And a personal website should feel like home.
+
+Between the modern options, [React Static](/meta/records/rejected/react-static) seemed to be _one of the simple ones_, inline with [Eleventy](https://www.11ty.dev/), and as opposed to Gatsby, an eventual serious contender, that I eventually found about to be [a bit too complicated and rigid](/meta/records/rejected/gatsby).
+
+On the other hand, React Static was less opinionated about how content should be structured, modeled, and represented. And while it was simpler, it still allowed me to customise pretty much everything I ever thought of tweaking and rollout my own _frontmatter_ approach, rules, and models.
+
+Nevertheless. The project went down. A shame especially because it seems to have been [a victim of disruption by covid](https://github.com/react-static/react-static/discussions/1661).
+
+:rip: React Static. I am now using [Astro + preact to rebuild my website](/posts/2023-01/building-my-website-with-astro-mdx-preact.mdx).
+
+## Markdown love
+
+I had been entertaining the idea of basing my website out of simple text files for a _looooong_ time. Maybe because I've been a fan of plain text since the early days of [wiki on a stick](https://www.mediawiki.org/wiki/Manual:Wiki_on_a_stick). It actually hits me now that I might have originally ported my website to [Markdown](/tags/markdown) back in 2016? Maybe? :grin: `@todo: refresh this memory!`.
+
+Conclusion? Still the best support for documentation and personal publishing, and probably for many other use cases.
+
+Personally, my favorite medium to think and express myself, directly in the IDE in plain text. No database, no API, no CMS. Everything stored in Github [right next to the code](https://github.com/andrezero/andretorgal-site/tree/main/src/pages).
+
+:thumbs-up: No brainer. Did not change 4 year later.
+
+## Going the distance with MD(X) or...
+
+Since I am sometimes craving for some exciting half-broken experience, at the time I also decided to use [MDX](/tags/mdx), another content format, a mutation of [Markdown](https://tags/markdown) if you will, that allows you to also drop React components in the middle of plain text.
+
+But since at the time, literally around `mdx@1.0`, there were some limitation that triggered my concerns, I took the opportunity to explore a bit how the whole thing works, and tried my hand at wiring up some transformations myself, using some of the code of the Markdown/MDX ecosystem.
+
+### Turned out to be a really fun experience!
+
+Ended up "wiring up" a few libraries from the [unified-js](/tags/unified-js) ecosystem.
+
+Looking at the direct dependencies on my `package.json`, looks like I was able to put to good use a bunch of these beautiful micro packages.
+
+```
+rehype-autolink-headings
+rehype-highlight
+rehype-parse
+rehype-raw
+rehype-react
+rehype-slug
+remark
+remark-emoji
+remark-html
+remark-parse
+remark-rehype
+remark-strip-html
+remark-toc
+remark-unlink
+unified
+unist-util-filter
+unist-util-visit
+```
+
+Did you read that :-D ?
+
+:exploding: 4 years later, [MDX and unified-js ecosystem have come a long way](/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time.md). No more wiring up things. I am migrating the website to Astro, which already provides a great MDX integration, anyways.
+
+## Operations, performance, costs
+
+The build time with React Static never went over 1 minute. No complains, ever.
+
+:plus: I never automated this in the cloud. Was always running in my computer, but I want to use Github or Netlify to do that.
+
+:question: speaking of which. I might [change hosting from AWS to Netlify](/meta/records/pending/hosting-netlify-or-s3) has been hosted on S3/Cloudfront for almost 4 years, at around $2.50/month.
+
+Sadly, it has to go and [Astro is definitely the best choice in 2023](/meta/records/current/build-with-astro).
+
+## What's next
+
+Continue reading about [how I am now rebuilding the website with Astro](/posts/2023-01/building-my-website-with-astro-mdx-preact).

@@ -1,0 +1,32 @@
+---
+layout: ../../../../templates/MetaPage.astro
+type: decision-record
+title: 'Router: React Router'
+tags:
+  - decision-rejected
+  - react-router
+published: 2019 May 16
+---
+
+## Status
+
+Obsolete, since [React Static](/meta/records/rejected/react-static) was replaced with [Astro](/meta/records/current/build-with-astro).
+
+## Decision
+
+Remove `reach-router` (bundled with React Static) and replace it with `react-router`.
+
+## Why
+
+- `reach-router` _divitis_ is unacceptable
+
+## Trade-offs
+
+- because now using `react-router` instead, need to implement accessible routing by hand
+
+## Read more
+
+- `@reach/router` issues
+  - [provide a way to disable rendering `div` for Router](https://github.com/reach/router/issues/63)
+  - [provide a way to disable rendering `div` for Router](https://github.com/reach/router/issues/105)
+  - `react-static` interfering with `@reach/router` set focus, opened an [issue here](https://github.com/nozzle/react-static/issues/1147)

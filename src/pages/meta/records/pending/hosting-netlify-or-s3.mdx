@@ -1,0 +1,43 @@
+---
+layout: ../../../../templates/MetaPage.astro
+type: decision-record
+title: 'Hosting: Netlify or S3?'
+tags:
+  - decision-pending
+  - hosting
+published: 2022 Dec 22
+---
+
+import Note from '@components/mdx/Note.astro';
+
+<Note type="blog">
+
+I blogged about this when [saying migrating my website from React Static to Astro](posts/2023-01/saying-goodbye-to-my-react-static-website.md).
+
+</Note>
+
+## Context
+
+Since 2019 I have had this this website hosted on S3/Cloudfront at around $2.50/month.
+
+But Netlify provides an awesome developer experience with integrated zero config deploy. And - honestly - it would feel good to have my personal website extricated from the great giant. I am using 0.001% of AWS capabilities.
+
+## Status
+
+Pending ...
+
+- Netlify costs? is still the unknown
+- My motivation to deal with domain migrations? zero!
+
+## Details
+
+### Option Netlify
+
+- :starry-eyes: great experience
+- :fear: unknown cost
+- :tired: overhead: domain configuration
+
+### AWS S3
+
+- :happy: known cost: 2 bucks / month
+- :sad: terrible experience

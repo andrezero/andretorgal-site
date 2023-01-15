@@ -1,8 +1,10 @@
 ---
 layout: ../templates/MetaIndex.astro
 type: page
-title: Meta
+title: 'This website: Meta'
 description: These are the raw notes collected while building this website. Todos, issues, ideas, dependencies, strategies, decisions, and so on.
+tags:
+  - andretorgal-com
 updated: Dec 19 2022
 published: May 19 2019
 ---

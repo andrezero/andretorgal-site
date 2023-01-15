@@ -1,6 +1,7 @@
 ---
 import { importAllMeta } from '@queries/meta';
 import type { BaseNode } from '@queries/types';
+import PageSubTitle from '../page/PageSubTitle.astro';
 import NavLink from './NavLink.astro';
 
 export interface Props {
@@ -15,21 +16,27 @@ const pattern = new RegExp(`^${node.url}/[a-z-]+$`);
 
 const allNodes = scope ?? (await importAllMeta());
 const children = allNodes.filter(n => n.url.match(pattern));
+const show = !!children.length;
 ---
 
-<nav>
-    <ul>
-        {
-            children.map(child => (
-                <li>
-                    <NavLink href={child.url} inline>
-                        {child.title}
-                    </NavLink>
-                </li>
-            ))
-        }
-    </ul>
-</nav>
+{
+    show && (
+        <>
+            <PageSubTitle>In this section</PageSubTitle>
+            <nav>
+                <ul>
+                    {children.map(child => (
+                        <li>
+                            <NavLink href={child.url} inline>
+                                {child.title}
+                            </NavLink>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        </>
+    )
+}
 
 <style>
     nav ul {
