@@ -1,0 +1,42 @@
+---
+import type { BaseNode } from '@queries/types';
+import TagLink from './TagLink.astro';
+
+export type Props = {
+    node: BaseNode;
+    compact?: boolean;
+};
+
+const { node, compact } = Astro.props;
+const { tags } = node;
+
+const show = tags && tags.length;
+---
+
+{
+    show && (
+        <ul class:list={['tag-list', { compact }]}>
+            {tags.map(tag => (
+                <li class={`tag ${tag}`}>
+                    <TagLink tag={tag} />
+                </li>
+            ))}
+        </ul>
+    )
+}
+
+<style>
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--layout-unit);
+    }
+
+    .compact {
+        font-size: var(--t-type-size--1);
+    }
+
+    li {
+        display: inline;
+    }
+</style>

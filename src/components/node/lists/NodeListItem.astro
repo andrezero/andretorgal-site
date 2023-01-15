@@ -1,6 +1,7 @@
 ---
 import NodeDate from '@components/node/parts/NodeDate.astro';
 import type { BaseNode } from '@queries/types';
+import NodeTags from '../parts/NodeTags.astro';
 import TagLink from '../parts/TagLink.astro';
 
 export interface Props {
@@ -30,6 +31,7 @@ const { node } = Astro.props;
             </>
         )
     }
+    <NodeTags node={node} compact />
 </article>
 
 <style>

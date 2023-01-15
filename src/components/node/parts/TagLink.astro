@@ -10,6 +10,7 @@ const { tag } = Astro.props;
 
 <style>
     .tag {
+        display: inline-block;
         padding: 0 var(--layout-unit) var(--layout-shift);
         color: var(--scheme-bg);
         font-family: var(--t-type-family-alt);
@@ -17,6 +18,7 @@ const { tag } = Astro.props;
         background-color: var(--scheme-fg);
         border-radius: var(--radius-action);
         text-decoration: none;
+        min-width: min-content;
     }
 
     .tag::selection {

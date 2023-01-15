@@ -1,9 +1,11 @@
 ---
 import type { BaseNode } from '@queries/types';
 import { shortDate } from '@utils/date';
-import TagLink from './TagLink.astro';
+import NodeTags from './NodeTags.astro';
 
-export type Props = { node: BaseNode };
+export type Props = {
+    node: BaseNode;
+};
 
 const { node } = Astro.props;
 const { type = 'page', url, published, updated, tags } = node;
@@ -15,40 +17,32 @@ const show = publishedDate || (tags && tags.length);
 
 {
     show && (
-        <div>
-            <p class="published">
-                <span>This {type} was published</span>{' '}
+        <div class:list={{ published: !!publishedDate, updated: !!updatedDate }}>
+            <p>
+                <span>This {type} was</span>{' '}
                 {publishedDate && (
-                    <>
-                        on
+                    <span class="published">
+                        published on
                         <a href={url} class="node-permalink">
                             <time class="date" datetime={publishedDate.toISOString()}>
                                 {shortDate(publishedDate)}
                             </time>
                         </a>
-                    </>
+                    </span>
                 )}
-                {tags && tags.length && <span>under the following tags:</span>}
+                {updatedDate && (
+                    <span class="updated">
+                        {publishedDate && 'and'}
+                        last updated on
+                        <a href={url} class="node-permalink">
+                            <time class="date" datetime={updatedDate.toISOString()}>
+                                {shortDate(updatedDate)}
+                            </time>
+                        </a>
+                    </span>
+                )}
             </p>
-            {tags && tags.length && (
-                <ul class="tag-list">
-                    {tags.map(tag => (
-                        <li class={`tag ${tag}`}>
-                            <TagLink tag={tag} />
-                        </li>
-                    ))}
-                </ul>
-            )}
-            {updatedDate && (
-                <p class="updated">
-                    Last updated on
-                    <a href={url} class="node-permalink">
-                        <time class="date" datetime={updatedDate.toISOString()}>
-                            {shortDate(updatedDate)}
-                        </time>
-                    </a>
-                </p>
-            )}
+            <NodeTags node={node} />
         </div>
     )
 }
@@ -58,11 +52,14 @@ const show = publishedDate || (tags && tags.length);
         font-size: var(--t-type-size--1);
     }
 
+    p {
+        margin-bottom: var(--layout-gap);
+    }
+
     a {
         display: inline-flex;
     }
 
-    .published,
     ul,
     li {
         display: inline;

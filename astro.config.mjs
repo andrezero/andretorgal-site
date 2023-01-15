@@ -2,6 +2,7 @@ import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
+import remarkA11yEmoji from '@fec/remark-a11y-emoji';
 import { defineConfig } from 'astro/config';
 import remarkEmoji from 'remark-emoji';
 
@@ -15,7 +16,7 @@ import remarkEmoji from 'remark-emoji';
 export default defineConfig({
     site: 'https://andretorgal.com',
     markdown: {
-        remarkPlugins: [remarkEmoji],
+        remarkPlugins: [remarkEmoji, remarkA11yEmoji],
     },
     integrations: [
         preact(),

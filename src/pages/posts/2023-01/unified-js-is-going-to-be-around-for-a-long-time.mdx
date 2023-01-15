@@ -24,35 +24,41 @@ An example of this is reading a [Markdown](/tags/markdown) file into a JS variab
 
 > We also provide hundreds of packages to work on the trees in between.
 
-Yes, hundreds of little transformations, such as [add `target` and `rel` attributes to all external links](https://unifiedjs.com/explore/package/rehype-external-links/), or more complex ones, such as [generate a table of contents.](https://unifiedjs.com/explore/package/remark-toc/). Or render React
+Yes, hundreds of little transformations, such as [add `target` and `rel` attributes to all external links](https://unifiedjs.com/explore/package/rehype-external-links/), or more complex ones, such as [generate a table of contents.](https://unifiedjs.com/explore/package/remark-toc/).
 
 You can use them analyse the content, for instance for linting purposes. Strip content, re-arrange, re-format it.
 
 > You can build on the unified collective to make all kinds of interesting things.
 
+## An example
+
+Since this website is [built with Astro](/posts/2023-01/building-my-website-with-astro-mdx-preact), and because Astro uses the Unified.js ecosystem for all things Markdown and MDX, I added `remark-emoji` and `remark-a11y-emoji` to the [configuration](https://github.com/andrezero/andretorgal-site/blob/main/astro.config.mjs).
+
+And the build now replaces
+
+`:muscle:`
+
+with
+
+`<span role="img" aria-label="flexed biceps">💪</span>`
+
 ## The kudos
 
 The clever functional design, the rigor in principles, and patterns. You could tell that, even 4 years ago, that this was going to be around for a while.
 
-Not only that, the super professional management of the project(s) and community, has been allowing it to grow.
-
-Just look at how beautiful their website is nowadays.
+Not only that, the super professional management of the project(s) and community, has been allowing it to grow this fast and conquer such an important space in the industry.
 
 ![The unified-js-website is gorgeous](/media/blog/2023-01/unified-js-website.png)
 
-I am just ashamed here, that I am just consumer, a lurker, a fanboy, and not a contributor. The complexity and depth of these projects goes sometimes very _wooooosh_ over my head.
+I also have the feeling that this project, that claims to be ...
 
-I'll make sure I'll sponsor, that's it!
+> a collective
 
-## The community. Well, more kudos
-
-Finally, the community.
+... has a certain human substance, strong ethical vibes, a certain :heart: _I am not really sure_, but you know what I mean.
 
 > The unified collective is a federated system of organizations, consisting in turn of projects, governed by the team members steering them.
 
 ## Titus
-
-AS far
 
 The biggest kudos to [Titus](https://wooorm.com/) who I believe is _the_ origin of all this.
 
@@ -62,8 +68,8 @@ Their website now reads:
 
 Are you mind blown, yet?
 
-At the moment, Prettier, ESLint, MDX, and probably millions of websites and services out there - arguably ALL modern documentation websites - contain some unified code.
+At the moment, Prettier, ESLint, MDX, and probably millions of websites and services out there - arguably ALL modern documentation websites - contain some Unified.js code.
 
 ## How I use Unified.js
 
-I used it quite a bit while building the [previous version of this website](/posts/2023-01/saying-goodbye-to-my-react-static-website.md). Since then, I reach out for it quite often at work, usually to patch up deficiencies in [Webpack](https://webpack.js.org/) or [Rollup.js](https://rollupjs.org/) builds, as well as for source code generation use cases.
+I used it quite a bit while building the [previous version of this website](/posts/2023-01/saying-goodbye-to-my-react-static-website.md). Since then, I reach out for it often at work, usually to patch up deficiencies in [Webpack](https://webpack.js.org/) or [Rollup.js](https://rollupjs.org/) builds, as well as for source code generation use cases.
