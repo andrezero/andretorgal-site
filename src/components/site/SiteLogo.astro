@@ -8,7 +8,13 @@ const { autoSize } = Astro.props;
 const classNames = [{ auto: autoSize }];
 ---
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" class:list={classNames}>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 600 600"
+    class:list={classNames}
+    width="100"
+    height="100"
+>
     <circle cx="300" cy="300" r="275"></circle>
     <path
         class="moon"

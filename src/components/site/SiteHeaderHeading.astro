@@ -7,7 +7,10 @@ import SiteLogo from './SiteLogo.astro';
 <h1 class="title">
     <a href="/">
         <span>{SITE_TITLE}</span>
-        <picture>
+        <br />
+        <picture
+            aria-label="This website's logo. A bright white crescent moon fills out a black circle. A person is standing in front of the moon, in high contrast, facing sideways, looking up, with their arms crossed"
+        >
             <SiteLogo />
         </picture>
     </a>
@@ -41,7 +44,11 @@ import SiteLogo from './SiteLogo.astro';
         padding-right: var(--layout-shift);
     }
 
-    picture {
+    h1 br {
+        display: none;
+    }
+
+    h1 picture {
         display: inline-block;
     }
 
