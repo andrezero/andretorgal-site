@@ -22,7 +22,7 @@
 
 :root {
     --layout-col-1: calc(10rem + 10vw);
-    --layout-bi-col-1: 13rem;
+    --layout-bi-col-1: 15rem;
     --layout-bi-col-2: calc(10rem + 10vw);
     --layout-headroom: var(--t-space-xl);
     --layout-legroom: var(--t-space-xl);
