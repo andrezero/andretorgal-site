@@ -24,7 +24,7 @@ You are previewing the 2023 version of this site. It's nearly ready to go live, 
 
 ## Backstory
 
-Previous version of the website, back from 2019, was also SSG but built with [React Static](/meta/records/rejected/react-static), which is meanwhile sponsor-less and in maintenance mode.
+Previous version of the website, back from 2019, was also [SSG](/tags/ssg) but built with [React Static](/meta/records/rejected/react-static), which is meanwhile sponsor-less and in maintenance mode.
 
 Meanwhile, my website's core metrics have been degrading over the last 3 years and I could use the opportunity to dream up some exciting new features.
 
@@ -67,11 +67,9 @@ And the signs are all good.
 
 First of, Astro is built on a solid, well supported, but also quite modern stack:
 
-It uses [vite]() as a compiler, famous for its approach
+It uses [vite](https://vitejs.dev/) as a build orchestrator, famous for already [using ESM during development](https://vitejs.dev/guide/why.html), which noticeably speeds ups HRM. Also under the hood, [rollup.js](https://rollupjs.org/).
 
->
-
-It's built around MDX available via Unified.js ecosystem. And [Unified.js is going to be around for a long time](/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time).
+Astro is built around MDX available via Unified.js ecosystem. And [Unified.js is going to be around for a long time](/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time).
 
 Finally, the community looks very healthy, high energy, operating at high performance and with good governance.
 
