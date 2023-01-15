@@ -96,27 +96,3 @@
         --scheme-edge: var(--t-palette-black-3);
     }
 }
-
-a {
-    color: var(--scheme-a);
-    transition: color 0.1s, background-color 0.1s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    a {
-        transition: none;
-    }
-}
-
-a:hover {
-    color: var(--scheme-a-on);
-}
-
-a::selection {
-    color: var(--scheme-bg);
-    background-color: var(--scheme-a-on);
-}
-
-a:active {
-    color: var(--scheme-a-active);
-}

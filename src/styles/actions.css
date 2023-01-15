@@ -6,3 +6,47 @@ a,
 button {
     border-radius: var(--radius-action);
 }
+
+a {
+    color: var(--scheme-a);
+    transition: color 0.1s, background-color 0.1s;
+}
+
+[data-external] {
+    padding-right: var(--layout-shift);
+}
+
+[data-external]::after {
+    display: inline-block;
+    content: '⇲';
+    transform: rotate(-90deg) translateY(0.1em);
+    transition: all 0.1s;
+}
+
+a:hover {
+    color: var(--scheme-a-on);
+}
+
+a[data-external]:focus-visible::after,
+a[data-external]:hover::after {
+    transform: rotate(-90deg) translateX(0.2em);
+}
+
+a::selection {
+    color: var(--scheme-bg);
+    background-color: var(--scheme-a-on);
+}
+
+a:active {
+    color: var(--scheme-a-active);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    a {
+        transition: none;
+    }
+
+    [data-external]::after {
+        transition: none;
+    }
+}
