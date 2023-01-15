@@ -1,0 +1,8 @@
+:root {
+    --radius-action: 0.2em;
+}
+
+a,
+button {
+    border-radius: var(--radius-action);
+}

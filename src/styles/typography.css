@@ -22,10 +22,9 @@
 }
 
 :root {
-    --t-type-weight-base: 300;
-    --t-type-weight-medium: 400;
-    --t-type-weight-bold: 700;
-    --t-type-weight-alt-base: 300;
+    --t-type-weight-base: 400;
+    --t-type-weight-medium: 600;
+    --t-type-weight-bold: 800;
     --t-type-weight-alt-bold: 600;
     --t-type-weight-alt-black: 900;
     --t-type-height-compact: 1;
@@ -44,6 +43,16 @@
     font-family: 'ArialFallback';
     size-adjust: 108.5%;
     src: local('Arial');
+}
+
+body {
+    font-size: var(--t-type-size-0);
+    font-family: var(--t-type-family-base);
+    font-weight: var(--t-type-weight-base);
+    line-height: var(--t-type-height-base);
+    text-size-adjust: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 h1,
