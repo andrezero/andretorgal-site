@@ -2,6 +2,16 @@ import type { MarkdownInstance, MarkdownLayoutProps } from 'astro';
 
 export type GlobResult<T extends BaseNode> = Record<string, () => Promise<MarkdownInstance<T>>>;
 
+export type Link = {
+    url: string;
+    label: string;
+};
+
+export type Image = {
+    url: string;
+    alt: string;
+};
+
 export interface BaseNode {
     url: string;
     type: string;
@@ -10,9 +20,15 @@ export interface BaseNode {
     published: string;
     updated?: string;
     heroImage?: string;
-    shyImage?: string;
+    ogImage?: string;
+    thumbnail?: string;
     tags?: string[];
     featured?: boolean;
+    links: {
+        external: Link[];
+        internal: Link[];
+    };
+    images: Image[];
     [key: string]: unknown;
 }
 

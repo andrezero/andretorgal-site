@@ -6,6 +6,7 @@ import remarkA11yEmoji from '@fec/remark-a11y-emoji';
 import { defineConfig } from 'astro/config';
 import remarkEmoji from 'remark-emoji';
 
+import { autoImages } from './src/plugins/autoImages.mjs';
 import { externalLinks } from './src/plugins/externalLinks.mjs';
 
 // const p = () => (_ast, vfile) => {
@@ -18,7 +19,7 @@ import { externalLinks } from './src/plugins/externalLinks.mjs';
 export default defineConfig({
     site: 'https://andretorgal.com',
     markdown: {
-        remarkPlugins: [remarkEmoji, remarkA11yEmoji],
+        remarkPlugins: [remarkEmoji, remarkA11yEmoji, autoImages],
         rehypePlugins: [externalLinks],
     },
     integrations: [

@@ -25,7 +25,7 @@ export interface Props {
 }
 
 const { content: node } = Astro.props;
-const { heroImage, shyImage } = node;
+const { heroImage, thumbnail } = node;
 ---
 
 <Document>
@@ -43,7 +43,7 @@ const { heroImage, shyImage } = node;
                         <TopLine />
                         <div>
                             <div class="image">
-                                {shyImage ? <img src={shyImage} alt="" /> : <SiteLogo autoSize />}
+                                {thumbnail ? <img src={thumbnail} alt="" /> : <SiteLogo autoSize />}
                             </div>
                             <p>{node.description}</p>
                         </div>
