@@ -1,4 +1,4 @@
-const { ERROR } = require('../constants/severity.cjs');
+const { ERROR, OFF } = require('../constants/severity.cjs');
 
 const importOrderRules = require('./rules/_import-order.cjs');
 const typescriptRules = require('./rules/typescript.cjs');
@@ -25,6 +25,7 @@ const overrides = [
             ...mdxRules,
             // modules
             'react/jsx-filename-extension': [ERROR, { extensions: ['.mdx'] }],
+            'react/jsx-indent-props': [OFF],
         },
     },
 ];

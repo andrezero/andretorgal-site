@@ -1,5 +1,7 @@
 // const { ERROR } = require('../constants/severity.cjs');
 
+const { OFF } = require('../constants/severity.cjs');
+
 const overrides = [
     {
         files: ['**/*.astro'],
@@ -19,6 +21,7 @@ const overrides = [
         rules: {
             // X 'astro/no-conflict-set-directives': ERROR,
             // X 'astro/no-unused-define-vars-in-style': ERROR,
+            'react/jsx-indent-props': [OFF],
         },
     },
     {

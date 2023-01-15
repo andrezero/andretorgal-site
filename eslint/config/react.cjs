@@ -1,4 +1,4 @@
-const { ERROR } = require('../constants/severity.cjs');
+const { ERROR, OFF } = require('../constants/severity.cjs');
 
 const reactRules = require('./rules/react.cjs');
 
@@ -27,6 +27,7 @@ const overrides = [
             ...reactRules,
             // modules
             'react/jsx-filename-extension': [ERROR, { extensions: ['.tsx'] }],
+            'react/jsx-indent-props': [OFF],
         },
     },
 ];
