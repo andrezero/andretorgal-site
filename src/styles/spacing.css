@@ -31,6 +31,7 @@
     --layout-gap: var(--t-space-xs);
     --layout-unit: var(--t-space-2xs);
     --layout-shift: 0.1em;
+    --layout-shift-2x: 0.2em;
     --layout-shift-fixed: 2px;
     --layout-unshift: -0.1em;
     --layout-gutter: var(--t-space-m);
@@ -50,13 +51,14 @@
     }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 1060px) {
     :root {
         --layout-headroom: var(--t-space-m);
         --layout-legroom: var(--t-space-3xl);
         --layout-pause: var(--t-space-xl);
         --layout-space: var(--t-space-xl);
-        --layout-gap: var(--t-space-m);
+        --layout-gap: var(--t-space-s);
+        --layout-unit: var(--t-space-xs);
         --layout-gutter: var(--t-space-xl-2xl);
         --layout-gutter-min: var(--t-space-l);
         --layout-border-thin: calc(2 * var(--layout-shift-fixed));

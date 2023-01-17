@@ -1,0 +1,115 @@
+---
+layout: ../../../templates/MetaPage.astro
+type: page
+title: 'My website: Responsive images'
+description: Image generation is handled by `@astrojs/image`, wrapped in a custom component + some hacks for more detailed content and better semantics, and the image optimisation is carefully synchronised with the layout. Aspect ratio awareness is mandatory to eliminate CLS.
+tags:
+  - andretorgal-com
+  - visual-design
+published: 2023 Jan 17
+---
+
+**Note:** Because things are very responsive and fluid around here:
+
+- [My website: Layout](/meta/docs/layout)
+- [My website: Typography](/meta/docs/typography) (fluid scale)
+- [My website: Space scale](/meta/docs/styling) (fluid scale)
+
+## Content and semantics
+
+We wrapped the Astro default component with our `<Image>` implementation.
+
+Features added:
+
+- add `<figure>` and `<figcaption>` semantics
+- provide content for the image caption
+- provide an attribution for the caption (example below)
+- select different profiles (default, hero, ...)
+
+The resulting HTML
+
+```
+<figure>
+    <span>
+        <span style="padding-top:62.142857142857146%"></span>
+        <AstroImage alt={alt} src={...} />
+    </span>
+    <figcaption class="cs-primary astro-DA36CKTJ">
+        {image title}
+        <span>
+            {image attributiom}
+            <a data-external href="{attrbution url}">Visit site</a>
+        </span>
+    </figcaption>
+</figure>
+```
+
+## Eliminating CLS
+
+Images always take more time to load than the rest of the content. This causes [CLS](https://web.dev/cls/) which impacts usability of the page negatively, as things shift around while it loads, and may deteriorate SEO ranking.
+
+At build time we always know the width and height of the image, curtesy of the underlying `@astrojs/image` integration so we can set a proportional height, through the [padding-top + percentage technique](https://css-tricks.com/aspect-ratio-boxes/) that, no matter the screen size, reserves the exact space needed for the image.
+
+Because this doesn't work for remote images, I am passing the image's width and height - :skull: hack!! :skull: - through the markdown alt string.
+
+```md
+![/w=512&h=344/ alt](src 'title')
+```
+
+I also made `width` and `height` mandatory. If they're not supplied the build crashes with `Please provide /w=___&h=___/ for this remote image: https://...`
+
+## Example
+
+Code:
+
+```md
+![Photo of wall with stickers](./images/example.jpg 'Have a nice day, beautiful decay! // Photo by Ann H https://www.pexels.com/@ann-h-45017/')
+```
+
+Result
+
+![Photo of wall with stickers](./images/example.jpg 'Have a nice day, beautiful decay! // Photo by Ann H https://www.pexels.com/@ann-h-45017/')
+
+:information_source: If you delete the image, or block the URL in the browser developer tools, the space is preserved.
+
+## Image profiles
+
+Because Image generation is handled by `@astrojs/image` we need to specify which resolutions we want to generate.
+
+This depends on how the image is going to be displayed by the website's layout. We want big resolutions for hero images, and want the browser to select those depending on the viewport width.
+
+But we want smaller and, eventually, a single size, for things like thumbnails.
+
+### Hero profile
+
+:construction: later
+
+### Default profile
+
+The content column layout is never wider than ~700px so we are generating images only at two resolutions:
+
+- `width: 700px` - loaded on all small screens
+- `width: 1400px` - loaded if the screen is wider than 1200 pixels
+
+This should speed up download on all mobile devices.
+
+:information_source: If you resize the screen above/below 1200 and then click `open image in new tab`, you will get the different resolutions.
+
+## Image formats
+
+Out of the box `@astrojs/image` is generating `jpg`, `avif`, and `webp` versions (x2 resolutions). A simplistic look at [can I use avif](https://caniuse.com/?search=avif) vs [can I use webp](<[avif](https://caniuse.com/?search=webp)>) indicates that we've got only Microsoft Edge to gain or loose.
+
+Since `avif` yields more compression (~30% smaller files) I'll drop the `webp` format.
+
+```
+-rw-r--r--  461K  dist/assets/file....1400-size.jpg
+-rw-r--r--  126K  dist/assets/file....700-ize.jpg
+-rw-r--r--  433K  dist/assets/file....1400-ize.webp
+-rw-r--r--  123K  dist/assets/file....700-ize.webp
+-rw-r--r--  294K  dist/assets/file....1400-ize.avif
+-rw-r--r--  93K  dist/assets/file....700-ize.avif
+```
+
+All browsers get small files, except Edge. Faster downloads :sparkles: better experience.
+
+Also, my builds are sped up because smaller / less files to output and upload. :evergreen_tree: Less energy consumption as well.

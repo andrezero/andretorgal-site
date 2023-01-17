@@ -28,6 +28,7 @@ const { title } = Astro.props;
     header h2 {
         font-size: var(--t-type-size-3);
         line-height: var(--t-type-size-7);
+        padding-top: var(--layout-shift-2x);
     }
 
     nav {
@@ -47,7 +48,7 @@ const { title } = Astro.props;
         }
     }
 
-    @media screen and (min-width: 960px) {
+    @media screen and (min-width: 1060px) {
         nav {
             font-size: var(--t-type-size-1);
             line-height: var(--t-type-size-4);

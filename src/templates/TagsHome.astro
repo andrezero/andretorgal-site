@@ -25,7 +25,7 @@ const TOP_TAGS_COUNT = 10;
 
 const sortedTags = await importAllTags();
 const topTags = sortedTags.slice(0, TOP_TAGS_COUNT);
-const moreTags = sortedTags.slice(TOP_TAGS_COUNT);
+const moreTags = sortedTags.filter(t => t.count > 1).slice(TOP_TAGS_COUNT);
 ---
 
 <Document>
@@ -43,7 +43,9 @@ const moreTags = sortedTags.slice(TOP_TAGS_COUNT);
                     {
                         !!moreTags.length && (
                             <Section>
-                                <PageSubTitle slot="header">Other tags</PageSubTitle>
+                                <PageSubTitle slot="header" slot="header">
+                                    Other tags
+                                </PageSubTitle>
                                 <TagList tags={moreTags} />
                             </Section>
                         )

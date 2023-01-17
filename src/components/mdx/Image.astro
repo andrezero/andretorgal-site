@@ -1,32 +1,101 @@
 ---
 import { Picture } from '@astrojs/image/components';
+import { defaultProfile } from './image/profiles';
+import type { ImageProps } from './image/types';
+import { resolveImageProps } from './image/utils';
 
-export interface Props {
-    url: string;
-    title?: string;
-}
+export type Props = ImageProps;
 
-const { url, title } = Astro.props;
+const { alt, title, attribution, src, width, height } = resolveImageProps(Astro.props);
+
+const aspectRatio = `${width}:${height}`;
+const paddingTop = `${(height / width) * 100}%`;
+
+const showLabel = !!title || !!attribution;
 ---
 
-<figure>
-    <Picture
-        src={url}
-        alt={title || ''}
-        widths={[200, 400, 800]}
-        sizes="(max-width: 800px) 100vw, 800px"
-        fit="cover"
-        position="center"
-        aspectRatio="3358:1724"
-    />
-    {title && <figcaption>{title}</figcaption>}
+<figure class="picture">
+    <span class="frame">
+        <span style={{ 'padding-top': paddingTop }}></span>
+        <Picture src={src} alt={alt || title || ''} aspectRatio={aspectRatio} {...defaultProfile} />
+    </span>
+    {
+        showLabel && (
+            <figcaption class="cs-primary">
+                {title}
+                {attribution && (
+                    <span>
+                        {attribution.text}
+                        {attribution?.link && (
+                            <a data-external href={attribution.link}>
+                                Visit site
+                            </a>
+                        )}
+                    </span>
+                )}
+            </figcaption>
+        )
+    }
 </figure>
 
 <style>
-    figure {
+    .picture {
         display: flex;
         flex-direction: column;
-        gap: var(--layout-unit);
-        margin: var(--layout-unit) 0;
+    }
+
+    .frame {
+        display: flex;
+        position: relative;
+    }
+
+    .frame::before {
+        z-index: 0;
+        position: absolute;
+        display: block;
+        content: ' ';
+        width: 100%;
+        height: 100%;
+        border: var(--layout-shift) solid var(--scheme-muted);
+    }
+
+    .frame span {
+        display: block;
+        width: 1px;
+        margin-left: -1px;
+        height: 0;
+        float: left;
+    }
+
+    figcaption {
+        display: flex;
+        flex-direction: column;
+        background: var(--scheme-muted);
+        padding: var(--layout-shift-2x);
+        align-self: start;
+    }
+
+    figcaption span {
+        padding-top: var(--layout-shift-2x);
+        font-size: var(--t-type-size--2);
+        font-style: italic;
+    }
+</style>
+
+<style is:global>
+    .picture picture {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        min-height: 100%;
+    }
+
+    .picture picture img {
+        width: 100%;
+        min-height: 100%;
+        height: 100%;
+        color: var(--scheme-fg);
+        font-size: var(--t-type-size--1);
+        background-color: transparent;
     }
 </style>

@@ -18,10 +18,18 @@ const overrides = [
         parserOptions: {
             extraFileExtensions: ['astro', 'mdx'],
         },
+        globals: {
+            Abstract: false,
+            Audio: false,
+            Note: false,
+            Picture: false,
+            Year: false,
+        },
         rules: {
             // X 'astro/no-conflict-set-directives': ERROR,
             // X 'astro/no-unused-define-vars-in-style': ERROR,
             'react/jsx-indent-props': [OFF],
+            'react/jsx-no-undef': [OFF],
         },
     },
     {

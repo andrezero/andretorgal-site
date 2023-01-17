@@ -15,37 +15,39 @@ The done stuff is on the [changelog](/meta/project/changelog) page.
 
 ## Fixes
 
-- why is this page meta/records/pending/hosting-netlify-or-s3.mdx not listed under http://localhost:3000/meta/records/pending?
+- why is this page `/meta/records/pending/hosting-netlify-or-s3.mdx` not listed under `/meta/records/pending`?
+
+## Abstract component
 
 ## UI: improvements
 
-- UI: Content component
+- UI: Content components
+  - `<Abstract>` component. see https://github.com/astro-community/md
+    - extracts
   - `<Hero>`
-  - `<ImageCaption>`
   - `<Blockquote>`
-  - `<Note type="old">`
-  - `<Tag>`
+    - accepts a title before the quote (before `\\`)
+    - accepts an attribution after the quote (after `// `)
+    - the attribution can contain a link
+  - `<Note type="old|construction|blog|tags|meta|links">`
+
+## Dev experience
+
+- DX: author all page links with extension (so that IDE can navigate naturally); strip them via remark plugin
 
 ## UI: footer
 
 - footer layout is not great
 
-## Abstract component
-
-- UI: Abstract component. see https://github.com/astro-community/md
-
-## Port `tag/**` content
-
-- Feature: featured tags
-- Feature: featured content in tag listing
-- Feature: top tags
-- Feature: latest tags
-- UI: navigation for `tags/**` section header - featured, top, latest (stretch)
-- UI: tag styling
-
 ## Docs
 
 - Content: docs / components / ...
+- Content: docs / Astro setup
+  - VS Code setup
+  - project layout
+  - extensions used
+  - custom remark plugins
+  - images with zero layout shift
 
 ## Migration
 
@@ -55,6 +57,16 @@ The done stuff is on the [changelog](/meta/project/changelog) page.
 - Ops: S3 redirects (required to migrate some url schemes) https://primitive.dev/blog/aws-s3-redirects/
 - Accessibility: audit and tweaks
 
+## Feature: Tags
+
+- UI: navigation for `tags/**` section header - featured, top, latest (stretch)
+- UI: tag styling
+- Feature: featured tags
+- Feature: featured content in tag listing
+- Feature: top tags
+- Feature: latest tags
+- Feature: related content (same tags)
+
 ## Feature: Links
 
 - Content: Add links to existing posts
@@ -62,6 +74,7 @@ The done stuff is on the [changelog](/meta/project/changelog) page.
 - Feature: Link page
 - Feature: Links home
 - Feature: navigation in links section
+- Feature: related content same links
 
 ## Feature: Experiments
 
@@ -82,7 +95,9 @@ The done stuff is on the [changelog](/meta/project/changelog) page.
   - benchmark first, interesting to document
   - see https://docs.astro.build/en/guides/integrations-guide/prefetch/
 - UI: embeds:
-- see https://github.com/astro-community/astro-embed/tree/main/packages/astro-embed-youtube
+  - Youtube
+  - Twitter (not embed, just quote)
+  - see https://github.com/astro-community/astro-embed/tree/main/packages/astro-embed-youtube
 - SEO: audit and tweaks
   - see https://github.com/astro-community/astro-seo
 - UI: navigation: `blog/**`: section footer: related
@@ -93,19 +108,26 @@ The done stuff is on the [changelog](/meta/project/changelog) page.
 - Feature: footnotes
 - Feature: link to source file on some content
 - Feature: search
-- Feature: optimised images
+
+## MD(X) examples
+
+- [rehype-autolink-headings](https://github.com/rehypejs/rehype-autolink-headings)
+- [remark-directive](https://www.npmjs.com/package/remark-directive)
+- [reading-time](https://github.com/NekoChanTaiwan/astro-blog/blob/ee8fb7e852b4fda02e1639e3f8a5bed3dc978895/plugins/remark-reading-time.ts)
+- [twemoji](https://github.com/NekoChanTaiwan/astro-blog/blob/ee8fb7e852b4fda02e1639e3f8a5bed3dc978895/plugins/rehype-twemoji.ts)
+- [astro-imagetools](https://github.com/RafidMuhymin/astro-imagetools)
 
 ## Link dump
 
-- [ ] [solid](https://solid.inrupt.com/)
+- [solid](https://solid.inrupt.com/)
 
-  - [ ] [linked-data-developer-experience](https://ruben.verborgh.org/blog/2018/12/28/designing-a-linked-data-developer-experience/)
+  - [linked-data-developer-experience](https://ruben.verborgh.org/blog/2018/12/28/designing-a-linked-data-developer-experience/)
 
-- [ ] svg trickery
+- svg trickery
 
-  - [ ] via [postcss](https://github.com/jonathantneal/postcss-write-svg)
+  - via [postcss](https://github.com/jonathantneal/postcss-write-svg)
 
-- [ ] Accessibility: [On demand announcements](https://github.com/Heydon/on-demand-live-region)
-- [ ] Micro formats
-- [ ] [Micropub](https://indieweb.org/Micropub) + [micropub-express](https://github.com/voxpelli/node-micropub-express) + [Micropub](https://micropub.rocks/)
-- [ ] [Web mentions](https://webmention.io/)
+- Accessibility: [On demand announcements](https://github.com/Heydon/on-demand-live-region)
+- Micro formats
+- [Micropub](https://indieweb.org/Micropub) + [micropub-express](https://github.com/voxpelli/node-micropub-express) + [Micropub](https://micropub.rocks/)
+- [Web mentions](https://webmention.io/)

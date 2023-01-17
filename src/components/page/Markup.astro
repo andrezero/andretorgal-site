@@ -19,66 +19,70 @@ const show = Astro.slots.has('default');
 </style>
 
 <style is:global>
-    .markup h2 {
+    .markup > h2 {
         margin: var(--layout-gap) 0 var(--layout-unit);
     }
 
-    .markup h3 {
+    .markup > h3 {
         margin: calc(2 * var(--layout-unit)) 0 var(--layout-unit);
     }
 
-    .markup h4 {
+    .markup > h4 {
         margin: var(--layout-unit) 0 var(--layout-unit);
     }
 
-    .markup p {
+    .markup > p {
         margin: 0 0 var(--layout-unit);
     }
 
-    .markup .large {
+    .markup > .large {
         font-size: var(--t-type-size-1);
         margin: 0 0 var(--layout-unit);
     }
 
-    .markup ul {
+    .markup > ul {
         margin: 0 0 0 var(--layout-gap);
     }
 
-    .markup li {
+    .markup > ul > li {
         list-style-type: square;
     }
 
-    .markup h4 {
+    .markup > h4 {
         margin: var(--layout-unit) 0 var(--layout-unit);
     }
 
-    .markup img {
-        margin: var(--layout-gap) 0 var(--layout-gap);
+    .markup > pre {
+        margin: 0 0 var(--layout-unit);
     }
 
-    .markup iframe {
+    .markup > .picture {
+        margin: 0 0 var(--layout-unit);
+    }
+
+    .markup > iframe {
         margin: var(--layout-unit) 0 var(--layout-gap);
     }
 
-    .markup iframe + div {
+    .markup > iframe + div {
         display: none;
     }
 
-    .markup hr {
+    .markup > hr {
         width: 100%;
         margin: var(--layout-gap) 0;
         border: none;
         border-bottom: var(--layout-border-thin) solid var(--scheme-edge);
     }
 
-    .markup blockquote {
+    .markup > blockquote {
         position: relative;
         font-style: italic;
         font-size: var(--t-type-size-1);
         margin: var(--layout-gap) 0 var(--layout-gap) var(--layout-space);
     }
 
-    .markup blockquote::before {
+    .markup > blockquote::before {
         position: absolute;
         display: block;
         height: 0;

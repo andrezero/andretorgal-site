@@ -9,13 +9,28 @@ published: 2019 May 20
 updated: 2023 Jan 08
 ---
 
-import Year from '@components/mdx/Year.astro';
-
 Tasks from [my website](/about)'s [backlog](/meta/project/backlog), eventually done (or archived).
 
 Some notes about previous versions of
 
 <Year y="2023" />
+
+## UI: Semantic MD images with zero layout shift
+
+- Feature: optimised images
+- UI: `<Image>` component: CLS prevention + semantic figure/caption
+  - auto-detects aspect ratio of mdx images
+  - plus custom `autoImages` plugin:
+    - allows manually providing aspect ratio for external images
+    - accepts an attribution note in the title (after `// `)
+    - the attribution can contain a link
+- UI: setup `astro-m2dx`
+  - rewrite img `src` to enable co-located images (:heart_eyes: direct preview in IDE!)
+  - map MDX `img` to our `<Image>` component
+  - provide auto imports for common `components/mdx/*`
+- Content: migrate images to be co-located with markdown files
+- Content: migrate alts to title, and provide proper alts everywhere
+- Benchmark: 131 page(s) built in 17.70s (+35 images)
 
 ## UI: Markdown improvements
 
