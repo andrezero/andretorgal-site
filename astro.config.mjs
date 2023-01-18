@@ -3,20 +3,27 @@ import mdx from '@astrojs/mdx';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import remarkA11yEmoji from '@fec/remark-a11y-emoji';
-import m2dx from 'astro-m2dx';
 import { defineConfig } from 'astro/config';
+import path from 'path';
 import remarkEmoji from 'remark-emoji';
 
 import { autoImages } from './src/plugins/autoImages.mjs';
+import { autoImports } from './src/plugins/autoImports.mjs';
+import { customComponents } from './src/plugins/customComponents.mjs';
 import { externalLinks } from './src/plugins/externalLinks.mjs';
+import { relativeImages } from './src/plugins/relativeImages.mjs';
 
-/** @type {import('astro-m2dx').Options} */
-const m2dxOptions = {
-    autoImports: true,
-    autoImportsFailUnresolved: true,
-    unwrapImages: true,
-    relativeImages: true,
-    exportComponents: true,
+const autoImportsConfig = {
+    optAutoImportsFailUnresolved: true,
+    autoImportFile: path.resolve('./src/autoImports.ts'),
+};
+
+const customComponentsConfig = {
+    componentsFile: path.resolve('./src/customComponents.ts'),
+};
+
+const relativeImagesConfig = {
+    componentsFile: path.resolve('./src/customComponents.ts'),
 };
 
 export default defineConfig({
@@ -30,7 +37,14 @@ export default defineConfig({
         }),
     ],
     markdown: {
-        remarkPlugins: [remarkEmoji, remarkA11yEmoji, autoImages, [m2dx, m2dxOptions]],
+        remarkPlugins: [
+            remarkEmoji,
+            remarkA11yEmoji,
+            autoImages,
+            [autoImports, autoImportsConfig],
+            [customComponents, customComponentsConfig],
+            [relativeImages, relativeImagesConfig],
+        ],
         rehypePlugins: [externalLinks],
     },
     extendDefaultPlugins: true,
