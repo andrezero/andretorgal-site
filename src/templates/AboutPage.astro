@@ -3,20 +3,20 @@ import Body from '@components/document/Body.astro';
 import Document from '@components/document/Document.astro';
 import Head from '@components/document/Head.astro';
 import Layout from '@components/document/Layout.astro';
+import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
 import NodeMeta from '@components/node/parts/NodeMeta.astro';
 import Article from '@components/page/Article.astro';
 import ArticleHeader from '@components/page/ArticleHeader.astro';
 import Divider from '@components/page/Divider.astro';
 import Markup from '@components/page/Markup.astro';
 import PageHero from '@components/page/PageHero.astro';
+import Section from '@components/page/Section.astro';
+import TopLine from '@components/page/TopLine.astro';
 import SiteSectionHeader from '@components/site/about/SiteSectionHeader.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
-import SiteMain from '@components/site/SiteMain.astro';
-
-import Section from '@components/page/Section.astro';
-import TopLine from '@components/page/TopLine.astro';
 import SiteLogo from '@components/site/SiteLogo.astro';
+import SiteMain from '@components/site/SiteMain.astro';
 import type { BaseNode } from '@queries/types';
 
 export interface Props {
@@ -41,12 +41,20 @@ const { heroImage, thumbnail } = node;
                     </ArticleHeader>
                     <Section>
                         <TopLine />
-                        <div>
-                            <div class="image">
-                                {thumbnail ? <img src={thumbnail} alt="" /> : <SiteLogo autoSize />}
-                            </div>
-                            <p>{node.description}</p>
-                        </div>
+                        <header>
+                            {
+                                thumbnail && (
+                                    <div class="image">
+                                        {thumbnail === 'logo' ? (
+                                            <SiteLogo autoSize />
+                                        ) : (
+                                            <img src={thumbnail} />
+                                        )}
+                                    </div>
+                                )
+                            }
+                            <NodeAbstract node={node} />
+                        </header>
                         <Section>
                             <Divider />
                             <Markup><slot /></Markup>
@@ -64,7 +72,7 @@ const { heroImage, thumbnail } = node;
 </Document>
 
 <style>
-    div {
+    header {
         display: flex;
         flex-direction: column;
         align-items: start;
@@ -74,21 +82,19 @@ const { heroImage, thumbnail } = node;
     }
 
     .image {
-        height: 15em;
         min-width: 100%;
         object-fit: cover;
     }
 
     @media screen and (min-width: 620px) {
-        div {
+        header {
             flex-direction: row;
         }
 
         .image {
-            min-width: auto;
-            min-width: 10em;
-            max-width: 10em;
-            height: 10em;
+            min-width: 12em;
+            max-width: 12em;
+            height: 12em;
             border-radius: 100%;
         }
     }

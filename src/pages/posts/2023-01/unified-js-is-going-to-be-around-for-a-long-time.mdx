@@ -2,13 +2,18 @@
 layout: ../../../templates/BlogPost.astro
 type: post
 title: Unified.js is going to be around for a long time
-description: This library is powering your linter, prettier, this website, pretty much anything using MDX. It's becoming ubiquitous, it might one day be running in your fridge.
 tags:
   - mdx
   - markdown
   - unified-js
 published: 2023 Jan 14
 ---
+
+<Abstract>
+
+This library is powering your linter, prettier, this website, pretty much anything using MDX. It's becoming ubiquitous, it might one day be running in your fridge.
+
+</Abstract>
 
 ## Context
 
@@ -32,15 +37,16 @@ You can use them analyse the content, for instance for linting purposes. Strip c
 
 ## An example
 
-Since this website is [built with Astro](/posts/2023-01/building-my-website-with-astro-mdx-preact), and because Astro uses the Unified.js ecosystem for all things Markdown and MDX, I added `remark-emoji` and `remark-a11y-emoji` to the [configuration](https://github.com/andrezero/andretorgal-site/blob/main/astro.config.mjs).
+Since this website is [built with Astro](/posts/2023-01/building-my-website-with-astro-mdx-preact), and because Astro uses the Unified.js ecosystem for all things Markdown and MDX, I added `remark-emoji` to the [configuration](https://github.com/andrezero/andretorgal-site/blob/main/astro.config.mjs).
 
-And the build now replaces
+And the build now replaces `:muscle:` by 💪!
 
-`:muscle:`
+Or even better, by adding `remark-a11y-emoji`, it replaces `:muscle:` by
 
-with
 
-`<span role="img" aria-label="flexed biceps">💪</span>`
+```
+<span role="img" aria-label="flexed biceps">💪</span>
+```
 
 ## The kudos
 

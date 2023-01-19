@@ -1,16 +1,19 @@
 ---
+import Markdown from '@components/page/Markdown.astro';
 import type { BaseNode } from '@queries/types';
 
 export type Props = { node: BaseNode };
 
 const { node } = Astro.props;
-const { description } = node;
+const { description, abstract } = node;
+
+const content = abstract?.markdown || description;
 ---
 
 {
-    description && (
+    content && (
         <div>
-            <p>{description}</p>
+            <Markdown content={content} />
         </div>
     )
 }

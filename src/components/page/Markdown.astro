@@ -1,0 +1,14 @@
+---
+import { markdown } from '@astropub/md';
+import Markup from './Markup.astro';
+
+export interface Props {
+    content?: string | undefined;
+}
+
+const { content } = Astro.props;
+
+const markup = content && markdown(content);
+---
+
+{markup && <Markup>{markup}</Markup>}

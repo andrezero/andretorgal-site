@@ -3,6 +3,7 @@ import Body from '@components/document/Body.astro';
 import Document from '@components/document/Document.astro';
 import Head from '@components/document/Head.astro';
 import Layout from '@components/document/Layout.astro';
+import NavLink from '@components/navigation/NavLink.astro';
 import NodeList from '@components/node/lists/NodeList.astro';
 import Markup from '@components/page/Markup.astro';
 import Page from '@components/page/Page.astro';
@@ -15,7 +16,6 @@ import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import { importAllPosts, sortedPosts } from '@queries/posts';
 import type { BaseNode } from '@queries/types';
-import NavLink from '~/components/navigation/NavLink.astro';
 
 export interface Props {
     content: BaseNode;

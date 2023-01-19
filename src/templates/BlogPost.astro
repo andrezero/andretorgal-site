@@ -4,23 +4,22 @@ import Document from '@components/document/Document.astro';
 import Head from '@components/document/Head.astro';
 import Layout from '@components/document/Layout.astro';
 import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
+import NodeDate from '@components/node/parts/NodeDate.astro';
 import NodeMeta from '@components/node/parts/NodeMeta.astro';
 import NodePreviousNext from '@components/node/parts/NodePreviousNext.astro';
+import NodeTags from '@components/node/parts/NodeTags.astro';
 import Article from '@components/page/Article.astro';
 import ArticleHeader from '@components/page/ArticleHeader.astro';
 import Divider from '@components/page/Divider.astro';
 import Markup from '@components/page/Markup.astro';
 import PageHero from '@components/page/PageHero.astro';
+import Section from '@components/page/Section.astro';
 import SiteSectionHeader from '@components/site/blog/SiteSectionHeader.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
-
-import Section from '@components/page/Section.astro';
 import { findPreviousAndNextPosts, importAllPosts, sortedPosts } from '@queries/posts';
 import type { BlogPost } from '@queries/types';
-import NodeDate from '~/components/node/parts/NodeDate.astro';
-import NodeTags from '~/components/node/parts/NodeTags.astro';
 
 export interface Props {
     content: BlogPost;

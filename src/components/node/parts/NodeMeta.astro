@@ -5,43 +5,48 @@ import NodeTags from './NodeTags.astro';
 
 export type Props = {
     node: BaseNode;
+    noDate?: boolean;
 };
 
-const { node } = Astro.props;
+const { node, noDate } = Astro.props;
 const { type = 'page', url, published, updated, tags } = node;
 
-const publishedDate = published && new Date(published);
-const updatedDate = updated && new Date(updated);
-const show = publishedDate || (tags && tags.length);
+const publishedDate = !noDate && !!published && new Date(published);
+const updatedDate = !noDate && !!updated && new Date(updated);
+const show = publishedDate || (tags && tags.length > 0);
+const dates = publishedDate || updatedDate;
 ---
 
 {
     show && (
-        <div class:list={{ published: !!publishedDate, updated: !!updatedDate }}>
-            <p>
-                <span>This {type} was</span>{' '}
-                {publishedDate && (
-                    <span class="published">
-                        published on
-                        <a href={url} class="node-permalink">
-                            <time class="date" datetime={publishedDate.toISOString()}>
-                                {shortDate(publishedDate)}
-                            </time>
-                        </a>
-                    </span>
-                )}
-                {updatedDate && (
-                    <span class="updated">
-                        {publishedDate && 'and'}
-                        last updated on
-                        <a href={url} class="node-permalink">
-                            <time class="date" datetime={updatedDate.toISOString()}>
-                                {shortDate(updatedDate)}
-                            </time>
-                        </a>
-                    </span>
-                )}
-            </p>
+        <div>
+            {dates && (
+                <p>
+                    <span>This {type} was</span>{' '}
+                    {publishedDate && (
+                        <span class="published">
+                            published on
+                            <a href={url} class="node-permalink">
+                                <time class="date" datetime={publishedDate.toISOString()}>
+                                    {shortDate(publishedDate)}
+                                </time>
+                            </a>
+                        </span>
+                    )}
+                    {publishedDate && updatedDate && ' and '}
+                    {updatedDate && (
+                        <span class="updated">
+                            {publishedDate && 'and'}
+                            last updated on
+                            <a href={url} class="node-permalink">
+                                <time class="date" datetime={updatedDate.toISOString()}>
+                                    {shortDate(updatedDate)}
+                                </time>
+                            </a>
+                        </span>
+                    )}
+                </p>
+            )}
             <NodeTags node={node} />
         </div>
     )

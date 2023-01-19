@@ -16,9 +16,9 @@ import {
 } from 'm2dx-utils';
 import path, { isAbsolute, join } from 'path';
 import { isObjectLike } from '../common/assert.mjs';
+import { findExportInMdx, findExportInProgram } from '../common/findExportInMdx.mjs';
 import { toLinux } from '../common/path.mjs';
 import { shortHash } from '../common/shortHash.mjs';
-import { findExportInMdx, findExportInProgram } from '../customComponents/findExportInMdx.mjs';
 
 export async function processFile(root, baseDir, files) {
     const relativeImages = [];

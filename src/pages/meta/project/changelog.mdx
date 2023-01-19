@@ -2,18 +2,31 @@
 layout: ../../../templates/MetaPage.astro
 type: page
 title: 'My website: Changelog'
-description: Paper trail of changes in this website, since there is some continuity around 2017.
 tags:
   - andretorgal-com
 published: 2019 May 20
 updated: 2023 Jan 08
 ---
 
-Tasks from [my website](/about)'s [backlog](/meta/project/backlog), eventually done (or archived).
+<Abstract>
 
-Some notes about previous versions of
+Paper trail of changes in this website, since there is some continuity around 2017. Tasks from [my website](/about)'s [backlog](/meta/project/backlog), eventually done (or archived).
+
+</Abstract>
 
 <Year y="2023" />
+
+## Feature: automatic abstracts
+
+- Feature: collect abstract from
+
+- DX: `<Abstract>` component collects abstract content from MDX files
+- Content: move all descriptions to MDX content, wrapped in `<Abstract>`
+- UI: render abstract markdown, fallback to frontmatter description
+- UI: reposition abstract in some templates
+- UI: hide tag dates in lists
+- SEO: render text only version of abstract when available
+- Refactor: streamline autoImport & customComponents plugins
 
 ## UI: Semantic MD images with zero layout shift
 
@@ -38,7 +51,8 @@ Some notes about previous versions of
 - UI: decorate external links and add `rel` attribute
 - expose node links (internal and external) in frontmatter
 - Feature: expose node images in frontmatter
-- determine og:image from node images
+- determine `og:image` from node images
+- auto imports of `@components/mdx`
 
 ## UI: improvements
 

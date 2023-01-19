@@ -1,6 +1,18 @@
-<div>
-    <slot />
-</div>
+---
+export interface Props {
+    show?: boolean;
+}
+
+const { show } = Astro.props;
+---
+
+{
+    show && (
+        <div>
+            <slot />
+        </div>
+    )
+}
 
 <style>
     div {

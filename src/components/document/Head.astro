@@ -12,8 +12,16 @@ import { SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE } from '../../config';
 export type Props = { node: BaseNode };
 
 const { node } = Astro.props;
-const { title: maybeTitle, description = SITE_DESCRIPTION, ogImage = SITE_OG_IMAGE } = node;
+const {
+    title: maybeTitle,
+    description: maybeDescription,
+    abstract,
+    ogImage = SITE_OG_IMAGE,
+} = node;
 const title = `${maybeTitle || 'Home'} | ${SITE_TITLE}`;
+
+const maybeAbstract = abstract?.text;
+const description = maybeDescription || maybeAbstract || SITE_DESCRIPTION;
 ---
 
 <head>

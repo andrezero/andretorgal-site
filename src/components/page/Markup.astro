@@ -19,6 +19,14 @@ const show = Astro.slots.has('default');
 </style>
 
 <style is:global>
+    .markup > *:first-child {
+        margin-top: 0px;
+    }
+
+    .markup > *:last-child {
+        margin-bottom: 0px;
+    }
+
     .markup > h2 {
         margin: var(--layout-gap) 0 var(--layout-unit);
     }

@@ -44,8 +44,8 @@ const nodes = allNodes.filter(n => n.tags?.includes(page.title));
                     </ArticleHeader>
                     <Section>
                         <TopLine />
-                        <NodeMeta node={page} />
                         <NodeAbstract node={page} />
+                        <NodeMeta node={page} noDate />
                         <Markup><slot /></Markup>
                     </Section>
                     <Section>

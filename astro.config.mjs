@@ -2,11 +2,13 @@ import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
+import markdownIntegration from '@astropub/md';
 import remarkA11yEmoji from '@fec/remark-a11y-emoji';
 import { defineConfig } from 'astro/config';
 import path from 'path';
 import remarkEmoji from 'remark-emoji';
 
+import { autoAbstract } from './src/plugins/autoAbstract.mjs';
 import { autoImages } from './src/plugins/autoImages.mjs';
 import { autoImports } from './src/plugins/autoImports.mjs';
 import { customComponents } from './src/plugins/customComponents.mjs';
@@ -29,6 +31,7 @@ const relativeImagesConfig = {
 export default defineConfig({
     site: 'https://andretorgal.com',
     integrations: [
+        markdownIntegration(),
         preact(),
         mdx(),
         sitemap(),
@@ -41,9 +44,10 @@ export default defineConfig({
             remarkEmoji,
             remarkA11yEmoji,
             autoImages,
+            autoAbstract,
+            [relativeImages, relativeImagesConfig],
             [autoImports, autoImportsConfig],
             [customComponents, customComponentsConfig],
-            [relativeImages, relativeImagesConfig],
         ],
         rehypePlugins: [externalLinks],
     },

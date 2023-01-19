@@ -29,6 +29,10 @@ export interface BaseNode {
         internal: Link[];
     };
     images: Image[];
+    abstract?: {
+        text: string;
+        markdown: string;
+    };
     [key: string]: unknown;
 }
 
