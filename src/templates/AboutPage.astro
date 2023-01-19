@@ -17,10 +17,10 @@ import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteLogo from '@components/site/SiteLogo.astro';
 import SiteMain from '@components/site/SiteMain.astro';
-import type { BaseNode } from '@queries/types';
+import type { AboutNode } from '@queries/types';
 
 export interface Props {
-    content: BaseNode;
+    content: AboutNode;
     img?: string;
 }
 
@@ -45,11 +45,7 @@ const { heroImage, thumbnail } = node;
                             {
                                 thumbnail && (
                                     <div class="image">
-                                        {thumbnail === 'logo' ? (
-                                            <SiteLogo autoSize />
-                                        ) : (
-                                            <img src={thumbnail} />
-                                        )}
+                                        <SiteLogo variant={thumbnail} />
                                     </div>
                                 )
                             }
@@ -84,6 +80,8 @@ const { heroImage, thumbnail } = node;
     .image {
         min-width: 100%;
         object-fit: cover;
+        border-radius: 100%;
+        overflow: hidden;
     }
 
     @media screen and (min-width: 620px) {

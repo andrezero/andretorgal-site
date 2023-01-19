@@ -21,7 +21,6 @@ export interface BaseNode {
     updated?: string;
     heroImage?: string;
     ogImage?: string;
-    thumbnail?: string;
     tags?: string[];
     featured?: boolean;
     links: {
@@ -37,6 +36,10 @@ export interface BaseNode {
 }
 
 export type PageNode = BaseNode;
+
+export type AboutNode = BaseNode & {
+    thumbnail?: 'logo' | 'work' | 'story' | 'music';
+};
 
 export type TagNode = BaseNode & {
     count: number;
