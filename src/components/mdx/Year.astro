@@ -16,7 +16,7 @@ const { y } = Astro.props;
     }
 
     .y span {
-        padding: var(--layout-shift) var(--layout-unit);
+        padding: var(--layout-shift);
         color: var(--scheme-alt-fg);
         background-color: var(--scheme-alt-bg);
         width: min-content;
@@ -24,17 +24,16 @@ const { y } = Astro.props;
 
     @media screen and (min-width: 800px) {
         p.y {
+            position: relative;
+            left: -9.7rem;
+            top: calc(-1 * var(--t-space-2xs));
             display: block;
             width: 10rem;
             height: 1em;
-            margin-left: -9.5rem;
-            margin-bottom: var(--t-space-2xs);
+            margin: 0 !important;
             text-align: right;
             font-size: var(--t-type-size--2);
             border-bottom: none;
-        }
-
-        p.y span {
         }
     }
 </style>
