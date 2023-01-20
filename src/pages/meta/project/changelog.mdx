@@ -16,12 +16,16 @@ Paper trail of changes in this website, since there is some continuity around 20
 
 <Year y="2023" />
 
-## Content: original SVG artwork for about pages
+## Content: polishing
+
+- content: original SVG artwork for about pages
+- content: add pictures of my old website
+- content: archeology/nostalgia of old versions of this site
+- DX: author all page links with extension (so that IDE can navigate naturally); strip them via remark plugin
 
 ## Feature: automatic abstracts
 
-- Feature: collect abstract from
-
+- Feature: collect abstract from content files
 - DX: `<Abstract>` component collects abstract content from MDX files
 - Content: move all descriptions to MDX content, wrapped in `<Abstract>`
 - UI: render abstract markdown, fallback to frontmatter description
@@ -29,6 +33,7 @@ Paper trail of changes in this website, since there is some continuity around 20
 - UI: hide tag dates in lists
 - SEO: render text only version of abstract when available
 - Refactor: streamline autoImport & customComponents plugins
+- Benchmark: 134 page(s) built in 13.70s (+36 images)
 
 ## UI: Semantic MD images with zero layout shift
 
@@ -40,7 +45,7 @@ Paper trail of changes in this website, since there is some continuity around 20
     - accepts an attribution note in the title (after `// `)
     - the attribution can contain a link
 - UI: setup `astro-m2dx`
-  - rewrite img `src` to enable co-located images (:heart_eyes: direct preview in IDE!)
+  - rewrite image `src` to enable co-located images (:heart_eyes: direct preview in IDE!)
   - map MDX `img` to our `<Image>` component
   - provide auto imports for common `components/mdx/*`
 - Content: migrate images to be co-located with markdown files
