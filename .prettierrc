@@ -21,6 +21,7 @@
         {
             "files": "*.mdx",
             "options": {
+                "parser": "astro",
                 "tabWidth": 2
             }
         }

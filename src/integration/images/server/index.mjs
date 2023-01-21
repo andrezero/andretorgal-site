@@ -1,8 +1,9 @@
 import mime from 'mime';
-import { defaultProfile } from '../../components/mdx/image/profiles';
-import { readImage } from '../images/readImage.mjs';
-import { transform } from '../images/sharp.mjs';
-import { etag } from './etag.mjs';
+
+import { defaultProfile } from '../profiles';
+import { transform } from '../sharp/index.mjs';
+import { etag } from '../utils/etag.mjs';
+import { readImage } from '../utils/readImage.mjs';
 
 export async function get({ request }) {
     try {

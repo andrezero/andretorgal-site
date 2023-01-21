@@ -4,12 +4,12 @@ import remarkA11yEmoji from '@fec/remark-a11y-emoji';
 import remarkEmoji from 'remark-emoji';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
-import { autoAbstract } from '../plugins/autoAbstract.mjs';
-import { autoImages } from '../plugins/autoImages.mjs';
-import { autoImports } from '../plugins/autoImports.mjs';
-import { customComponents } from '../plugins/customComponents.mjs';
-import { externalLinks } from '../plugins/externalLinks.mjs';
-import { ssg } from './ssg/index.mjs';
+import { ssg } from './images/ssg/index.mjs';
+import { externalLinks } from './rehype/externalLinks.mjs';
+import { autoAbstract } from './remark/autoAbstract.mjs';
+import { autoImages } from './remark/autoImages.mjs';
+import { autoImports } from './remark/autoImports.mjs';
+import { customComponents } from './remark/customComponents.mjs';
 
 const staticImages = new Map();
 
@@ -19,7 +19,7 @@ const ROUTE_PATTERN = '/_image';
 const baseDir = resolve('./src/pages');
 const componentsFile = resolve('./src/customComponents.ts');
 const autoImportFile = resolve('./src/autoImports.ts');
-const cacheDir = resolve('./node_modules/.integration');
+const cacheDir = resolve('./node_modules/.my-astro');
 
 let isStaticBuild;
 
@@ -48,7 +48,7 @@ export function myAstro() {
                 if (command === 'dev' || config.output === 'server') {
                     injectRoute({
                         pattern: ROUTE_PATTERN,
-                        entryPoint: resolve('src/integration/server/index.mjs'),
+                        entryPoint: resolve('src/integration/images/server/index.mjs'),
                     });
                 }
 
@@ -57,8 +57,6 @@ export function myAstro() {
                     addStaticImage: () => undefined,
                 };
             },
-            'astro:config:done': ({ config }) => {},
-            'astro:build:start': ({ buildConfig }) => {},
             'astro:build:setup': async () => {
                 const addStaticImage = (src, transform) => {
                     const transforms = staticImages.has(src) ? staticImages.get(src) : new Set();
@@ -75,6 +73,5 @@ export function myAstro() {
                 await ssg('src/pages', dir.pathname, cacheDir, staticImages);
             },
         },
-        'astro:build:ssr': async params => {},
     };
 }

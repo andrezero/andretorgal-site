@@ -1,9 +1,9 @@
-import { dirname, join } from 'path';
-import { transform } from '../images/sharp.mjs';
-
 import { mkdir, writeFile } from 'fs/promises';
-import { imageFilename } from '../images/imageFilename.mjs';
-import { readImage } from '../images/readImage.mjs';
+import { dirname, join } from 'path';
+
+import { transform } from '../sharp/index.mjs';
+import { imageFilename } from '../utils/imageFilename.mjs';
+import { readImage } from '../utils/readImage.mjs';
 
 export async function createStaticImages(baseDir, outDir, src, transforms) {
     for (const t of transforms) {

@@ -7,12 +7,12 @@
             "~/*": ["src/*"],
             "@assets/*": ["src/assets/*"],
             "@components/*": ["src/components/*"],
+            "@integration/*": ["src/integration/*"],
             "@icons/*": ["src/icons/*"],
             "@queries/*": ["src/queries/*"],
             "@styles/*": ["src/styles/*"],
             "@templates/*": ["src/templates/*"],
-            "@utils/*": ["src/utils/*"],
-            "@model/*": ["src/model/*"]
+            "@utils/*": ["src/utils/*"]
         }
     }
 }

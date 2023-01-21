@@ -1,6 +1,6 @@
 ---
-import type { ImageProps } from './image/types';
-import { resolveImageProps } from './image/utils';
+import type { ImageProps } from '@integration/images/types';
+import { resolveImageProps } from '@integration/images/utils/props';
 
 export type Props = ImageProps;
 
@@ -17,10 +17,10 @@ const props = resolveImageProps(Astro.props);
  -->
 
 <!-- <picture>
-	<source type="image/avif" srcset=".3c8f6ce6_vKSFy.avif 700w,.3c8f6ce6_l97aN.avif 1400w"
+	<source type="image/avif" srcset="...700.avif 700w,...1400.avif 1400w"
 	sizes="(max-width: 650px) 86vw, (max-width: 1200px) 650px, 1400px">
-	<source type="image/jpeg" srcset=".3c8f6ce6_2v5bzP.jpg 700w,.3c8f6ce6_ZsK8JI.jpg 1400w"
+	<source type="image/jpeg" srcset="...700.jpg 700w,...1400.jpg 1400w"
 	sizes="(max-width: 650px) 86vw, (max-width: 1200px) 650px, 1400px">
-	<img fit="cover" position="center" src=".3c8f6ce6_ZsK8JI.jpg"
+	<img fit="cover" position="center" src="...700.jpg"
 	loading="lazy" decoding="async" alt>
 </picture> -->

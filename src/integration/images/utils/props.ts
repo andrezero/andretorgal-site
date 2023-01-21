@@ -1,9 +1,9 @@
-import { getImageFacts } from '../../../integration/images/getImageFacts.mjs';
-import { imageEndpoint } from '../../../integration/images/imageEndpoint.mjs';
-import { imageFilename } from '../../../integration/images/imageFilename.mjs';
+import { defaultProfile } from '../profiles';
+import type { Attribution, FigureResolvedProps, ImageProps, ImageResolvedProps } from '../types';
 
-import { defaultProfile } from './profiles';
-import type { Attribution, FigureResolvedProps, ImageProps, ImageResolvedProps } from './types';
+import { getImageFacts } from './getImageFacts';
+import { imageEndpoint } from './imageEndpoint';
+import { imageFilename } from './imageFilename';
 
 const resolveAttribution = (attribution?: string): Attribution | undefined => {
     const match = attribution && attribution.match(/(https:\/\/[^\s]+)\s*$/);
