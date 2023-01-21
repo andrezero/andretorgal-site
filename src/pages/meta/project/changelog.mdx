@@ -17,6 +17,7 @@ Paper trail of changes in this website, since there is some continuity around 20
 <Year y="2023" />
 
 ## Refactor: replace `@astrojs/images` with a local integration
+
 - handles local and remote images
 - local images always relative to MDX document
 - dev server generates files on demand, via the `_images?src=` endpoint
@@ -25,6 +26,7 @@ Paper trail of changes in this website, since there is some continuity around 20
   - captures with, height, and dominant color of image
   - sets `padding-top` and to preserve aspect ratio
   - sets `background-color` while image is loading
+- unwrap images from `p`, was causing invalid HTML `<p><figure></p>`
 
 ## Content: polishing
 

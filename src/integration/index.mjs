@@ -1,5 +1,9 @@
 import { resolve } from 'path';
 
+import remarkA11yEmoji from '@fec/remark-a11y-emoji';
+import remarkEmoji from 'remark-emoji';
+import remarkUnwrapImages from 'remark-unwrap-images';
+
 import { autoAbstract } from '../plugins/autoAbstract.mjs';
 import { autoImages } from '../plugins/autoImages.mjs';
 import { autoImports } from '../plugins/autoImports.mjs';
@@ -25,7 +29,10 @@ export function myAstro() {
         hooks: {
             'astro:config:setup': async ({ command, config, updateConfig, injectRoute }) => {
                 const remarkPlugins = [
+                    remarkEmoji,
+                    remarkA11yEmoji,
                     autoAbstract,
+                    remarkUnwrapImages,
                     [autoImages, { baseDir }],
                     [customComponents, { componentsFile }],
                     [autoImports, { autoImportFile }],
