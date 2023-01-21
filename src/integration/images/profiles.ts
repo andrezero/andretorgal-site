@@ -1,4 +1,7 @@
-import type { ImageProfile } from './types';
+import type { ImageFormat, ImageProfile } from './types';
+
+export const DEAFULT_IMAGE_SIZE = 700;
+export const DEFAULT_IMAGE_FORMAT: ImageFormat = 'avif';
 
 export const defaultProfile: ImageProfile = {
     widths: [700, 1400],

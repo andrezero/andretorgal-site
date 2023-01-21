@@ -1,11 +1,35 @@
+import type { Root } from 'mdast';
 import { toString } from 'mdast-util-to-string';
 import { visit } from 'unist-util-visit';
 
-export function externalLinks() {
-    return function (tree, file) {
-        const links = { internal: [], external: [] };
+import type { RemarkPlugin } from '../types/RemarkPlugin';
+import type { VFile } from '../types/VFile';
 
-        visit(tree, 'element', node => {
+type Link = {
+    url: string;
+    label: string;
+};
+
+type Links = {
+    internal: Link[];
+    external: Link[];
+};
+
+type LinkNode = {
+    tagName: string;
+    properties?: {
+        href?: string;
+        rel?: string;
+        'data-external'?: string;
+        'data-type'?: string | undefined;
+    };
+};
+
+export function externalLinks(): RemarkPlugin {
+    return function (tree: Root, file: VFile): void {
+        const links: Links = { internal: [], external: [] };
+
+        visit(tree, 'element', (node: LinkNode) => {
             if (
                 node.tagName === 'a' &&
                 node.properties &&

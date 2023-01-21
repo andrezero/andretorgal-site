@@ -4,19 +4,23 @@ import type { MarkdownInstance } from 'astro';
 import type { BaseNode, TagNode } from './types';
 import { globResultToArray } from './utils';
 
-const newTag = (name: string): TagNode => ({
-    type: ' tag',
-    url: `/tags/${name}`,
-    title: name,
-    published: today(),
-    count: 0,
-});
+function newTag(name: string): TagNode {
+    return {
+        type: ' tag',
+        url: `/tags/${name}`,
+        title: name,
+        published: today(),
+        count: 0,
+        links: { external: [], internal: [] },
+        images: [],
+    };
+}
 
 type TagMap = {
     [key: string]: TagNode;
 };
 
-export const importAllTags = async (): Promise<TagNode[]> => {
+export async function importAllTags(): Promise<TagNode[]> {
     const allNodes = await globResultToArray<BaseNode>(
         import.meta.glob<MarkdownInstance<BaseNode>>('../pages/**/*.(md|mdx)'),
     );
@@ -46,4 +50,4 @@ export const importAllTags = async (): Promise<TagNode[]> => {
     return Object.entries(tags)
         .sort((entryA, entryB) => entryB[1].count - entryA[1].count)
         .map(([, tag]) => tag);
-};
+}

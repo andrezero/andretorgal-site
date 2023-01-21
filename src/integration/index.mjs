@@ -4,12 +4,12 @@ import remarkA11yEmoji from '@fec/remark-a11y-emoji';
 import remarkEmoji from 'remark-emoji';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
-import { ssg } from './images/ssg/index.mjs';
-import { externalLinks } from './rehype/externalLinks.mjs';
-import { autoAbstract } from './remark/autoAbstract.mjs';
-import { autoImages } from './remark/autoImages.mjs';
-import { autoImports } from './remark/autoImports.mjs';
-import { customComponents } from './remark/customComponents.mjs';
+import { ssg } from './images/ssg/index.ts';
+import { externalLinks } from './rehype/externalLinks.ts';
+import { autoAbstract } from './remark/autoAbstract.ts';
+import { autoImages } from './remark/autoImages.ts';
+import { autoImports } from './remark/autoImports.ts';
+import { customComponents } from './remark/customComponents.ts';
 
 const staticImages = new Map();
 
@@ -48,7 +48,7 @@ export function myAstro() {
                 if (command === 'dev' || config.output === 'server') {
                     injectRoute({
                         pattern: ROUTE_PATTERN,
-                        entryPoint: resolve('src/integration/images/server/index.mjs'),
+                        entryPoint: resolve('src/integration/images/server/index.ts'),
                     });
                 }
 

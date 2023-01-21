@@ -1,4 +1,6 @@
-export type ImageFormat = 'jpg' | 'avif' | 'webp';
+import type { FormatEnum } from 'sharp';
+
+export type ImageFormat = keyof FormatEnum;
 
 export type Image = {
     src: string;
@@ -24,20 +26,25 @@ export type ImageProps = {
 
 export type Attribution = { text: string; link: string | undefined };
 
-export type FigureResolvedProps = Omit<ImageProps, 'title' | 'alt'> & {
-    src: string;
-    title: string;
+export type ImageFacts = {
     width: number;
     height: number;
     dominant: string;
-    attribution: Attribution | undefined;
 };
+
+export type FigureResolvedProps = Omit<ImageProps, 'title' | 'alt'> &
+    ImageFacts & {
+        src: string;
+        title: string;
+        attribution: Attribution | undefined;
+    };
 
 export type Source = {
     type: string;
     srcset: string;
     sizes: string;
 };
+
 export type ImageResolvedProps = Omit<ImageProps, 'src' | 'width' | 'height'> & {
     src: string;
     alt: string;
@@ -46,6 +53,11 @@ export type ImageResolvedProps = Omit<ImageProps, 'src' | 'width' | 'height'> & 
     loading: 'lazy';
     decoding: 'async' | 'auto' | 'sync';
     sources: Source[];
+};
+
+export type ImageTransform = {
+    width: number;
+    format: ImageFormat;
 };
 
 export type ImageParams = {

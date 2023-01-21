@@ -1,4 +1,4 @@
-export function shortHash(data) {
+export function shortHash(data: string): string {
     const str = typeof data === 'string' ? data : JSON.stringify(data);
     const seed = 0;
     let h1 = 0xdeadbeef ^ seed;
