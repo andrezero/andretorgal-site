@@ -18,7 +18,7 @@ const imageProps = {
 };
 ---
 
-<figure class="picture">
+<figure class="figure">
     <span class="frame" style={{ 'background-color': dominant }}>
         <span style={{ 'padding-top': paddingTop }}></span>
         <Image {...imageProps} />
@@ -43,7 +43,7 @@ const imageProps = {
 </figure>
 
 <style>
-    .picture {
+    .figure {
         display: flex;
         flex-direction: column;
     }
@@ -87,14 +87,14 @@ const imageProps = {
 </style>
 
 <style is:global>
-    .picture picture {
+    .figure picture {
         position: relative;
         z-index: 1;
         width: 100%;
         min-height: 100%;
     }
 
-    .picture picture img {
+    .figure picture img {
         width: 100%;
         min-height: 100%;
         height: 100%;

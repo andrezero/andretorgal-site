@@ -33,9 +33,19 @@ export type FigureResolvedProps = Omit<ImageProps, 'title' | 'alt'> & {
     attribution: Attribution | undefined;
 };
 
+export type Source = {
+    type: string;
+    srcset: string;
+    sizes: string;
+};
 export type ImageResolvedProps = Omit<ImageProps, 'src' | 'width' | 'height'> & {
     src: string;
     alt: string;
+    fit: 'cover';
+    position: 'center';
+    loading: 'lazy';
+    decoding: 'async' | 'auto' | 'sync';
+    sources: Source[];
 };
 
 export type ImageParams = {

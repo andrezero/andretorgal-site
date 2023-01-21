@@ -4,23 +4,19 @@ import { resolveImageProps } from '@integration/images/utils/props';
 
 export type Props = ImageProps;
 
-const props = resolveImageProps(Astro.props);
+const { src, alt, fit, position, loading, decoding, sources } = resolveImageProps(Astro.props);
+
+const imageProps = {
+    src,
+    alt,
+    fit,
+    position,
+    loading,
+    decoding,
+};
 ---
 
-<img {...props} />
-
-<!-- <picture>
-	{sources.map((attrs) => <source {...attrs} {
-		sizes} />)}
-	<img {...image} {loading} {decoding} {alt} {...attrs} />
+<picture>
+    {sources.map(attrs => <source {...attrs} />)}
+    <img {...imageProps} />
 </picture>
- -->
-
-<!-- <picture>
-	<source type="image/avif" srcset="...700.avif 700w,...1400.avif 1400w"
-	sizes="(max-width: 650px) 86vw, (max-width: 1200px) 650px, 1400px">
-	<source type="image/jpeg" srcset="...700.jpg 700w,...1400.jpg 1400w"
-	sizes="(max-width: 650px) 86vw, (max-width: 1200px) 650px, 1400px">
-	<img fit="cover" position="center" src="...700.jpg"
-	loading="lazy" decoding="async" alt>
-</picture> -->

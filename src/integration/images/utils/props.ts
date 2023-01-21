@@ -32,6 +32,18 @@ export const resolveFigureProps = async (props: ImageProps): Promise<FigureResol
     return { src, width, height, dominant, title, attribution };
 };
 
+const makeSrcSet = (isStaticBuild: boolean, src: string, widths: number[], format: string) => {
+    return widths
+        .map(width => {
+            const transform = { width, format };
+            const name = isStaticBuild
+                ? imageFilename(src, transform)
+                : imageEndpoint(src, transform);
+            return `${name} ${width}w`;
+        })
+        .join(', ');
+};
+
 export const resolveImageProps = (props: ImageProps): ImageResolvedProps => {
     const { src, alt, profile = defaultProfile } = props;
 
@@ -42,5 +54,22 @@ export const resolveImageProps = (props: ImageProps): ImageResolvedProps => {
     const imageSrc = isStaticBuild ? imageFilename(src, transform) : imageEndpoint(src, transform);
 
     addStaticImage(src, { width: widths[0], format: formats[0] });
-    return { src: imageSrc, alt: alt || '' };
+
+    const sources = formats.map(format => {
+        return {
+            type: `image/${format}`,
+            srcset: makeSrcSet(isStaticBuild, src, widths, format),
+            sizes: profile.sizes,
+        };
+    });
+
+    return {
+        src: imageSrc,
+        alt: alt || '',
+        fit: 'cover',
+        position: 'center',
+        loading: 'lazy',
+        decoding: 'async',
+        sources,
+    };
 };
