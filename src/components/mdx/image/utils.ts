@@ -1,59 +1,46 @@
-import type { Attribution, Image, ImageParams, ImageProps, ImageResolvedProps } from './types';
+import { getImageFacts } from '../../../integration/images/getImageFacts.mjs';
+import { imageEndpoint } from '../../../integration/images/imageEndpoint.mjs';
+import { imageFilename } from '../../../integration/images/imageFilename.mjs';
 
-const parseParams = (str: string): ImageParams => {
-    return str
-        .split('&')
-        .map(p => p.split('='))
-        .reduce((acc, [k, v]) => {
-            const key = k || '';
-            // eslint-disable-next-line security/detect-object-injection
-            acc[key] = v;
-            return acc;
-        }, {} as ImageParams);
-};
+import { defaultProfile } from './profiles';
+import type { Attribution, FigureResolvedProps, ImageProps, ImageResolvedProps } from './types';
 
-const resolveImageProp = (props: ImageProps): Image => {
-    if (typeof props.src === 'string') {
-        return { ...props, src: props.src };
-    }
-    const { width = 0, height = 0 } = props;
-    return { width, height, ...props.src };
-};
-
-const resolveAttribution = (attribution?: string): Attribution => {
+const resolveAttribution = (attribution?: string): Attribution | undefined => {
     const match = attribution && attribution.match(/(https:\/\/[^\s]+)\s*$/);
-    return (
-        match && {
-            text: attribution.replace(match[1], ''),
-            link: match[1],
-        }
-    );
+    return match
+        ? {
+              text: attribution.replace(match[1] || '', ''),
+              link: match[1],
+          }
+        : undefined;
 };
 
-const resolveTitle = (title: string): { title: string; attribution?: Attribution } => {
+const resolveTitle = (title?: string): { title: string; attribution: Attribution | undefined } => {
     const parts = title ? title.split('// ') : [''];
     return {
-        title: parts[0].trim(),
+        title: parts[0]?.trim() || '',
         attribution: resolveAttribution(parts[1]),
     };
 };
 
-export const resolveImageProps = (props: ImageProps): ImageResolvedProps => {
-    let { width, height, src } = resolveImageProp(props);
-    const { alt, title: maybeTitleAndAttribution } = props;
+export const resolveFigureProps = async (props: ImageProps): Promise<FigureResolvedProps> => {
+    const { src, title: maybeTitleAndAttribution } = props;
 
-    const match = (!width || !height) && alt?.match(/^\/([a-z0-9=&]+)\//);
-    const str = match && match[1];
-    const params = str ? parseParams(str) : {};
-
-    if (!width) width = params.w ? Number(params.w) : 0;
-    if (!height) height = params.h ? Number(params.h) : 0;
-
-    if (!width || !height) {
-        throw new Error('Please provide /w=___&h=___/ for this remote image: ' + src);
-    }
-
+    // TODO how to config base path?
+    const { width, height, dominant } = await getImageFacts(`src/pages`, src);
     const { title, attribution } = resolveTitle(maybeTitleAndAttribution);
+    return { src, width, height, dominant, title, attribution };
+};
 
-    return { src, width, height, title, alt: alt || '', attribution };
+export const resolveImageProps = (props: ImageProps): ImageResolvedProps => {
+    const { src, alt, profile = defaultProfile } = props;
+
+    const { widths, formats } = profile;
+    const transform = { width: widths[0], format: formats[0] };
+
+    const { addStaticImage, isStaticBuild } = globalThis.myIntegration;
+    const imageSrc = isStaticBuild ? imageFilename(src, transform) : imageEndpoint(src, transform);
+
+    addStaticImage(src, { width: widths[0], format: formats[0] });
+    return { src: imageSrc, alt: alt || '' };
 };

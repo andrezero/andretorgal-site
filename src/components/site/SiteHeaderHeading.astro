@@ -50,6 +50,7 @@ import SiteLogo from './SiteLogo.astro';
 
     h1 picture {
         display: inline-block;
+        width: var(--t-type-size-6);
     }
 
     @media screen and (min-width: 1060px) {
@@ -79,7 +80,12 @@ import SiteLogo from './SiteLogo.astro';
         h1 picture {
             display: flex;
             align-items: center;
-            height: var(--t-type-size-7);
+            width: var(--t-type-size-7);
+        }
+    }
+    @media screen and (min-width: 1420px) {
+        h1 picture {
+            width: var(--t-type-size-7);
         }
     }
 </style>

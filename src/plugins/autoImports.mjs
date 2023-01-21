@@ -11,7 +11,7 @@ export function isJsxName(name) {
 }
 
 export function autoImports(options = {}) {
-    const { autoImportsFailUnresolved: failUnresolved = false, autoImportFile } = options;
+    const { autoImportFile } = options;
 
     return async function transformer(root, file) {
         const dir = file.dirname;
@@ -33,7 +33,7 @@ export function autoImports(options = {}) {
                     imports.push(alias);
                     root.children.unshift(createProgram(toImport(e, alias)));
                 }
-            } else if (failUnresolved) {
+            } else {
                 throw new Error(
                     `JSX component <${u.name}> cannot be resolved, please import it explicitly in your MDX file or add an autoImport with astro-m2dx, see https://astro-m2dx.netlify.app/options/auto-imports how to do that`,
                 );

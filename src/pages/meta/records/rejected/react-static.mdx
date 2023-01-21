@@ -3,12 +3,17 @@ layout: ../../../../templates/MetaPage.astro
 type: decision-record
 title: 'Framework: React Static'
 tags:
-  - decision-rejected
   - ssg
   - react
   - react-static
 published: 2019 May 16
 ---
+
+<Abstract>
+
+I have been using my [own simple SSG](https://github.com/andrezero/guay) for 2 years now. But new tools have - obviously - emerged in the static sites space. Should I rebuild my site with React Static?
+
+</Abstract>
 
 <Note type="blog">
 
@@ -16,23 +21,28 @@ published: 2019 May 16
 
 - [(re)Building my website with Astro + MDX + Preact](/posts/2023-01/building-my-website-with-astro-mdx-preact).
 - [Saying goodbye to my React Static website.](/posts/2023-01/saying-goodbye-to-my-react-static-website).
-- [Staging My Website Rebuilt In React Static](/posts/2019-05/staging-my-website-v2-rebuilt-in-react-static)
+- [Staging My Website Rebuilt In React Static](/posts/2019-05/staging-my-website-v2-rebuilt-in-react-static).
 
 </Note>
 
-## Status
+## Status :x: Replaced
 
 Replaced by [Rebuild with Astro](/meta/records/current/build-with-astro) because [React Static](/meta/records/rejected/react-static) is in maintenance mode now.
 
-## Why
-
-Alongside this Framework, I had also invested quite
+Alongside this Framework, I had also invested quite a bit in
 
 - [Unified remark+rehype](/meta/records/rejected/content-markdown-unified-remark-rehype)
 
 as well as bit in developer experience setup.
 
-- [React Static + Typescript](/meta/records/rejected/react-static-typescript)
 - [React Router](/meta/records/rejected/react-router)
 - [Atomic semantics](/meta/records/rejected/conventions-structure-atomic-semantics)
 - [SASS + Post CSS + CSS Variables](/meta/records/rejected/styling-sass-post-css)
+
+## Why
+
+- non-opinionated, pure react
+- easy to use any data source
+- implicit and explicit code & data splitting
+- typescript entry point
+- typescript compiler using tslint.json

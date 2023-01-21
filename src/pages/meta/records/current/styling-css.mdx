@@ -3,19 +3,27 @@ layout: ../../../../templates/MetaPage.astro
 type: decision-record
 title: 'Styling: css'
 tags:
-  - decision-current
   - css
   - css-modules
   - astro
-published: 2019 May 16
-updated: 2023 Dec 20
+published: 2023 Dec 20
 ---
 
-## Decision: pure CSS, scoped by Astro
+<Abstract>
 
-CSS is awesome.
+I am [rebuilding my site with Astro](/posts/2023-01/building-my-website-with-astro-mdx-preact). Should I use any CSS pre-processing? Or are we good with _just_ CSS in 2023?
+
+</Abstract>
+
+## Decision :white_check_mark: All in
+
+CSS is awesome. And Astro does a great a job of scoping it to your components, while providing the escape hatch needed for _those cases_.
 
 Not a pun.
+
+Seriously, it's been a long journey, I know. But it's been more than 2 decades, it had to grow, it had to evolve. We're in 2023, and CSS kind of just works (\*) these days.
+
+_(\*) Almost always_
 
 ### Why
 
@@ -30,3 +38,5 @@ With [Astro](/meta/records/current/build-with-astro) you get, out of the box:
 Practical. No fuss.
 
 See implementation details in [Styling](/meta/docs/styling).
+
+:warning: pending a proper PostCSS configuration. See [browser support](/meta/records/pending/browser-support) for more details.

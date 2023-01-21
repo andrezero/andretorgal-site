@@ -1,5 +1,5 @@
-import Image from '@components/mdx/Image.astro';
+import Figure from '@components/mdx/Figure.astro';
 
 export const components = {
-    img: Image,
+    img: Figure,
 };

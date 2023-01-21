@@ -12,7 +12,7 @@ export interface Props {
 const { node, scope } = Astro.props;
 
 // eslint-disable-next-line security/detect-non-literal-regexp
-const pattern = new RegExp(`^${node.url}/[a-z-]+$`);
+const pattern = new RegExp(`^${node.url}/[^/]+$`);
 
 const allNodes = scope ?? (await importAllMeta());
 const children = allNodes.filter(n => n.url.match(pattern));

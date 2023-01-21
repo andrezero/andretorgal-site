@@ -9,7 +9,6 @@ import Article from '@components/page/Article.astro';
 import ArticleHeader from '@components/page/ArticleHeader.astro';
 import Divider from '@components/page/Divider.astro';
 import Markup from '@components/page/Markup.astro';
-import PageHero from '@components/page/PageHero.astro';
 import Section from '@components/page/Section.astro';
 import TopLine from '@components/page/TopLine.astro';
 import SiteSectionHeader from '@components/site/about/SiteSectionHeader.astro';
@@ -25,7 +24,7 @@ export interface Props {
 }
 
 const { content: node } = Astro.props;
-const { heroImage, thumbnail } = node;
+const { thumbnail } = node;
 ---
 
 <Document>
@@ -36,9 +35,7 @@ const { heroImage, thumbnail } = node;
             <SiteSectionHeader slot="section" />
             <SiteMain slot="main">
                 <Article>
-                    <ArticleHeader node={node} noDate slot="header">
-                        {heroImage && <PageHero src={heroImage} />}
-                    </ArticleHeader>
+                    <ArticleHeader node={node} noDate slot="header" />
                     <Section>
                         <TopLine />
                         <header>

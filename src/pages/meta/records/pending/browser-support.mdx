@@ -3,23 +3,26 @@ layout: ../../../../templates/MetaPage.astro
 type: decision-record
 title: 'Browser Support: progressive'
 tags:
-  - decision-pending
   - browsers
 published: 2019 May 09
 updated: 2023 Dec 20
 ---
 
-## Status
+<Abstract>
 
-Blocked by [missing documentation for using "browserslist" in Astro](https://github.com/withastro/docs/issues/2321)
+Which browsers should this website be worried about? I'll always favor progressive approaches, or even all in _the future is now_. But I am also concerned with who is left out.
 
-Attempted the solution described in the attached issue.
+</Abstract>
 
-Rabbit hole. Nothing prefixed, and warnings polluting the console
+## Status :hourglass: some work to do
 
-```
-[esbuild-plugin-browserslist] Skipping unknown target: entry=and_qq 13.1, browser=and_qq, version=13.1
-```
+I'd love to research about devices, geography, inclusion. But I love procrastinating even more.
+
+Also, PostCSS is not reading `browserslist` and :grimacing: couldn't find any [documentation for using "browserslist" in Astro](https://github.com/withastro/docs/issues/2321)
+
+Attempted the solution described in the attached issue. :rabbit: :hole: Nothing prefixed, and warnings polluting the console :worried:
+
+`[esbuild-plugin-browserslist] Skipping unknown target: entry=and_qq 13.1, browser=and_qq, version=13.1`
 
 ## Details
 

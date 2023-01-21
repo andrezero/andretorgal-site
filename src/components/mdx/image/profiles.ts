@@ -7,3 +7,11 @@ export const defaultProfile: ImageProfile = {
     position: 'center',
     formats: ['avif'],
 };
+
+export const ogImageProfile: ImageProfile = {
+    widths: [1200, 627],
+    sizes: '1200px',
+    fit: 'cover',
+    position: 'center',
+    formats: ['jpg'],
+};

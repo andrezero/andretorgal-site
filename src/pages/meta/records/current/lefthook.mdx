@@ -1,9 +1,8 @@
 ---
 layout: ../../../../templates/MetaPage.astro
 type: decision-record
-title: Lefthook for Git hooks
+title: 'Tools: Lefthook for Git hooks'
 tags:
-  - decision-current
   - git
 links:
   - type: software
@@ -17,17 +16,13 @@ published: 2023 Jan 02
 
 <Abstract>
 
-I want the git hook feedback loops, but I definitely don't want to bring Husky into the package dependencies.
+I want the git hook feedback loops, but I definitely don't want to bring Husky into the package dependencies. Husky was great, but it is getting a bit out of hand.
 
 </Abstract>
 
-## Why?
+## Decision :white_check_mark: Use [Lefthook](https://github.com/evilmartians/lefthook)
 
-Husky was great but it's getting a bit out of hand. Needs a replacement.
-
-It's easy to find people that agree with this: [Alternatives to Husky](https://www.reddit.com/r/node/comments/mgaa3a/alternative_to_husky/).
-
-## Decision: use [Lefthook](https://github.com/evilmartians/lefthook)
+It's easy to find people that agree with Husky's bloat: [Alternatives to Husky](https://www.reddit.com/r/node/comments/mgaa3a/alternative_to_husky/).
 
 - fast! written in Go :notbad:
 - maintained: 56 contributors, steady code frequency

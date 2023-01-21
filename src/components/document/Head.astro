@@ -7,17 +7,12 @@ import '@styles/spacing.css';
 import '@styles/typography.css';
 
 import type { BaseNode } from '@queries/types';
-import { SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE } from '../../config';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../config';
 
 export type Props = { node: BaseNode };
 
 const { node } = Astro.props;
-const {
-    title: maybeTitle,
-    description: maybeDescription,
-    abstract,
-    ogImage = SITE_OG_IMAGE,
-} = node;
+const { title: maybeTitle, description: maybeDescription, abstract } = node;
 const title = `${maybeTitle || 'Home'} | ${SITE_TITLE}`;
 
 const maybeAbstract = abstract?.text;
@@ -62,12 +57,12 @@ const description = maybeDescription || maybeAbstract || SITE_DESCRIPTION;
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.url)} />
+    <!-- <meta property="og:image" content={image} /> -->
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
+    <!-- <meta property="twitter:image" content={image} /> -->
 </head>

@@ -1,4 +1,6 @@
 ---
+import Markup from '../page/Markup.astro';
+
 type NoteType = 'info' | 'construction';
 
 export interface Props {
@@ -9,7 +11,9 @@ const { type = 'info' } = Astro.props;
 ---
 
 <div class:list={['box', type]}>
-    <slot />
+    <Markup>
+        <slot />
+    </Markup>
 </div>
 
 <style>

@@ -1,0 +1,45 @@
+---
+layout: ../../../../templates/MetaPage.astro
+type: decision-record
+title: 'Monitoring: scenarios and alarms'
+tags:
+  - monitoring
+published: 2019 May 16
+---
+
+<Abstract>
+
+I worked 2 years at New Relic, and I've been building frontends for more than two decades. So I know a thing or two about observability but should I bother? Regardless, I am still curious to know what's the landscape in 2023 for small website owners.
+
+</Abstract>
+
+## Status :hourglass: some work to do
+
+Find the minimum solution that could possibly work for knowing if there is trouble.
+
+## Requirements
+
+- simple to setup
+- notifications: at least an email
+- if using instrumentation
+  - :exclamation: open-source client / kit
+  - :exclamation: does not impact performance of site
+  - :exclamation: does not capture any visitors data
+- no superfluous data that no one (me) will ever analyse
+
+Nice to have: free service.
+
+## Scenarios to monitor
+
+- the domain can not be reached
+- not responding with the expected content (expected page is not there, empty, or fundamentally broken)
+- detect spikes of 404 (possibly, some content was lost or misplaced during coding, build or deployment)
+- detect client-side errors
+
+## Options
+
+- New Relic
+- Datadog
+- Sentry
+- :construction:
+- open source? self hosted? in the end it's a few functions and endpoints

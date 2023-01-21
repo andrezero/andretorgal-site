@@ -14,9 +14,17 @@ Stuff I want to do or at least experiment with on this website. The done stuff i
 
 </Abstract>
 
-## Fixes
+## UI: images again
 
-- why is this page `/meta/records/pending/hosting-netlify-or-s3.mdx` not listed under `/meta/records/pending`?
+- Unwrap images from `p` it's causing `<p><figure></p>` which is invalid HTML
+- remote image not being generated locally
+- picture `srcset`
+- move everything to src/integration
+- abstract regexps
+- typescript everything
+- add README
+- write up post
+- identify first image for use in ogImage
 
 ## UI: improvements
 
@@ -30,7 +38,10 @@ Stuff I want to do or at least experiment with on this website. The done stuff i
 
 ## Dev experience
 
+- why is prettier crashing on MDX files with `Error formatting document. Unexpected token. <$><Abstract></$>`
 - DX: author all page links with extension (so that IDE can navigate naturally); strip them via remark plugin
+- Validate broken links
+- common emoji aliases, please :pleading_face:
 
 ## UI: footer
 

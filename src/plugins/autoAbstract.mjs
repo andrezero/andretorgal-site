@@ -14,7 +14,6 @@ export function autoAbstract() {
             const markdown = file.value
                 .split('\n')
                 .slice(start.line, end.line - 1)
-                // .filter(line => !line.startsWith('##'))
                 .join('\n')
                 .trim();
             frontmatter.abstract = { text: normalised, markdown };

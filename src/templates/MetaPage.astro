@@ -34,13 +34,13 @@ const { content: page } = Astro.props;
                 <Article>
                     <ArticleHeader node={page} slot="header" noDate>
                         <Breadcrumbs node={page} />
+                        <NodeAbstract node={page} />
+                        <NodeMeta node={page} />
                     </ArticleHeader>
-                    <NodeAbstract node={page} />
+                    <Divider />
                     <Section>
-                        <Divider />
                         <Markup><slot /></Markup>
                         <Divider />
-                        <NodeMeta node={page} />
                     </Section>
                 </Article>
             </SiteMain>

@@ -6,7 +6,6 @@ import Layout from '@components/document/Layout.astro';
 import Article from '@components/page/Article.astro';
 import ArticleHeader from '@components/page/ArticleHeader.astro';
 import Markup from '@components/page/Markup.astro';
-import PageHero from '@components/page/PageHero.astro';
 import Section from '@components/page/Section.astro';
 import TopLine from '@components/page/TopLine.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
@@ -19,7 +18,6 @@ export interface Props {
 }
 
 const { content: node } = Astro.props;
-const { heroImage } = node;
 ---
 
 <Document>
@@ -29,9 +27,7 @@ const { heroImage } = node;
             <SiteHeader slot="header" />
             <SiteMain slot="main">
                 <Article>
-                    <ArticleHeader node={node} slot="header">
-                        <PageHero src={heroImage} />
-                    </ArticleHeader>
+                    <ArticleHeader node={node} slot="header" />
                     <TopLine />
                     <Section>
                         <Markup><slot /></Markup>

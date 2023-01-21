@@ -1,41 +1,68 @@
 ---
+import Image from '~/components/mdx/Image.astro';
+
 export interface Props {
     src: string | undefined;
 }
 
-const { src } = Astro.props;
+const { src: input } = Astro.props;
+
+let src;
+
+if (input) {
+    const resource = await import(/* @vite-ignore */ input);
+    src = resource.default;
+}
 ---
 
 {
     src && (
-        <picture class="hero">
-            <img src={src} alt="" />
-        </picture>
+        <div class="hero">
+            <Image src={src} />
+        </div>
     )
 }
 
-<style>
-    .hero img {
+<style is:global>
+    .hero {
+        --hero-width: 100vw;
+    }
+
+    .hero figure {
         width: auto;
         max-width: initial;
-        width: 100vw;
+        width: var(--hero-width);
+        min-width: var(--hero-width);
+        max-width: var(--hero-width);
         margin-left: calc(-1 * var(--layout-gutter));
         object-fit: cover;
-        object-position: -5vw;
     }
 
     @media screen and (min-width: 600px) {
-        .hero img {
+        .hero figure {
             margin-left: calc(-1 * (50vw - var(--layout-container-width) / 2));
         }
     }
 
     @media screen and (min-width: 1060px) {
-        .hero img {
-            width: calc(100vw - var(--layout-gutter) - var(--layout-gutter));
-            max-width: 2000px;
+        .hero {
+            --hero-width: calc(100vw - var(--layout-col-1) - var(--layout-gap));
+        }
+
+        .hero figure {
             margin-left: calc(-1 * var(--layout-gutter));
             max-height: 50vh;
+            overflow: hidden;
+        }
+    }
+
+    @media screen and (min-width: 1420px) {
+        .hero figure {
+            --hero-width: calc(
+                100vw - var(--layout-col-1) - var(--layout-bi-col-2) + var(--layout-space)
+            );
+            max-height: 50vh;
+            overflow: hidden;
         }
     }
 </style>

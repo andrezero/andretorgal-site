@@ -17,7 +17,7 @@
         "astro": "astro"
     },
     "dependencies": {
-        "@astrojs/image": "^0.12.1",
+        "@altano/tiny-async-pool": "^1.0.2",
         "@astrojs/mdx": "^0.13.0",
         "@astrojs/preact": "^0.2.0",
         "@astrojs/rss": "^1.2.1",
@@ -25,7 +25,7 @@
         "@astropub/md": "^0.1.4",
         "@fec/remark-a11y-emoji": "^3.1.0",
         "astro": "^1.9.1",
-        "astro-m2dx": "^0.7.15",
+        "m2dx-utils": "^0.2.5",
         "mdast-util-to-string": "^3.1.0",
         "preact": "^10.11.3",
         "remark-emoji": "^3.0.2",

@@ -16,20 +16,26 @@ export type ImageProfile = {
 };
 
 export type ImageProps = {
-    src: Image | string;
-    width?: number;
-    height?: number;
+    src: string;
     title?: string;
     alt?: string;
+    profile?: ImageProfile | undefined;
 };
 
-export type Attribution = { text: string; link?: string };
+export type Attribution = { text: string; link: string | undefined };
+
+export type FigureResolvedProps = Omit<ImageProps, 'title' | 'alt'> & {
+    src: string;
+    title: string;
+    width: number;
+    height: number;
+    dominant: string;
+    attribution: Attribution | undefined;
+};
 
 export type ImageResolvedProps = Omit<ImageProps, 'src' | 'width' | 'height'> & {
     src: string;
-    width: number;
-    height: number;
-    attribution?: Attribution;
+    alt: string;
 };
 
 export type ImageParams = {

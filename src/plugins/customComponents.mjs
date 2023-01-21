@@ -1,6 +1,5 @@
 import { createProgram } from 'm2dx-utils';
 import { findExportInMdx } from './common/findExportInMdx.mjs';
-import { toLinux } from './common/path.mjs';
 
 export function customComponents(options = {}) {
     const { componentsFile } = options;
@@ -12,9 +11,7 @@ export function customComponents(options = {}) {
             return;
         }
 
-        const importStatement = `import { components as customComponents } from '${toLinux(
-            componentsFile,
-        )}';`;
+        const importStatement = `import { components as customComponents } from '${componentsFile}';`;
         root.children.unshift(createProgram(importStatement));
 
         const found = findExportInMdx(root);

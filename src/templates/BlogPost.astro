@@ -12,7 +12,6 @@ import Article from '@components/page/Article.astro';
 import ArticleHeader from '@components/page/ArticleHeader.astro';
 import Divider from '@components/page/Divider.astro';
 import Markup from '@components/page/Markup.astro';
-import PageHero from '@components/page/PageHero.astro';
 import Section from '@components/page/Section.astro';
 import SiteSectionHeader from '@components/site/blog/SiteSectionHeader.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
@@ -26,11 +25,13 @@ export interface Props {
 }
 
 const { content: node } = Astro.props;
-const { heroImage } = node;
+// const { images } = node;
 
 const nodes = await importAllPosts();
 const posts = sortedPosts(nodes as BlogPost[]);
 const { previous, next } = findPreviousAndNextPosts(posts, node);
+
+// const hero = images[0];
 ---
 
 <Document>
@@ -42,7 +43,7 @@ const { previous, next } = findPreviousAndNextPosts(posts, node);
             <SiteMain slot="main">
                 <Article>
                     <ArticleHeader node={node} slot="header" noDate>
-                        <PageHero src={heroImage} />
+                        <!-- PageHero src={hero} /-->
                     </ArticleHeader>
                     <Section>
                         <NodeDate node={node} />

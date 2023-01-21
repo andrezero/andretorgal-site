@@ -1,7 +1,6 @@
 // const { ERROR } = require('../constants/severity.cjs');
 
 const { OFF } = require('../constants/severity.cjs');
-
 const overrides = [
     {
         files: ['**/*.astro'],
@@ -24,6 +23,7 @@ const overrides = [
             Note: false,
             Picture: false,
             Year: false,
+            Hero: false,
         },
         rules: {
             // X 'astro/no-conflict-set-directives': ERROR,
