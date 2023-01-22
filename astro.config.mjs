@@ -7,7 +7,7 @@ import { myAstro } from './src/integration/index.mjs';
 
 export default defineConfig({
     site: 'https://andretorgal.com',
-    integrations: [myAstro(), markdownIntegration(), preact(), mdx(), sitemap()],
+    integrations: [markdownIntegration(), preact(), myAstro(), mdx(), sitemap()],
     markdown: {},
     extendDefaultPlugins: true,
 });

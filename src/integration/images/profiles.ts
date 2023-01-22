@@ -1,6 +1,6 @@
 import type { ImageFormat, ImageProfile } from './types';
 
-export const DEAFULT_IMAGE_SIZE = 700;
+export const DEFAULT_IMAGE_SIZE = 700;
 export const DEFAULT_IMAGE_FORMAT: ImageFormat = 'avif';
 
 export const defaultProfile: ImageProfile = {
@@ -12,9 +12,9 @@ export const defaultProfile: ImageProfile = {
 };
 
 export const ogImageProfile: ImageProfile = {
-    widths: [1200, 627],
+    widths: [1200],
     sizes: '1200px',
     fit: 'cover',
     position: 'center',
-    formats: ['jpg'],
+    formats: ['jpeg'],
 };

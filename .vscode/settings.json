@@ -10,7 +10,9 @@
         "*.astro": "astro",
         "*.mdx": "markdown"
     },
-    "search.useIgnoreFiles": false,
+    "explorer.excludeGitIgnore": true,
+    "search.useIgnoreFiles": true,
+    "search.useGlobalIgnoreFiles": true,
     "search.exclude": {
         "**/node_modules": true,
         "**/coverage": true,

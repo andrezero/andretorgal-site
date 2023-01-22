@@ -19,7 +19,7 @@ export async function createStaticImages(
         const data = await transformImage(image, {
             width,
             format,
-            quality: 1,
+            quality: 80,
             fit: 'cover',
             position: 'center',
         });

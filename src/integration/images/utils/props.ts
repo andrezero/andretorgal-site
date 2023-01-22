@@ -1,4 +1,4 @@
-import { DEAFULT_IMAGE_SIZE, DEFAULT_IMAGE_FORMAT, defaultProfile } from '../profiles';
+import { DEFAULT_IMAGE_FORMAT, DEFAULT_IMAGE_SIZE, defaultProfile } from '../profiles';
 import type {
     Attribution,
     FigureResolvedProps,
@@ -65,7 +65,7 @@ export function resolveImageProps(props: ImageProps): ImageResolvedProps {
 
     const { widths, formats } = profile;
     const transform: ImageTransform = {
-        width: widths[0] || DEAFULT_IMAGE_SIZE,
+        width: widths[0] || DEFAULT_IMAGE_SIZE,
         format: formats[0] || DEFAULT_IMAGE_FORMAT,
     };
 

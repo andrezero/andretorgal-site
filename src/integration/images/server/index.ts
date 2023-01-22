@@ -1,6 +1,6 @@
 import mime from 'mime';
 
-import { DEAFULT_IMAGE_SIZE, DEFAULT_IMAGE_FORMAT } from '../profiles';
+import { DEFAULT_IMAGE_FORMAT, DEFAULT_IMAGE_SIZE } from '../profiles';
 import { transformImage } from '../sharp';
 import type { ImageFormat } from '../types';
 import { etag } from '../utils/etag';
@@ -16,7 +16,7 @@ export async function get({ request }: Params): Promise<Response> {
         const params = url.searchParams;
 
         const filename = params.get('src');
-        const width = Number(params.get('width')) || DEAFULT_IMAGE_SIZE;
+        const width = Number(params.get('width')) || DEFAULT_IMAGE_SIZE;
         const format = (params.get('format') as ImageFormat) || DEFAULT_IMAGE_FORMAT;
 
         if (!filename) {

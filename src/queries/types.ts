@@ -17,20 +17,22 @@ export interface BaseNode {
     type: string;
     title: string;
     description?: string;
-    published: string;
-    updated?: string;
-    heroImage?: string;
-    ogImage?: string;
     tags?: string[];
     featured?: boolean;
-    links: {
-        external: Link[];
-        internal: Link[];
-    };
-    images: Image[];
+    published: string;
+    updated?: string;
     abstract?: {
         text: string;
         markdown: string;
+    };
+    heroImage?: string;
+    ogImage?: string;
+    images: string[];
+    imageBaseDir: string;
+    mdxFilename: string;
+    links: {
+        external: Link[];
+        internal: Link[];
     };
     [key: string]: unknown;
 }
