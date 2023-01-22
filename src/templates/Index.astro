@@ -24,7 +24,7 @@ export interface Props {
 const { content: page } = Astro.props;
 
 const nodes = await importAllPosts();
-const posts = sortedPosts(nodes).slice(0, 3);
+const posts = sortedPosts(nodes).slice(0, 5);
 ---
 
 <Document>

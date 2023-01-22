@@ -10,30 +10,30 @@ updated: 2023 Jan 08
 
 <Abstract>
 
-Stuff I want to do or at least experiment with on this website. The done stuff is on the [changelog](/meta/project/changelog) page.
+Stuff I want to on this website, or otherwise just investigate and experiment with. The done stuff is on the [changelog](/meta/project/changelog) page.
 
 </Abstract>
-
-## UI: images again
-
-- add README
-- write up post
 
 ## UI: improvements
 
 - UI: Content components
-  - `<Hero>`
   - `<Blockquote>`
     - accepts a title before the quote (before `\\`)
     - accepts an attribution after the quote (after `// `)
     - the attribution can contain a link
   - `<Note type="old|construction|blog|tags|meta|links">`
+  - `<Code>` with nice syntax highlighting and `copy` function
 
-## Dev experience improvements
+## Authoring experience
 
-- DX: author all page links with extension (so that IDE can navigate naturally); strip them via remark plugin
-- Validate broken links
-- common emoji aliases, please :pleading_face:
+- AX: auto-titles
+- AX: frontmatter defaults per folder
+- AX: author all page links with extension (so that IDE can navigate naturally); strip them via remark plugin
+- AX: incomplete frontmatter (missing type)
+- AX: validate broken links/images
+- AX: validate outgoing links (cache!.. last checked on...)?
+- AX: common emoji aliases, please :pleading_face:
+- AX: VSCode emoji preview
 
 ## UI: footer
 
@@ -41,6 +41,10 @@ Stuff I want to do or at least experiment with on this website. The done stuff i
 
 ## Docs
 
+- add README
+  - minimal operation instructions
+  - a little narrative
+  - delegate the details to MDX files?
 - Content: docs / components / ...
 - Content: docs / Astro setup
   - VS Code setup

@@ -10,5 +10,5 @@ export function baseNodeFromMD<T extends BaseNode>(node: MarkdownInstance<T>): T
 
 export async function globResultToArray<T extends BaseNode>(result: GlobResult<T>): Promise<T[]> {
     const raw = await Promise.all(Object.values(result).map(fn => fn()));
-    return raw.map(node => baseNodeFromMD<T>(node));
+    return raw.filter(node => !!node.frontmatter.type).map(node => baseNodeFromMD<T>(node));
 }

@@ -28,28 +28,29 @@ const show = Astro.slots.has('default');
     }
 
     .markup > h2 {
-        margin: var(--layout-gap) 0 var(--layout-unit);
+        margin: var(--layout-gap) 0 var(--layout-unit-proportional);
     }
 
     .markup > h3 {
-        margin: calc(2 * var(--layout-unit)) 0 var(--layout-unit);
+        margin: var(--layout-gap) 0 var(--layout-unit-proportional);
     }
 
     .markup > h4 {
-        margin: var(--layout-unit) 0 var(--layout-unit);
+        margin: var(--layout-unit-proportional) 0 var(--layout-unit-proportional);
     }
 
     .markup > p {
-        margin: 0 0 var(--layout-unit);
+        margin: 0 0 var(--layout-unit-proportional);
     }
 
     .markup > .large {
         font-size: var(--t-type-size-1);
-        margin: 0 0 var(--layout-unit);
+        margin: 0 0 var(--layout-unit-proportional);
     }
 
+    .markup > ol,
     .markup > ul {
-        margin: 0 0 0 var(--layout-gap);
+        margin: 0 0 var(--layout-unit-proportional) var(--layout-gap);
     }
 
     .markup > ul > li {
@@ -57,15 +58,12 @@ const show = Astro.slots.has('default');
     }
 
     .markup > h4 {
-        margin: var(--layout-unit) 0 var(--layout-unit);
+        margin: var(--layout-unit-proportional) 0 var(--layout-unit-proportional);
     }
 
-    .markup > pre {
-        margin: 0 0 var(--layout-unit);
-    }
-
-    .markup > .picture {
-        margin: 0 0 var(--layout-unit);
+    .markup > pre,
+    .markup > figure {
+        margin: var(--layout-unit-proportional) 0 var(--layout-unit);
     }
 
     .markup > iframe {
@@ -103,7 +101,7 @@ const show = Astro.slots.has('default');
         border-bottom: 0.6em solid var(--scheme-alt-bg);
         content: '“';
         left: calc(-1 * var(--layout-space));
-        top: calc(-1 * var(--layout-unit));
+        top: calc(-1 * var(--layout-shift));
         line-height: 1em;
     }
 </style>

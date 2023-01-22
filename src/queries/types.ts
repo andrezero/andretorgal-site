@@ -1,3 +1,4 @@
+import type { ImageProps } from '@integration/images/types';
 import type { MarkdownInstance, MarkdownLayoutProps } from 'astro';
 
 export type GlobResult<T extends BaseNode> = Record<string, () => Promise<MarkdownInstance<T>>>;
@@ -25,15 +26,16 @@ export interface BaseNode {
         text: string;
         markdown: string;
     };
-    heroImage?: string;
+    heroImage?: string | boolean;
     ogImage?: string;
     images: string[];
-    imageBaseDir: string;
-    mdxFilename: string;
+    autoHero?: ImageProps;
     links: {
         external: Link[];
         internal: Link[];
     };
+    imageBaseDir: string;
+    mdxFilename: string;
     [key: string]: unknown;
 }
 

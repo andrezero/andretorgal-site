@@ -6,8 +6,8 @@ import '@styles/reset.css';
 import '@styles/spacing.css';
 import '@styles/typography.css';
 
+import { getOgImage } from '@integration/images/utils/getOgImage';
 import type { BaseNode } from '@queries/types';
-import { getOgImage } from '~/integration/images/utils/getOgImage';
 import { SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE } from '../../config';
 
 export type Props = { node: BaseNode };

@@ -4,9 +4,12 @@ export interface Props {
 }
 
 const { y } = Astro.props;
+
+const parts: string[] = `${y}`.split('-');
+const anchor = parts.length ? parts[0] : y;
 ---
 
-<p class="y"><span>{y}</span></p>
+<p class="y" id={`around-${anchor}`}><span>{y}</span></p>
 
 <style>
     .y {

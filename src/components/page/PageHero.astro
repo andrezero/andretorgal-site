@@ -1,45 +1,46 @@
 ---
-import Image from '~/components/mdx/Image.astro';
+import Figure from '@components/mdx/Figure.astro';
+import type { ImageProps } from '~/integration/images/types';
 
-export interface Props {
-    src: string | undefined;
-}
+export type Props = ImageProps;
 
-const { src: input } = Astro.props;
-
-let src;
-
-if (input) {
-    const resource = await import(/* @vite-ignore */ input);
-    src = resource.default;
-}
+const props = Astro.props;
 ---
 
-{
-    src && (
-        <div class="hero">
-            <Image src={src} />
-        </div>
-    )
-}
+<div class="hero">
+    <Figure {...props} />
+</div>
 
 <style is:global>
     .hero {
-        --hero-width: 100vw;
+        --hero-width: 101vw;
+        margin-bottom: var(--layout-gap);
     }
 
-    .hero figure {
+    .hero figure picture {
+        position: relative;
         width: auto;
         max-width: initial;
         width: var(--hero-width);
         min-width: var(--hero-width);
         max-width: var(--hero-width);
+        min-height: 100%;
+        max-height: 100%;
         margin-left: calc(-1 * var(--layout-gutter));
-        object-fit: cover;
     }
 
-    @media screen and (min-width: 600px) {
-        .hero figure {
+    .hero figure picture img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    @media screen and (min-width: 650px) {
+        .hero figure picture {
             margin-left: calc(-1 * (50vw - var(--layout-container-width) / 2));
         }
     }
@@ -49,20 +50,16 @@ if (input) {
             --hero-width: calc(100vw - var(--layout-col-1) - var(--layout-gap));
         }
 
-        .hero figure {
+        .hero figure picture {
             margin-left: calc(-1 * var(--layout-gutter));
-            max-height: 50vh;
-            overflow: hidden;
         }
     }
 
     @media screen and (min-width: 1420px) {
-        .hero figure {
+        .hero figure picture {
             --hero-width: calc(
-                100vw - var(--layout-col-1) - var(--layout-bi-col-2) + var(--layout-space)
+                101vw - var(--layout-col-1) - var(--layout-bi-col-2) + var(--layout-space)
             );
-            max-height: 50vh;
-            overflow: hidden;
         }
     }
 </style>

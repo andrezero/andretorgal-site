@@ -12,6 +12,7 @@ import Article from '@components/page/Article.astro';
 import ArticleHeader from '@components/page/ArticleHeader.astro';
 import Divider from '@components/page/Divider.astro';
 import Markup from '@components/page/Markup.astro';
+import PageHero from '@components/page/PageHero.astro';
 import Section from '@components/page/Section.astro';
 import SiteSectionHeader from '@components/site/blog/SiteSectionHeader.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
@@ -19,19 +20,20 @@ import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import { findPreviousAndNextPosts, importAllPosts, sortedPosts } from '@queries/posts';
 import type { BlogPost } from '@queries/types';
+import { getHeroImage } from '~/integration/images/utils/getHeroImage';
 
 export interface Props {
     content: BlogPost;
 }
 
 const { content: node } = Astro.props;
-// const { images } = node;
+const { heroImage: maybeHeroImage, autoHero, images, imageBaseDir, mdxFilename } = node;
 
 const nodes = await importAllPosts();
 const posts = sortedPosts(nodes as BlogPost[]);
 const { previous, next } = findPreviousAndNextPosts(posts, node);
 
-// const hero = images[0];
+const heroImage = getHeroImage(imageBaseDir, mdxFilename, maybeHeroImage, autoHero, images);
 ---
 
 <Document>
@@ -43,7 +45,7 @@ const { previous, next } = findPreviousAndNextPosts(posts, node);
             <SiteMain slot="main">
                 <Article>
                     <ArticleHeader node={node} slot="header" noDate>
-                        <!-- PageHero src={hero} /-->
+                        {heroImage && <PageHero {...heroImage} />}
                     </ArticleHeader>
                     <Section>
                         <NodeDate node={node} />

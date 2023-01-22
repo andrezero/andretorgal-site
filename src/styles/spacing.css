@@ -30,6 +30,7 @@
     --layout-space: var(--t-space-xl);
     --layout-gap: var(--t-space-xs);
     --layout-unit: var(--t-space-2xs);
+    --layout-unit-proportional: 0.25em;
     --layout-shift: 0.1em;
     --layout-shift-2x: 0.2em;
     --layout-shift-fixed: 2px;

@@ -1,16 +1,19 @@
 ---
 import LogoSvg from './logo/LogoSvg.astro';
 import MusicSvg from './logo/MusicSvg.astro';
+import NotFoundSvg from './logo/NotFoundSvg.astro';
 import StorySvg from './logo/StorySvg.astro';
 import WorkSvg from './logo/WorkSvg.astro';
 
+export type LogoVariant = 'logo' | 'work' | 'story' | 'music' | 'not-found';
 export interface Props {
-    variant?: 'logo' | 'work' | 'story' | 'music';
+    variant?: LogoVariant;
 }
 
 const { variant = 'logo' } = Astro.props;
 
-const svgMap = {
+const svgMap: Record<LogoVariant, any> = {
+    'not-found': NotFoundSvg,
     logo: LogoSvg,
     music: MusicSvg,
     story: StorySvg,

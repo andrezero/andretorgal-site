@@ -1,0 +1,70 @@
+---
+layout: ../../../templates/BlogPost.astro
+type: post
+title: MDX authoring experience in Astro / Shortcomings
+description: "A look at Astro's built-in features, their opinionated patterns and limitations, and evaluation of existing community driven projects such as m2dx"
+tags:
+  - ssg
+  - astro
+  - mdx
+  - andretorgal-com
+published: 2023 Jan 26
+---
+
+<Abstract>
+
+Since I am migrating this site to Astro - which I am convinced is the best SSG out there right now - I was expecting to have the same [advanced MDX authoring experience](/posts/2023-01/saying-goodbye-to-my-react-static-website) as in my previous website. Better even, maybe the challenges I was not able to solve before were meanwhile solved by the awesome folks out there.
+
+But I know well, there will be :dragon: :dragon: :dragon: dragons!
+
+</Abstract>
+
+<Hero>
+
+![Screenshot of the google image search results for "dragons": 15 thumbnails of colourful artwork are shown](./media/dragons.png 'There be dagons')
+
+</Hero>
+
+As I wrote before, I have a [long list of requirements for the experience](/posts/2023-01/mdx-authoring-experience-in-astro-shortcomings-and-astro-m2dx) I want to have when authoring and managing content on my website.
+
+Most of these features were working quite well in the [previous version of this website](/posts/2023-01/saying-goodbye-to-my-react-static-website). And they weren't that hard to accomplish! I rolled my own [remark, rehype pipeline](/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time), so I was free to make any choices I pleased about where the files should live, [frontmatter](https://mdxjs.com/guides/frontmatter/) manipulations, image optimisations, the works.
+
+## Computer says no
+
+Unfortunately, Astro built-in features are not that flexible. :sweat: On the contrary, they are [by design very opinionated](https://github.com/withastro/roadmap/pull/373) about some things.
+
+Relevant to my interests is the strong preference of [@astrojs/image](https://docs.astro.build/en/guides/integrations-guide/image/) to have all media stored in the `public/` folder. And the pages? Well those, go in `src/pages` :cry:.
+
+Like 5 of my requirements became a bit more difficult in one go... Oh my! this is going to be a wild ride through a few rabbit :rabbit: :hole: holes.
+
+Can't believe I actually contemplated using ugly `../../public/...` paths for a bit. Then I tried writing a simple remark plugin. Nah, things started breaking :scream: ... Whatever I tried, I was either breaking the `dev` server or the static build.
+
+What about [Astro collections](https://docs.astro.build/en/guides/content-collections/)? It would allow me to cleanup the frontmatter and not repeat `layout: ...` everywhere. But could I have two items of different collections in the same folder? Oh noooooo! :astonished: Astro's MD/X features are again "file system first":
+
+> A content collection is any directory inside the reserved `src/content` ...
+
+After tinkering with all possible configuration options, searching in [hundreds of Astro built websites](https://github.com/search?q=%22%40astrojs%2Fmdx%22&type=code), and reading through some disappointing [conversations in Github issues](https://github.com/withastro/astro/issues/5008) ... :tired_face: ... I decided to use less built-in features and search for community plugins instead.
+
+## Third-party package: `astro-m2dx`
+
+Honestly, Astro's community is big and growing, but the only thing out there that stood out was the [astro-m2dx project](https://astro-m2dx.netlify.app/) which immediately resonated, a lot, with what I was looking for:
+
+> • Define default frontmatter properties for all files in a directory, e.g. the layout
+>
+> • Map HTML elements to JSX components on a per-directory basis
+>
+> • Auto-import known JSX components on a per-directory basis
+>
+> • Scan the document for Title or Abstract
+
+Unfortunately, the image implementation depends on using `import` - as suggested by the [Astros's documentation](https://docs.astro.build/en/guides/integrations-guide/image/#images-in-public).
+
+But if the reference to the image is no longer a string with a resolvable `path/to/image.png` then I can't reuse it easily - or can't use it at all - in other places such as the `og:image` tag, or in good old thumbnails in lists.
+
+I still considered dealing with that later, and focus on the other `astro-m2dx` features. But the first time I deployed it, the _auto imports_ feature was simply not working.
+
+In conclusion, `astro-m2dx` has some really cool features, some very smart tricks inside, and depends on some super useful utils published independently as the [m2dx-utils](https://www.npmjs.com/package/m2dx-utils) package.
+
+But the author is focused on other (much more important) things right now, and won't be able to help me with the [really strange and opaque CI issue](https://github.com/christian-hackyourshack/npm/issues/65) that I ran into. :red:
+
+Time to take this into my own hands :fist: and have a go at putting together an "integration", using bits and pieces from all the things I saw in the last 2 weeks, and deliver that [improved (MDX) authoring experience in astro](/posts/)

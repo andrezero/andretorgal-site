@@ -13,7 +13,7 @@ export function autoAbstract(): RemarkPlugin {
     return function (tree: Root, file: VFile): void {
         const { frontmatter } = file.data.astro;
 
-        visit(tree, { type: 'mdxJsxFlowElement', name: 'Abstract' }, (node: Root) => {
+        visit(tree, { type: 'mdxJsxFlowElement', name: 'Abstract' }, node => {
             const normalised = fixPonctuation(toString(node));
 
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

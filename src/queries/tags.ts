@@ -11,8 +11,10 @@ function newTag(name: string): TagNode {
         title: name,
         published: today(),
         count: 0,
-        links: { external: [], internal: [] },
         images: [],
+        links: { external: [], internal: [] },
+        imageBaseDir: '',
+        mdxFilename: '',
     };
 }
 

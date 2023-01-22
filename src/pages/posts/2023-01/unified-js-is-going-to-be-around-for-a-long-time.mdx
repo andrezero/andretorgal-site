@@ -15,6 +15,12 @@ This library is now powering [ESLint](https://eslint.org/), [prettier](https://p
 
 </Abstract>
 
+<Hero>
+
+![Hero image of the article is a photo of baking tools. Silly metaphor, I know!](./media/baking-tools.jpg '// Photo by Pavel Danilyuk: https://www.pexels.com/photo/baking-utensils-on-table-with-shaped-dough-on-tray-6996299/')
+
+</Hero>
+
 ## Context
 
 I stumbled upon this project some 4 years ago. I believe because [Storybook](https://storybook.js.org/), then [Gatsby](https://www.gatsbyjs.com/) were already using it.
@@ -35,7 +41,31 @@ You can use them analyse the content, for instance for linting purposes. Strip c
 
 > You can build on the unified collective to make all kinds of interesting things.
 
-## An example
+## How do you use it?
+
+You create a _pipeline_, by composing a series of simple functions, and you can then you can use it to parse, transform, and render as many inputs as you want.
+
+The `markdownToHtml()` function, accepts a markdown string and renders it to HTML.
+
+```js
+import html from 'rehype-stringify';
+import markdown from 'remark-parse';
+import remark2rehype from 'remark-rehype';
+import unified from 'unified';
+
+cosnt processor = unified()
+  .use(markdown)
+  .use(remark2rehype)
+  .use(html);
+
+async function markdownToHtml(input) {
+  return process.processString(input).toString();
+}
+```
+
+Notice that the `async` function. The pipelines are asynchronous and always return a promise.
+
+## An example using community plugins
 
 Since this website is [built with Astro](/posts/2023-01/building-my-website-with-astro-mdx-preact), and because Astro uses the Unified.js ecosystem for all things Markdown and MDX, I added `remark-emoji` to the [configuration](https://github.com/andrezero/andretorgal-site/blob/main/astro.config.mjs).
 
@@ -47,9 +77,24 @@ Or even better, by adding `remark-a11y-emoji`, it replaces `:muscle:` by
 <span role="img" aria-label="flexed biceps">💪</span>
 ```
 
-## The kudos
+To plug these two transformations to the above example, all you have to do is:
 
-The clever functional design, the rigor in principles, and patterns. You could tell that, even 4 years ago, that this was going to be around for a while.
+```js
+import a11yEmoji from '@fec/remark-a11y-emoji';
+import emoji from 'remark-emoji';
+
+cosnt processor = remark() // <-- you can also start with remark
+  .use(remarkEmoji) // <-- transform :beer: to emoji
+  .use(remarkA11yEmoji) // <--  transform to `<span...>`
+  .use(remark2rehype)
+  .use(html);
+```
+
+## The kudos :100:
+
+The clever functional design, the rigor in principles, and patterns. :star-struck:
+
+You could tell, even 4 years ago, that this was going to be around for a while.
 
 Not only that, the super professional management of the project(s) and community, has been allowing it to grow this fast and conquer such an important space in the industry.
 
@@ -71,10 +116,31 @@ Their website now reads:
 
 > I work most-time on open source maintaining 550+ projects that are downloaded 22B+ times a year.
 
-Are you mind blown, yet?
+Are you mind blown :exploding_head:, yet?
 
 At the moment, Prettier, ESLint, MDX, and probably millions of websites and services out there - arguably ALL modern documentation websites - contain some Unified.js code.
 
 ## How I use Unified.js
 
-I used it quite a bit while building the [previous version of this website](/posts/2023-01/saying-goodbye-to-my-react-static-website.md). Since then, I reach out for it often at work, usually to patch up deficiencies in [Webpack](https://webpack.js.org/) or [Rollup.js](https://rollupjs.org/) builds, as well as for source code generation use cases.
+Before discovering [Unified.js](https://github.com/unifiedjs/unified) I used many libraries to parse (and generate) Markdown documents. I remember `marked` but in an [even older version of this website](/meta/project/archaeology) I found [markdown-js](https://github.com/evilstreak/markdown-js) (now 13 years old :joy: and unmaintained).
+
+Since discovering the Unified.js ecosystem of highly pluggable micro libraries, I never used anything else. I reach for it all the time now, especially at work, usually to patch up deficiencies in tools such as [Webpack](https://webpack.js.org/) or [Rollup.js](https://rollupjs.org/).
+
+Fix builds, automate boring tasks, lint code, prevent errors, ...
+
+Quite a :hammer: tool to carry in your tool belt.
+
+## Show me some code!
+
+Sure! I used it extensively to build this website. So you'll find some examples of manipulation in [this part of the repository](https://github.com/andrezero/andretorgal-site/tree/main/src/integration).
+
+I created the `remark/` plugins to manipulate the `markdown` tree:
+
+- `autoAbstract()` extracts `abstract` from the document and stores in a metadata object.
+- `autoImages()` replace image relative paths with absolute ones and.
+- `customComponents()` makes sure that instead of rendering `<img>` tags we render a custom component.
+- and `autoImports()` injects `import` statements in the MDX context so that I don't have to manually import commonly used components.
+
+The `rehype/` plugins manipulate the `HTML`, also in [abstract tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree) format, just before it is rendered. I only needed one - `externalLinks()` - to add `rel="noopener"` to all the <a href="https://somwhereelse.com">external links</a>.
+
+If you wanna follow the narrative, check out [the origin story](/posts/2023-01/building-my-website-with-astro-mdx-preact) or jump straight to my efforts to provide an [advanced MDX authoring experience with Astro](/posts/2023-01/improving-mdx-experience-in-astro-with-relative-paths-responsive-images-and-more).

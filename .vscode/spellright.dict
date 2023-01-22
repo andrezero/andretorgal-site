@@ -17,3 +17,4 @@ md
 
 detect-non-literal-regexp
 avif
+vite-ignore

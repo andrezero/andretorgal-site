@@ -7,6 +7,7 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 import { ssg } from './images/ssg/index.ts';
 import { externalLinks } from './rehype/externalLinks.ts';
 import { autoAbstract } from './remark/autoAbstract.ts';
+import { autoHero } from './remark/autoHero.ts';
 import { autoImages } from './remark/autoImages.ts';
 import { autoImports } from './remark/autoImports.ts';
 import { customComponents } from './remark/customComponents.ts';
@@ -32,6 +33,7 @@ export function myAstro() {
                     remarkEmoji,
                     remarkA11yEmoji,
                     autoAbstract,
+                    [autoHero, { baseDir }],
                     remarkUnwrapImages,
                     [autoImages, { baseDir }],
                     [customComponents, { componentsFile }],

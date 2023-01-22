@@ -23,6 +23,12 @@
         "support/docs/static": true,
         "support/tools/temp": true
     },
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#941614",
+        "titleBar.activeForeground": "#f6f8f9",
+        "sideBar.background": "#202427",
+        "sideBar.foreground": "#c7cacc"
+    },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },

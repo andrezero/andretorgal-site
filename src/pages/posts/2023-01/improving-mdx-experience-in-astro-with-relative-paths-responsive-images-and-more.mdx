@@ -1,0 +1,87 @@
+---
+layout: ../../../templates/BlogPost.astro
+type: post
+title: Improving (MDX) authoring experience in Astro / Solutions
+description: How I setup image optimisations (responsiveness, relative paths) and frontmatter optimisations (auto titles, auto metadata) and other MDX utilities (component mapping, auto-imports) on an Astro website.
+tags:
+  - ssg
+  - astro
+  - mdx
+  - andretorgal-com
+published: 2023 Jan 27
+---
+
+<Abstract>
+
+Astro built-ins and community projects are not delivering the website I want to have. Time to take this into my own hands :fist: and have a go at putting together an Astro [integration](https://docs.astro.build/en/reference/integrations-reference/) using bits and pieces from all the things I saw in the last 2 weeks.
+
+</Abstract>
+
+## Deep breath ... :hammer: Let's build it
+
+<Note type="warning">
+
+:warning: This is not meant to be a tutorial. I do not recommend you add so many dependencies and custom code to your site. Unless you are an obsessive tinkerer, willing to pick up a fight with a tough tasks, you will regret it.
+
+</Note>
+
+What I do recommend is that if you want to do something, you don't give up. Go dig, search around Github, Stack Overflow, [source code of sites like this](https://github.com/andrezero/andretorgal.site).
+
+## Images
+
+For starters, I basically replicated [@astro/image](https://docs.astro.build/en/guides/integrations-guide/image/) but without the _images go in `public/`_ restriction. I was also opinionated about it, but in my case images are **always** relative to the `./` content file.
+
+In `dev` mode it renders images via an endpoint attached to the [vite](https://vitejs.dev/) dev server. Smart: only the images requested by the browser get generated.
+
+```
+/_image?src=/posts/2023-01/media/waterfall-in-forest.png&amp;width=700&amp;format=avif
+```
+
+During the static build, it generates public paths like `/posts/2023-01/media/waterfall-in-forest-700.avif` and collects them - via a rather hacky `globalThis` (please Astro community provide some better pattern?). After all HTML is generated, takes all the `staticImages[]` and the individual formats.
+
+## Component mapping
+
+You also have to instruct `rehype` - which Astro uses to render the abstract tree into HTML - to use certain
+
+At the moment I only have one such case. I am mapping
+
+## Auto imports
+
+For the "auto imports" features and mapping "auto components" I based it off [astro-m2dx](https://astro-m2dx.netlify.app/) code and I am importing a lot of functions from `m2dx-utils` package, and the rest, as usual from the [Unified.js](/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time) ecosystem.
+
+I am defining which components to make available in a [single file](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/remark/autoImports.ts) as opposed to M2DX which lets you create several of these files in folders, and then scans the file system for them every time it builds a page.
+
+```tsx
+export const autoimports = {
+    Abstract,
+    Audio,
+    Code,
+    ...
+};
+```
+
+With [this remark plugin](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/remark/autoImports.ts#L45) I am injecting the necessary `import ... ` statement into the MDX context, so that all the contents will
+
+## Eliminating layout shift.
+
+Layout shift happens when the browser loads a resource and realises it needs to push content down and/or the side to make space for it.
+
+If we know the width/height of the image we can prevent this by using the [padding-top + percentage technique](https://css-tricks.com/aspect-ratio-boxes/) to reserve the space.
+
+To find out the aspect ratio and make it available where it's needed, I wrote a couple of functions to [readImage()](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/images/utils/readImage.ts) into an instance of [sharp](https://github.com/lovell/sharp) and to [getImageFacts()](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/images/utils/getImageFacts.ts). I took the opportunity to also find the dominant colour :lower_left_crayon: which I use as the background colour, visible while before the image is loaded.
+
+## What's next?
+
+Next weekend I plan to figure out the whole [stay in S3 or move to Netlify](/meta/records/pending/hosting-netlify-or-s3) conundrum.
+
+Priority is to replace the old version with the new one.
+
+![Screenshot of the old version of this website - with lighter, smaller typography - next to the new one - stronger and bigger typography, more contrast, a new logo, emojis!](./media/old-vs-new.png)
+
+Then I'll follow up with my [website's backlog](/meta/project/backlog):
+
+- Remove the `.mdx` extensions from the links with a `remark` plugin.
+- Setup the frontmatter defaults per type of content.
+- Only title: the document's `# title`
+
+And many other content related features, such as media galleries, links, reading time, and - god forbid! - comments! :innocent:

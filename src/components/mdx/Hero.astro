@@ -1,25 +1,8 @@
 ---
-import Markup from '../page/Markup.astro';
+import ConditionalMarkup from './common/ConditionalMarkup.astro';
+export type { Props } from './common/ConditionalMarkup.astro';
 
-export interface Props {
-    show?: boolean;
-}
-
-const { show } = Astro.props;
+const props = Astro.props;
 ---
 
-{
-    show && (
-        <Markup>
-            <slot />
-        </Markup>
-    )
-}
-
-<style>
-    div {
-        display: flex;
-        flex-direction: column;
-        gap: var(--layout-unit);
-    }
-</style>
+<ConditionalMarkup {...props}><slot /></ConditionalMarkup>
