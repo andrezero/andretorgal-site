@@ -19,9 +19,11 @@ const imageProps = {
 ---
 
 <figure class="figure">
-    <span class="frame" style={{ 'background-color': dominant }}>
+    <span class="block">
         <span style={{ 'padding-top': paddingTop }}></span>
-        <Image {...imageProps} />
+        <span class="frame" style={{ 'background-color': dominant }}>
+            <Image {...imageProps} />
+        </span>
     </span>
     {
         showLabel && (
@@ -48,7 +50,7 @@ const imageProps = {
         flex-direction: column;
     }
 
-    .frame {
+    .block {
         display: flex;
         position: relative;
     }
@@ -61,14 +63,6 @@ const imageProps = {
         width: 100%;
         height: 100%;
         border: var(--layout-shift) solid var(--scheme-muted);
-    }
-
-    .frame span {
-        display: block;
-        width: 1px;
-        margin-left: -1px;
-        height: 0;
-        float: left;
     }
 
     figcaption {

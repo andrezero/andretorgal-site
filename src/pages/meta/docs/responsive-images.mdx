@@ -11,43 +11,43 @@ published: 2023 Jan 19
 
 <Abstract>
 
-Image generation is handled by `@astrojs/image`, wrapped in a custom component + some hacks for more detailed content and better semantics, and the image optimisation is carefully synchronised with the layout. Aspect ratio awareness is mandatory to eliminate CLS.
+Image generation is handled by a custom Astro integration, similar to `@astrojs/image`, and all images are wrapped in a custom `Figure` component for more richer content and better semantics. The image optimisations are carefully synchronised with the layout. Aspect ratio awareness is mandatory to eliminate CLS.
 
 </Abstract>
 
-**
-:** Because things are very responsive and fluid around here:
+<Note type="blog">
 
-- [My website: Layout](/meta/docs/layout)
-- [My website: Typography](/meta/docs/typography) (fluid scale)
-- [My website: Space scale](/meta/docs/styling) (fluid scale)
+## :writing_hand: I blogged about this
+
+- [Limitations of Astro and @astrojs/image](/posts/2023-01/mdx-authoring-experience-in-astro-shortcomings-and-astro-m2dx).
+- [Improving MDX experience in Astro with relative paths, responsive images, and more...](/posts/2023-01/improving-mdx-experience-in-astro-with-relative-paths-responsive-images-and-more).
+
+</Note>
 
 ## Content and semantics
 
-We wrapped the Astro default component with our `<Image>` implementation.
+The [Figure](https://github.com/andrezero/andretorgal-site/blob/main/src/components/mdx/Figure.astro) component:
 
-Features added:
-
-- add `<figure>` and `<figcaption>` semantics
-- provide content for the image caption
-- provide an attribution for the caption (example below)
-- select different profiles (default, hero, ...)
+- Adds `<figure>` and `<figcaption>` semantics.
+- Provides content for the image caption.
+- Provides an attribution for the caption (example below).
+- Renders the `Image` component
 
 The resulting HTML
 
-```
+```html
 <figure>
+  <span>
+    <span style="padding-top:62.142857142857146%"></span>
+    <image alt="{alt}" src="{...}" />
+  </span>
+  <figcaption class="cs-primary astro-DA36CKTJ">
+    {image title}
     <span>
-        <span style="padding-top:62.142857142857146%"></span>
-        <AstroImage alt={alt} src={...} />
+      {image attributiom}
+      <a data-external href="{attrbution url}">Visit site</a>
     </span>
-    <figcaption class="cs-primary astro-DA36CKTJ">
-        {image title}
-        <span>
-            {image attributiom}
-            <a data-external href="{attrbution url}">Visit site</a>
-        </span>
-    </figcaption>
+  </figcaption>
 </figure>
 ```
 
@@ -55,15 +55,9 @@ The resulting HTML
 
 Images always take more time to load than the rest of the content. This causes [CLS](https://web.dev/cls/) which impacts usability of the page negatively, as things shift around while it loads, and may deteriorate SEO ranking.
 
-At build time we always know the width and height of the image, curtesy of the underlying `@astrojs/image` integration so we can set a proportional height, through the [padding-top + percentage technique](https://css-tricks.com/aspect-ratio-boxes/) that, no matter the screen size, reserves the exact space needed for the image.
+At build time the code acquires the width and height of the image via [getImageFacts()](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/images/utils/getImageFacts.ts).
 
-Because this doesn't work for remote images, I am passing the image's width and height - :skull: hack!! :skull: - through the markdown alt string.
-
-```md
-![/w=512&h=344/ alt](src 'title')
-```
-
-I also made `width` and `height` mandatory. If they're not supplied the build crashes with `Please provide /w=___&h=___/ for this remote image: https://...`
+This way I can set a proportional height, through the [padding-top + percentage technique](https://css-tricks.com/aspect-ratio-boxes/) that, no matter the screen size, reserves the exact space needed for the image.
 
 ## Example
 
@@ -81,19 +75,17 @@ Result
 
 ## Image profiles
 
-Because Image generation is handled by `@astrojs/image` we need to specify which resolutions we want to generate.
+**Note:** Back in 2019, [native responsive images](https://ericportis.com/posts/2014/srcset-sizes/#part-2) were still a bit of challenge. But today, issues like [@srcset and picture being a maintenance nightmare](https://cloudfour.com/thinks/the-real-conflict-behind-picture-and-srcset/#%40srcset-and-%26lt%3Bpicture%26gt%3B-maintenance-nightmare) are a non-issue if you are using a framework like Astro and generating all `picture`, `source` and `img` tags from within a component.
 
-This depends on how the image is going to be displayed by the website's layout. We want big resolutions for hero images, and want the browser to select those depending on the viewport width.
+I need to specify which resolutions I want to generate and this depends on how the image is going to be displayed by the website's layout. This might be a bit tricky if you are using [responsive layouts](/meta/docs/layout), and even trickier if you are using a fluid [responsive scale for typography](/meta/docs/typography) and a [responsive space scale](/meta/docs/styling). But it is still doable.
 
-But we want smaller and, eventually, a single size, for things like thumbnails.
+The goal here is to serve higher resolution for hero images, and medium resolutions for images inlined in posts, and to have the browser select which resolution to load depending on the viewport's width. Also, for things like thumbnails, I probably want a single resolution, and even smaller.
 
-### Hero profile
-
-:construction: later
+All profiles are declared here: [images/profiles.ts](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/images/profiles.ts).
 
 ### Default profile
 
-The content column layout is never wider than ~700px so we are generating images only at two resolutions:
+The content column layout is never wider than ~700px so I are generating images only at two resolutions:
 
 - `width: 700px` - loaded on all small screens
 - `width: 1400px` - loaded if the screen is wider than 1200 pixels
@@ -102,11 +94,17 @@ This should speed up download on all mobile devices.
 
 :information_source: If you resize the screen above/below 1200 and then click `open image in new tab`, you will get the different resolutions.
 
+### Hero profile
+
+For hero images, which take up 100% of the width of the site's `<main>`, I extend the previous profile and add one extra resolution:
+
+- `width: 700px` - loaded on all small screens
+- `width: 1400px` - loaded if the screen is wider than 650 pixels
+- `width: 2800px` - loaded if the screen is wider than 1200 pixels
+
 ## Image formats
 
-Out of the box `@astrojs/image` is generating `jpg`, `avif`, and `webp` versions (x2 resolutions). A simplistic look at [can I use avif](https://caniuse.com/?search=avif) vs [can I use webp](<[avif](https://caniuse.com/?search=webp)>) indicates that we've got only Microsoft Edge to gain or loose.
-
-Since `avif` yields more compression (~30% smaller files) I'll drop the `webp` format.
+Out of the box `@astrojs/image` was generating `jpg`, `avif`, and `webp` versions (x2 resolutions). A simplistic look at [can I use avif](https://caniuse.com/?search=avif) vs [can I use webp](<[avif](https://caniuse.com/?search=webp)>) indicates that I've got only Microsoft Edge to gain or loose.
 
 ```
 -rw-r--r--  461K  dist/assets/file....1400-size.jpg
@@ -117,6 +115,6 @@ Since `avif` yields more compression (~30% smaller files) I'll drop the `webp` f
 -rw-r--r--  93K  dist/assets/file....700-ize.avif
 ```
 
-All browsers get small files, except Edge. Faster downloads :sparkles: better experience.
+Since `avif` yields more compression (~30% smaller files) I'll drop the `webp` format and use only `avif` and `jpeg`.
 
-Also, my builds are sped up because smaller / less files to output and upload. :evergreen_tree: Less energy consumption as well.
+All browsers get small files, except Edge. Faster downloads :sparkles: better experience. Also, my builds are sped up because smaller / less files to output and upload. :evergreen_tree: Less energy consumption as well.

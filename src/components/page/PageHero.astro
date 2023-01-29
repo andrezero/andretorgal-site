@@ -1,6 +1,6 @@
 ---
 import Figure from '@components/mdx/Figure.astro';
-import type { ImageProps } from '~/integration/images/types';
+import type { ImageProps } from '@integration/images/types';
 
 export type Props = ImageProps;
 
@@ -17,7 +17,7 @@ const props = Astro.props;
         margin-bottom: var(--layout-gap);
     }
 
-    .hero figure picture {
+    .hero .block {
         position: relative;
         width: auto;
         max-width: initial;
@@ -29,7 +29,7 @@ const props = Astro.props;
         margin-left: calc(-1 * var(--layout-gutter));
     }
 
-    .hero figure picture img {
+    .hero .block .frame {
         position: absolute;
         top: 0;
         left: 0;
@@ -40,8 +40,8 @@ const props = Astro.props;
     }
 
     @media screen and (min-width: 650px) {
-        .hero figure picture {
-            margin-left: calc(-1 * (50vw - var(--layout-container-width) / 2));
+        .hero .block {
+            margin-left: calc(-1 * (100vw - var(--layout-container-width)) / 2);
         }
     }
 
@@ -50,13 +50,13 @@ const props = Astro.props;
             --hero-width: calc(100vw - var(--layout-col-1) - var(--layout-gap));
         }
 
-        .hero figure picture {
+        .hero .block {
             margin-left: calc(-1 * var(--layout-gutter));
         }
     }
 
     @media screen and (min-width: 1420px) {
-        .hero figure picture {
+        .hero .block {
             --hero-width: calc(
                 101vw - var(--layout-col-1) - var(--layout-bi-col-2) + var(--layout-space)
             );

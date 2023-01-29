@@ -8,9 +8,9 @@ import { ssg } from './images/ssg/index.ts';
 import { externalLinks } from './rehype/externalLinks.ts';
 import { autoAbstract } from './remark/autoAbstract.ts';
 import { autoHero } from './remark/autoHero.ts';
-import { autoImages } from './remark/autoImages.ts';
 import { autoImports } from './remark/autoImports.ts';
 import { customComponents } from './remark/customComponents.ts';
+import { relativeImages } from './remark/relativeImages.ts';
 
 const staticImages = new Map();
 
@@ -35,7 +35,7 @@ export function myAstro() {
                     autoAbstract,
                     [autoHero, { baseDir }],
                     remarkUnwrapImages,
-                    [autoImages, { baseDir }],
+                    [relativeImages, { baseDir }],
                     [customComponents, { componentsFile }],
                     [autoImports, { autoImportFile }],
                 ];

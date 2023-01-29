@@ -61,9 +61,13 @@ const show = Astro.slots.has('default');
         margin: var(--layout-unit-proportional) 0 var(--layout-unit-proportional);
     }
 
-    .markup > pre,
+    .markup > pre {
+        margin: var(--layout-unit-proportional) 0 var(--layout-gap);
+        padding: var(--layout-unit) var(--layout-gap);
+    }
+
     .markup > figure {
-        margin: var(--layout-unit-proportional) 0 var(--layout-unit);
+        margin: var(--layout-unit) 0 var(--layout-gap);
     }
 
     .markup > iframe {

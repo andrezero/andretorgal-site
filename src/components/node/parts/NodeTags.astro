@@ -15,7 +15,7 @@ const show = tags && tags.length;
 
 {
     show && (
-        <ul class:list={['tag-list', { compact }]} aria-title="Published under the following tags">
+        <ul class:list={['tag-list', { compact }]}>
             {tags.map(tag => (
                 <li class={`tag ${tag}`}>
                     <TagLink tag={tag} />

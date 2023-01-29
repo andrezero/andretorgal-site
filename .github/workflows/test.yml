@@ -1,22 +1,21 @@
-name: ci
-
-# on:
-#     push:
-#         # branches:
-#         #     - main
+name: test
 
 jobs:
     test:
-        name: CI Test
+        name: Test
         runs-on: ubuntu-latest
         env:
             CI: true
         steps:
             - uses: actions/checkout@v3
+
             - uses: actions/setup-node@v3
+
             - name: Install dependencies
               run: npm ci
+
             - name: Install playwright browsers
               run: npx playwright install --with-deps
+
             - name: Run tests
               run: npx run test

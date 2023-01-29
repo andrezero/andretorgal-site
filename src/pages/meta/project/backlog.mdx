@@ -10,7 +10,7 @@ updated: 2023 Jan 08
 
 <Abstract>
 
-Stuff I want to on this website, or otherwise just investigate and experiment with. The done stuff is on the [changelog](/meta/project/changelog) page.
+Stuff I want to do on this website, or otherwise just investigate and experiment with. The done stuff is on the [changelog](/meta/project/changelog) page.
 
 </Abstract>
 
@@ -23,10 +23,11 @@ Stuff I want to on this website, or otherwise just investigate and experiment wi
     - the attribution can contain a link
   - `<Note type="old|construction|blog|tags|meta|links">`
   - `<Code>` with nice syntax highlighting and `copy` function
+  - vectors for work/story/music section
 
 ## Authoring experience
 
-- AX: auto-titles
+- AX: auto-titles (will allow emoji in h1)
 - AX: frontmatter defaults per folder
 - AX: author all page links with extension (so that IDE can navigate naturally); strip them via remark plugin
 - AX: incomplete frontmatter (missing type)
@@ -53,14 +54,6 @@ Stuff I want to on this website, or otherwise just investigate and experiment wi
   - custom remark plugins
   - images with zero layout shift
 
-## Migration
-
-- Operations: decide on [Hosting](/meta/records/pending/hosting-netlify-or-s3)
-- Lighthouse
-- Firefox security audit
-- Ops: S3 redirects (required to migrate some url schemes) https://primitive.dev/blog/aws-s3-redirects/
-- Accessibility: audit and tweaks
-
 ## Feature: Tags
 
 - UI: navigation for `tags/**` section header - featured, top, latest (stretch)
@@ -70,19 +63,37 @@ Stuff I want to on this website, or otherwise just investigate and experiment wi
 - Feature: top tags
 - Feature: latest tags
 - Feature: related content (same tags)
+- Experiment: tag network graph
+  - https://github.com/d3/d3
+  - https://d3-graph-gallery.com/intro_d3js.html
+  - https://d3-graph-gallery.com/graph/network_basic.html
 
 ## Feature: Links
 
 - Content: Add links to existing posts
+- Feature: featured links
+- Content: featured links (friends)
+
+  - https://brunopedro.com/
+  - https://nevanscott.com/
+  - https://diniscorreia.com/
+  - https://duplos.org/
+  - https://meet.andr3.net/
+
 - Feature: show links in article
 - Feature: Link page
 - Feature: Links home
 - Feature: navigation in links section
 - Feature: related content same links
 
+## Feature: Series
+
+- Feature: this article is part 3/5 of a series on "topic"
+
 ## Feature: Experiments
 
-- Content: port `experiments/**` from `andretorgal.com`
+- Content: experiments homepage :bulb:
+  - always two pages: concept and execution
 
 ## Later
 

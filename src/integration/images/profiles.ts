@@ -20,7 +20,7 @@ export const ogImageProfile: ImageProfile = {
 };
 
 export const heroImageProfile: ImageProfile = {
-    widths: [1400, 2800],
+    widths: [700, 1400, 2800],
     sizes: '(max-width: 650px) 100vw, (max-width: 1200px) 1400px, 2800px',
     fit: 'cover',
     position: 'center',

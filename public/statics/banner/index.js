@@ -40,7 +40,7 @@
 
   function createBanner (deFrame) {
     const href = bannerHref(deFrame);
-    const contents = deFrame ? '<span class="pop-out">&#9650; pop</span>' : '<span>André Torgal</span>';
+    const contents = deFrame ? '<span class="pop-out">&#9650; pop</span>' : '<span>Andre Torgal</span>';
     const target = deFrame ? 'target="_top"' : '';
     const title = bannerTitle(deFrame);
     const container = document.createElement('div');

@@ -1,3 +1,4 @@
+import { heroImageProfile } from '../profiles';
 import type { ImageProps } from '../types';
 
 import { getPublicPath } from './getPublicPath';
@@ -9,15 +10,16 @@ export function getHeroImage(
     autoHero: ImageProps | undefined,
     images: string[],
 ): ImageProps | undefined {
+    const profile = heroImageProfile;
     if (typeof maybeHeroImage === 'string') {
         const src = getPublicPath(baseDir, mdxFilename, maybeHeroImage);
-        return { src };
+        return { src, profile };
     }
     if (autoHero) {
-        return autoHero;
+        return { ...autoHero, profile };
     }
     if (typeof maybeHeroImage === 'boolean' && images.length) {
-        return { src: images[0] as string };
+        return { src: images[0] as string, profile };
     }
     return undefined;
 }

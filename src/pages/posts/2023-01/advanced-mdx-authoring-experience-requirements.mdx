@@ -80,8 +80,8 @@ Most pages of this website exist in the filesystem, so it would be a shame to me
 I want my [SSG](/tags/ssg) to
 detect all images and extract, beyond the `alt` and `title`, also an attribution text and a link.
 
-```
-![alt](./file.png "Title // Attribution http://source...")
+```md
+![alt](./file.png 'Title // Attribution http://source...')
 ```
 
 ![Up close photo of a small waterfall in a very green and natural scenario](./media/waterfall-in-forest.png 'Though you might need something fresh now // Photo by Ray Bilcliff on Pexels https://www.pexels.com/photo/waterfall-in-forest-waterfall-in-forest-5037136/')
@@ -107,7 +107,7 @@ On the other hand, in static build time, it should optimise for production, usin
 
 This is a no-brainer. I don't want to type things in frontmatter if they can be authored in - and then extracted from - the document.
 
-```mdx
+```md
 ---
 title: Improving the (MDX) authoring experience in Astro
 description: 'Once I got .... dragons'
@@ -133,7 +133,7 @@ awesome as possible. :star-struck: But I should know ... There might be dragons 
 
 Finally, `og:image` should default to the first image, unless specified otherwise in the metadata. And the `<h1>H1 Title</h1>`, also rendered as `og:title` and `<title>title</title>` should, by this logic, be the
 
-```
+```md
 # Title
 ```
 
@@ -152,7 +152,7 @@ I want all blog posts to be `type:post` and tags to be `type:tag` (maybe more in
 
 ### External links
 
-External links must show an [arrow](https://en.wikipedia.org/wiki/Arrow) :point_left: decoration to help users know if they're leaving my site... Oh no! don't leave! Come back!
+Show an [arrow](https://en.wikipedia.org/wiki/Arrow) :point_left: decoration on external links must to help users know if they're leaving my site... Oh no! don't leave! Come back!
 
 Also, all external links must carry the `rel="noopener"` attribute [for security and performance reasons](https://linkilo.co/rel-noopener/).
 
@@ -164,7 +164,7 @@ I also don't want to have to import components that I use often in my pages. I w
 
 The moment I have all of these features working, I will want more for sure!!! I will want VSCode to preview my :beer: and auto complete my emojis as well... :pleading_face: pretty please?
 
-I might have to to dig into VSCode extensions as well.
+I might have to dig into VSCode extensions as well.
 
 !["Screenshot of VSCode suggestion arbitrary words to auto-complete my emoji"](./media/auto-complete-emojis.png 'Not helpful')
 

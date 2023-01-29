@@ -25,6 +25,9 @@ const overrides = [
         },
         rules: {
             ...reactRules,
+            // because we are using preact
+            'react/react-in-jsx-scope': [OFF],
+            'jsx-a11y/iframe-has-title': [OFF],
             // modules
             'react/jsx-filename-extension': [ERROR, { extensions: ['.tsx'] }],
             'react/jsx-indent-props': [OFF],

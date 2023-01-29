@@ -20,10 +20,13 @@ const overrides = [
         globals: {
             Abstract: false,
             Audio: false,
+            Code: false,
+            Hero: false,
+            Image: false,
             Note: false,
+            Iframe: false,
             Picture: false,
             Year: false,
-            Hero: false,
         },
         rules: {
             // X 'astro/no-conflict-set-directives': ERROR,

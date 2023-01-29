@@ -24,4 +24,14 @@ const svgMap: Record<LogoVariant, any> = {
 const Logo = svgMap[variant];
 ---
 
-<Logo />
+<span class="site-logo">
+    <Logo />
+</span>
+
+<style is:global>
+    .site-logo svg {
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+    }
+</style>

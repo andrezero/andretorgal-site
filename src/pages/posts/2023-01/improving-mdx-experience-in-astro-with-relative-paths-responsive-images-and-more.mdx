@@ -13,45 +13,149 @@ published: 2023 Jan 27
 
 <Abstract>
 
-Astro built-ins and community projects are not delivering the website I want to have. Time to take this into my own hands :fist: and have a go at putting together an Astro [integration](https://docs.astro.build/en/reference/integrations-reference/) using bits and pieces from all the things I saw in the last 2 weeks.
+Astro built-ins and plugins are not sufficient to deliver all the features or details that I want to have. But that's no problem at all because Astro is very open for extension!
+
+This post is the summary of my hands-on, head first, and all heart approach at piecing together the [Astro integration](https://docs.astro.build/en/reference/integrations-reference/) that delivers my ideal :star: MDX authoring experience.
 
 </Abstract>
 
-## Deep breath ... :hammer: Let's build it
+By the end of 2022 I helped a friend build a simple website with [Astro](https://astro.build) and I basically saw the light: :bulb: Astro is simple, elegant, and smart. It performs, and scales. Opinionated but extensible. A growing community vibing behind it. All of this and funding. :moneybag:
+
+> I am quite surprised that you are so interested in something that I suggested
+
+Yeah man, thank you for the tip!
+
+I was so excited about it that I decided to [(re)build my website with Astro](/posts/2023-01/building-my-website-with-astro-mdx-preact). And so confident, that I aimed at a pretty big list of [requirements for an awesome authoring experience](/posts/2023-01/advanced-mdx-authoring-experience-requirements).
+
+## Kudos :100: \* :100:
+
+:raised_hands: [The Astro community](https://astro.build/blog/community-awards-22/), the [Astro Technology Company](https://astro.build/blog/the-astro-technology-company/), the core team, the documentation team, all the teams, yeah! :raised_hands:
+
+:raised_hands: The remarkable [astro-m2dx](https://astro-m2dx.netlify.app/) project which shares the same ideas of what great markdown experience looks like. :raised_hands:
+
+:raised_hands: Hundreds of remark and rehype plugins that I browsed and :exploding_head: had me exploding with ideas! The [unified ecosystem is prospering](/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time)!
+
+## :hammer: Let's build it
 
 <Note type="warning">
 
-:warning: This is not meant to be a tutorial. I do not recommend you add so many dependencies and custom code to your site. Unless you are an obsessive tinkerer, willing to pick up a fight with a tough tasks, you will regret it.
+:warning: This is not meant to be a tutorial. I do not recommend that you add so many dependencies and custom code to your site. Unless you are an obsessive tinkerer, willing to pick up a fight with a mob of though tasks, you will regret it.
 
 </Note>
 
-What I do recommend is that if you want to do something, you don't give up. Go dig, search around Github, Stack Overflow, [source code of sites like this](https://github.com/andrezero/andretorgal.site).
+## Using relative paths in images
 
-## Images
+For starters, I basically replicated what [@astro/image](https://docs.astro.build/en/guides/integrations-guide/image/) does, but without the [restrictive convention of using the public/ folder for images](/posts/2023-01/mdx-authoring-experience-in-astro-shortcomings-and-astro-m2dx).
 
-For starters, I basically replicated [@astro/image](https://docs.astro.build/en/guides/integrations-guide/image/) but without the _images go in `public/`_ restriction. I was also opinionated about it, but in my case images are **always** relative to the `./` content file.
+Yes! :see_no_evil: I am also opinionated about this! I like to keep my images next to my content. I want to use relative paths for my images, to have VSCode auto-complete them, and to preview them immediately.
 
-In `dev` mode it renders images via an endpoint attached to the [vite](https://vitejs.dev/) dev server. Smart: only the images requested by the browser get generated.
+![Screenshot of VSCode with two split panes. On the left I am editing this page and on the right the MDX preview](./media/media-preview.png)
+
+So, the very first step was to write a remark plugin that [rewrites relative image paths to absolute](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/remark/relativeImages.ts).
+
+```ts
+const publicPath = getPublicPath(baseDir, mdxFilename, node.url = publicPath;
+```
+
+Now that we're here, let's also collect an array of images used in the page, and a bit more context...
+
+```ts
+images.push(publicPath);
+const { frontmatter } = file.data.astro;
+frontmatter.images = images;
+frontmatter.imageBaseDir = baseDir;
+frontmatter.mdxFilename = mdxFilename;
+```
+
+... and we can use this to [pick the first image for use in og:image](https://github.com/andrezero/andretorgal-site/blob/main/src/components/document/Head.astro#L30) meta tags.
+
+I will also want to use it to pick thumbnails for lists of articles, but that will have to come later. :wink:
+
+## Component mapping
+
+In order to have the markdown images - `![alt](url "title")` - render more than just an `<img/>` tag, we have to modify the MDX code before it is compiled, so that the correct component is in scope.
+
+For this, I abducted the great ideas of [astro-m2dx](https://astro-m2dx.netlify.app/) and some source code: the [customComponents() remark plugin](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/remark/customComponents.ts) injects the necessary `import` and `export` statements into the code.
+
+Note that this requires installing and consuming code from a few dependencies:
+
+- [estree](https://github.com/estree/estree), [mdast](https://github.com/syntax-tree/mdast), and [estree-util-visit](https://github.com/syntax-tree/estree-util-visit), all from the Unified ecosystem.
+- [m2dx-utils](https://github.com/christian-hackyourshack/npm/tree/main/packages/m2dx-utils) - dependency of `astro-m2dx`, provides a ton of useful utils.
+
+The component mapping file itself is as simple as import plus export:
+
+```ts
+import Figure from '@components/mdx/Figure.astro';
+
+export const components = {
+  img: Figure,
+};
+```
+
+In my case I just want to render the [Figure component](https://github.com/andrezero/andretorgal-site/blob/main/src/components/mdx/Figure.astro) explained below. But this can be used to replace `ul`, `li`, `p`, `h1..6`, `hr`, any markup you wish.
+
+If you do that you can achieve total encapsulation of components and isolation of styles. But I calling this a wrap for now. Literally - dad joke :smile: - I am wrapping all places where markdown is rendered with a [Markup component](https://github.com/andrezero/andretorgal-site/blob/main/src/components/page/Markup.astro) that _forces_ some styles down the tree.
+
+## Image caption with attributions
+
+Just a simple trick done in the `<Figure>` component, before it delegates rendering to the `<Image>` component, which allows me to provide an attribution inside the image title separated by `//`.
+
+```md
+![Photo...](./astrud.jpg 'Astrud Gilberto // Wikipedia https://...')
+```
+
+And the attribution part of the title can also have a link that will turn into a _Visit site_ external link.
+
+![Screenshot of the Figure component rendering a nice caption under the image, as well as a separate smaller line providing attribution and link to visit the original site](./media/figure-figcaption-attribution.png)
+
+## Responsive images
+
+Finally, the `<Image>` component is responsible for figuring out the [props for the source and image tags](https://github.com/andrezero/andretorgal-site/blob/main/src/components/mdx/Image.astro).
+
+This includes setting the [loading](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading) and [decoding](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding) attributes, but more importantly generating all the URLs for different file formats and resolutions to use in `<img>` and `<source>` tags.
+
+**In `dev` mode** it renders images via an endpoint attached to the [vite](https://vitejs.dev/) dev server. Smart: only the images requested by the browser get generated.
 
 ```
 /_image?src=/posts/2023-01/media/waterfall-in-forest.png&amp;width=700&amp;format=avif
 ```
 
-During the static build, it generates public paths like `/posts/2023-01/media/waterfall-in-forest-700.avif` and collects them - via a rather hacky `globalThis` (please Astro community provide some better pattern?). After all HTML is generated, takes all the `staticImages[]` and the individual formats.
+**And during the static build** it generates public paths like `/posts/2023-01/media/waterfall-in-forest-700.avif` and collects them - via a [rather questionable globalThis hack](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/index.mjs#L70) (please Astro community provide some better pattern? :pleading_face:).
 
-## Component mapping
+After all the HTML is generated, it takes the collected `staticImages[]` and generates all the individual formats.
 
-You also have to instruct `rehype` - which Astro uses to render the abstract tree into HTML - to use certain
+By the way, I am using different responsive breakpoints and sizes for different types of images.
 
-At the moment I only have one such case. I am mapping
+- Regular images: 700px | 1400px
+- Hero images: 700px | 1400px | 2800px
+- Open graph images: 1200
+
+I defined all the [image profiles in one place](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/images/profiles.ts) and then merge the profile into the images props as late as possible.
+
+## Markdown wraps images in paragraphs, let's fix that
+
+Since we are rendering `<figure>` instead of directly `<img>`, the wrapping paragraphs result in invalid HTML - `<p><figure>...</p>` and that can cause extra empty paragraphs polluting the rendered documented.
+
+```html
+<p></p>
+<figure>...</figure>
+<p></p>
+```
+
+Adding `remark-unwrap-images` to the [integration list of remark plugins](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/index.mjs), just before the `relativeImages` plugin, did what the name says.
 
 ## Auto imports
 
-For the "auto imports" features and mapping "auto components" I based it off [astro-m2dx](https://astro-m2dx.netlify.app/) code and I am importing a lot of functions from `m2dx-utils` package, and the rest, as usual from the [Unified.js](/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time) ecosystem.
+For the "auto imports" features I also based it off [astro-m2dx](https://astro-m2dx.netlify.app/) code and I am importing a bunch more from the `m2dx-utils` package and, as usual, a few more tools from the [Unified.js](/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time) ecosystem.
 
-I am defining which components to make available in a [single file](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/remark/autoImports.ts) as opposed to M2DX which lets you create several of these files in folders, and then scans the file system for them every time it builds a page.
+With the [autoImports() remark plugin](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/remark/autoImports.ts#L45) we can inject the necessary import statement into the MDX context whenever it detects the components are being used in the document.
+
+We can then define which components to make available using a simple [auto imports file](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/remark/autoImports.ts) such as this one:
 
 ```tsx
+import Abstract from '@components/Abstract';
+...
+
 export const autoimports = {
     Abstract,
     Audio,
@@ -60,7 +164,9 @@ export const autoimports = {
 };
 ```
 
-With [this remark plugin](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/remark/autoImports.ts#L45) I am injecting the necessary `import ... ` statement into the MDX context, so that all the contents will
+Again, `astro-m2dx` lets you create "auto import files" wherever you want in your project and does all the work to scan the file system for them every time it builds a page.
+
+I decided to go with _single auto-imports file_ because [YAGNI](https://martinfowler.com/bliki/Yagni.html), cutting complexity, and improving performance.
 
 ## Eliminating layout shift.
 
@@ -68,7 +174,36 @@ Layout shift happens when the browser loads a resource and realises it needs to 
 
 If we know the width/height of the image we can prevent this by using the [padding-top + percentage technique](https://css-tricks.com/aspect-ratio-boxes/) to reserve the space.
 
-To find out the aspect ratio and make it available where it's needed, I wrote a couple of functions to [readImage()](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/images/utils/readImage.ts) into an instance of [sharp](https://github.com/lovell/sharp) and to [getImageFacts()](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/images/utils/getImageFacts.ts). I took the opportunity to also find the dominant colour :lower_left_crayon: which I use as the background colour, visible while before the image is loaded.
+To find out the aspect ratio and make it available where it's needed, I wrote a couple of functions to [readImage()](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/images/utils/readImage.ts) into an instance of [sharp](https://github.com/lovell/sharp) and to [getImageFacts()](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/images/utils/getImageFacts.ts). I took the opportunity to also find the dominant colour :lower_left_crayon: which I use as the background colour, visible while the image is loaded.
+
+## Extracting an article abstract from the content
+
+Another simple [remark plugin, autoAbstract()](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/remark/autoAbstract.ts), detects the `<Abstract>` component in the page and allows me to render its content, as markdown, anywhere on the layout, or even in other pages, [lists of posts](/posts), etc...
+
+```tsx
+<Abstract>Describe! [Link](/) :cowboy: Emoji!</Abstract>
+```
+
+I can also use the extracted content to render `<meta name="description">` and `og:description` tags, stripping out all the funny stuff :alien: of course.
+
+## Extracting hero images from the content
+
+A very similar process, another [remark plugin, autoHero()](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/remark/autoHero.ts) identifies an image wrapped in `<Hero>`.
+
+```tsx
+<Hero>
+  ![Photo of hero wearing a cape](./media/so-hero.jpg "This hero wears capes // Public domain
+  https://heroes.org/")
+</Hero>
+```
+
+This way we can author the hero image in the normal flow of content, but then render it in different places such as the [BlogPost layout](https://github.com/andrezero/andretorgal-site/blob/main/src/templates/BlogPost.astro#L36). I later intend to use it in lists of posts.
+
+## External links decorated
+
+Not necessarily an authoring improvement, but the quick [externalLinks() rehype plugin](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/rehype/externalLinks.ts) adds a little CSS to display an [arrow](https://en.wikipedia.org/wiki/Arrow) :point_left: decoration to help users know if they're leaving my site... Oh no! don't leave! Come back!
+
+Also, all external links must carry the `rel="noopener"` attribute [for security and performance reasons](https://linkilo.co/rel-noopener/).
 
 ## What's next?
 
@@ -82,6 +217,10 @@ Then I'll follow up with my [website's backlog](/meta/project/backlog):
 
 - Remove the `.mdx` extensions from the links with a `remark` plugin.
 - Setup the frontmatter defaults per type of content.
-- Only title: the document's `# title`
+- The Only _title_ should be the document's `# title` itself.
 
 And many other content related features, such as media galleries, links, reading time, and - god forbid! - comments! :innocent:
+
+```
+
+```
