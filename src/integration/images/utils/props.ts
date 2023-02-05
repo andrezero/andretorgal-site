@@ -61,7 +61,7 @@ export async function resolveFigureProps(props: ImageProps): Promise<FigureResol
 }
 
 export function resolveImageProps(props: ImageProps): ImageResolvedProps {
-    const { src, alt, profile = defaultProfile } = props;
+    const { src, width = 1, height = 1, alt, profile = defaultProfile } = props;
 
     const { widths, formats } = profile;
     const transform: ImageTransform = {
@@ -86,6 +86,8 @@ export function resolveImageProps(props: ImageProps): ImageResolvedProps {
 
     return {
         src: imageSrc,
+        width,
+        height,
         alt: alt || '',
         fit: 'cover',
         position: 'center',

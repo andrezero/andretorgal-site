@@ -29,16 +29,6 @@ const props = Astro.props;
         margin-left: calc(-1 * var(--layout-gutter));
     }
 
-    .hero .block .frame {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-    }
-
     @media screen and (min-width: 650px) {
         .hero .block {
             margin-left: calc(-1 * (100vw - var(--layout-container-width)) / 2);

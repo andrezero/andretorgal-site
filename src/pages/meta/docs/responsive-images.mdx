@@ -11,7 +11,7 @@ published: 2023 Jan 19
 
 <Abstract>
 
-Image generation is handled by a custom Astro integration, similar to `@astrojs/image`, and all images are wrapped in a custom `Figure` component for more richer content and better semantics. The image optimisations are carefully synchronised with the layout. Aspect ratio awareness is mandatory to eliminate CLS.
+Image generation is handled by a custom Astro integration, similar to `@astrojs/image`, and all images are wrapped in a custom `Figure` component for richer content and better semantics. The image optimisations are carefully synchronised with the layout. Aspect ratio awareness is mandatory to eliminate CLS.
 
 </Abstract>
 
@@ -38,7 +38,6 @@ The resulting HTML
 ```html
 <figure>
   <span>
-    <span style="padding-top:62.142857142857146%"></span>
     <image alt="{alt}" src="{...}" />
   </span>
   <figcaption class="cs-primary astro-DA36CKTJ">
@@ -55,9 +54,11 @@ The resulting HTML
 
 Images always take more time to load than the rest of the content. This causes [CLS](https://web.dev/cls/) which impacts usability of the page negatively, as things shift around while it loads, and may deteriorate SEO ranking.
 
-At build time the code acquires the width and height of the image via [getImageFacts()](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/images/utils/getImageFacts.ts).
+When rendering images, we acquire the width and height of the image via [getImageFacts()](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/images/utils/getImageFacts.ts) and set the absolute (natural) dimensions directly on the HTML `<img width="..." height="..." />`
 
-This way I can set a proportional height, through the [padding-top + percentage technique](https://css-tricks.com/aspect-ratio-boxes/) that, no matter the screen size, reserves the exact space needed for the image.
+This allows the browser to reserve the space for the image, even if we are styling it with CSS, using something like `width: 100%; height: auto`. Aspect ratio will be respected as long
+
+Don't you just :heart_eyes: evolution? It only took 20 years. Before [browser support for aspect-ratio]https://caniuse.com/mdn-css_properties_aspect-ratio) we had to resort to [padding-top + percentage technique](https://css-tricks.com/aspect-ratio-boxes/). Big kudos to [@Princesseuh](https://github.com/withastro/roadmap/discussions/468#discussioncomment-4870075)
 
 ## Example
 
@@ -71,7 +72,7 @@ Result
 
 ![Photo of wall with stickers](./images/example.jpg 'Have a nice day, beautiful decay! // Photo by Ann H https://www.pexels.com/@ann-h-45017/')
 
-:information_source: If you delete the image, or block the URL in the browser developer tools, the space is preserved.
+:information_source: If you block the URL in the browser developer tools and refresh the page, the space required for the image is still preserved.
 
 ## Image profiles
 

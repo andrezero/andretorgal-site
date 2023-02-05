@@ -8,19 +8,19 @@ export type Props = ImageProps;
 const { src, alt, profile } = Astro.props;
 const { title, attribution, width, height, dominant } = await resolveFigureProps(Astro.props);
 
-const paddingTop = `${(height / width) * 100}%`;
 const showLabel = !!title || !!attribution;
 
 const imageProps = {
     src,
     alt: alt || '',
     profile,
+    width,
+    height,
 };
 ---
 
 <figure class="figure">
     <span class="block">
-        <span style={{ 'padding-top': paddingTop }}></span>
         <span class="frame" style={{ 'background-color': dominant }}>
             <Image {...imageProps} />
         </span>
@@ -96,8 +96,7 @@ const imageProps = {
         width: 100%;
         min-height: 100%;
         height: 100%;
-        color: var(--scheme-fg);
-        font-size: var(--t-type-size--1);
+        color: transparent;
         background-color: transparent;
     }
 </style>

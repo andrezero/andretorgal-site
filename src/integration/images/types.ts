@@ -21,6 +21,8 @@ export type ImageProps = {
     src: string;
     title?: string;
     alt?: string;
+    width?: number;
+    height?: number;
     profile?: ImageProfile | undefined;
 };
 
@@ -45,7 +47,7 @@ export type Source = {
     sizes: string;
 };
 
-export type ImageResolvedProps = Omit<ImageProps, 'src' | 'width' | 'height'> & {
+export type ImageResolvedProps = Omit<ImageProps, 'src'> & {
     src: string;
     alt: string;
     fit: 'cover';

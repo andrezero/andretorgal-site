@@ -4,19 +4,10 @@ import { resolveImageProps } from '@integration/images/utils/props';
 
 export type Props = ImageProps;
 
-const { src, alt, fit, position, loading, decoding, sources } = resolveImageProps(Astro.props);
-
-const imageProps = {
-    src,
-    alt,
-    fit,
-    position,
-    loading,
-    decoding,
-};
+const { sources, ...props } = resolveImageProps(Astro.props);
 ---
 
 <picture>
     {sources.map(attrs => <source {...attrs} />)}
-    <img {...imageProps} />
+    <img {...props} />
 </picture>
