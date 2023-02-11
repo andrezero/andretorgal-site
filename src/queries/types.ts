@@ -20,6 +20,7 @@ export interface BaseNode {
     description?: string;
     tags?: string[];
     featured?: boolean;
+    draft?: boolean;
     published: string;
     updated?: string;
     abstract?: {
