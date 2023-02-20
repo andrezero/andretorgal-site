@@ -1,0 +1,8 @@
+---
+import ConditionalMarkup from './common/ConditionalMarkup.astro';
+export type { Props } from './common/ConditionalMarkup.astro';
+
+const props = Astro.props;
+---
+
+<ConditionalMarkup {...props}><slot /></ConditionalMarkup>

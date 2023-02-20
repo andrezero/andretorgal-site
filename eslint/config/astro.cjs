@@ -24,6 +24,7 @@ const overrides = [
             Hero: false,
             Image: false,
             Note: false,
+            Todo: false,
             Iframe: false,
             Picture: false,
             Year: false,

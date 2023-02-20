@@ -117,7 +117,7 @@ This includes setting the [loading](https://developer.mozilla.org/en-US/docs/Web
 **In `dev` mode** it renders images via an endpoint attached to the [vite](https://vitejs.dev/) dev server. Smart: only the images requested by the browser get generated.
 
 ```
-/_image?src=/posts/2023-01/media/waterfall-in-forest.png&amp;width=700&amp;format=avif
+/_image?src=/posts/2023-01/media/waterfall-in-forest.jpg&amp;width=700&amp;format=avif
 ```
 
 **And during the static build** it generates public paths like `/posts/2023-01/media/waterfall-in-forest-700.avif` and collects them - via a [rather questionable globalThis hack](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/index.mjs#L70) (please Astro community provide some better pattern? :pleading_face:).
