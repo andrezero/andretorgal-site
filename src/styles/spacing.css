@@ -73,3 +73,11 @@
         --layout-pause: calc(var(--t-space-xl));
     }
 }
+
+@media print {
+    :root {
+        --layout-gutter: 0;
+        --layout-headroom: 0;
+        --layout-border-medium: var(--layout-shift);
+    }
+}

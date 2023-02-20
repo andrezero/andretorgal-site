@@ -19,9 +19,9 @@ import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import type { MetaPage } from '@queries/types';
 
-export interface Props {
+export type Props = {
     content: MetaPage;
-}
+};
 
 const { content: page } = Astro.props;
 

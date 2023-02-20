@@ -53,4 +53,10 @@ const show = previous || next;
         gap: var(--layout-unit);
         flex-wrap: wrap;
     }
+
+    @media print {
+        div {
+            display: none;
+        }
+    }
 </style>

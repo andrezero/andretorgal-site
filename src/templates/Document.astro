@@ -5,21 +5,14 @@ import Head from '@components/document/Head.astro';
 import Layout from '@components/document/Layout.astro';
 import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
 import NodeDate from '@components/node/parts/NodeDate.astro';
-import NodeMeta from '@components/node/parts/NodeMeta.astro';
-import NodePreviousNext from '@components/node/parts/NodePreviousNext.astro';
 import NodeTags from '@components/node/parts/NodeTags.astro';
 import Article from '@components/page/Article.astro';
-import ArticleHeader from '@components/page/ArticleHeader.astro';
-import Divider from '@components/page/Divider.astro';
 import Markup from '@components/page/Markup.astro';
 import PageHero from '@components/page/PageHero.astro';
 import Section from '@components/page/Section.astro';
-import SiteSectionHeader from '@components/site/blog/SiteSectionHeader.astro';
-import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import { getHeroImage } from '@integration/images/utils/getHeroImage';
-import { findPreviousAndNextPosts, importAllPosts, sortedPosts } from '@queries/posts';
 import type { BlogPost } from '@queries/types';
 
 export type Props = {
@@ -29,10 +22,6 @@ export type Props = {
 const { content: node } = Astro.props;
 const { heroImage: maybeHeroImage, autoHero, images, imageBaseDir, mdxFilename } = node;
 
-const nodes = await importAllPosts();
-const posts = sortedPosts(nodes as BlogPost[]);
-const { previous, next } = findPreviousAndNextPosts(posts, node);
-
 const heroImage = getHeroImage(imageBaseDir, mdxFilename, maybeHeroImage, autoHero, images);
 ---
 
@@ -40,29 +29,20 @@ const heroImage = getHeroImage(imageBaseDir, mdxFilename, maybeHeroImage, autoHe
     <Head node={node} />
     <Body>
         <Layout>
-            <SiteHeader slot="header" />
-            <SiteSectionHeader slot="section" {...{previous, next}} />
+            <SiteHeader slot="header" hideWatermark />
             <SiteMain slot="main">
                 <Article>
-                    <ArticleHeader node={node} slot="header" noDate>
+                    <Section>
                         {heroImage && <PageHero {...heroImage} />}
-                    </ArticleHeader>
+                    </Section>
                     <Section>
                         <NodeDate node={node} />
                         <NodeAbstract node={node} />
                         <NodeTags node={node} />
                     </Section>
                     <Markup><slot /></Markup>
-                    <Section>
-                        <Divider />
-                        <NodeMeta node={node} />
-                    </Section>
-                    <Section>
-                        <NodePreviousNext {...{previous, next}} />
-                    </Section>
                 </Article>
             </SiteMain>
-            <SiteFooter slot="footer" />
         </Layout>
     </Body>
 </Document>

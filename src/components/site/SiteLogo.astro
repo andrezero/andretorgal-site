@@ -6,9 +6,9 @@ import StorySvg from './logo/StorySvg.astro';
 import WorkSvg from './logo/WorkSvg.astro';
 
 export type LogoVariant = 'logo' | 'work' | 'story' | 'music' | 'not-found';
-export interface Props {
+export type Props = {
     variant?: LogoVariant;
-}
+};
 
 const { variant = 'logo' } = Astro.props;
 

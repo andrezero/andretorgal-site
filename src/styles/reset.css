@@ -96,3 +96,17 @@ select {
         scroll-behavior: auto !important;
     }
 }
+
+@media print {
+    svg,
+    img {
+        max-width: 100%;
+        max-height: 15em;
+        object-fit: contain;
+        object-position: center;
+    }
+}
+
+@page {
+    margin: 2cm;
+}

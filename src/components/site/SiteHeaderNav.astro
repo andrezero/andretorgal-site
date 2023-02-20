@@ -33,4 +33,10 @@ import NavLink from '@components/navigation/NavLink.astro';
             line-height: var(--t-type-size-4);
         }
     }
+
+    @media print {
+        nav {
+            display: none;
+        }
+    }
 </style>

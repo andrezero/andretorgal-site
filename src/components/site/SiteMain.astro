@@ -3,9 +3,9 @@ import Icon from '@components/atoms/Icon.astro';
 
 import ArrowUp from '@icons/ArrowUp.astro';
 
-export interface Props {
+export type Props = {
     hideUp?: boolean;
-}
+};
 
 const { hideUp } = Astro.props;
 ---
@@ -31,5 +31,11 @@ const { hideUp } = Astro.props;
     p {
         margin-top: var(--layout-headroom);
         text-align: right;
+    }
+
+    @media print {
+        p {
+            display: none;
+        }
     }
 </style>

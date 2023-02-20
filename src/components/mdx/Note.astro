@@ -3,9 +3,9 @@ import Markup from '../page/Markup.astro';
 
 type NoteType = 'info' | 'construction';
 
-export interface Props {
+export type Props = {
     type?: NoteType;
-}
+};
 
 const { type = 'info' } = Astro.props;
 ---

@@ -2,9 +2,9 @@
 import type { BaseNode } from '@queries/types';
 import NodeListItem from './NodeListItem.astro';
 
-export interface Props {
+export type Props = {
     nodes: BaseNode[];
-}
+};
 
 const { nodes } = Astro.props;
 ---

@@ -2,9 +2,9 @@
 import { markdown } from '@astropub/md';
 import Markup from './Markup.astro';
 
-export interface Props {
+export type Props = {
     content?: string | undefined;
-}
+};
 
 const { content } = Astro.props;
 

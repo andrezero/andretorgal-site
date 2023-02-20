@@ -1,11 +1,19 @@
 ---
+import PrintWatermark from '../page/PrintWatermark.astro';
 import SiteHeaderHeading from './SiteHeaderHeading.astro';
 import SiteHeaderNav from './SiteHeaderNav.astro';
+
+export type Props = {
+    hideWatermark?: boolean;
+};
+
+const { hideWatermark } = Astro.props;
 ---
 
 <header class="layout-header cs-primary">
     <div class="container">
         <SiteHeaderHeading />
+        {!hideWatermark && <PrintWatermark />}
         <SiteHeaderNav />
     </div>
 </header>

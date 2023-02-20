@@ -18,10 +18,10 @@ import SiteLogo from '@components/site/SiteLogo.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import type { AboutNode } from '@queries/types';
 
-export interface Props {
+export type Props = {
     content: AboutNode;
     img?: string;
-}
+};
 
 const { content: node } = Astro.props;
 const { thumbnail } = node;

@@ -15,9 +15,9 @@ import SiteMain from '@components/site/SiteMain.astro';
 import { importAllTags } from '@queries/tags';
 import type { PageNode } from '@queries/types';
 
-export interface Props {
+export type Props = {
     content: PageNode;
-}
+};
 
 const { content: page } = Astro.props;
 

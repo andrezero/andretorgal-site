@@ -5,9 +5,9 @@ import NodeAbstract from '../parts/NodeAbstract.astro';
 import NodeTags from '../parts/NodeTags.astro';
 import TagLink from '../parts/TagLink.astro';
 
-export interface Props {
+export type Props = {
     node: BaseNode;
-}
+};
 
 const SHOW_DATE = ['post'];
 const SHOW_TAGS = ['post', 'meta', 'page'];

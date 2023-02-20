@@ -10,35 +10,17 @@ const hasSection = Astro.slots.has('section');
 </div>
 
 <style is:global>
-    .layout {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            'head'
-            'sect'
-            'main'
-            'foot';
-        height: 100%;
-    }
-
-    .layout > * {
-        color: var(--scheme-fg);
-        background-color: var(--scheme-bg);
-    }
-
     .container {
         margin: 0 var(--layout-gutter);
     }
 
     .layout-header {
-        grid-area: head;
         padding-top: var(--layout-gap);
         padding-bottom: var(--layout-gap);
     }
 
     .layout-section {
         display: none;
-        grid-area: sect;
         padding-top: var(--layout-gap);
         padding-bottom: var(--layout-gap);
     }
@@ -48,16 +30,47 @@ const hasSection = Astro.slots.has('section');
     }
 
     .layout-main {
-        overflow: hidden;
-        grid-area: main;
-        min-height: 80vh;
         padding-top: var(--layout-headroom);
         padding-bottom: var(--layout-legroom);
-        border-top: var(--layout-border-wide) solid var(--scheme-edge);
     }
 
-    .layout-footer {
-        grid-area: foot;
+    @media screen {
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                'head'
+                'sect'
+                'main'
+                'foot';
+            height: 100%;
+        }
+
+        .layout > * {
+            color: var(--scheme-fg);
+            background-color: var(--scheme-bg);
+        }
+
+        .layout-header {
+            grid-area: head;
+        }
+
+        .layout-section {
+            grid-area: sect;
+        }
+
+        .layout-main {
+            overflow: hidden;
+            grid-area: main;
+            min-height: 80vh;
+            padding-top: var(--layout-headroom);
+            padding-bottom: var(--layout-legroom);
+            border-top: var(--layout-border-wide) solid var(--scheme-edge);
+        }
+
+        .layout-footer {
+            grid-area: foot;
+        }
     }
 
     @media screen and (min-width: 650px) {
@@ -109,9 +122,11 @@ const hasSection = Astro.slots.has('section');
             border-top: none;
         }
 
-        .layout-section,
-        .layout-main {
-            border-left: var(--layout-border-wide) solid var(--scheme-edge);
+        @media screen {
+            .layout-section,
+            .layout-main {
+                border-left: var(--layout-border-wide) solid var(--scheme-edge);
+            }
         }
 
         .layout-footer .container {
@@ -166,6 +181,17 @@ const hasSection = Astro.slots.has('section');
                 var(--layout-bi-col-1) + var(--layout-bi-col-2) + var(--layout-border-wide) +
                     var(--layout-gutter)
             );
+        }
+    }
+
+    @media print {
+        .layout > * {
+            color: var(--print-fg);
+            background-color: transparent;
+        }
+
+        .has-section .layout-section {
+            display: none;
         }
     }
 </style>

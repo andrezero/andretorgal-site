@@ -16,6 +16,13 @@ const show = Astro.slots.has('default');
         flex-direction: column;
         gap: var(--layout-unit);
     }
+
+    @media print {
+        div {
+            line-height: 2;
+            gap: calc(3 * var(--layout-unit));
+        }
+    }
 </style>
 
 <style is:global>
@@ -101,11 +108,32 @@ const show = Astro.slots.has('default');
         font-family: var(--t-type-family-alt);
         font-size: 3.5em;
         font-weight: var(--t-type-weight-alt-bold);
-        color: var(--scheme-alt-fg);
-        border-bottom: 0.6em solid var(--scheme-alt-bg);
         content: '“';
         left: calc(-1 * var(--layout-space));
         top: calc(-1 * var(--layout-shift));
         line-height: 1em;
+    }
+
+    @media screen {
+        .markup > blockquote::before {
+            color: var(--scheme-alt-fg);
+            border-bottom: 0.6em solid var(--scheme-alt-bg);
+        }
+    }
+
+    @media print {
+        .markup a::after {
+            color: var(--print-fg);
+            content: ' (' attr(href) ')';
+            font-size: 90%;
+        }
+
+        .markup > blockquote::before {
+            color: var(--print-brand);
+            height: 100%;
+            width: 0.7em;
+            border-bottom: none;
+            border-right: var(--layout-shift) solid var(--print-fg);
+        }
     }
 </style>

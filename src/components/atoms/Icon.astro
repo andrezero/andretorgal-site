@@ -1,9 +1,9 @@
 ---
 export type IconSize = 's' | 'm' | 'l' | 'auto';
 
-export interface Props {
+export type Props = {
     size?: IconSize;
-}
+};
 
 const { size = 'm' } = Astro.props;
 ---

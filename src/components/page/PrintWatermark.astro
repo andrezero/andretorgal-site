@@ -1,0 +1,41 @@
+<div class="stamp">
+    <p>Original content from <a href={Astro.url}>{Astro.url}</a></p>
+</div>
+
+<style>
+    div {
+        display: none;
+    }
+
+    @media print {
+        div {
+            display: block;
+        }
+
+        p {
+            display: inline;
+        }
+    }
+</style>
+
+<script>
+    function shortDate(date) {
+        const year = date.getFullYear();
+        const day = date.getDate();
+        const month = date.toLocaleString('default', { month: 'short' });
+        return `${month} ${day}, ${year}`;
+    }
+
+    const div = document.querySelectorAll('.stamp');
+    const p = document.querySelector('.stamp p');
+    const date = shortDate(new Date());
+
+    const node = () => {
+        const n = document.createElement('p');
+        n.setAttribute('class', p.getAttribute('class'));
+        n.innerHTML = `printed on ${date}`;
+        return n;
+    };
+
+    [...div].forEach(el => el.appendChild(node()));
+</script>

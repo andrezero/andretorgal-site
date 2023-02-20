@@ -4,10 +4,10 @@ import { shortDate } from '@utils/date';
 
 export type DateSize = 's' | 'm';
 
-export interface Props {
+export type Props = {
     node: BaseNode;
     size?: DateSize;
-}
+};
 
 const { node } = Astro.props;
 const { published } = node;
@@ -44,5 +44,13 @@ const { size = 'm' } = Astro.props;
         font-weight: var(--t-type-weight-alt-bold);
         color: var(--scheme-alt-fg);
         background-color: var(--scheme-alt-bg);
+    }
+
+    @media print {
+        time {
+            padding: 0;
+            color: var(--print-fg);
+            background-color: transparent;
+        }
     }
 </style>

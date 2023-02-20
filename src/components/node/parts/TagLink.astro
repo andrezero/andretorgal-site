@@ -1,7 +1,7 @@
 ---
-export interface Props {
+export type Props = {
     tag: string;
-}
+};
 
 const { tag } = Astro.props;
 ---
@@ -34,5 +34,14 @@ const { tag } = Astro.props;
     .tag:active {
         color: var(--scheme-fg);
         background-color: var(--scheme-bg);
+    }
+
+    @media print {
+        .tag {
+            color: var(--print-brand);
+            background-color: transparent;
+            padding: var(--layout-unit);
+            border: var(--layout-shift) solid var(--print-edge);
+        }
     }
 </style>

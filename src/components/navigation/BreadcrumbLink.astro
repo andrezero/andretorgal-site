@@ -1,10 +1,10 @@
 ---
 import NavLink from './NavLink.astro';
 
-export interface Props {
+export type Props = {
     url: string;
     title?: string;
-}
+};
 
 const { url, title } = Astro.props;
 ---

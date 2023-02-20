@@ -17,16 +17,18 @@ const props = Astro.props;
         margin-bottom: var(--layout-gap);
     }
 
-    .hero .block {
-        position: relative;
-        width: auto;
-        max-width: initial;
-        width: var(--hero-width);
-        min-width: var(--hero-width);
-        max-width: var(--hero-width);
-        min-height: 100%;
-        max-height: 100%;
-        margin-left: calc(-1 * var(--layout-gutter));
+    @media screen {
+        .hero .block {
+            position: relative;
+            width: auto;
+            max-width: initial;
+            width: var(--hero-width);
+            min-width: var(--hero-width);
+            max-width: var(--hero-width);
+            min-height: 100%;
+            max-height: 100%;
+            margin-left: calc(-1 * var(--layout-gutter));
+        }
     }
 
     @media screen and (min-width: 650px) {

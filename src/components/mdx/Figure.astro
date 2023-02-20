@@ -59,22 +59,9 @@ const imageProps = {
         width: 100%;
     }
 
-    .frame::before {
-        z-index: 0;
-        position: absolute;
-        display: block;
-        content: ' ';
-        width: 100%;
-        height: 100%;
-        border: var(--layout-shift) solid var(--scheme-muted);
-    }
-
     figcaption {
         display: flex;
         flex-direction: column;
-        background: var(--scheme-muted);
-        color: var(--scheme-fg);
-        padding: var(--layout-shift-2x);
         align-self: start;
     }
 
@@ -82,6 +69,34 @@ const imageProps = {
         padding-top: var(--layout-shift-2x);
         font-size: var(--t-type-size--2);
         font-style: italic;
+    }
+
+    @media screen {
+        figcaption {
+            background: var(--scheme-muted);
+            color: var(--scheme-fg);
+            padding: var(--layout-shift-2x);
+        }
+
+        .frame::before {
+            z-index: 0;
+            position: absolute;
+            display: block;
+            content: ' ';
+            width: 100%;
+            height: 100%;
+            border: var(--layout-shift) solid var(--scheme-muted);
+        }
+    }
+    @media print {
+        .figure {
+            break-inside: avoid;
+            padding: var(--layout-unit);
+            border: var(--layout-shift) solid var(--print-edge);
+        }
+
+        figcaption {
+        }
     }
 </style>
 

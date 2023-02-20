@@ -1,5 +1,10 @@
+---
+import PrintWatermark from '../page/PrintWatermark.astro';
+---
+
 <footer role="contentinfo" class="layout-footer cs-tertiary">
     <div class="container">
+        <PrintWatermark />
         <hr />
         <div class="navigation">
             <nav class="nav" role="navigation" aria-label="Main sections of the site">
@@ -76,5 +81,26 @@
 
     hr {
         display: none;
+    }
+
+    @media print {
+        .layout-footer {
+            border-top: var(--layout-unit) solid var(--print-brand);
+        }
+
+        nav {
+            display: none;
+        }
+
+        p {
+            margin: var(--layout-gap) 0;
+        }
+
+        hr {
+            display: block;
+            margin: var(--layout-gap) 0 var(--layout-pause);
+            border: none;
+            border-bottom: var(--layout-border-medium) solid var(--scheme-edge);
+        }
     }
 </style>

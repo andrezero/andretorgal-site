@@ -2,10 +2,10 @@
 import type { BaseNode } from '@queries/types';
 import BreadcrumbLink from './BreadcrumbLink.astro';
 
-export interface Props {
+export type Props = {
     node: BaseNode;
     ignoreLevels?: number;
-}
+};
 
 const { node, ignoreLevels = 0 } = Astro.props;
 

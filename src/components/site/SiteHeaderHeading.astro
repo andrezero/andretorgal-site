@@ -81,9 +81,22 @@ import SiteLogo from './SiteLogo.astro';
             width: var(--t-type-size-7);
         }
     }
+
     @media screen and (min-width: 1420px) {
         h1 picture {
             width: var(--t-type-size-7);
+        }
+    }
+
+    @media print {
+        h1 {
+            background-color: transparent;
+            border-bottom: var(--layout-unit) solid var(--print-brand);
+            padding: 0;
+        }
+
+        h1 span {
+            color: var(--print-fg);
         }
     }
 </style>

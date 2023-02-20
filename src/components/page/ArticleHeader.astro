@@ -3,11 +3,11 @@ import NodeDate from '@components/node/parts/NodeDate.astro';
 import type { BaseNode } from '@queries/types';
 import PageTitle from './PageTitle.astro';
 
-export interface Props {
+export type Props = {
     node: BaseNode;
     override?: boolean;
     noDate?: boolean;
-}
+};
 
 const { node, override, noDate } = Astro.props;
 const { title } = node;

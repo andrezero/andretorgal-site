@@ -96,3 +96,16 @@
         --scheme-edge: var(--t-palette-black-3);
     }
 }
+
+@media print {
+    :root {
+        --print-fg: var(--t-palette-black-1);
+        --print-edge: var(--t-palette-black-2);
+        --print-brand: var(--t-palette-red-1);
+        --print-a: var(--t-palette-gray-0);
+    }
+
+    :root {
+        --scheme-edge: var(--print-edge);
+    }
+}

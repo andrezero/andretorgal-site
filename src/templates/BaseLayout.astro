@@ -13,9 +13,9 @@ import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import type { BaseNode } from '@queries/types';
 
-export interface Props {
+export type Props = {
     content: BaseNode;
-}
+};
 
 const { content: node } = Astro.props;
 ---

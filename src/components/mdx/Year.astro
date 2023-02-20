@@ -1,7 +1,7 @@
 ---
-export interface Props {
+export type Props = {
     y: number;
-}
+};
 
 const { y } = Astro.props;
 
@@ -37,6 +37,15 @@ const anchor = parts.length ? parts[0] : y;
             text-align: right;
             font-size: var(--t-type-size--2);
             border-bottom: none;
+        }
+    }
+
+    @media print {
+        p.y span {
+            font-size: var(--t-type-size-0);
+            color: var(--print-fg);
+            background-color: transparent;
+            border-bottom: var(--layout-shift) solid var(--print-fg);
         }
     }
 </style>
