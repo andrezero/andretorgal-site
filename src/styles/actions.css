@@ -29,6 +29,7 @@ a {
 
     a:active {
         color: var(--scheme-a-active);
+        text-decoration: none;
     }
 
     [data-external] {

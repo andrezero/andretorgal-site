@@ -37,8 +37,8 @@
     --scheme-bg: var(--t-palette-red-1);
     --scheme-fg: var(--t-palette-white-1);
     --scheme-a: var(--t-palette-white-2);
-    --scheme-a-on: var(--t-palette-white-1);
-    --scheme-a-active: var(--t-palette-white-1);
+    --scheme-a-on: var(--t-palette-white-2);
+    --scheme-a-active: var(--t-palette-white-2);
     --scheme-alt-bg: var(--t-palette-black);
     --scheme-alt-fg: var(--t-palette-white-1);
     --scheme-edge: var(--t-palette-gray-1);
@@ -51,7 +51,7 @@
     --scheme-fg: var(--t-palette-white-2);
     --scheme-a: var(--t-palette-cyan-3);
     --scheme-a-on: var(--t-palette-cyan-2);
-    --scheme-a-active: var(--t-palette-white-1);
+    --scheme-a-active: var(--t-palette-white-2);
     --scheme-alt-bg: var(--t-palette-white-1);
     --scheme-alt-fg: var(--t-palette-black-1);
     --scheme-edge: var(--t-palette-black-0);
@@ -64,7 +64,7 @@
     --scheme-fg: var(--t-palette-white-5);
     --scheme-a: var(--t-palette-cyan-3);
     --scheme-a-on: var(--t-palette-cyan-2);
-    --scheme-a-active: var(--t-palette-white-1);
+    --scheme-a-active: var(--t-palette-white-2);
     --scheme-alt-bg: var(--t-palette-white-1);
     --scheme-alt-fg: var(--t-palette-black-1);
     --scheme-edge: var(--t-palette-gray-0);
@@ -78,7 +78,7 @@
         --scheme-fg: var(--t-palette-white-2);
         --scheme-a: var(--t-palette-cyan-3);
         --scheme-a-on: var(--t-palette-cyan-2);
-        --scheme-a-active: var(--t-palette-white-1);
+        --scheme-a-active: var(--t-palette-white-2);
         --scheme-alt-bg: var(--t-palette-red-2);
         --scheme-alt-fg: var(--t-palette-white-1);
         --scheme-edge: var(--t-palette-black-1);
