@@ -1,0 +1,60 @@
+---
+layout: ../../../../templates/MetaPage.astro
+type: decision-record
+title: Handcrafted RSS
+tags:
+  - andretorgal-com
+  - astro
+published: 2023 Mar 10
+---
+
+<Abstract>
+
+It's been ages since I've had a feed here.
+
+Now I do [RSS](/rss.xml).
+
+</Abstract>
+
+## Why
+
+[Astro RSS](https://docs.astro.build/en/guides/rss/) is poor and incomplete (details below).
+
+## Decision: handcraft :heart:
+
+- small functions, strong types (less than 40 lines of code)
+- [validated](https://validator.w3.org/feed/)
+- full flexibility
+- clean output
+
+## Issues with Astro RSS
+
+Poor docs.
+
+No way to provide images and categories for items.
+
+The generated rss doesn't even validate properly. Here's an example taken from their own [feed](https://astro.build/rss.xml).
+
+```
+<rss version="2.0">
+<channel>
+  <title>The Astro Blog</title>
+  <description>News and updates about Astro.</description>
+  <link>https://astro.build/</link>
+  <item>
+    <title>Astro 2.1</title>
+    <link>https://astro.build/blog/astro-210/</link>
+    <guid>https://astro.build/blog/astro-210/</guid>
+    <description>[...]</description>
+    <pubDate>Wed, 08 Mar 2023 00:00:00 GMT</pubDate>
+</item>
+```
+
+## Other options considered
+
+Found only a few libraries.
+
+Outdated, opinionated, not ergonomic:
+
+- [feed](https://github.com/jpmonette/feed)
+- [jsonfeed-to-rss](https://github.com/bcomnes/jsonfeed-to-rss)

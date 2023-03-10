@@ -37,6 +37,12 @@ const ogImage = getOgImage(imageBaseDir, mdxFilename, maybeOgImage, images, SITE
 
     <title>{title}</title>
     <meta name="title" content={title} />
+    <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="Andre Torgal RSS"
+        href="https://andretorgal.com/rss.xml"
+    />
     <meta name="description" content={description} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />

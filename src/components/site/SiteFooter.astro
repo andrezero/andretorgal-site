@@ -42,27 +42,58 @@ import PrintWatermark from '../page/PrintWatermark.astro';
                         </a>
                     </li>
                 </ul>
+                <ul class="nav-external">
+                    <li>
+                        <a
+                            class="external-link YouTube"
+                            href="https://www.youtube.com/channel/UC4YAgk0hQbLe78EV0njtKIA"
+                        >
+                            <span>YouTube</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="external-link Soundcloud" href="https://soundcloud.com/andrezero">
+                            <span>Soundcloud</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            class="external-link Bandcamp"
+                            href="https://low-grade-arcade.bandcamp.com/album/ambivalent-red"
+                        >
+                            <span>Bandcamp</span>
+                        </a>
+                    </li>
+                </ul>
             </nav>
         </div>
-        <p class="copyright">
-            <span class="name">andretorgal.com</span>
-            <span class="version">v.3.0.0</span>
-            <span class="year">Copyright © 2023</span>
-            <a href="/about">Andre Torgal</a>
+
+        <p class="subscribe">
+            Subscribe to the blog via <a href="/rss.xml">RSS</a>
         </p>
-        <p class="license">
-            All code and content for this site available on
-            <a class="external-link" href="https://github.com/andrezero/site.git"
-                ><span>Github</span>
-            </a>
-            under a
-            <a
-                class="external-link"
-                href="https://raw.githubusercontent.com/andrezero/site/master/LICENSE-MIT"
-                ><span>MIT LICENSE</span>
-            </a>
-            unless otherwise noted.
-        </p>
+
+        <div>
+            <p class="copyright">
+                <span class="name">andretorgal.com</span>
+                <span class="version">v.3.0.0</span>
+                <span class="year">Copyright © 2023</span>
+                <a href="/about">Andre Torgal</a>
+            </p>
+
+            <p class="license">
+                All code and content for this site available on
+                <a class="external-link" href="https://github.com/andrezero/site.git"
+                    ><span>Github</span>
+                </a>
+                under a
+                <a
+                    class="external-link"
+                    href="https://raw.githubusercontent.com/andrezero/site/master/LICENSE-MIT"
+                    ><span>MIT LICENSE</span>
+                </a>
+                unless otherwise noted.
+            </p>
+        </div>
     </div>
 </footer>
 
@@ -72,15 +103,40 @@ import PrintWatermark from '../page/PrintWatermark.astro';
         -moz-user-select: none;
         user-select: none;
         color: var(--scheme-fg);
-        font-size: var(--t-type-size--1);
         font-family: var(--t-type-family-alt);
         line-height: var(--t-type-height-large);
         padding-top: var(--layout-pause);
         padding-bottom: var(--layout-legroom);
     }
 
+    footer > * {
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-gap);
+    }
+
+    footer > * > * {
+        font-size: var(--t-type-size--1);
+    }
+
+    .navigation {
+        display: flex;
+        flex-direction: column;
+        gap: var(--layout-gap);
+    }
+
     hr {
         display: none;
+    }
+
+    @media screen and (min-width: 650px) {
+        .navigation {
+            gap: var(--layout-space);
+            flex-direction: row;
+        }
+    }
+
+    @media screen and (min-width: 650px) {
     }
 
     @media print {

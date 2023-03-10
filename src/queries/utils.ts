@@ -2,7 +2,7 @@ import type { MarkdownInstance } from 'astro';
 
 import type { BaseNode, GlobResult } from './types';
 
-function filterDrafts(node: BaseNode): boolean {
+export function filterDrafts(node: BaseNode): boolean {
     if (import.meta.env.MODE === 'development') {
         return true;
     }
