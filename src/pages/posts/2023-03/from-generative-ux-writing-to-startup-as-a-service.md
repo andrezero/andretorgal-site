@@ -1,5 +1,5 @@
 ---
-layout: ../../../templates/BlogPost.astro
+layout: ~/templates/BlogPost.astro
 type: post
 title: From generative UX writing to startup as a service
 tags:

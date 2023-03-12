@@ -1,12 +1,18 @@
+import sanitizeHtml from 'sanitize-html';
+import { v4 as uuidv4 } from 'uuid';
+
 import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE, SITE_URL } from '~/config';
+import { ogImageProfile } from '~/integration/images/profiles';
+import { resolveImageSrc } from '~/integration/images/utils/getOgImage';
 
 export const absolute = (path: string): string => `${SITE_URL}${path}`;
 
 const author = SITE_AUTHOR;
+
 export const site = {
     url: SITE_URL,
     value: SITE_TITLE,
-    image: absolute(SITE_OG_IMAGE),
+    image: absolute(sanitizeHtml(resolveImageSrc(SITE_OG_IMAGE, ogImageProfile))),
     description: SITE_DESCRIPTION,
 };
 export type ATOM = {
@@ -21,20 +27,20 @@ export type ATOM = {
 const atomItem = ({ title, link, date, tags, description, image }: ATOM): string => {
     return `<item>
             <title>${title}</title>
-            <link>${link}</link>
-            <guid>${link}</guid>
+            <link>${link}?source=rss</link>
+            <guid>${uuidv4()}</guid>
             <pubDate>${date.toUTCString()}</pubDate>
             ${tags && tags.map(t => `<category>${t}</category>`).join('')}
             <description>${description}</description>
             <author>${author}</author>
-            ${image ? `<enclosure url="${image}" length="0" type="image/jpg"/>` : ''}
+            ${image ? `<enclosure url="${absolute(image)}" length="0" type="image/jpg"/>` : ''}
         </item>`;
 };
 
 const channel = (items: ATOM[]) => {
     return `<channel>
         <title>${site.value}</title>
-        <link>${site.url}</link>
+        <link>${site.url}?source=rss</link>
         <atom:link rel="self" href="${site.url}/rss.xml" type="application/rss+xml" />
         <language>en</language>
         <description>${site.description}</description>

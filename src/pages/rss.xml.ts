@@ -5,10 +5,9 @@ import { filterDrafts } from '@queries/utils';
 import escapeHTML from 'escape-html';
 import sanitizeHtml from 'sanitize-html';
 
-import type { ATOM } from '../utils/atomXML';
-import { absolute, atomXml, site } from '../utils/atomXML';
-
 import { SITE_OG_IMAGE } from '~/config';
+import type { ATOM } from '~/utils/atomXML';
+import { absolute, atomXml } from '~/utils/atomXML';
 
 const nodeToAtom = (node: BaseNode): ATOM => {
     const {
@@ -30,7 +29,7 @@ const nodeToAtom = (node: BaseNode): ATOM => {
         link: absolute(node.url),
         date,
         description: sanitizeHtml(escapeHTML(abstract?.text || '')),
-        image: images[0] ? absolute(images[0]) : site.image,
+        image: sanitizeHtml(ogImage),
         tags: tags || [],
     };
 };
