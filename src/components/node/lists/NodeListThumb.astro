@@ -14,21 +14,16 @@ export type Props = {
     compact?: boolean;
 };
 
-const SHOW_DATE = ['post'];
-const SHOW_TAGS = ['post', 'meta', 'page'];
-
 const { node } = Astro.props;
 const { imageBaseDir, mdxFilename, ogImage, images } = node;
-
-const showDate = SHOW_DATE.includes(node.type);
-const showTags = SHOW_TAGS.includes(node.type);
 
 const thumbImage = getThumbImage(imageBaseDir, mdxFilename, ogImage, images);
 ---
 
 <article>
     <header>
-        <h3>
+        {(<NodeDate size="s" node={node} />)}
+        <h4>
             {
                 node.type === 'tag' ? (
                     <TagLink tag={node.title}>{node.title}</TagLink>
@@ -36,22 +31,18 @@ const thumbImage = getThumbImage(imageBaseDir, mdxFilename, ogImage, images);
                     <a href={node.url}>{node.title}</a>
                 )
             }
-        </h3>
-        {showDate && <NodeDate size="s" node={node} />}
+        </h4>
     </header>
     {
         thumbImage ? (
-            <div>
-                <a href={node.url}>
-                    <NodeThumb node={node} />
-                </a>
-                <NodeAbstract node={node} />
-            </div>
+            <a href={node.url}>
+                <NodeThumb node={node} />
+            </a>
         ) : (
             <NodeAbstract node={node} />
         )
     }
-    {showTags && <NodeTags node={node} compact />}
+    <NodeTags node={node} compact />
 </article>
 
 <style>
@@ -65,6 +56,13 @@ const thumbImage = getThumbImage(imageBaseDir, mdxFilename, ogImage, images);
         display: flex;
         flex-direction: column-reverse;
         gap: var(--t-space-2xs);
+    }
+
+    h4 {
+        display: flex;
+        height: 2.5em;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     div {

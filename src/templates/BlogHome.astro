@@ -13,6 +13,7 @@ import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import { importAllPosts, sortedPosts } from '@queries/posts';
 import type { BlogPost } from '@queries/types';
+import Pagination from '~/components/navigation/Pagination.astro';
 
 export type Props = {
     content: BlogPost;
@@ -22,6 +23,11 @@ const { content: page } = Astro.props;
 
 const nodes = await importAllPosts();
 const posts = sortedPosts(nodes as BlogPost[]);
+const top = posts.slice(0, 10);
+
+const pageCount = Math.ceil(nodes.length / 10);
+const pages = [...Array(pageCount).keys()].map((p: number) => `/posts/archive/${p + 1}`);
+pages[0] = '/posts';
 ---
 
 <Document>
@@ -34,11 +40,12 @@ const posts = sortedPosts(nodes as BlogPost[]);
                     <PageHeader node={page} slot="header" />
                     <TopLine />
                     <Section>
-                        <NodeList nodes={posts} />
+                        <NodeList nodes={top} />
                     </Section>
+                    <Pagination pages={pages} current={1} />
                 </Page>
+                <SiteFooter slot="footer" />
             </SiteMain>
-            <SiteFooter slot="footer" />
         </Layout>
     </Body>
 </Document>

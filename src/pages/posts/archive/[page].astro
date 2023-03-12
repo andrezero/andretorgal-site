@@ -1,0 +1,22 @@
+---
+import { importAllPosts } from '~/queries/posts';
+import BlogArchive from '~/templates/BlogArchive.astro';
+
+export interface Props {
+    page: number;
+}
+
+export async function getStaticPaths() {
+    const nodes = await importAllPosts();
+    const pageCount = Math.ceil(nodes.length / 10);
+    const pages = [...Array(pageCount).keys()].map(p => p + 1);
+    return pages.map(page => ({
+        params: { page },
+        props: { page },
+    }));
+}
+
+const { page } = Astro.props;
+---
+
+<BlogArchive page={page} />

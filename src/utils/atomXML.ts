@@ -1,5 +1,4 @@
 import sanitizeHtml from 'sanitize-html';
-import { v4 as uuidv4 } from 'uuid';
 
 import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE, SITE_URL } from '~/config';
 import { ogImageProfile } from '~/integration/images/profiles';
@@ -28,7 +27,6 @@ const atomItem = ({ title, link, date, tags, description, image }: ATOM): string
     return `<item>
             <title>${title}</title>
             <link>${link}?source=rss</link>
-            <guid>${uuidv4()}</guid>
             <pubDate>${date.toUTCString()}</pubDate>
             ${tags && tags.map(t => `<category>${t}</category>`).join('')}
             <description>${description}</description>
