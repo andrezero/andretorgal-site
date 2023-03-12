@@ -1,4 +1,4 @@
-import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE, SITE_URL } from '../config';
+import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE, SITE_URL } from '~/config';
 
 export const absolute = (path: string): string => `${SITE_URL}${path}`;
 
