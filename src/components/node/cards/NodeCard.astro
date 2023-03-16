@@ -9,40 +9,50 @@ import NodeTags from '../parts/NodeTags.astro';
 import NodeThumb from '../parts/NodeThumb.astro';
 import TagLink from '../parts/TagLink.astro';
 
+export type CardVariant = 'default' | 'compact' | undefined;
+
 export type Props = {
     node: BaseNode;
-    compact?: boolean;
+    variant?: CardVariant;
 };
 
-const { node } = Astro.props;
+const SHOW_DATE = ['post'];
+const SHOW_TAGS = ['post', 'meta', 'page'];
+
+const { node, variant = 'default' } = Astro.props;
 const { imageBaseDir, mdxFilename, ogImage, images } = node;
 
+const showDate = SHOW_DATE.includes(node.type);
+const showTags = SHOW_TAGS.includes(node.type);
+
 const thumbImage = getThumbImage(imageBaseDir, mdxFilename, ogImage, images);
+const maxChars = thumbImage && variant === 'compact' ? 100 : undefined;
 ---
 
-<article>
+<article class:list={[variant]}>
     <header>
-        {(<NodeDate size="s" node={node} />)}
-        <h4>
+        <h3>
             {
                 node.type === 'tag' ? (
-                    <TagLink tag={node.title}>{node.title}</TagLink>
+                    <TagLink tag={node.title} size="large">
+                        {node.title}
+                    </TagLink>
                 ) : (
                     <a href={node.url}>{node.title}</a>
                 )
             }
-        </h4>
+        </h3>
+        {showDate && <NodeDate size="s" node={node} />}
     </header>
     {
-        thumbImage ? (
+        thumbImage && (
             <a href={node.url}>
                 <NodeThumb node={node} />
             </a>
-        ) : (
-            <NodeAbstract node={node} />
         )
     }
-    <NodeTags node={node} compact />
+    <NodeAbstract node={node} compact max={maxChars} />
+    {showTags && <NodeTags node={node} />}
 </article>
 
 <style>
@@ -58,13 +68,6 @@ const thumbImage = getThumbImage(imageBaseDir, mdxFilename, ogImage, images);
         gap: var(--t-space-2xs);
     }
 
-    h4 {
-        display: flex;
-        height: 2.5em;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
     div {
         display: flex;
         gap: var(--layout-gap);
@@ -74,6 +77,7 @@ const thumbImage = getThumbImage(imageBaseDir, mdxFilename, ogImage, images);
     @media screen and (min-width: 650px) {
         div {
             display: grid;
+            gap: var(--layout-wall);
             grid-template-columns: 50% auto;
         }
     }

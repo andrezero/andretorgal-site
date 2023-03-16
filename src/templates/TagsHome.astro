@@ -4,6 +4,8 @@ import Document from '@components/document/Document.astro';
 import Head from '@components/document/Head.astro';
 import Layout from '@components/document/Layout.astro';
 import TagList from '@components/node/lists/TagList.astro';
+import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
+import Divider from '@components/page/Divider.astro';
 import Page from '@components/page/Page.astro';
 import PageHeader from '@components/page/PageHeader.astro';
 import PageSubTitle from '@components/page/PageSubTitle.astro';
@@ -12,7 +14,7 @@ import TopLine from '@components/page/TopLine.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
-import { importAllTags } from '@queries/tags';
+import { importAllTags, TOP_TAGS_COUNT } from '@queries/tags';
 import type { PageNode } from '@queries/types';
 
 export type Props = {
@@ -21,11 +23,10 @@ export type Props = {
 
 const { content: page } = Astro.props;
 
-const TOP_TAGS_COUNT = 10;
-
-const sortedTags = await importAllTags();
-const topTags = sortedTags.slice(0, TOP_TAGS_COUNT);
-const moreTags = sortedTags.filter(t => t.count > 1).slice(TOP_TAGS_COUNT);
+const allTags = await importAllTags();
+const filteredTags = allTags.filter(tag => tag.title !== 'andretorgal-com' && tag.count > 1);
+const topTags = filteredTags.slice(0, TOP_TAGS_COUNT);
+const moreTags = filteredTags.slice(TOP_TAGS_COUNT);
 ---
 
 <Document>
@@ -37,19 +38,19 @@ const moreTags = sortedTags.filter(t => t.count > 1).slice(TOP_TAGS_COUNT);
                 <Page>
                     <PageHeader node={page} slot="header" />
                     <TopLine />
+                    <NodeAbstract node={page} />
                     <Section>
-                        <TagList tags={topTags} />
+                        <Divider size="gap">
+                            <PageSubTitle>Top tags</PageSubTitle>
+                        </Divider>
+                        <TagList tags={topTags} size="large" />
                     </Section>
-                    {
-                        !!moreTags.length && (
-                            <Section>
-                                <PageSubTitle slot="header" slot="header">
-                                    Other tags
-                                </PageSubTitle>
-                                <TagList tags={moreTags} />
-                            </Section>
-                        )
-                    }
+                    <Section>
+                        <Divider size="gap">
+                            <PageSubTitle>Other tags</PageSubTitle>
+                        </Divider>
+                        <TagList tags={moreTags} />
+                    </Section>
                 </Page>
             </SiteMain>
             <SiteFooter slot="footer" />

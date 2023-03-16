@@ -1,7 +1,6 @@
 import { getOgImage } from '@integration/images/utils/getOgImage';
 import { importAllPosts } from '@queries/posts';
 import type { BaseNode } from '@queries/types';
-import { filterDrafts } from '@queries/utils';
 import escapeHTML from 'escape-html';
 import sanitizeHtml from 'sanitize-html';
 
@@ -38,7 +37,7 @@ export async function get(): Promise<{
     body: string;
 }> {
     const allNodes = await importAllPosts();
-    const items: ATOM[] = allNodes.filter(filterDrafts).map(nodeToAtom);
+    const items: ATOM[] = allNodes.map(nodeToAtom);
     const body = atomXml(items);
 
     return { body };

@@ -30,7 +30,7 @@
     outline-style: solid;
     outline-color: var(--scheme-a-active);
     outline-width: 0.2rem;
-    outline-offset: var(--layout-shift-fixed);
+    outline-offset: var(--layout-border-thin);
 }
 
 ::selection {

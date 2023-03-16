@@ -9,10 +9,6 @@ export async function importAllPosts(): Promise<BlogPost[]> {
     );
 }
 
-export function sortedPosts(nodes: BlogPost[]): BlogPost[] {
-    return nodes.sort((a, b) => new Date(b.published).valueOf() - new Date(a.published).valueOf());
-}
-
 type PreviousAndNext = {
     previous: BlogPost | undefined;
     next: BlogPost | undefined;

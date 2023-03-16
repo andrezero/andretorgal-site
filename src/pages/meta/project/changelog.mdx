@@ -1,6 +1,6 @@
 ---
 layout: ~/templates/MetaPage.astro
-type: page
+type: meta-page
 title: 'My website: Changelog'
 tags:
   - andretorgal-com
@@ -16,12 +16,24 @@ Paper trail of changes in this website, since there is some continuity around 20
 
 <Year y="2023" />
 
-- Fix: remote images are not being generated in SSG time
+## Feature: better tag pages
+
+- Feature: show top tags in homepage
+- Feature: separate tag children by type: tags, pages, posts, meta
 
 ## Feature: Thumbnails and pagination
 
-- Feature: list posts with thumbnails in homepage and blog home
+- Feature: homepage and blog posts lists now have thumbnails
+- Feature: homepage "more posts" section (2 columns)
 - Feature: blog archive with pagination
+
+## UI: better visual hierarchy
+
+- UI: use `TagLink` in tag lists, new prop `size` helps with this
+- UI: new component `NodeCard` replaces `NodeListItem`
+- UI: new component `PageNav`
+- UI: more flexible `Divider`
+- Fix: remote images are not being generated in SSG time
 
 ## Feature: RSS
 

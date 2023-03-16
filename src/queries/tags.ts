@@ -4,6 +4,8 @@ import type { MarkdownInstance } from 'astro';
 import type { BaseNode, TagNode } from './types';
 import { globResultToArray } from './utils';
 
+export const TOP_TAGS_COUNT = 10;
+
 function newTag(name: string): TagNode {
     return {
         type: 'tag',
@@ -52,4 +54,10 @@ export async function importAllTags(): Promise<TagNode[]> {
     return Object.entries(tags)
         .sort((entryA, entryB) => entryB[1].count - entryA[1].count)
         .map(([, tag]) => tag);
+}
+
+export async function importTopTags(): Promise<TagNode[]> {
+    const allTags = await importAllTags();
+    const filteredTags = allTags.filter(tag => tag.title !== 'andretorgal-com');
+    return filteredTags.slice(0, TOP_TAGS_COUNT);
 }

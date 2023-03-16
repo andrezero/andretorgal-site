@@ -5,6 +5,8 @@ import Head from '@components/document/Head.astro';
 import Layout from '@components/document/Layout.astro';
 import NavLink from '@components/navigation/NavLink.astro';
 import NodeList from '@components/node/lists/NodeList.astro';
+import TagList from '@components/node/lists/TagList.astro';
+import Divider from '@components/page/Divider.astro';
 import Markup from '@components/page/Markup.astro';
 import Page from '@components/page/Page.astro';
 import PageHeader from '@components/page/PageHeader.astro';
@@ -14,9 +16,10 @@ import TopLine from '@components/page/TopLine.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
-import { importAllPosts, sortedPosts } from '@queries/posts';
+import { sortedNodes } from '@queries/nodes';
+import { importAllPosts } from '@queries/posts';
+import { importTopTags } from '@queries/tags';
 import type { BaseNode } from '@queries/types';
-import Divider from '~/components/page/Divider.astro';
 
 export type Props = {
     content: BaseNode;
@@ -24,10 +27,11 @@ export type Props = {
 
 const { content: page } = Astro.props;
 
+const topTags = await importTopTags();
 const nodes = await importAllPosts();
-const sorted = sortedPosts(nodes);
-const posts = sorted.slice(0, 5);
-const thumbs = sorted.slice(5, 11);
+const sorted = sortedNodes(nodes);
+const posts = sorted.slice(0, 3);
+const cards = sorted.slice(3, 9);
 ---
 
 <Document>
@@ -43,13 +47,22 @@ const thumbs = sorted.slice(5, 11);
                     </Section>
                     <TopLine />
                     <Section>
+                        <PageSubTitle slot="header">Top tags</PageSubTitle>
+                        <TagList tags={topTags} />
+                        <NavLink inline href="/posts">Explore all tags</NavLink>
+                    </Section>
+                    <Divider size="gap" />
+                    <Section>
                         <PageSubTitle slot="header">Latest posts</PageSubTitle>
                         <NodeList nodes={posts} />
                     </Section>
-                    <Divider />
+                    <Divider size="space" />
+
                     <Section>
-                        <NodeList nodes={thumbs} variant="thumbs" />
-                        <NavLink href="/posts">See more posts in the blog</NavLink>
+                        <NodeList nodes={cards} variant="compact" />
+                        <Divider size="gap">
+                            <NavLink inline href="/posts">See more posts in the blog</NavLink>
+                        </Divider>
                     </Section>
                 </Page>
             </SiteMain>

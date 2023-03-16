@@ -1,11 +1,15 @@
 ---
 import type { TagNode } from '@queries/types';
 
+import type { TagLinkSize } from '../parts/TagLink.astro';
+import TagLink from '../parts/TagLink.astro';
+
 export type Props = {
     tags: TagNode[];
+    size?: TagLinkSize;
 };
 
-const { tags } = Astro.props;
+const { tags, size = 'medium' } = Astro.props;
 ---
 
 <ul role="list">
@@ -13,11 +17,17 @@ const { tags } = Astro.props;
         tags.map(tag => (
             <li>
                 <h3>
-                    <a href={`/tags/${tag.title}`}>
-                        #{tag.title} ({tag.count})
-                    </a>
+                    <TagLink tag={tag.title} count={tag.count} size={size} />
                 </h3>
             </li>
         ))
     }
 </ul>
+
+<style>
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--layout-unit);
+    }
+</style>

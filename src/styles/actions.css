@@ -9,7 +9,7 @@ button {
 
 a {
     color: var(--scheme-a);
-    transition: color 0.1s, background-color 0.1s;
+    transition: color 0.1s, background-color 0.2s;
 }
 
 @media screen {

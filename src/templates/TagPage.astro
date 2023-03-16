@@ -8,6 +8,7 @@ import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
 import NodeMeta from '@components/node/parts/NodeMeta.astro';
 import Article from '@components/page/Article.astro';
 import ArticleHeader from '@components/page/ArticleHeader.astro';
+import Divider from '@components/page/Divider.astro';
 import Markup from '@components/page/Markup.astro';
 import PageSubTitle from '@components/page/PageSubTitle.astro';
 import PageTitle from '@components/page/PageTitle.astro';
@@ -16,8 +17,9 @@ import TopLine from '@components/page/TopLine.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
-import { importAllNodes } from '@queries/nodes';
+import { importAllNodes, sortedNodes } from '@queries/nodes';
 import type { TagNode } from '@queries/types';
+import { plural } from '@utils/strings';
 
 export type Props = {
     content: TagNode;
@@ -27,7 +29,11 @@ const { content: page } = Astro.props;
 
 const allNodes = await importAllNodes();
 
-const nodes = allNodes.filter(n => n.tags?.includes(page.title));
+const nodes = sortedNodes(allNodes.filter(n => n.tags?.includes(page.title)));
+const pages = nodes.filter(n => n.type === 'page');
+const posts = nodes.filter(n => n.type === 'post');
+const tags = nodes.filter(n => n.type === 'tag');
+const meta = nodes.filter(n => n.type.startsWith('meta'));
 ---
 
 <Document>
@@ -49,10 +55,58 @@ const nodes = allNodes.filter(n => n.tags?.includes(page.title));
                         <Markup><slot /></Markup>
                     </Section>
                     <Section>
-                        <PageSubTitle slot="header">
-                            All {nodes.length} items under #{page.title}
-                        </PageSubTitle>
-                        <NodeList nodes={nodes} />
+                        {
+                            pages.length > 0 && (
+                                <>
+                                    <Divider size="gap">
+                                        <PageSubTitle>
+                                            {pages.length}&nbsp;{plural(pages.length, 'page')} under
+                                            #{page.title}
+                                        </PageSubTitle>
+                                    </Divider>
+                                    <NodeList nodes={pages} />
+                                </>
+                            )
+                        }
+                        {
+                            posts.length > 0 && (
+                                <>
+                                    <Divider size="space">
+                                        <PageSubTitle>
+                                            {posts.length}&nbsp;{plural(posts.length, 'post')} under
+                                            #{page.title}
+                                        </PageSubTitle>
+                                    </Divider>
+                                    <NodeList nodes={posts} variant="compact" />
+                                </>
+                            )
+                        }
+                        {
+                            tags.length > 0 && (
+                                <>
+                                    <Divider size="space">
+                                        <PageSubTitle>
+                                            {tags.length}&nbsp;{plural(tags.length, 'tag')} under #
+                                            {page.title}
+                                        </PageSubTitle>
+                                    </Divider>
+                                    <NodeList nodes={tags} variant="compact" />
+                                </>
+                            )
+                        }
+                        {
+                            meta.length > 0 && (
+                                <>
+                                    <Divider size="space">
+                                        <PageSubTitle>
+                                            {meta.length}&nbsp;{plural(meta.length, 'meta doc')}{' '}
+                                            under #{page.title}
+                                        </PageSubTitle>
+                                    </Divider>
+                                    <NodeList nodes={meta} />
+                                </>
+                            )
+                        }
                     </Section>
                 </Article>
             </SiteMain>

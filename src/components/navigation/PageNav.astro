@@ -1,0 +1,47 @@
+---
+import NavLink from './NavLink.astro';
+
+export type Props = {
+    pages: string[];
+};
+
+const { pages } = Astro.props;
+
+const show = pages.length > 1;
+---
+
+{
+    show && (
+        <nav role="navigation" aria-label="Navigate to other pages">
+            Pages:
+            <ul>
+                {pages.map((page, index) => (
+                    <li>
+                        <NavLink exact href={page} label={`Go to Page ${index + 1}`}>
+                            {index + 1}
+                        </NavLink>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    )
+}
+
+<style>
+    nav {
+        display: flex;
+        align-items: baseline;
+        gap: var(--layout-gap);
+    }
+
+    ul {
+        display: flex;
+        gap: var(--layout-unit);
+    }
+
+    li {
+        min-width: var(--layout-wall);
+        text-align: center;
+        font-size: var(--t-type-size-1);
+    }
+</style>

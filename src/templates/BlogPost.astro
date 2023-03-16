@@ -19,7 +19,8 @@ import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import { getHeroImage } from '@integration/images/utils/getHeroImage';
-import { findPreviousAndNextPosts, importAllPosts, sortedPosts } from '@queries/posts';
+import { sortedNodes } from '@queries/nodes';
+import { findPreviousAndNextPosts, importAllPosts } from '@queries/posts';
 import type { BlogPost } from '@queries/types';
 
 export type Props = {
@@ -30,7 +31,7 @@ const { content: node } = Astro.props;
 const { heroImage: maybeHeroImage, autoHero, images, imageBaseDir, mdxFilename } = node;
 
 const nodes = await importAllPosts();
-const posts = sortedPosts(nodes as BlogPost[]);
+const posts = sortedNodes(nodes);
 const { previous, next } = findPreviousAndNextPosts(posts, node);
 
 const heroImage = getHeroImage(imageBaseDir, mdxFilename, maybeHeroImage, autoHero, images);

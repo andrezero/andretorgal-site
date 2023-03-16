@@ -1,10 +1,14 @@
 import type { MarkdownInstance } from 'astro';
 
-import type { BlogPost } from './types';
+import type { BaseNode } from './types';
 import { globResultToArray } from './utils';
 
-export async function importAllNodes(): Promise<BlogPost[]> {
-    return globResultToArray<BlogPost>(
-        import.meta.glob<MarkdownInstance<BlogPost>>('../pages/**/*.(md|mdx)'),
+export function sortedNodes(nodes: BaseNode[]): BaseNode[] {
+    return nodes.sort((a, b) => new Date(b.published).valueOf() - new Date(a.published).valueOf());
+}
+
+export async function importAllNodes(): Promise<BaseNode[]> {
+    return globResultToArray<BaseNode>(
+        import.meta.glob<MarkdownInstance<BaseNode>>('../pages/**/*.(md|mdx)'),
     );
 }

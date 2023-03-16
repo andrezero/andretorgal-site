@@ -1,6 +1,6 @@
 ---
 layout: ~/templates/MetaPage.astro
-type: page
+type: meta-page
 title: 'My website: Backlog'
 tags:
   - andretorgal-com
@@ -16,16 +16,12 @@ Stuff I want to do on this website, or otherwise just investigate and experiment
 
 ## UI: improvements
 
-- Homepage: add section with top tags
-- Tags: sort content by child tags, pages, posts (3 + list)
 - UI: Content components
   - `<Blockquote>`
     - accepts a title before the quote (before `\\`)
     - accepts an attribution after the quote (after `// `)
     - the attribution can contain a link
   - `<Note type="old|construction|blog|tags|meta|links">`
-  - `<Code>` with nice syntax highlighting and `copy` function
-  - vectors for work/story/music section
 
 ## Authoring experience
 
@@ -96,12 +92,12 @@ Stuff I want to do on this website, or otherwise just investigate and experiment
 
 ## Later
 
+- UI: new component `<Code>` with nice syntax highlighting and `copy` function
+- Vectors for work/story/music section
 - Make image quality part of profile, currently it's hardcoded to dev=50 prod=80
 - Prettier crashes on MDX because [MDX 2]() - temporarily changed the parser to `astro`
 - Tooling: accessibility linting
 - Feature: Media stream
-- UI: pagination
-- UI: content components: `NodeCard`, `NodeList`
 - Features:
   - feed archive
   - search

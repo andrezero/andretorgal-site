@@ -1,17 +1,34 @@
 ---
+export type TagLinkSize = 'large' | 'medium' | 'normal' | 'compact' | 'tiny' | undefined;
+
 export type Props = {
     tag: string;
+    count?: number;
+    size?: TagLinkSize;
 };
 
-const { tag } = Astro.props;
+const { tag, count = 0, size = 'normal' } = Astro.props;
 ---
 
-<a class="tag" href={`/tags/${tag}`}>#{tag}</a>
+<a class:list={['tag', size]} href={`/tags/${tag}`}>
+    #{tag}
+    {
+        count > 0 && (
+            <span class="count">
+                <span>(</span>
+                {count}
+                <span>)</span>
+            </span>
+        )
+    }
+</a>
 
 <style>
     .tag {
-        display: inline-block;
-        padding: 0 var(--layout-shift) var(--layout-shift);
+        display: inline;
+        align-items: baseline;
+        gap: var(--layout-s-quarter);
+        padding: 0 var(--layout-s-quarter) var(--layout-shift);
         color: var(--scheme-bg);
         font-family: var(--t-type-family-alt);
         font-weight: var(--t-type-weight-alt-bold);
@@ -19,11 +36,53 @@ const { tag } = Astro.props;
         border-radius: var(--radius-action);
         text-decoration: none;
         min-width: min-content;
+        transition: color 0.1s, background-color 0.2s;
+    }
+
+    .large {
+        font-size: var(--t-type-size-2);
+    }
+
+    .medium {
+        font-size: var(--t-type-size-1);
+    }
+
+    .normal {
+        font-size: var(--t-type-size-0);
+    }
+
+    .compact {
+        font-size: var(--t-type-size--1);
+    }
+
+    .tiny {
+        font-size: var(--t-type-size--2);
+    }
+
+    .count {
+        display: inline-block;
+        font-size: 85%;
+        min-width: 1.35em;
+        padding: 0 var(--layout-s-half);
+        text-align: center;
+        color: var(--scheme-fg);
+        background-color: var(--scheme-bg);
+        border-radius: 99px;
+        transition: color 0.1s, background-color 0.2s;
+    }
+
+    .count span {
+        display: none;
     }
 
     .tag::selection {
-        color: var(--scheme-bg);
-        background-color: var(--scheme-a-on);
+        color: var(--scheme-fg);
+        background-color: var(--scheme-bg);
+    }
+
+    .count::selection {
+        color: var(--scheme-fg);
+        background-color: var(--scheme-bg);
     }
 
     .tag:hover {
@@ -31,9 +90,18 @@ const { tag } = Astro.props;
         background-color: var(--scheme-a-on);
     }
 
+    .tag:hover .count {
+        color: var(--scheme-a-on);
+    }
+
     .tag:active {
         color: var(--scheme-fg);
         background-color: var(--scheme-bg);
+    }
+
+    .tag:active .count {
+        color: var(--scheme-bg);
+        background-color: var(--scheme-fg);
     }
 
     @media print {

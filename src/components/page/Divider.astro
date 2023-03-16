@@ -1,14 +1,27 @@
 ---
+type DividerRhythm = 'gap' | 'space' | 'pause';
+
 export type Props = {
-    compact?: boolean;
+    size?: DividerRhythm;
 };
 
-const { compact } = Astro.props;
+const { size } = Astro.props;
 ---
 
-<hr class={compact ? 'compact' : ''} />
+<div class={size}>
+    <hr />
+    <slot />
+</div>
 
 <style>
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--layout-gap);
+        width: 100%;
+    }
+
     hr {
         width: 100%;
         margin: 0;
@@ -16,7 +29,15 @@ const { compact } = Astro.props;
         border-top: var(--layout-border-thin) solid var(--scheme-edge);
     }
 
-    .compact {
-        margin: var(--layout-unit) 0;
+    .gap {
+        margin: var(--layout-gap) 0;
+    }
+
+    .space {
+        margin: var(--layout-space) 0 var(--layout-gap);
+    }
+
+    .pause {
+        margin: var(--layout-pause) 0 var(--layout-gap);
     }
 </style>

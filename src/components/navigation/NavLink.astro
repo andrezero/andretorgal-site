@@ -2,10 +2,11 @@
 export type Props = {
     href: string;
     exact?: boolean;
+    label?: string;
     inline?: boolean;
 };
 
-const { href, exact, inline } = Astro.props;
+const { href, exact, current: label, inline } = Astro.props;
 
 const { pathname } = Astro.url;
 const current = pathname.replace(/\/$/, '');
@@ -18,7 +19,13 @@ const isActive = isHome
 const tabIndex = isActive ? -1 : 0;
 ---
 
-<a tabindex={tabIndex} href={href} class:list={['nav', { active: isActive, inline }]}><slot /></a>
+<a
+    tabindex={tabIndex}
+    href={href}
+    class:list={['nav', { active: isActive, inline }]}
+    aria-label={label}
+    aria-current={isActive ? 'true' : undefined}><slot /></a
+>
 
 <style>
     .nav {
@@ -40,7 +47,6 @@ const tabIndex = isActive ? -1 : 0;
         margin-left: calc(-1 * var(--layout-shift));
         margin-right: var(--layout-shift);
         text-decoration: underline;
-        transition: background-color 0.1s;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -54,10 +60,15 @@ const tabIndex = isActive ? -1 : 0;
         background-color: var(--scheme-a-on);
     }
 
-    .nav.active,
-    .nav:active {
+    .nav.active {
         text-decoration: none;
         color: var(--scheme-bg);
-        background-color: var(--scheme-a-active);
+        background-color: var(--scheme-fg);
+    }
+
+    .nav:active {
+        text-decoration: none;
+        color: var(--scheme-fg);
+        background-color: var(--scheme-bg);
     }
 </style>

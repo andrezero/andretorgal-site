@@ -2,17 +2,26 @@
 import Markdown from '@components/page/Markdown.astro';
 import type { BaseNode } from '@queries/types';
 
-export type Props = { node: BaseNode };
+export type Props = {
+    node: BaseNode;
+    compact?: boolean;
+    max?: number | undefined;
+};
 
-const { node } = Astro.props;
+const { node, compact, max } = Astro.props;
 const { description, abstract } = node;
 
-const content = abstract?.markdown || description;
+function trim(str: string | undefined, max?: number): string | undefined {
+    return str && max && str.length > max ? str.slice(0, max - 1) + '&hellip;' : str;
+}
+
+const text = (max ? abstract?.text : abstract?.markdown) || description;
+const content = trim(text, max);
 ---
 
 {
     content && (
-        <div>
+        <div class:list={{ compact }}>
             <Markdown content={content} />
         </div>
     )
@@ -21,5 +30,9 @@ const content = abstract?.markdown || description;
 <style>
     div {
         font-size: var(--t-type-size-1);
+    }
+
+    .compact {
+        font-size: var(--t-type-size-0);
     }
 </style>

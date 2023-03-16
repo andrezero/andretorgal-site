@@ -1,13 +1,10 @@
 ---
 import type { BaseNode } from '@queries/types';
-import NodeListItem from './NodeListItem.astro';
-import NodeListThumb from './NodeListThumb.astro';
-
-type ListVariant = 'default' | 'thumbs';
+import NodeCard, { CardVariant } from '../cards/NodeCard.astro';
 
 export type Props = {
     nodes: BaseNode[];
-    variant?: ListVariant;
+    variant?: CardVariant;
 };
 
 const { nodes, variant = 'default' } = Astro.props;
@@ -17,8 +14,7 @@ const { nodes, variant = 'default' } = Astro.props;
     {
         nodes.map(node => (
             <li>
-                {variant === 'default' && <NodeListItem node={node} />}
-                {variant === 'thumbs' && <NodeListThumb node={node} />}
+                <NodeCard node={node} variant={variant} />
             </li>
         ))
     }
@@ -35,14 +31,15 @@ const { nodes, variant = 'default' } = Astro.props;
         gap: var(--layout-space);
     }
 
-    .thumbs {
+    .compact {
         display: grid;
-        column-gap: var(--layout-gap);
+        width: 100%;
+        column-gap: var(--layout-wall);
         row-gap: var(--layout-space);
     }
 
     @media screen and (min-width: 650px) {
-        .thumbs {
+        .compact {
             grid-template-columns: 50% 50%;
         }
     }
