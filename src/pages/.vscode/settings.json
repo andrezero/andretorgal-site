@@ -1,9 +1,6 @@
 {
-    "editor.wordBasedSuggestions": false,
-    "emmet.excludeLanguages": [
-        "markdown",
-        "mdx"
-    ],
+    "editor.wordBasedSuggestions": "off",
+    "emmet.excludeLanguages": ["markdown", "mdx"],
     "emmet.showAbbreviationSuggestions": false,
     "files.associations": {
         "*.astro": "astro",
@@ -15,15 +12,8 @@
         "sideBar.background": "#202427",
         "sideBar.foreground": "#c7cacc"
     },
-    "spellright.language": [
-        "en"
-    ],
-    "spellright.documentTypes": [
-        "markdown",
-        "plaintext",
-        "astro",
-        "mdx"
-    ],
+    "spellright.language": ["en"],
+    "spellright.documentTypes": ["markdown", "plaintext", "astro", "mdx"],
     "spellright.notificationClass": "warning",
     "spellright.parserByClass": {
         "astro": {
@@ -32,5 +22,6 @@
         "mdx": {
             "parser": "markdown"
         }
-    }
+    },
+    "workbench.editor.centeredLayoutAutoResize": false
 }
