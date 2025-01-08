@@ -2,7 +2,8 @@
     "recommendations": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
+        "unifiedjs.vscode-mdx",
         "astro-build.astro-vscode",
-        "unifiedjs.vscode-mdx"
+        "ban.spellright"
     ]
 }
