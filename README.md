@@ -4,7 +4,7 @@ This repository contains the content and code for my website.
 
 > Visit the site: https://andretorgal.com/
 >
-> ![](./src/pages/meta/andretorgal-com.png)
+> ![](./src/pages/meta/preoject/_media/andretorgal-com.png)
 
 ## What's on the site?
 

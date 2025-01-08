@@ -57,23 +57,23 @@ Number one item: keeping the markdown source code as _natural_ as possible.
 
 I want to type all the links as absolute paths from the root of the site `/posts/1998-03/post.mdx`, including the `.mdx` extension and allow VSCode to navigate from link to link on the MDX preview just as it does with your good old `README.md` :wink:.
 
-![Screenshot of VSCode with two split panes. On the left I am editing this page and on the right the MDX preview](./media/media-preview.png)
+![Screenshot of VSCode with two split panes. On the left I am editing this page and on the right the MDX preview](./_media/media-preview.png)
 
 Also, keeping the image tags relative to the file that I am editing allows VSCode to just preview them as I type. And yes! :point_down: I want the images right next to this file.
 
-![Screenshot of VSCode showing the code for this image side by side with the folder where all the screenshots used in the post are stored](./media/co-located-images.png)
+![Screenshot of VSCode showing the code for this image side by side with the folder where all the screenshots used in the post are stored](./_media/co-located-images.png)
 
 ### Auto complete
 
 The above strategy for links and images also provides the **indispensable** auto complete. When I am typing links or image paths in MDX files, I just want it to drop down and help me out!
 
-![Screenshot of VSCode showing this line of markdown code and VSCode suggesting the possible names for this image](./media/auto-complete-images.png)
+![Screenshot of VSCode showing this line of markdown code and VSCode suggesting the possible names for this image](./_media/auto-complete-images.png)
 
 The same goes for links.
 
 Most pages of this website exist in the filesystem, so it would be a shame to mess with VSCode's ability to auto-complete as I type.
 
-![Screenshot of VSCode showing a line of markdown code and VSCode suggesting auto-completions for a link to another page](./media/auto-complete-links.png)
+![Screenshot of VSCode showing a line of markdown code and VSCode suggesting auto-completions for a link to another page](./_media/auto-complete-links.png)
 
 ### Image optimisations
 
@@ -84,7 +84,7 @@ detect all images and extract, beyond the `alt` and `title`, also an attribution
 ![alt](./file.jpg 'Title // Attribution http://source...')
 ```
 
-![Up close photo of a small waterfall in a very green and natural scenario](./media/waterfall-in-forest.jpg 'Thought you might need something fresh now // Photo by Ray Bilcliff on Pexels https://www.pexels.com/photo/waterfall-in-forest-waterfall-in-forest-5037136/')
+![Up close photo of a small waterfall in a very green and natural scenario](./_media/waterfall-in-forest.jpg 'Thought you might need something fresh now // Photo by Ray Bilcliff on Pexels https://www.pexels.com/photo/waterfall-in-forest-waterfall-in-forest-5037136/')
 
 I also want it to render responsive images, with different resolutions for different screen sizes. And generate modern `avif` files as well as a legacy fallback formats. If you're curious, I wrote about [why avif instead of webp](/meta/docs/responsive-images#image-formats).
 
@@ -111,7 +111,7 @@ This is a no-brainer. I don't want to type things in frontmatter if they can be 
 ---
 title: Improving the (MDX) authoring experience in Astro
 description: 'Once I got .... dragons'
-ogImage: ./media/dragons.jpg
+ogImage: ./_media/dragons.jpg
 published: 2023 Jan 26
 ---
 ```
@@ -142,7 +142,7 @@ There are 2 principles at work here:
 - DRY: don't repeat yourself!
 - The document is the source of truth, the metadata just just be a crutch.
 
-!["Screenshot of two versions of the same file. On the left, there is no frontmatter, because title and abstract are inferred from the content.](./media/auto-type-auto-layout-and-auto-title.png)
+!["Screenshot of two versions of the same file. On the left, there is no frontmatter, because title and abstract are inferred from the content.](./_media/auto-type-auto-layout-and-auto-title.png)
 
 ### Frontmatter defaults per type of content
 
@@ -166,7 +166,7 @@ The moment I have all of these features working, I will want more for sure!!! I 
 
 I might have to dig into VSCode extensions as well.
 
-!["Screenshot of VSCode suggestion arbitrary words to auto-complete my emoji"](./media/auto-complete-emojis.png 'Not helpful')
+!["Screenshot of VSCode suggestion arbitrary words to auto-complete my emoji"](./_media/auto-complete-emojis.png 'Not helpful')
 
 There's also plenty of content related challenges in [my website's backlog](/meta/project/backlog) such as a link roll worthy of the 20s. We're in the future, I want to embrace it. :rocket:
 

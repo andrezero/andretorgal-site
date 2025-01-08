@@ -38,13 +38,13 @@ I would love to say I had it all done in 1 hour, thanks to nice guides like this
 
 Serving the static `posts/index.html` page for requests like `/posts` or `/posts/` is trivial for S3 buckets with the website hosting feature enabled. But for yet another unimaginable reason, when you select the S3 origin for your Cloudfront distribution, you need to [manually type the "S3 website" endpoint](https://aws.amazon.com/premiumsupport/knowledge-center/s3-website-cloudfront-error-403/) instead of picking the suggested endpoint from the dropdown. Otherwise Cloudfront will always return a 403 with some sexy XML instead of the static page. _Go figure_.
 
-![Screenshot of the Edit Origin screen at AWS S3 that asks the user to provide an origin](./media/do-not-pick-one-from-the-list.jpg 'Tip: do not pick one from the list, just type it manually')
+![Screenshot of the Edit Origin screen at AWS S3 that asks the user to provide an origin](./_media/do-not-pick-one-from-the-list.jpg 'Tip: do not pick one from the list, just type it manually')
 
 My initial strategy for keeping staging and production segregated also fell apart. _Another step, another bummer_, classic AWS experience. This time, [this issue (bug?) in S3 + Cloudfront integration](https://stackoverflow.com/questions/35427661/subfolder-redirect-issue-with-static-website-hosting-using-s3-cloudfront-and-or) does not allow pointing different distributions to same bucket plus path prefixes. _Go figure_.
 
 To wrap this up, in order to redirect a legacy `www.andretorgal.com` to `andretorgal.com`, both under http and https, I followed the [official documentation for redirecting dns queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/tutorial-redirecting-dns-queries.html). A simple 7 step process: setup a CNAME in Route 53 pointing to a transparent Cloudfront distribution with an associated SSL certificate and http/https redirection, with origin in an empty S3 bucket with website hosting enabled and, finally, a domain redirection. Out of breath.
 
-![Screenshot of an ugly 403 error](./media/fugly-four-o-three.jpg "Of course, it didn't work")
+![Screenshot of an ugly 403 error](./_media/fugly-four-o-three.jpg "Of course, it didn't work")
 
 . _Go figure_.
 
@@ -72,7 +72,7 @@ For now, the entire `dist/` is synced up to S3 in a few seconds. I couldn't be h
 
 Publish my "design system". Get it up with [Storybook](https://storybook.js.org/use-cases/) first, then suit it up. Thank you [Hanseo](https://medium.com/@hanseopark) for the tips. I'll be glad to pay you back helping you out of Medium ;-)
 
-![Screenshot of the next version of my website](./media/andretorgal-com-next.png 'Plenty of features to come')
+![Screenshot of the next version of my website](./_media/andretorgal-com-next.png 'Plenty of features to come')
 
 Plenty of other [features, fixes and tweaks](/meta/project/backlog) to develop.
 

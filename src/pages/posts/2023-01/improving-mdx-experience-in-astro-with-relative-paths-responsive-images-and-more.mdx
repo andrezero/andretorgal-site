@@ -49,7 +49,7 @@ For starters, I basically replicated what [@astro/image](https://docs.astro.buil
 
 Yes! :see_no_evil: I am also opinionated about this! I like to keep my images next to my content. I want to use relative paths for my images, to have VSCode auto-complete them, and to preview them immediately.
 
-![Screenshot of VSCode with two split panes. On the left I am editing this page and on the right the MDX preview](./media/media-preview.png)
+![Screenshot of VSCode with two split panes. On the left I am editing this page and on the right the MDX preview](./_media/media-preview.png)
 
 So, the very first step was to write a remark plugin that [rewrites relative image paths to absolute](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/remark/relativeImages.ts).
 
@@ -106,7 +106,7 @@ Just a simple trick done in the `<Figure>` component, before it delegates render
 
 And the attribution part of the title can also have a link that will turn into a _Visit site_ external link.
 
-![Screenshot of the Figure component rendering a nice caption under the image, as well as a separate smaller line providing attribution and link to visit the original site](./media/figure-figcaption-attribution.png)
+![Screenshot of the Figure component rendering a nice caption under the image, as well as a separate smaller line providing attribution and link to visit the original site](./_media/figure-figcaption-attribution.png)
 
 ## Responsive images
 
@@ -117,10 +117,10 @@ This includes setting the [loading](https://developer.mozilla.org/en-US/docs/Web
 **In `dev` mode** it renders images via an endpoint attached to the [vite](https://vitejs.dev/) dev server. Smart: only the images requested by the browser get generated.
 
 ```
-/_image?src=/posts/2023-01/media/waterfall-in-forest.jpg&amp;width=700&amp;format=avif
+/_image?src=/posts/2023-01/_media/waterfall-in-forest.jpg&amp;width=700&amp;format=avif
 ```
 
-**And during the static build** it generates public paths like `/posts/2023-01/media/waterfall-in-forest-700.avif` and collects them - via a [rather questionable globalThis hack](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/index.mjs#L70) (please Astro community provide some better pattern? :pleading_face:).
+**And during the static build** it generates public paths like `/posts/2023-01/_media/waterfall-in-forest-700.avif` and collects them - via a [rather questionable globalThis hack](https://github.com/andrezero/andretorgal-site/blob/main/src/integration/index.mjs#L70) (please Astro community provide some better pattern? :pleading_face:).
 
 After all the HTML is generated, it takes the collected `staticImages[]` and generates all the individual formats.
 
@@ -192,7 +192,7 @@ A very similar process, another [remark plugin, autoHero()](https://github.com/a
 
 ```tsx
 <Hero>
-  ![Photo of hero wearing a cape](./media/so-hero.jpg "This hero wears capes // Public domain
+  ![Photo of hero wearing a cape](./_media/so-hero.jpg "This hero wears capes // Public domain
   https://heroes.org/")
 </Hero>
 ```
@@ -211,7 +211,7 @@ Next weekend I plan to figure out the whole [stay in S3 or move to Netlify](/met
 
 Priority is to replace the old version with the new one.
 
-![Screenshot of the old version of this website - with lighter, smaller typography - next to the new one - stronger and bigger typography, more contrast, a new logo, emojis!](./media/old-vs-new.png)
+![Screenshot of the old version of this website - with lighter, smaller typography - next to the new one - stronger and bigger typography, more contrast, a new logo, emojis!](./_media/old-vs-new.png)
 
 Then I'll follow up with my [website's backlog](/meta/project/backlog):
 
