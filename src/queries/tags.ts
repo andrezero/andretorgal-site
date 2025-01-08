@@ -15,7 +15,6 @@ function newTag(name: string): TagNode {
         count: 0,
         images: [],
         links: { external: [], internal: [] },
-        imageBaseDir: '',
         mdxFilename: '',
     };
 }

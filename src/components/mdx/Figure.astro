@@ -1,12 +1,14 @@
 ---
 import type { ImageProps } from '@integration/images/types';
-import { resolveFigureProps } from '@integration/images/utils/props';
 import Image from './Image.astro';
+import { resolveFigureProps } from './helpers/resolveFigureProps';
 
 export type Props = ImageProps;
 
 const { src, alt, profile } = Astro.props;
-const { title, attribution, width, height, dominant } = await resolveFigureProps(Astro.props);
+const { title, attribution } = await resolveFigureProps(Astro.props);
+
+const bgColor = '#666'; // WIP
 
 const showLabel = !!title || !!attribution;
 
@@ -14,14 +16,12 @@ const imageProps = {
     src,
     alt: alt || '',
     profile,
-    width,
-    height,
 };
 ---
 
 <figure class="figure">
     <span class="block">
-        <span class="frame" style={{ 'background-color': dominant }}>
+        <span class="frame" style={{ 'background-color': bgColor }}>
             <Image {...imageProps} />
         </span>
     </span>

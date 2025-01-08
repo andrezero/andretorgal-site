@@ -11,14 +11,6 @@ export const defaultProfile: ImageProfile = {
     formats: ['avif'],
 };
 
-export const ogImageProfile: ImageProfile = {
-    widths: [1200],
-    sizes: '1200px',
-    fit: 'cover',
-    position: 'center',
-    formats: ['jpeg'],
-};
-
 export const heroImageProfile: ImageProfile = {
     widths: [700, 1400, 2800],
     sizes: '(max-width: 650px) 100vw, (max-width: 1200px) 1400px, 2800px',

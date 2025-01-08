@@ -8,11 +8,9 @@ import NodeDate from '@components/node/parts/NodeDate.astro';
 import NodeTags from '@components/node/parts/NodeTags.astro';
 import Article from '@components/page/Article.astro';
 import Markup from '@components/page/Markup.astro';
-import PageHero from '@components/page/PageHero.astro';
 import Section from '@components/page/Section.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
-import { getHeroImage } from '@integration/images/utils/getHeroImage';
 import type { BlogPost } from '@queries/types';
 
 export type Props = {
@@ -20,9 +18,7 @@ export type Props = {
 };
 
 const { content: node } = Astro.props;
-const { heroImage: maybeHeroImage, autoHero, images, imageBaseDir, mdxFilename } = node;
-
-const heroImage = getHeroImage(imageBaseDir, mdxFilename, maybeHeroImage, autoHero, images);
+// const { hero } = node;
 ---
 
 <Document>
@@ -33,7 +29,8 @@ const heroImage = getHeroImage(imageBaseDir, mdxFilename, maybeHeroImage, autoHe
             <SiteMain slot="main">
                 <Article>
                     <Section>
-                        {heroImage && <PageHero {...heroImage} />}
+                        WIP
+                        <!-- {heroImage && <PageHero {...heroImage} />} -->
                     </Section>
                     <Section>
                         <NodeDate node={node} />

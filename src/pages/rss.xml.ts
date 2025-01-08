@@ -1,4 +1,3 @@
-import { getOgImage } from '@integration/images/utils/getOgImage';
 import { importAllPosts } from '@queries/posts';
 import type { BaseNode } from '@queries/types';
 import escapeHTML from 'escape-html';
@@ -9,19 +8,11 @@ import type { ATOM } from '~/utils/atomXML';
 import { absolute, atomXml } from '~/utils/atomXML';
 
 const nodeToAtom = (node: BaseNode): ATOM => {
-    const {
-        title,
-        published,
-        abstract,
-        images,
-        imageBaseDir,
-        mdxFilename,
-        ogImage: maybeOgImage,
-        tags,
-    } = node;
+    const { title, published, abstract, tags } = node;
     const date = new Date(published);
 
-    const ogImage = getOgImage(imageBaseDir, mdxFilename, maybeOgImage, images, SITE_OG_IMAGE);
+    // WIP
+    const ogImage = SITE_OG_IMAGE;
 
     return {
         title,

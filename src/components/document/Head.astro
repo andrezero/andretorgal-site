@@ -6,28 +6,20 @@ import '@styles/reset.css';
 import '@styles/spacing.css';
 import '@styles/typography.css';
 
-import { getOgImage } from '@integration/images/utils/getOgImage';
 import type { BaseNode } from '@queries/types';
-import { SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE } from '~/config';
+import { SITE_DESCRIPTION, SITE_TITLE } from '~/config';
 
 export type Props = { node: BaseNode };
 
 const { node } = Astro.props;
-const {
-    title: maybeTitle,
-    description: maybeDescription,
-    abstract,
-    ogImage: maybeOgImage,
-    images,
-    imageBaseDir,
-    mdxFilename,
-} = node;
+const { title: maybeTitle, description: maybeDescription, abstract } = node;
 const title = `${maybeTitle || 'Home'} | ${SITE_TITLE}`;
 
 const maybeAbstract = abstract?.text;
 const description = maybeDescription || maybeAbstract || SITE_DESCRIPTION;
 
-const ogImage = getOgImage(imageBaseDir, mdxFilename, maybeOgImage, images, SITE_OG_IMAGE);
+// WIP
+// const ogImage = getOgImage(mdxFilename, maybeOgImage, images || [], SITE_OG_IMAGE);
 ---
 
 <head>
@@ -74,12 +66,12 @@ const ogImage = getOgImage(imageBaseDir, mdxFilename, maybeOgImage, images, SITE
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <!-- WIP <meta property="og:image" content={ogImage} /> -->
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImage} />
+    <!-- WIP <meta property="twitter:image" content={ogImage} /> -->
 </head>

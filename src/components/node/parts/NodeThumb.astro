@@ -1,15 +1,13 @@
 ---
 import Figure from '@components/mdx/Figure.astro';
-import { getThumbImage } from '@integration/images/utils/getThumbImage';
 import type { BaseNode } from '@queries/types';
 
 export type Props = {
     node: BaseNode;
 };
 
-const { node } = Astro.props;
-const { imageBaseDir, mdxFilename, ogImage, images } = node;
-const thumbImage = getThumbImage(imageBaseDir, mdxFilename, ogImage, images);
+const thumbImage = false;
+// WIP;
 ---
 
 {

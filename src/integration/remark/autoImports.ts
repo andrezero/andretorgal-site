@@ -1,5 +1,5 @@
 import { createProgram } from 'm2dx-utils';
-import type { Root } from 'mdast';
+import type { Root, RootContent } from 'mdast';
 
 import type { RemarkPlugin } from '../types/RemarkPlugin';
 import type { VFile } from '../types/VFile';
@@ -43,7 +43,7 @@ export function autoImports(options: Options): RemarkPlugin {
                 if (!imports.includes(alias)) {
                     imports.push(alias);
                     const program = createProgram(toImport(exp, alias));
-                    tree.children.unshift(program);
+                    tree.children.unshift(program as unknown as RootContent);
                 }
             } else {
                 throw new Error(

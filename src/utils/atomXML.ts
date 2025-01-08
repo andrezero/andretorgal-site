@@ -1,8 +1,6 @@
 import sanitizeHtml from 'sanitize-html';
 
 import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE, SITE_URL } from '~/config';
-import { ogImageProfile } from '~/integration/images/profiles';
-import { resolveImageSrc } from '~/integration/images/utils/getOgImage';
 
 export const absolute = (path: string): string => `${SITE_URL}${path}`;
 
@@ -11,7 +9,7 @@ const author = SITE_AUTHOR;
 export const site = {
     url: SITE_URL,
     value: SITE_TITLE,
-    image: absolute(sanitizeHtml(resolveImageSrc(SITE_OG_IMAGE, ogImageProfile))),
+    image: absolute(sanitizeHtml(SITE_OG_IMAGE)), // WIP
     description: SITE_DESCRIPTION,
 };
 export type ATOM = {

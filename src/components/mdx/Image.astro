@@ -1,13 +1,11 @@
 ---
 import type { ImageProps } from '@integration/images/types';
-import { resolveImageProps } from '@integration/images/utils/props';
+import { Picture } from 'astro:assets';
 
 export type Props = ImageProps;
 
-const { sources, ...props } = resolveImageProps(Astro.props);
+const { ...props } = Astro.props;
 ---
 
-<picture>
-    {sources.map(attrs => <source {...attrs} />)}
-    <img {...props} />
-</picture>
+WIP Image to Picture
+<Picture src={props.src} alt={props.alt} width={props.width || 700} height="200" />

@@ -34,12 +34,11 @@ export type ImageFacts = {
     dominant: string;
 };
 
-export type FigureResolvedProps = Omit<ImageProps, 'title' | 'alt'> &
-    ImageFacts & {
-        src: string;
-        title: string;
-        attribution: Attribution | undefined;
-    };
+export type FigureResolvedProps = {
+    src: string;
+    title: string;
+    attribution: Attribution | undefined;
+};
 
 export type Source = {
     type: string;
@@ -47,14 +46,14 @@ export type Source = {
     sizes: string;
 };
 
-export type ImageResolvedProps = Omit<ImageProps, 'src'> & {
+export type ImageResolvedProps = Omit<ImageProps, 'src' | 'height'> & {
     src: string;
+    height?: number | undefined;
     alt: string;
     fit: 'cover';
     position: 'center';
     loading: 'lazy';
     decoding: 'async' | 'auto' | 'sync';
-    sources: Source[];
 };
 
 export type ImageTransform = {
@@ -64,4 +63,11 @@ export type ImageTransform = {
 
 export type ImageParams = {
     [key: string]: string | undefined;
+};
+
+export type AstroImage = {
+    src: string;
+    width: number;
+    height: number;
+    format: string;
 };
