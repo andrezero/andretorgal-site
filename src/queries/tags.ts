@@ -24,7 +24,8 @@ type TagMap = {
 };
 
 export async function importAllTags(): Promise<TagNode[]> {
-    const allNodes = await globResultToArray<BaseNode>(
+    const allNodes: BaseNode[] = [];
+    await globResultToArray<BaseNode>(
         import.meta.glob<MarkdownInstance<BaseNode>>('../pages/**/*.(md|mdx)'),
     );
 

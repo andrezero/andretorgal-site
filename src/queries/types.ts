@@ -7,6 +7,11 @@ export type Link = {
     label: string;
 };
 
+export type Image = {
+    src: string;
+    alt: string;
+};
+
 export interface BaseNode {
     url: string;
     type: string;
@@ -22,7 +27,10 @@ export interface BaseNode {
         markdown: string;
     };
     image?: string | boolean;
-    images: string[];
+    images: {
+        external: Image[];
+        internal: Image[];
+    };
     links: {
         external: Link[];
         internal: Link[];

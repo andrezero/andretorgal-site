@@ -18,7 +18,12 @@ export type ImageProfile = {
 };
 
 export type ImageProps = {
-    src: string;
+    src:
+        | string
+        | ImageMetadata
+        | Promise<{
+              default: ImageMetadata;
+          }>;
     title?: string;
     alt?: string;
     width?: number;

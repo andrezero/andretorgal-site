@@ -15,6 +15,7 @@ export class Exports {
 
         let exports = this.exports[this.file];
         if (!exports) {
+            // eslint-disable-next-line security/detect-non-literal-fs-filename
             const src = await readFile(this.file, 'utf8');
             exports = parseExports(src, this.nameFilter).map(p => {
                 return { ...p, file: this.file };

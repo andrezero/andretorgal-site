@@ -1,5 +1,6 @@
 import type { Root } from 'mdast';
 import { toString } from 'mdast-util-to-string';
+import type { Node } from 'unist';
 import { visit } from 'unist-util-visit';
 
 import type { RemarkPlugin } from '../types/RemarkPlugin';
@@ -13,7 +14,7 @@ export function autoAbstract(): RemarkPlugin {
     return function (tree: Root, file: VFile): void {
         const { frontmatter } = file.data.astro;
 
-        visit(tree, { type: 'mdxJsxFlowElement', name: 'Abstract' }, node => {
+        visit(tree, { type: 'mdxJsxFlowElement', name: 'Abstract' }, (node: Node) => {
             const normalised = fixPonctuation(toString(node));
 
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

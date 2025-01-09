@@ -1,6 +1,6 @@
 import type { ObjectExpression } from 'estree';
 import { createProgram } from 'm2dx-utils';
-import type { Root } from 'mdast';
+import type { Root, RootContent } from 'mdast';
 
 import type { RemarkPlugin } from '../types/RemarkPlugin';
 import type { VFile } from '../types/VFile';
@@ -22,7 +22,8 @@ export function customComponents(options: Options): RemarkPlugin {
         }
 
         const importStatement = `import { components as customComponents } from '${componentsFile}';`;
-        tree.children.unshift(createProgram(importStatement));
+        const prog = createProgram(importStatement);
+        tree.children.unshift(prog as unknown as RootContent);
 
         const found = findExportInMdx(tree);
         if (found && found.init) {
@@ -36,7 +37,8 @@ export function customComponents(options: Options): RemarkPlugin {
             ];
         } else {
             const src = `export const components = {...customComponents}`;
-            tree.children.push(createProgram(src));
+            const prog = createProgram(src);
+            tree.children.push(prog as unknown as RootContent);
         }
     };
 }

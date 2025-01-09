@@ -4,7 +4,9 @@ import remarkA11yEmoji from '@fec/remark-a11y-emoji';
 import remarkEmoji from 'remark-emoji';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
-import { externalLinks } from './rehype/externalLinks.ts';
+import { collectAndDecorateLinks } from './rehype/collectAndDecorateLinks.ts';
+import { collectImages } from './rehype/collectImages.ts';
+import { collectMdxFilenames } from './rehype/collectMdxFilenames.ts';
 import { autoAbstract } from './remark/autoAbstract.ts';
 import { autoImports } from './remark/autoImports.ts';
 import { customComponents } from './remark/customComponents.ts';
@@ -27,7 +29,7 @@ export function myAstro() {
                     [customComponents, { componentsFile }],
                     [autoImports, { autoImportFile }],
                 ];
-                const rehypePlugins = [externalLinks];
+                const rehypePlugins = [collectMdxFilenames, collectImages, collectAndDecorateLinks];
 
                 updateConfig({
                     markdown: { remarkPlugins, rehypePlugins },

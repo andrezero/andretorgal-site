@@ -10,6 +10,7 @@ export function isJsxName(name: string): boolean {
 }
 
 export async function getExports(file: string): Promise<Export[]> {
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
     const src = await readFile(file, 'utf8');
     return parseExports(src, isJsxName).map(p => {
         return { ...p, file };

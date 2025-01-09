@@ -1,5 +1,7 @@
 ---
 import type { BaseNode } from '@queries/types';
+import type { ImageMetadata } from 'astro';
+import { dirname } from 'node:path';
 
 import NodeAbstract from '../parts/NodeAbstract.astro';
 import NodeDate from '../parts/NodeDate.astro';
@@ -22,8 +24,16 @@ const { node, variant = 'default' } = Astro.props;
 const showDate = SHOW_DATE.includes(node.type);
 const showTags = SHOW_TAGS.includes(node.type);
 
-// WIP
-const thumbImage = false;
+const image = node.images.internal.length
+    ? dirname(node.mdxFilename) + '/' + node.images.internal[0]?.src.replace('./', '')
+    : '';
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/pages/**/*.{jpeg,jpg,png,gif}');
+
+const thumbImage = Object.entries(images).find(([key]) => {
+    return image.endsWith(key);
+});
+
+console.log(thumbImage, image);
 const maxChars = thumbImage && variant === 'compact' ? 100 : undefined;
 ---
 

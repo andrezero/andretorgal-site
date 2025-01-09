@@ -23,7 +23,7 @@
 :root {
     --layout-container-width: 35em; /* 560px - 68ch ~ 75ch */
     --layout-col-1: calc(10rem + 10vw);
-    --layout-bi-col-1: 15rem;
+    --layout-bi-col-1: 10rem;
     --layout-bi-col-2: calc(10rem + 10vw);
 
     --layout-headroom: var(--t-space-xl);

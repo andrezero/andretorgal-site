@@ -1,19 +1,33 @@
 ---
 import Figure from '@components/mdx/Figure.astro';
 import type { BaseNode } from '@queries/types';
+import type { ImageMetadata } from 'astro';
+import { dirname } from 'node:path';
 
 export type Props = {
     node: BaseNode;
 };
 
-const thumbImage = false;
+const { node } = Astro.props;
+
+const image = node.images.internal.length
+    ? dirname(node.mdxFilename) + '/' + node.images.internal[0]?.src.replace('./', '')
+    : '';
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/pages/**/*.{jpeg,jpg,png,gif}');
+
+const thumbImage = Object.entries(images).find(([key]) => {
+    return image.endsWith(key);
+});
+
+console.log(thumbImage[1](), image);
+
 // WIP;
 ---
 
 {
     thumbImage && (
         <div class="thumb">
-            <Figure src={thumbImage} />
+            <Figure src={thumbImage[1]()} />
         </div>
     )
 }

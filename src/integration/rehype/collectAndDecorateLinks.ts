@@ -25,7 +25,7 @@ type LinkNode = {
     };
 };
 
-export function externalLinks(): RemarkPlugin {
+export function collectAndDecorateLinks(): RemarkPlugin {
     return function (tree: Root, file: VFile): void {
         const links: Links = { internal: [], external: [] };
 
