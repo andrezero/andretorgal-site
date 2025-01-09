@@ -14,7 +14,8 @@ import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import { sortedNodes } from '@queries/nodes';
-import { importAllPosts } from '@queries/posts';
+import type { BaseNode } from '~/queries/types';
+// import { importAllPosts } from '@queries/posts';
 
 export type Props = {
     page: number;
@@ -22,7 +23,7 @@ export type Props = {
 
 const { page } = Astro.props;
 
-const nodes = await importAllPosts();
+const nodes: BaseNode[] = []; // WIP await importAllPosts();
 const posts = sortedNodes(nodes);
 const pageCount = Math.ceil(nodes.length / 10);
 const pages = [...Array(pageCount).keys()].map((p: number) => `/posts/archive/${p + 1}`);

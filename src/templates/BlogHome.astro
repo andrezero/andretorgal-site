@@ -13,8 +13,8 @@ import TopLine from '@components/page/TopLine.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
-import { sortedNodes } from '@queries/nodes';
-import { importAllPosts } from '@queries/posts';
+// import { sortedNodes } from '@queries/nodes';
+// import { importAllPosts } from '@queries/posts';
 import type { BlogPost } from '@queries/types';
 
 export type Props = {
@@ -23,8 +23,8 @@ export type Props = {
 
 const { content: page } = Astro.props;
 
-const nodes = await importAllPosts();
-const posts = sortedNodes(nodes);
+const nodes: BlogPost[] = []; // WIP await importAllPosts();
+const posts: BlogPost[] = []; // WIP sortedNodes(nodes);
 const top = posts.slice(0, 10);
 
 const pageCount = Math.ceil(nodes.length / 10);

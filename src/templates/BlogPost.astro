@@ -13,12 +13,13 @@ import ArticleHeader from '@components/page/ArticleHeader.astro';
 import Divider from '@components/page/Divider.astro';
 import Markup from '@components/page/Markup.astro';
 import Section from '@components/page/Section.astro';
-import SiteSectionHeader from '@components/site/blog/SiteSectionHeader.astro';
+import SiteSectionHeader from '@components/site/sections/blog/Header.astro';
 import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import { sortedNodes } from '@queries/nodes';
-import { findPreviousAndNextPosts, importAllPosts } from '@queries/posts';
+// import { findPreviousAndNextPosts, importAllPosts } from '@queries/posts';
+import { findPreviousAndNextPosts } from '@queries/posts';
 import type { BlogPost } from '@queries/types';
 
 export type Props = {
@@ -28,7 +29,7 @@ export type Props = {
 const { content: node } = Astro.props;
 // const { hero } = node;
 
-const nodes = await importAllPosts();
+const nodes: BlogPost[] = []; // WIP await importAllPosts();
 const posts = sortedNodes(nodes);
 const { previous, next } = findPreviousAndNextPosts(posts, node);
 ---

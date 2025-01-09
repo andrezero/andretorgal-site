@@ -17,9 +17,7 @@ import SiteFooter from '@components/site/SiteFooter.astro';
 import SiteHeader from '@components/site/SiteHeader.astro';
 import SiteMain from '@components/site/SiteMain.astro';
 import { sortedNodes } from '@queries/nodes';
-import { importAllPosts } from '@queries/posts';
-import { importTopTags } from '@queries/tags';
-import type { BaseNode } from '@queries/types';
+import type { BaseNode, BlogPost, TagNode } from '@queries/types';
 
 export type Props = {
     content: BaseNode;
@@ -27,8 +25,8 @@ export type Props = {
 
 const { content: page } = Astro.props;
 
-const topTags = await importTopTags();
-const nodes = await importAllPosts();
+const topTags: TagNode[] = []; // WIP await importTopTags();
+const nodes: BlogPost[] = []; // WIP await importAllPosts();
 const sorted = sortedNodes(nodes);
 const posts = sorted.slice(0, 3);
 const cards = sorted.slice(3, 9);

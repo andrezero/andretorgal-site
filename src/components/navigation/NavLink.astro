@@ -6,7 +6,7 @@ export type Props = {
     inline?: boolean;
 };
 
-const { href, exact, current: label, inline } = Astro.props;
+const { href, exact, label, inline } = Astro.props;
 
 const { pathname } = Astro.url;
 const current = pathname.replace(/\/$/, '');
