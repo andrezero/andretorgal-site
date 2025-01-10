@@ -1,16 +1,21 @@
-name: Deploy andretorgal.com to Production
+name: Deploy andretorgal.com (staging/production)
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment (production or staging)'
+        required: true
+        type: choice
+        options:
+          - production
+          - staging
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
-      name: production
+      name: ${{ github.event.inputs.environment }}
 
     steps:
       - name: Checkout
