@@ -1,26 +1,28 @@
-name: build
+name: Build
 
 on:
-    push:
-        branches-ignore:
-            - main
+  push:
+    branches-ignore:
+      - main
+  workflow_dispatch:
 
 jobs:
-    build:
-        name: Build
-        runs-on: ubuntu-latest
-        env:
-            CI: true
-        steps:
-            - uses: actions/checkout@v3
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
 
-            - uses: actions/setup-node@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            - name: Install dependencies
-              run: npm ci
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.10.0'
 
-            - name: Build
-              run: npm run build
+      - name: Install dependencies
+        run: npm ci
 
-            - name: Lint
-              run: npm run lint
+      - name: Build application
+        run: npm run buid

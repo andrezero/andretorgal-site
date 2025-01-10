@@ -1,14 +1,14 @@
 pre-push:
-    commands:
-        packages-audit:
-            tags: frontend security
-            run: npm audit
+  commands:
+    packages-audit:
+      tags: frontend security
+      run: npm audit
 pre-commit:
-    parallel: true
-    commands:
-        lint:
-            run: npm run lint
-        build:
-            run: npm run build
-        # test:
-        #     run: npm run test
+  parallel: true
+  commands:
+    lint:
+      run: npm run lint
+    build:
+      run: npm run build
+    # test:
+    #     run: npm run test

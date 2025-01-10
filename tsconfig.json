@@ -1,19 +1,19 @@
 {
-    "extends": "astro/tsconfigs/strictest",
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "~/*": ["src/*"],
-            "@assets/*": ["src/assets/*"],
-            "@components/*": ["src/components/*"],
-            "@integration/*": ["src/integration/*"],
-            "@icons/*": ["src/icons/*"],
-            "@content/*": ["src/content/*"],
-            "@styles/*": ["src/styles/*"],
-            "@templates/*": ["src/templates/*"],
-            "@utils/*": ["src/utils/*"]
-        }
-    },
-    "include": [".astro/types.d.ts", "**/*"],
-    "exclude": ["dist"]
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"],
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@integration/*": ["src/integration/*"],
+      "@icons/*": ["src/icons/*"],
+      "@content/*": ["src/content/*"],
+      "@styles/*": ["src/styles/*"],
+      "@templates/*": ["src/templates/*"],
+      "@utils/*": ["src/utils/*"]
+    }
+  },
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
 }
