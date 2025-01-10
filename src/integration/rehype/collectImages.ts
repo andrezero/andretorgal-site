@@ -44,7 +44,6 @@ export function collectImages(): RemarkPlugin {
         });
 
         const { frontmatter } = file.data.astro;
-        frontmatter.mdxFilename = file.history[0];
         frontmatter.images = images;
     };
 }

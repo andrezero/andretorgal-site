@@ -3,6 +3,10 @@ layout: ~/templates/BlogPost.astro
 type: post
 title: MDX authoring experience in Astro / Shortcomings
 description: "A look at Astro's built-in features, their opinionated patterns and limitations, and evaluation of existing community driven projects such as m2dx"
+hero:
+  src: ./_media/dragons.jpg
+  alt: Screenshot of the google image search results for "dragons"; 15 thumbnails of colourful artwork are shown
+  title: There be dragons
 tags:
   - ssg
   - astro
@@ -19,11 +23,13 @@ But I know well, there will be :dragon: :dragon: :dragon: dragons!
 
 </Abstract>
 
-<Hero>
+<Note type="old">
 
-![Screenshot of the google image search results for "dragons": 15 thumbnails of colourful artwork are shown](./_media/dragons.jpg 'There be dragons')
+## :warning: You are looking at an outdated post.
 
-</Hero>
+I meanwhile upgraded Astro from 1.9 to 5. Some of the limitations are gone. You can now store images anywhere you like, including side by side with the content :partying_face:.
+
+</Note>
 
 As I wrote before, I have a [long list of requirements for the experience](/posts/2023-01/mdx-authoring-experience-in-astro-shortcomings-and-astro-m2dx) I want to have when authoring and managing content on my website.
 

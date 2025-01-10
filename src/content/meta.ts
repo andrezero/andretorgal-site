@@ -3,8 +3,8 @@ import type { MarkdownInstance } from 'astro';
 import type { BlogPost } from './types';
 import { globResultToArray } from './utils';
 
-export async function importAllMeta(): Promise<BlogPost[]> {
+export async function fetchAllMeta(): Promise<BlogPost[]> {
     return globResultToArray<BlogPost>(
-        import.meta.glob<MarkdownInstance<BlogPost>>('../pages/meta/**/*.(md|mdx)'),
+        import.meta.glob<MarkdownInstance<BlogPost>>('/src/pages/meta/**/*.(md|mdx)'),
     );
 }

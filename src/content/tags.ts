@@ -6,16 +6,17 @@ import { globResultToArray } from './utils';
 
 export const TOP_TAGS_COUNT = 10;
 
+// WIP
 function newTag(name: string): TagNode {
     return {
-        type: 'tag',
+        filename: '',
         url: `/tags/${name}`,
+        type: 'tag',
         title: name,
         published: today(),
         count: 0,
-        images: [],
+        images: { external: [], internal: [] },
         links: { external: [], internal: [] },
-        mdxFilename: '',
     };
 }
 
@@ -23,10 +24,9 @@ type TagMap = {
     [key: string]: TagNode;
 };
 
-export async function importAllTags(): Promise<TagNode[]> {
-    const allNodes: BaseNode[] = [];
-    await globResultToArray<BaseNode>(
-        import.meta.glob<MarkdownInstance<BaseNode>>('../pages/**/*.(md|mdx)'),
+export async function fetchAllTags(): Promise<TagNode[]> {
+    const allNodes = await globResultToArray<BaseNode>(
+        import.meta.glob<MarkdownInstance<BaseNode>>('/src/pages/**/*.(md|mdx)'),
     );
 
     const tagNodes = allNodes.filter(node => node.type === 'tag');
@@ -56,8 +56,8 @@ export async function importAllTags(): Promise<TagNode[]> {
         .map(([, tag]) => tag);
 }
 
-export async function importTopTags(): Promise<TagNode[]> {
-    const allTags = await importAllTags();
+export async function fetchTopTags(): Promise<TagNode[]> {
+    const allTags = await fetchAllTags();
     const filteredTags = allTags.filter(tag => tag.title !== 'andretorgal-com');
     return filteredTags.slice(0, TOP_TAGS_COUNT);
 }

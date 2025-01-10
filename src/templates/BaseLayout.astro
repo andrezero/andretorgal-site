@@ -1,17 +1,8 @@
 ---
-import Body from '@components/document/Body.astro';
-import Document from '@components/document/Document.astro';
-import Head from '@components/document/Head.astro';
-import Layout from '@components/document/Layout.astro';
-import Article from '@components/page/Article.astro';
-import ArticleHeader from '@components/page/ArticleHeader.astro';
-import Markup from '@components/page/Markup.astro';
-import Section from '@components/page/Section.astro';
-import TopLine from '@components/page/TopLine.astro';
-import SiteFooter from '@components/site/SiteFooter.astro';
-import SiteHeader from '@components/site/SiteHeader.astro';
-import SiteMain from '@components/site/SiteMain.astro';
-import type { BaseNode } from '@queries/types';
+import { Body, Document, Head, Layout } from '@components/document';
+import { Article, ArticleHeader, Markup, Section, TopLine } from '@components/page';
+import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
+import type { BaseNode } from '@content/types';
 
 export type Props = {
     content: BaseNode;

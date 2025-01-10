@@ -21,7 +21,6 @@ const overrides = [
             Abstract: false,
             Audio: false,
             Code: false,
-            Hero: false,
             Image: false,
             Note: false,
             Todo: false,

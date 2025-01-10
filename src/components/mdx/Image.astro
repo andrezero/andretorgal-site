@@ -5,7 +5,15 @@ import { Picture } from 'astro:assets';
 export type Props = ImageProps;
 
 const { ...props } = Astro.props;
+
+const width = props.width || 700;
+const height = props.height || 400;
 ---
 
-WIP Image to Picture
-<Picture src={props.src} alt={props.alt} width={props.width || 700} height="200" />
+{
+    typeof props.src === 'string' ? (
+        <Picture src={props.src} alt={props.alt} width={width} height={height} inferSize={false} />
+    ) : (
+        <Picture src={props.src} alt={props.alt} />
+    )
+}

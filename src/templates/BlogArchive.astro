@@ -1,21 +1,10 @@
 ---
-import Body from '@components/document/Body.astro';
-import Document from '@components/document/Document.astro';
-import Head from '@components/document/Head.astro';
-import Layout from '@components/document/Layout.astro';
-import PageNav from '@components/navigation/PageNav.astro';
-import NodeList from '@components/node/lists/NodeList.astro';
-import Divider from '@components/page/Divider.astro';
-import Page from '@components/page/Page.astro';
-import PageHeader from '@components/page/PageHeader.astro';
-import Section from '@components/page/Section.astro';
-import TopLine from '@components/page/TopLine.astro';
-import SiteFooter from '@components/site/SiteFooter.astro';
-import SiteHeader from '@components/site/SiteHeader.astro';
-import SiteMain from '@components/site/SiteMain.astro';
-import { sortedNodes } from '@queries/nodes';
-import type { BaseNode } from '~/queries/types';
-// import { importAllPosts } from '@queries/posts';
+import { Body, Document, Head, Layout } from '@components/document';
+import { PageNav } from '@components/navigation';
+import { NodeList } from '@components/node';
+import { Divider, Page, PageHeader, Section, TopLine } from '@components/page';
+import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
+import { fetchAllPosts, sortNodes, type BaseNode } from '@content/index';
 
 export type Props = {
     page: number;
@@ -23,23 +12,27 @@ export type Props = {
 
 const { page } = Astro.props;
 
-const nodes: BaseNode[] = []; // WIP await importAllPosts();
-const posts = sortedNodes(nodes);
+const nodes = await fetchAllPosts();
+const posts = sortNodes(nodes);
 const pageCount = Math.ceil(nodes.length / 10);
 const pages = [...Array(pageCount).keys()].map((p: number) => `/posts/archive/${p + 1}`);
 pages[0] = '/posts';
 
-const node = {
+// WIP
+const node: BaseNode = {
+    filename: '',
     url: `posts/archive/${page}`,
     type: 'page',
     title: `Archive page ${page} of ${pageCount}`,
     published: '',
-    images: [],
+    images: {
+        external: [],
+        internal: [],
+    },
     links: {
         external: [],
         internal: [],
     },
-    mdxFilename: '',
 };
 
 const sliced = posts.slice(page * 10 - 10, page * 10);

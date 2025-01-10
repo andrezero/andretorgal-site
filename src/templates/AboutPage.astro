@@ -1,22 +1,9 @@
 ---
-import Body from '@components/document/Body.astro';
-import Document from '@components/document/Document.astro';
-import Head from '@components/document/Head.astro';
-import Layout from '@components/document/Layout.astro';
-import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
-import NodeMeta from '@components/node/parts/NodeMeta.astro';
-import Article from '@components/page/Article.astro';
-import ArticleHeader from '@components/page/ArticleHeader.astro';
-import Divider from '@components/page/Divider.astro';
-import Markup from '@components/page/Markup.astro';
-import Section from '@components/page/Section.astro';
-import TopLine from '@components/page/TopLine.astro';
-import SiteSectionHeader from '@components/site/sections/about/Header.astro';
-import SiteFooter from '@components/site/SiteFooter.astro';
-import SiteHeader from '@components/site/SiteHeader.astro';
-import SiteLogo from '@components/site/SiteLogo.astro';
-import SiteMain from '@components/site/SiteMain.astro';
-import type { AboutNode } from '@queries/types';
+import { Body, Document, Head, Layout } from '@components/document';
+import { NodeAbstract, NodeMeta } from '@components/node';
+import { Article, ArticleHeader, Divider, Markup, Section, TopLine } from '@components/page';
+import { SiteFooter, SiteHeader, SiteHeaderAbout, SiteLogo, SiteMain } from '@components/site';
+import type { AboutNode } from '@content/types';
 
 export type Props = {
     content: AboutNode;
@@ -32,7 +19,7 @@ const { thumbnail } = node;
     <Body>
         <Layout>
             <SiteHeader slot="header" />
-            <SiteSectionHeader slot="section" />
+            <SiteHeaderAbout slot="section" />
             <SiteMain slot="main">
                 <Article>
                     <ArticleHeader node={node} noDate slot="header" />

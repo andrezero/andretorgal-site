@@ -1,21 +1,29 @@
 ---
 import type { ImageProps } from '@integration/images/types';
+
 import Image from './Image.astro';
-import { resolveFigureProps } from './helpers/resolveFigureProps';
+import { resolveFigureProps } from './helpers';
 
 export type Props = ImageProps;
 
-const { src, alt, profile } = Astro.props;
-const { title, attribution } = await resolveFigureProps(Astro.props);
+const { width: propWidth, height: propHeight } = Astro.props;
 
-const bgColor = '#666'; // WIP
+const {
+    src,
+    alt,
+    title,
+    attribution,
+    width: titleWidth,
+    height: titleHeight,
+} = await resolveFigureProps(Astro.props);
 
+const bgColor = '#414141';
 const showLabel = !!title || !!attribution;
-
 const imageProps = {
     src,
-    alt: alt || '',
-    profile,
+    alt,
+    width: propWidth || titleWidth,
+    height: propHeight || titleHeight,
 };
 ---
 

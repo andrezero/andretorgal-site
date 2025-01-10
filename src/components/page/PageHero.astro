@@ -1,14 +1,18 @@
 ---
-import Figure from '@components/mdx/Figure.astro';
-import type { ImageProps } from '@integration/images/types';
+import { Figure } from '@components/mdx';
+import { getNodeHeroImage, getNodeImage, type BaseNode } from '@content/index';
 
-export type Props = ImageProps;
+export type Props = {
+    node: BaseNode;
+};
 
-const props = Astro.props;
+const { node } = Astro.props;
+const heroImage = getNodeHeroImage(node);
+const src = heroImage && getNodeImage(node, heroImage.src);
 ---
 
 <div class="hero">
-    <Figure {...props} />
+    {heroImage && src && <Figure {...heroImage} src={src()} width={1400} />}
 </div>
 
 <style is:global>

@@ -3,9 +3,9 @@ import type { MarkdownInstance } from 'astro';
 import type { BlogPost } from './types';
 import { globResultToArray } from './utils';
 
-export async function importAllPosts(): Promise<BlogPost[]> {
+export async function fetchAllPosts(): Promise<BlogPost[]> {
     return globResultToArray<BlogPost>(
-        import.meta.glob<MarkdownInstance<BlogPost>>('../pages/posts/**/*.(md|mdx)'),
+        import.meta.glob<MarkdownInstance<BlogPost>>('/src/pages/posts/**/*.(md|mdx)'),
     );
 }
 
@@ -14,7 +14,7 @@ type PreviousAndNext = {
     next: BlogPost | undefined;
 };
 
-export function findPreviousAndNextPosts(posts: BlogPost[], post: BlogPost): PreviousAndNext {
+export function getPreviousAndNextPosts(posts: BlogPost[], post: BlogPost): PreviousAndNext {
     const index = posts.findIndex(p => p.title === post.title && p.published === post.published);
     return {
         previous: posts[index + 1],

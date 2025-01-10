@@ -1,37 +1,20 @@
 ---
-import Body from '@components/document/Body.astro';
-import Document from '@components/document/Document.astro';
-import Head from '@components/document/Head.astro';
-import Layout from '@components/document/Layout.astro';
-import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
-import NodeDate from '@components/node/parts/NodeDate.astro';
-import NodeMeta from '@components/node/parts/NodeMeta.astro';
-import NodePreviousNext from '@components/node/parts/NodePreviousNext.astro';
-import NodeTags from '@components/node/parts/NodeTags.astro';
-import Article from '@components/page/Article.astro';
-import ArticleHeader from '@components/page/ArticleHeader.astro';
-import Divider from '@components/page/Divider.astro';
-import Markup from '@components/page/Markup.astro';
-import Section from '@components/page/Section.astro';
-import SiteSectionHeader from '@components/site/sections/blog/Header.astro';
-import SiteFooter from '@components/site/SiteFooter.astro';
-import SiteHeader from '@components/site/SiteHeader.astro';
-import SiteMain from '@components/site/SiteMain.astro';
-import { sortedNodes } from '@queries/nodes';
-// import { findPreviousAndNextPosts, importAllPosts } from '@queries/posts';
-import { findPreviousAndNextPosts } from '@queries/posts';
-import type { BlogPost } from '@queries/types';
+import { Body, Document, Head, Layout } from '@components/document';
+import { NodeAbstract, NodeDate, NodeMeta, NodePreviousNext, NodeTags } from '@components/node';
+import { Article, ArticleHeader, Divider, Markup, PageHero, Section } from '@components/page';
+import { SiteFooter, SiteHeader, SiteHeaderBlog, SiteMain } from '@components/site';
+import { fetchAllPosts, getPreviousAndNextPosts, sortNodes, type BlogPost } from '@content/index';
 
 export type Props = {
     content: BlogPost;
 };
 
 const { content: node } = Astro.props;
-// const { hero } = node;
+const { hero } = node;
 
-const nodes: BlogPost[] = []; // WIP await importAllPosts();
-const posts = sortedNodes(nodes);
-const { previous, next } = findPreviousAndNextPosts(posts, node);
+const nodes = await fetchAllPosts();
+const posts = sortNodes(nodes);
+const { previous, next } = getPreviousAndNextPosts(posts, node);
 ---
 
 <Document>
@@ -39,12 +22,11 @@ const { previous, next } = findPreviousAndNextPosts(posts, node);
     <Body>
         <Layout>
             <SiteHeader slot="header" />
-            <SiteSectionHeader slot="section" {...{previous, next}} />
+            <SiteHeaderBlog slot="section" {...{previous, next}} />
             <SiteMain slot="main">
                 <Article>
                     <ArticleHeader node={node} slot="header" noDate>
-                        WIP
-                        <!-- {heroProps && <PageHero />} -->
+                        {hero && <PageHero node={node} />}
                     </ArticleHeader>
                     <Section>
                         <NodeDate node={node} />

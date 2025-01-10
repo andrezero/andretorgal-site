@@ -1,6 +1,8 @@
 ---
-import ConditionalMarkup from './common/ConditionalMarkup.astro';
-export type { Props } from './common/ConditionalMarkup.astro';
+import { ConditionalMarkup } from './common';
+import type { Props as ConditionalMarkupProps } from './common/ConditionalMarkup.astro';
+
+export type Props = ConditionalMarkupProps;
 
 const props = Astro.props;
 ---

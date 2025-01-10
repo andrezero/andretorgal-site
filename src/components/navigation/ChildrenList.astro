@@ -1,7 +1,6 @@
 ---
 import PageSubTitle from '@components/page/PageSubTitle.astro';
-import { importAllMeta } from '@queries/meta';
-import type { BaseNode } from '@queries/types';
+import { fetchAllMeta, type BaseNode } from '@content/index';
 
 import NavLink from './NavLink.astro';
 
@@ -15,7 +14,7 @@ const { node, scope } = Astro.props;
 // eslint-disable-next-line security/detect-non-literal-regexp
 const pattern = new RegExp(`^${node.url}/[^/]+$`);
 
-const allNodes = scope ?? (await importAllMeta());
+const allNodes = scope ?? (await fetchAllMeta());
 const children = allNodes.filter(n => n.url.match(pattern));
 const show = !!children.length;
 ---

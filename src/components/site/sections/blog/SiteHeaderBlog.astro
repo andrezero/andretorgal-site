@@ -1,9 +1,8 @@
 ---
-import NodePreviousNext from '@components/node/parts/NodePreviousNext.astro';
-import SiteSectionHeader from '@components/site/parts/SiteSectionHeader.astro';
-
-import NavLink from '@components/navigation/NavLink.astro';
-import type { BlogPost } from '@queries/types';
+import { NavLink } from '@components/navigation';
+import { NodePreviousNext } from '@components/node';
+import { SiteSectionHeader } from '@components/site';
+import type { BlogPost } from '@content/index';
 
 export type Props = {
     previous: BlogPost | undefined;

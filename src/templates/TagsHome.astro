@@ -1,22 +1,9 @@
 ---
-import Body from '@components/document/Body.astro';
-import Document from '@components/document/Document.astro';
-import Head from '@components/document/Head.astro';
-import Layout from '@components/document/Layout.astro';
-import TagList from '@components/node/lists/TagList.astro';
-import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
-import Divider from '@components/page/Divider.astro';
-import Page from '@components/page/Page.astro';
-import PageHeader from '@components/page/PageHeader.astro';
-import PageSubTitle from '@components/page/PageSubTitle.astro';
-import Section from '@components/page/Section.astro';
-import TopLine from '@components/page/TopLine.astro';
-import SiteFooter from '@components/site/SiteFooter.astro';
-import SiteHeader from '@components/site/SiteHeader.astro';
-import SiteMain from '@components/site/SiteMain.astro';
-import { TOP_TAGS_COUNT } from '@queries/tags';
-// import { importAllTags, TOP_TAGS_COUNT } from '@queries/tags';
-import type { PageNode, TagNode } from '@queries/types';
+import { Body, Document, Head, Layout } from '@components/document';
+import { NodeAbstract, TagList } from '@components/node';
+import { Divider, Page, PageHeader, PageSubTitle, Section, TopLine } from '@components/page';
+import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
+import { TOP_TAGS_COUNT, fetchAllTags, type PageNode } from '@content/index';
 
 export type Props = {
     content: PageNode;
@@ -24,7 +11,7 @@ export type Props = {
 
 const { content: page } = Astro.props;
 
-const allTags: TagNode[] = []; // WIP await importAllTags();
+const allTags = await fetchAllTags();
 const filteredTags = allTags.filter(tag => tag.title !== 'andretorgal-com' && tag.count > 1);
 const topTags = filteredTags.slice(0, TOP_TAGS_COUNT);
 const moreTags = filteredTags.slice(TOP_TAGS_COUNT);

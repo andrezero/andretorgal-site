@@ -1,21 +1,10 @@
 ---
-import Body from '@components/document/Body.astro';
-import Document from '@components/document/Document.astro';
-import Head from '@components/document/Head.astro';
-import Layout from '@components/document/Layout.astro';
-import PageNav from '@components/navigation/PageNav.astro';
-import NodeList from '@components/node/lists/NodeList.astro';
-import Divider from '@components/page/Divider.astro';
-import Page from '@components/page/Page.astro';
-import PageHeader from '@components/page/PageHeader.astro';
-import Section from '@components/page/Section.astro';
-import TopLine from '@components/page/TopLine.astro';
-import SiteFooter from '@components/site/SiteFooter.astro';
-import SiteHeader from '@components/site/SiteHeader.astro';
-import SiteMain from '@components/site/SiteMain.astro';
-// import { sortedNodes } from '@queries/nodes';
-// import { importAllPosts } from '@queries/posts';
-import type { BlogPost } from '@queries/types';
+import { Body, Document, Head, Layout } from '@components/document';
+import { PageNav } from '@components/navigation';
+import { NodeList } from '@components/node';
+import { Divider, Page, PageHeader, Section, TopLine } from '@components/page';
+import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
+import { fetchAllPosts, sortNodes, type BlogPost } from '@content/index';
 
 export type Props = {
     content: BlogPost;
@@ -23,11 +12,11 @@ export type Props = {
 
 const { content: page } = Astro.props;
 
-const nodes: BlogPost[] = []; // WIP await importAllPosts();
-const posts: BlogPost[] = []; // WIP sortedNodes(nodes);
-const top = posts.slice(0, 10);
+const posts = await fetchAllPosts();
+const sorted = sortNodes(posts);
+const top = sorted.slice(0, 10);
 
-const pageCount = Math.ceil(nodes.length / 10);
+const pageCount = Math.ceil(posts.length / 10);
 const pages = [...Array(pageCount).keys()].map((p: number) => `/posts/archive/${p + 1}`);
 pages[0] = '/posts';
 ---

@@ -6,7 +6,8 @@ import '@styles/reset.css';
 import '@styles/spacing.css';
 import '@styles/typography.css';
 
-import type { BaseNode } from '@queries/types';
+import type { BaseNode } from '@content/index';
+
 import { SITE_DESCRIPTION, SITE_TITLE } from '~/config';
 
 export type Props = { node: BaseNode };
@@ -19,7 +20,7 @@ const maybeAbstract = abstract?.text;
 const description = maybeDescription || maybeAbstract || SITE_DESCRIPTION;
 
 // WIP
-// const ogImage = getOgImage(mdxFilename, maybeOgImage, images || [], SITE_OG_IMAGE);
+// const ogImage = getOgImage(filename, maybeOgImage, images || [], SITE_OG_IMAGE);
 ---
 
 <head>

@@ -1,5 +1,5 @@
 ---
-import { importAllPosts } from '@queries/posts';
+import { fetchAllPosts } from '@content/index';
 import BlogArchive from '@templates/BlogArchive.astro';
 
 export interface Props {
@@ -7,7 +7,7 @@ export interface Props {
 }
 
 export async function getStaticPaths() {
-    const nodes = await importAllPosts();
+    const nodes = await fetchAllPosts();
     const pageCount = Math.ceil(nodes.length / 10);
     const pages = [...Array(pageCount).keys()].map(p => p + 1);
     return pages.map(page => ({

@@ -1,6 +1,5 @@
 ---
-import { importAllTags } from '@queries/tags';
-import type { TagNode } from '@queries/types';
+import { fetchAllTags, type TagNode } from '@content/index';
 import TagPage from '@templates/TagPage.astro';
 
 export interface Props {
@@ -8,7 +7,7 @@ export interface Props {
 }
 
 export async function getStaticPaths() {
-    const tags = await importAllTags();
+    const tags = await fetchAllTags();
 
     return tags.map(tag => ({
         params: { tag: tag.title },

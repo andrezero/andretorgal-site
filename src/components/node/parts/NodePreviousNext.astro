@@ -1,11 +1,8 @@
 ---
-import Icon from '@components/atoms/Icon.astro';
-
-import ChevronLeft from '@icons/ChevronLeft.astro';
-import ChevronRight from '@icons/ChevronRight.astro';
-
-import NavLink from '@components/navigation/NavLink.astro';
-import type { BlogPost } from '@queries/types';
+import { Icon } from '@components/atoms';
+import { ChevronLeft, ChevronRight } from '@components/icons';
+import { NavLink } from '@components/navigation';
+import type { BlogPost } from '@content/index';
 
 export type Props = {
     previous: BlogPost | undefined;

@@ -1,25 +1,18 @@
 ---
-import Body from '@components/document/Body.astro';
-import Document from '@components/document/Document.astro';
-import Head from '@components/document/Head.astro';
-import Layout from '@components/document/Layout.astro';
-import NodeList from '@components/node/lists/NodeList.astro';
-import NodeAbstract from '@components/node/parts/NodeAbstract.astro';
-import NodeMeta from '@components/node/parts/NodeMeta.astro';
-import Article from '@components/page/Article.astro';
-import ArticleHeader from '@components/page/ArticleHeader.astro';
-import Divider from '@components/page/Divider.astro';
-import Markup from '@components/page/Markup.astro';
-import PageSubTitle from '@components/page/PageSubTitle.astro';
-import PageTitle from '@components/page/PageTitle.astro';
-import Section from '@components/page/Section.astro';
-import TopLine from '@components/page/TopLine.astro';
-import SiteFooter from '@components/site/SiteFooter.astro';
-import SiteHeader from '@components/site/SiteHeader.astro';
-import SiteMain from '@components/site/SiteMain.astro';
-// import { importAllNodes, sortedNodes } from '@queries/nodes';
-import { sortedNodes } from '@queries/nodes';
-import type { BaseNode, TagNode } from '@queries/types';
+import { Body, Document, Head, Layout } from '@components/document';
+import { NodeAbstract, NodeList, NodeMeta } from '@components/node';
+import {
+    Article,
+    ArticleHeader,
+    Divider,
+    Markup,
+    PageSubTitle,
+    PageTitle,
+    Section,
+    TopLine,
+} from '@components/page';
+import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
+import { fetchAllNodes, sortNodes, type TagNode } from '@content/index';
 import { plural } from '@utils/strings';
 
 export type Props = {
@@ -28,9 +21,9 @@ export type Props = {
 
 const { content: page } = Astro.props;
 
-const allNodes: BaseNode[] = []; // WIP await importAllNodes();
+const allNodes = await fetchAllNodes();
 
-const nodes = sortedNodes(allNodes.filter(n => n.tags?.includes(page.title)));
+const nodes = sortNodes(allNodes.filter(n => n.tags?.includes(page.title)));
 const pages = nodes.filter(n => n.type === 'page');
 const posts = nodes.filter(n => n.type === 'post');
 const tags = nodes.filter(n => n.type === 'tag');

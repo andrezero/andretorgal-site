@@ -1,6 +1,26 @@
-import type { FitEnum, Sharp } from 'sharp';
+import type { FitEnum, FormatEnum, Sharp } from 'sharp';
 
-import type { ImageTransform } from '../types';
+export type Image = {
+    src: string;
+    width?: number;
+    height?: number;
+    format?: string;
+};
+
+export type ImageProfile = {
+    widths: number[];
+    sizes: string;
+    fit: 'cover';
+    position: 'center';
+    formats: ImageFormat[];
+};
+
+export type ImageFormat = keyof FormatEnum;
+
+export type ImageTransform = {
+    width: number;
+    format: ImageFormat;
+};
 
 type ImageTransformParams = ImageTransform & {
     quality: number;

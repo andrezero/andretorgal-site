@@ -1,5 +1,4 @@
-import Blockquote from '@components/mdx/Blockquote.astro';
-import Figure from '@components/mdx/Figure.astro';
+import { Blockquote, Figure } from '@components/mdx';
 
 export const components = {
     img: Figure,

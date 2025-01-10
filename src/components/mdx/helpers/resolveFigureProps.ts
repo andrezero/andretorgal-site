@@ -10,17 +10,38 @@ function resolveAttribution(attribution?: string): Attribution | undefined {
         : undefined;
 }
 
-function resolveTitle(title?: string): { title: string; attribution: Attribution | undefined } {
+function resolveExternalImageDimensions(dimensions?: string): {
+    width: number | undefined;
+    height: number | undefined;
+} {
+    const match = dimensions && dimensions.match(/(\d+)x(\d+)/);
+    return match
+        ? {
+              width: parseInt(match[1] as string, 10),
+              height: parseInt(match[2] as string, 10),
+          }
+        : { width: undefined, height: undefined };
+}
+
+function resolveTitle(title?: string): {
+    title: string;
+    attribution: Attribution | undefined;
+    width: number | undefined;
+    height: number | undefined;
+} {
     const parts = title ? title.split('// ') : [''];
+    const { width, height } = resolveExternalImageDimensions(parts[2]);
     return {
         title: parts[0]?.trim() || '',
         attribution: resolveAttribution(parts[1]),
+        width,
+        height,
     };
 }
 
-export async function resolveFigureProps(props: ImageProps): Promise<FigureResolvedProps> {
-    const { src, title: maybeTitleAndAttribution } = props;
+export function resolveFigureProps(props: ImageProps): FigureResolvedProps {
+    const { src, alt = '', title: maybeTitleAttributionAndHeight } = props;
 
-    const { title, attribution } = resolveTitle(maybeTitleAndAttribution);
-    return { src, title, attribution };
+    const { title, attribution, width, height } = resolveTitle(maybeTitleAttributionAndHeight);
+    return { src, alt, title, attribution, width, height };
 }

@@ -13,6 +13,7 @@ export type Image = {
 };
 
 export interface BaseNode {
+    filename: string;
     url: string;
     type: string;
     title: string;
@@ -26,7 +27,6 @@ export interface BaseNode {
         text: string;
         markdown: string;
     };
-    image?: string | boolean;
     images: {
         external: Image[];
         internal: Image[];
@@ -35,7 +35,8 @@ export interface BaseNode {
         external: Link[];
         internal: Link[];
     };
-    mdxFilename: string;
+    hero?: boolean | string | Image;
+    thumb?: boolean | string | Image;
     [key: string]: unknown;
 }
 

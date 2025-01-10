@@ -1,34 +1,17 @@
-import type { FormatEnum } from 'sharp';
+export type ImportedImage = Promise<{
+    default: ImageMetadata;
+}>;
 
-export type ImageFormat = keyof FormatEnum;
+export type ImportedImageFn = () => ImportedImage;
 
-export type Image = {
-    src: string;
-    width?: number;
-    height?: number;
-    format?: string;
-};
-
-export type ImageProfile = {
-    widths: number[];
-    sizes: string;
-    fit: 'cover';
-    position: 'center';
-    formats: ImageFormat[];
-};
+export type ImageSrc = string | ImageMetadata | ImportedImage;
 
 export type ImageProps = {
-    src:
-        | string
-        | ImageMetadata
-        | Promise<{
-              default: ImageMetadata;
-          }>;
+    src: ImageSrc;
     title?: string;
     alt?: string;
-    width?: number;
-    height?: number;
-    profile?: ImageProfile | undefined;
+    width?: number | undefined;
+    height?: number | undefined;
 };
 
 export type Attribution = { text: string; link: string | undefined };
@@ -40,39 +23,10 @@ export type ImageFacts = {
 };
 
 export type FigureResolvedProps = {
-    src: string;
+    src: ImageSrc;
+    alt: string;
     title: string;
     attribution: Attribution | undefined;
-};
-
-export type Source = {
-    type: string;
-    srcset: string;
-    sizes: string;
-};
-
-export type ImageResolvedProps = Omit<ImageProps, 'src' | 'height'> & {
-    src: string;
+    width?: number | undefined;
     height?: number | undefined;
-    alt: string;
-    fit: 'cover';
-    position: 'center';
-    loading: 'lazy';
-    decoding: 'async' | 'auto' | 'sync';
-};
-
-export type ImageTransform = {
-    width: number;
-    format: ImageFormat;
-};
-
-export type ImageParams = {
-    [key: string]: string | undefined;
-};
-
-export type AstroImage = {
-    src: string;
-    width: number;
-    height: number;
-    format: string;
 };

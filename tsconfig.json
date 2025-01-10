@@ -8,7 +8,7 @@
             "@components/*": ["src/components/*"],
             "@integration/*": ["src/integration/*"],
             "@icons/*": ["src/icons/*"],
-            "@queries/*": ["src/queries/*"],
+            "@content/*": ["src/content/*"],
             "@styles/*": ["src/styles/*"],
             "@templates/*": ["src/templates/*"],
             "@utils/*": ["src/utils/*"]
