@@ -25,4 +25,4 @@ jobs:
         run: npm ci
 
       - name: Build application
-        run: npm run buid
+        run: npm run build

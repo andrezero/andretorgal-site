@@ -39,6 +39,9 @@ jobs:
       - name: Build application
         run: npm run build
 
+      - name: Build application
+        run: npm run pre-deploy:${{ github.event.inputs.environment }}
+
       - name: Deploy to S3
         run: aws s3 sync --delete ./dist/ s3://${{ vars.BUCKET_NAME }}
 
