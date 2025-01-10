@@ -4,9 +4,11 @@ import type { ImageProps } from '@integration/images/types';
 import Image from './Image.astro';
 import { resolveFigureProps } from './helpers';
 
-export type Props = ImageProps;
+export type Props = ImageProps & {
+    notitle?: boolean;
+};
 
-const { width: propWidth, height: propHeight } = Astro.props;
+const { width: propWidth, height: propHeight, notitle } = Astro.props;
 
 const {
     src,
@@ -18,7 +20,7 @@ const {
 } = await resolveFigureProps(Astro.props);
 
 const bgColor = '#414141';
-const showLabel = !!title || !!attribution;
+const showLabel = !notitle && Boolean(title || attribution);
 const imageProps = {
     src,
     alt,

@@ -12,7 +12,7 @@ const thumbImage = getNodeThumbImage(node);
 const src = thumbImage && getNodeImage(node, thumbImage.src);
 ---
 
-{thumbImage && <div class="thumb">{src && <Figure {...thumbImage} src={src()} />}</div>}
+{thumbImage && <div class="thumb">{src && <Figure {...thumbImage} notitle src={src()} />}</div>}
 
 <style is:global>
     .thumb,
