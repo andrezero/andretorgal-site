@@ -1,0 +1,100 @@
+---
+layout: ~/templates/BlogPost.astro
+type: post
+title: What is a design context?
+tags:
+  - design-contexts
+  - design-systems
+published: 2025 Jan 15
+draft: true
+---
+
+<Abstract>
+
+</Abstract>
+
+When we first started venturing into responsive design, how often would developers find themselves asking, “Where are the specs for mobile?”. It was a question that highlighted a fundamental challenge: how to manage and communicate design decisions across different contexts.
+
+Some 15 laters, you find ourselves building websites and UI on top of design systems, and still, specifications often focus on a single context — ironically, light mode on desktop 😅 — remaining ambiguous and unclear about other contexts, at best.
+
+## Context is missing in design tools
+
+Design decisions are inherently context-dependent, influenced by factors such as brand identity, platform requirements, and user preferences.
+
+Development frameworks and popular design systems have managed to model some of these contexts by providing a theme layer on their token system, a modern iteration of the classic _skin_ concept. Multi-brand design systems can technically implement _Brand X_ vs _brand Y_ context as different themes. Notable examples are [CondeNast's Verso]() is and [News UK (open source)](https://www.newskit.co.uk/).
+
+![](./_media/conde-nast-verso.png 'One design system to render them all')
+
+Colour scheme preferences, _dark/light mode_, can also be hammered in :hammer: as themes. In more sophisticated setups, colour schemes are provided by defining one value per token, per colour scheme. In the case of [Adobe's Spectrum](https://github.com/adobe/spectrum-tokens/blob/main/packages/tokens/src/color-aliases.json#L82:L101) this mechanism is used to define :hammer: not two, but three! colour schemes. And a _wireframe_ theme :nerd_face:. Love it.
+
+In _the real world_ though, the design tools we use everyday don't yet have proper support for themes or colour schemes. Remember: Figma variables is last year's innovation! This means that designers can not visualise the same decision across all applicable scenarios without duplicating and updating several _boards_. It's no surprise that design deliverables often focus on a single context — typically light mode on desktop 😅 — leaving many scenarios unexplored and numerous decisions to be made later.
+
+The unresolved choices inevitably surface downstream during implementation and more often than not are handled by non-designers, leading to inconsistent outcomes.
+
+In the _real real world_ contexts exist whether you can express them in a Figma board or not.
+
+These days many design systems projects found shortcuts and workarounds in the way they define and distribute tokens and can reasonably model device responsiveness or target platform with their token system.
+
+![](./_media/spectrum-tokens.png 'Tokens vs devices in Adobe Spectrum tokens')
+
+The unexplored scenarios, unresolved decisions, and misalignment between specs and implementation all collude against us, materialising as defects, rework, and delays.
+
+The culprit, in my humble opinion: the lack of support for context in our design tools.
+
+## Container context is not modeled
+
+But let's not blame everything on Figma. While we are busy struggling with the challenges of the broader contexts (themes, colour schemes, responsiveness) the more granular contexts continue to go unnoticed in our workflows.
+
+Container contexts, for instance, define the relationship between UI elements and their enclosing containers. They influence how components adapt their appearance and behavior based on their surroundings. These contexts are hiding in plain sight, in application guidelines such as:
+
+```
+When inside modals, button groups must be right aligned
+Link hover state on inverted background should be white
+Do not use button variant _primary_ inside banners
+In hero sections, use only medium or large button sizes
+```
+
+This is especially challenging for sophisticated color systems with multiple palette hues and contrast level accessibility checks.
+
+Material UI, famous since its inception for its distinct design around elevated surfaces, only recently introduced the curiously named concept of [tone-based surface color](https://m3.material.io/blog/tone-based-surface-color-m3).
+
+![Screenshot of Material UI container color roles](_media/material-ui-container-tokens.png 'Five container color roles times two modes')
+
+Meanwhile, [color functions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Relative_colors#using_math_functions) were introduced in CSS.
+
+This allow composing colors from color components, including the ability to apply color transformations directly on the stylesheet. :exploding_head:
+
+This has the potential to streamline token systems by reusing color components across contexts, reducing the number of color tokens, or guaranteeing color contrast at render time, regardless of how many scenarios were explored or how many decisions were left to chance.
+
+```css
+#one {
+  color: lch(from var(--base-color) calc(l + 20) c h);
+  background-color: lch(from var(--base-color) calc(l - 20) c h);
+}
+```
+
+But to fully realize this potential, our design tools still need to start modeling design decisions with context in mind.
+
+## Paving the way to a better model
+
+Focusing on the design decisions rather than tokens would
+
+generate various outputs — tokens, style dictionaries, code snippets, documentation — from a more versatile and comprehensive source of truth. This approach naturally accommodates the complexity of design by inherently understands "context."
+
+Having worked extensively as a design systems lead, I’ve long sought a model that prioritizes design decisions. Over the past few months, I delved into the current landscape, re-examining Figma and Penpot and their handling of variables. It was surprising to see Specify close its doors, and I remain intrigued by the much — anticipated Token Studio, though its release is still pending. The Tokens Working Group also provides valuable insights into this evolving field, but it's still in its infancy.
+
+Overall, we're headed _almost_ in the right direction. But there is a lot of work to do!
+
+And what about when the guidelines change depending on where the design appears in the layout? For example, when a visual context is nested within a container such as a hero section or a saturated color banner. Is this akin to a nested theme? Or is it more of a distinct design context?
+
+To make things just a bit more complex, some contexts have clear boundaries, defined by discrete parameters. Think responsive breakpoints or device specifications, for instance. Whether to introduce a certain breakpoint for certain devices are context-dependent decisions that introduce a new context in the mix 🤯.
+
+Design contexts…
+
+    may have very different natures.
+    may follow some sort of hierarchy or precedence of priority.
+    may inherit decisions from other contexts.
+    may sometimes be nested within each other.
+    may require parameters in their definition.
+
+For these reasons, modeling contextual decisions is far from straightforward. One reason our tools have struggled to address this so far is that we haven’t done a proper discovery on this domain.
