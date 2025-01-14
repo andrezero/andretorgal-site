@@ -12,6 +12,26 @@ export type Image = {
     alt: string;
 };
 
+export type NodeOG = {
+    image: string | Image;
+    description?: string;
+};
+
+export type NodeImageMeta = {
+    href: string;
+    alt: string;
+    width: string;
+    height: string;
+    type: string;
+};
+
+export type NodeMeta = {
+    type: string;
+    title: string;
+    image: NodeImageMeta;
+    description: string;
+};
+
 export interface BaseNode {
     filename: string;
     url: string;
@@ -37,6 +57,7 @@ export interface BaseNode {
     };
     hero?: boolean | string | Image;
     thumb?: boolean | string | Image;
+    og?: NodeOG;
     [key: string]: unknown;
 }
 

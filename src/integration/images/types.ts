@@ -1,6 +1,15 @@
+import type { ImageInputFormat } from 'astro';
+
 export type ImportedImage = Promise<{
     default: ImageMetadata;
 }>;
+
+export type ResolvedImage = {
+    href: string;
+    width: number;
+    height: number;
+    format: ImageInputFormat;
+};
 
 export type ImportedImageFn = () => ImportedImage;
 

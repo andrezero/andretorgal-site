@@ -1,7 +1,12 @@
 import type { MarkdownInstance } from 'astro';
 
-import type { BaseNode, Image } from './types';
+import { createImageMeta, resolveNodeImage } from './images';
+import type { BaseNode, Image, NodeMeta } from './types';
 import { globResultToArray } from './utils';
+
+import { SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE } from '~/config';
+
+const ARTICLE_TYPES = ['post', 'tag', 'link'];
 
 export async function fetchAllNodes(): Promise<BaseNode[]> {
     return globResultToArray<BaseNode>(
@@ -18,7 +23,12 @@ export function getNodeHeroImage(node: BaseNode): Image | undefined {
     if (typeof hero === 'string') {
         return { src: hero, alt: '' };
     } else if (typeof hero === 'object') {
+        if (!hero.src) {
+            throw new Error(`Missing src attribute in "hero" attribute at node: "{node.url}".`);
+        }
         return hero;
+    } else if (typeof hero === 'boolean' && hero) {
+        return node.images.internal[0];
     }
     return undefined;
 }
@@ -28,7 +38,53 @@ export function getNodeThumbImage(node: BaseNode): Image | undefined {
     if (typeof thumb === 'string') {
         return { src: thumb, alt: '' };
     } else if (typeof thumb === 'object') {
+        if (!thumb.src) {
+            throw new Error(`Missing src attribute in "thumb" attribute at node: "{node.url}".`);
+        }
         return thumb;
     }
     return getNodeHeroImage(node) || node.images.internal[0];
+}
+
+export function getNodeOgImage(node: BaseNode): Image | undefined {
+    const { og } = node;
+    if (typeof og === 'object') {
+        const { image } = og;
+        if (typeof image === 'string') {
+            return { src: image, alt: '' };
+        } else if (typeof image === 'object') {
+            if (!image.src) {
+                throw new Error(`Missing src attribute in "og" attribute at node: "{node.url}".`);
+            }
+            return image;
+        }
+    }
+    return getNodeThumbImage(node) || node.images.internal[0];
+}
+
+export function getNodeType(node: BaseNode): string {
+    if (ARTICLE_TYPES.includes(node.type)) {
+        return 'article';
+    }
+    return 'website';
+}
+
+export async function getNodeMeta(node: BaseNode): Promise<NodeMeta> {
+    const { title: maybeTitle, description: maybeDescription, abstract } = node;
+    const { description: ogDescription } = node.og || {};
+    const title = `${maybeTitle || 'Home'} | ${SITE_TITLE}`;
+    const maybeAbstract = abstract?.text || node.description;
+    const description = ogDescription || maybeDescription || maybeAbstract || SITE_DESCRIPTION;
+
+    const ogImage = getNodeOgImage(node);
+    const resolvedImage = ogImage && (await resolveNodeImage(node, ogImage.src));
+    const image = resolvedImage ? createImageMeta(resolvedImage, ogImage.alt) : SITE_OG_IMAGE;
+    const type = getNodeType(node);
+
+    return {
+        type,
+        title,
+        image,
+        description,
+    };
 }
