@@ -4,6 +4,7 @@ export * from './images';
 export * from './meta';
 export * from './nodes';
 export * from './posts';
+export * from './shuffle';
 export * from './tags';
 export * from './types';
 export * from './utils';
