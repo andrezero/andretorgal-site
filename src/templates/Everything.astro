@@ -2,18 +2,11 @@
 import { Body, Document, Head, Layout } from '@components/document';
 import { NavLink } from '@components/navigation';
 import { NodeList } from '@components/node';
-import {
-    Divider,
-    Markup,
-    Page,
-    PageHeader,
-    PageSubTitle,
-    Section,
-    TopLine,
-} from '@components/page';
+import { Divider, Markup, Page, PageHeader, Section, TopLine } from '@components/page';
 
 import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
-import { type BaseNode, type BlogPost, fetchAllPosts, sortNodes } from '@content/index';
+import { type BaseNode, type BlogPost, fetchAllNodes, shuffleEverything } from '@content/index';
+
 import { SectionTopTags } from './sections';
 
 export type Props = {
@@ -22,16 +15,17 @@ export type Props = {
 
 const { content: page } = Astro.props;
 
-const nodes: BlogPost[] = await fetchAllPosts();
-const sorted = sortNodes(nodes);
-const posts = sorted.slice(0, 3);
-const cards = sorted.slice(3, 9);
+const nodes: BlogPost[] = await fetchAllNodes();
+const ironic = nodes.filter(node => node.url !== '/everything');
+const everything = shuffleEverything(ironic);
+const top = everything.slice(0, 20);
+const bottom = everything.slice(20, 99);
 ---
 
 <Document>
     <Head node={page} />
     <Body>
-        <Layout>
+        <Layout free>
             <SiteHeader slot="header" />
             <SiteMain slot="main">
                 <Page>
@@ -40,17 +34,18 @@ const cards = sorted.slice(3, 9);
                         <Markup><slot /></Markup>
                     </Section>
                     <TopLine />
-                    <SectionTopTags />
-                    <Divider size="gap" />
                     <Section>
-                        <PageSubTitle slot="header">Latest posts</PageSubTitle>
-                        <NodeList nodes={posts} />
+                        <NodeList nodes={top} variant="mini" type />
                     </Section>
                     <Divider size="space" />
+                    <SectionTopTags />
+                    <Divider size="space" />
                     <Section>
-                        <NodeList nodes={cards} variant="mini" />
+                        <NodeList nodes={bottom} variant="textual" type />
+                    </Section>
+                    <Section>
                         <Divider size="gap">
-                            <NavLink inline href="/posts">See more posts in the blog</NavLink>
+                            <NavLink inline href="/posts">Too much? back to the blog</NavLink>
                         </Divider>
                     </Section>
                 </Page>

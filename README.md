@@ -43,5 +43,5 @@ There's a lot more information in the [meta section](https://andretorgal.com/met
 
 ## MIT License
 
-Copyright (c) 2019 Andre Torgal
+Copyright (c) 2019-2025 André Torgal https://andrezero.mit-license.org/2019-2025
 https://andrezero.mit-license.org/2019-2023

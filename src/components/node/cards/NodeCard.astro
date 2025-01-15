@@ -3,17 +3,17 @@ import { type BaseNode, getNodeThumbImage } from '@content/index';
 
 import { NodeAbstract, NodeDate, NodeTags, NodeThumb, TagLink } from '../parts';
 
-export type CardVariant = 'default' | 'compact' | undefined;
+export type CardVariant = 'full' | 'compact';
 
 export type Props = {
     node: BaseNode;
-    variant?: CardVariant;
+    variant?: CardVariant | undefined;
 };
 
 const SHOW_DATE = ['post'];
 const SHOW_TAGS = ['post', 'meta', 'page'];
 
-const { node, variant = 'default' } = Astro.props;
+const { node, variant = 'full' } = Astro.props;
 
 const showDate = SHOW_DATE.includes(node.type);
 const showTags = SHOW_TAGS.includes(node.type);
@@ -45,7 +45,7 @@ const maxChars = thumbImage && variant === 'compact' ? 100 : undefined;
             </a>
         )
     }
-    <NodeAbstract node={node} compact max={maxChars} />
+    <NodeAbstract node={node} variant="compact" max={maxChars} />
     {showTags && <NodeTags node={node} />}
 </article>
 

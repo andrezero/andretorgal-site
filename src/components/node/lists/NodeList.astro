@@ -1,21 +1,29 @@
 ---
 import type { BaseNode } from '@content/index';
 
-import NodeCard, { type CardVariant } from '../cards/NodeCard.astro';
+import { NodeCard, NodeMini, type CardVariant } from '../cards';
+import { NodeLink } from '../parts';
 
 export type Props = {
     nodes: BaseNode[];
-    variant?: CardVariant;
+    variant?: 'mini' | 'textual' | CardVariant;
+    type?: boolean | undefined;
 };
 
-const { nodes, variant = 'default' } = Astro.props;
+const { nodes, variant = 'full', type } = Astro.props;
+
+const isCard = variant === 'compact' || variant === 'full';
+const isLink = variant === 'textual';
+const isMini = variant === 'mini';
 ---
 
 <ul class:list={[variant]}>
     {
         nodes.map(node => (
             <li>
-                <NodeCard node={node} variant={variant} />
+                {isCard && <NodeCard node={node} variant={variant} />}
+                {isMini && <NodeMini node={node} type={type} />}
+                {isLink && <NodeLink node={node} size="compact" type={type} />}
             </li>
         ))
     }
@@ -26,6 +34,8 @@ const { nodes, variant = 'default' } = Astro.props;
     li {
         display: flex;
         flex-direction: column;
+        width: 100%;
+        overflow: hidden;
     }
 
     ul {
@@ -39,9 +49,59 @@ const { nodes, variant = 'default' } = Astro.props;
         row-gap: var(--layout-space);
     }
 
+    .mini {
+        display: grid;
+        width: 100%;
+        column-gap: var(--layout-wall);
+        row-gap: var(--layout-space);
+    }
+
+    .textual {
+        display: grid;
+        width: 100%;
+        column-gap: var(--layout-wall);
+        row-gap: var(--layout-gap);
+    }
+
+    @media screen and (min-width: 480px) {
+        .mini {
+            grid-template-columns: 47% 47%;
+        }
+    }
+
     @media screen and (min-width: 650px) {
         .compact {
             grid-template-columns: 47% 47%;
+        }
+    }
+
+    @media screen and (min-width: 650px) {
+        .mini {
+            grid-template-columns: 31% 31% 31%;
+        }
+    }
+
+    @media screen and (min-width: 1060px) {
+        .mini {
+            grid-template-columns: 47% 47%;
+        }
+    }
+
+    @media screen and (min-width: 1420px) {
+        .mini {
+            grid-template-columns: 31% 31% 31%;
+        }
+    }
+
+    @media screen and (min-width: 1940px) {
+        .mini {
+            grid-template-columns: 23% 23% 23% 23%;
+        }
+    }
+
+    @media screen and (min-width: 2160px) {
+        .mini {
+            grid-template-columns: 18% 18% 18% 18% 18%;
         }
     }
 

@@ -38,9 +38,12 @@ const { size = 'm' } = Astro.props;
 
     time {
         display: inline-block;
-        padding: var(--layout-shift) var(--layout-unit);
+        width: 7rem;
+        padding: var(--layout-shift);
         font-family: var(--t-type-family-alt);
         font-weight: var(--t-type-weight-alt-bold);
+        text-align: center;
+        white-space: nowrap;
         color: var(--scheme-alt-fg);
         background-color: var(--scheme-alt-bg);
     }

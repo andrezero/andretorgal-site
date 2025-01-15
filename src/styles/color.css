@@ -22,6 +22,7 @@
 
 :root {
     --scheme-bg: var(--t-palette-white-1);
+    --scheme-container-bg: var(--t-palette-white-3);
     --scheme-fg: var(--t-palette-black-2);
     --scheme-a: var(--t-palette-cyan-1);
     --scheme-a-on: var(--t-palette-cyan-2);
@@ -75,6 +76,7 @@
 @media (prefers-color-scheme: dark) {
     body > * {
         --scheme-bg: var(--t-palette-black);
+        --scheme-container-bg: var(--t-palette-black-2);
         --scheme-fg: var(--t-palette-white-2);
         --scheme-a: var(--t-palette-cyan-3);
         --scheme-a-on: var(--t-palette-cyan-2);

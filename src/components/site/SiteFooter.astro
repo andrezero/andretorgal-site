@@ -8,6 +8,7 @@ import PrintWatermark from '@components/page/PrintWatermark.astro';
         <hr />
         <div class="navigation">
             <nav class="nav" role="navigation" aria-label="Main sections of the site">
+                <h4 aria-hidden>Navigation</h4>
                 <ul>
                     <li>
                         <a href="/">Home</a>
@@ -27,6 +28,7 @@ import PrintWatermark from '@components/page/PrintWatermark.astro';
                 </ul>
             </nav>
             <nav class="contacts" aria-label="you can find me elsewhere at">
+                <h4 aria-hidden>Links</h4>
                 <ul class="nav-external">
                     <li>
                         <a class="external-link Github" href="https://github.com/andrezero">
@@ -66,22 +68,26 @@ import PrintWatermark from '@components/page/PrintWatermark.astro';
                     </li>
                 </ul>
             </nav>
+
+            <nav class="subscribe">
+                <h4 aria-hidden>Subscribe</h4>
+                <ul>
+                    <li><a href="/posts/atom.xml">Blog</a></li>
+                    <li><a href="/everything/atom.xml">Everything</a></li>
+                </ul>
+            </nav>
         </div>
-
-        <p class="subscribe">
-            Subscribe to the blog via <a href="/rss.xml">RSS</a>
-        </p>
-
-        <div>
+        <hr />
+        <div class="legal">
             <p class="copyright">
-                <span class="name">andretorgal.com</span>
-                <span class="version">v.3.0.0</span>
-                <span class="year">Copyright © 2023</span>
-                <a href="/about">Andre Torgal</a>
+                <span class="site-name">andretorgal.com</span>
+                <span class="version">v.3.1.0</span>
+                <span class="year">Copyright © 2025</span>
+                <a href="/about">André Torgal</a>
             </p>
 
             <p class="license">
-                All code and content for this site available on
+                All code and content is available on
                 <a class="external-link" href="https://github.com/andrezero/site.git"
                     ><span>Github</span>
                 </a>
@@ -90,8 +96,11 @@ import PrintWatermark from '@components/page/PrintWatermark.astro';
                     class="external-link"
                     href="https://raw.githubusercontent.com/andrezero/site/master/LICENSE-MIT"
                     ><span>MIT LICENSE</span>
-                </a>
-                unless otherwise noted.
+                </a>, unless otherwise noted.
+            </p>
+
+            <p class="notice">
+                This site respects your privacy: no cookies, analytics, or tracking tools are used.
             </p>
         </div>
     </div>
@@ -99,9 +108,6 @@ import PrintWatermark from '@components/page/PrintWatermark.astro';
 
 <style>
     footer {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
         color: var(--scheme-fg);
         font-family: var(--t-type-family-alt);
         line-height: var(--t-type-height-large);
@@ -119,7 +125,16 @@ import PrintWatermark from '@components/page/PrintWatermark.astro';
         font-size: var(--t-type-size--1);
     }
 
+    h4 {
+        font-size: var(--t-type-size-0);
+        font-weight: var(--t-type-height-compact);
+        margin: 0 0 var(--layout-s-half);
+    }
+
     .navigation {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
         display: flex;
         flex-direction: column;
         gap: var(--layout-gap);
@@ -127,6 +142,21 @@ import PrintWatermark from '@components/page/PrintWatermark.astro';
 
     hr {
         display: none;
+    }
+
+    .site-name {
+        display: inline-block;
+        font-weight: 900;
+        font-size: var(--t-type-size-1);
+        line-height: var(--t-type-height-compact);
+        padding: var(--layout-s-quarter);
+        color: var(--scheme-alt-fg);
+        background-color: var(--scheme-alt-bg);
+        border-radius: var(--radius-action);
+    }
+
+    .legal {
+        margin-top: var(--layout-space);
     }
 
     @media screen and (min-width: 650px) {

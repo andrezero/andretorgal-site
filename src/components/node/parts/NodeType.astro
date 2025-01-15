@@ -1,0 +1,32 @@
+---
+import type { BaseNode } from '~/content';
+
+export type Props = {
+    node: BaseNode;
+};
+
+const { node } = Astro.props;
+
+const type = node.type.split('-')[0];
+---
+
+<span class="type">{type}</span>
+
+<style is:global>
+    .type {
+        display: block;
+        width: 3rem;
+        padding: var(--layout-shift);
+        text-align: center;
+        font-family: var(--t-type-family-alt);
+        font-size: var(--t-type-size--2);
+        text-wrap: nowrap;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: var(--scheme-dim);
+        background-color: var(--scheme-muted);
+    }
+
+    @media screen and (min-width: 800px) {
+    }
+</style>

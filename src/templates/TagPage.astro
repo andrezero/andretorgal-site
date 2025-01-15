@@ -58,7 +58,7 @@ const meta = nodes.filter(n => n.type.startsWith('meta'));
                                             #{page.title}
                                         </PageSubTitle>
                                     </Divider>
-                                    <NodeList nodes={pages} />
+                                    <NodeList nodes={pages} variant="mini" />
                                 </>
                             )
                         }
@@ -71,7 +71,7 @@ const meta = nodes.filter(n => n.type.startsWith('meta'));
                                             #{page.title}
                                         </PageSubTitle>
                                     </Divider>
-                                    <NodeList nodes={posts} variant="compact" />
+                                    <NodeList nodes={posts} variant="mini" />
                                 </>
                             )
                         }
@@ -84,7 +84,7 @@ const meta = nodes.filter(n => n.type.startsWith('meta'));
                                             {page.title}
                                         </PageSubTitle>
                                     </Divider>
-                                    <NodeList nodes={tags} variant="compact" />
+                                    <NodeList nodes={tags} variant="mini" />
                                 </>
                             )
                         }

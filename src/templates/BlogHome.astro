@@ -5,6 +5,7 @@ import { NodeList } from '@components/node';
 import { Divider, Page, PageHeader, Section, TopLine } from '@components/page';
 import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
 import { fetchAllPosts, sortNodes, type BlogPost } from '@content/index';
+import { SectionTopTags } from './sections';
 
 export type Props = {
     content: BlogPost;
@@ -36,6 +37,8 @@ pages[0] = '/posts';
                     <Divider size="space">
                         <PageNav pages={pages} />
                     </Divider>
+                    <Divider size="pause" />
+                    <SectionTopTags />
                 </Page>
             </SiteMain>
             <SiteFooter slot="footer" />

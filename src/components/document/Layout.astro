@@ -1,8 +1,14 @@
 ---
+export type Props = {
+    free?: boolean;
+};
+
 const hasSection = Astro.slots.has('section');
+
+const { free } = Astro.props;
 ---
 
-<div class={`layout${hasSection ? ' has-section' : ''}`}>
+<div class:list={['layout', { 'has-section': hasSection, contained: !free }]}>
     <slot name="header" />
     <slot name="section" />
     <slot name="main" />
@@ -74,7 +80,7 @@ const hasSection = Astro.slots.has('section');
     }
 
     @media screen and (min-width: 650px) {
-        .container {
+        .contained .container {
             max-width: var(--layout-container-width);
             margin: 0 auto;
         }
@@ -96,7 +102,7 @@ const hasSection = Astro.slots.has('section');
                 'foot foot';
         }
 
-        .container {
+        .contained .container {
             margin: 0 var(--layout-gap) 0 var(--layout-gutter);
         }
 
@@ -105,7 +111,7 @@ const hasSection = Astro.slots.has('section');
         }
 
         .layout-header .container {
-            margin-left: var(--layout-gap);
+            margin: 0 var(--layout-gap);
         }
 
         .layout-header,

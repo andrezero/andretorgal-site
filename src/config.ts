@@ -3,7 +3,7 @@ import type { NodeImageMeta } from './content';
 export const SITE_URL = 'https://andretorgal.com';
 export const SITE_TITLE = 'André Torgal';
 export const SITE_DESCRIPTION =
-    'My name is Andre Torgal and I was born in 1973 in Lisbon, Portugal. This is my website, a place where I can blog some thoughts and run a few experiments. Learn more about me, my work, and other stuff I have been up to.';
+    'My name is André Torgal and I was born in 1973 in Lisbon, Portugal. This is my website, a place where I can blog some thoughts and run a few experiments. Learn more about me, my work, and other stuff I have been up to.';
 
 export const SITE_OG_IMAGE: NodeImageMeta = {
     href: '/media/og-default.jpg',

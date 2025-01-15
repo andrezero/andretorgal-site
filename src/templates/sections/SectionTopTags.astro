@@ -1,0 +1,15 @@
+---
+import { NavLink } from '@components/navigation';
+import { TagList } from '@components/node';
+import { PageSubTitle, Section } from '@components/page';
+
+import { type TagNode, fetchTopTags } from '@content/index';
+
+const topTags: TagNode[] = await fetchTopTags();
+---
+
+<Section>
+    <PageSubTitle slot="header">Top tags</PageSubTitle>
+    <TagList tags={topTags} />
+    <NavLink inline href="/tags">Explore all tags</NavLink>
+</Section>

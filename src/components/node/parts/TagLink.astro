@@ -5,12 +5,16 @@ export type Props = {
     tag: string;
     count?: number;
     size?: TagLinkSize;
+    nolink?: boolean;
 };
 
-const { tag, count = 0, size = 'normal' } = Astro.props;
+const { tag, count = 0, size = 'normal', nolink } = Astro.props;
+
+const Element = nolink ? 'span' : 'a';
+const props = nolink ? {} : { href: `/tags/${tag}` };
 ---
 
-<a class:list={['tag', size]} href={`/tags/${tag}`}>
+<Element class:list={['tag', size, { 'has-link': !nolink }]} {...props}>
     #{tag}
     {
         count > 0 && (
@@ -21,11 +25,11 @@ const { tag, count = 0, size = 'normal' } = Astro.props;
             </span>
         )
     }
-</a>
+</Element>
 
 <style>
     .tag {
-        display: inline;
+        display: flex;
         align-items: baseline;
         gap: var(--layout-s-quarter);
         padding: 0 var(--layout-s-quarter) var(--layout-shift);
@@ -85,21 +89,21 @@ const { tag, count = 0, size = 'normal' } = Astro.props;
         background-color: var(--scheme-bg);
     }
 
-    .tag:hover {
+    .has-link:hover {
         color: var(--scheme-bg);
         background-color: var(--scheme-a-on);
     }
 
-    .tag:hover .count {
+    .has-link:hover .count {
         color: var(--scheme-a-on);
     }
 
-    .tag:active {
+    .has-link:active {
         color: var(--scheme-fg);
         background-color: var(--scheme-bg);
     }
 
-    .tag:active .count {
+    .has-link:active .count {
         color: var(--scheme-bg);
         background-color: var(--scheme-fg);
     }
