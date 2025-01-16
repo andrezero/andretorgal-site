@@ -9,12 +9,12 @@ import {
     PageSubTitle,
     PageTitle,
     Section,
+    SubscribeToFeed,
     TopLine,
 } from '@components/page';
 import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
 import { fetchAllNodes, sortNodes, type TagNode } from '@content/index';
 import { plural } from '@utils/strings';
-
 export type Props = {
     content: TagNode;
 };
@@ -41,6 +41,7 @@ const meta = nodes.filter(n => n.type.startsWith('meta'));
                         <PageTitle>
                             #{page.title}
                         </PageTitle>
+                        <SubscribeToFeed title={`#${page.title}`} url={page.url} />
                     </ArticleHeader>
                     <Section>
                         <TopLine />

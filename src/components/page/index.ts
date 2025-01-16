@@ -11,4 +11,5 @@ export { default as PageSubTitle } from './PageSubTitle.astro';
 export { default as PageTitle } from './PageTitle.astro';
 export { default as PrintWatermark } from './PrintWatermark.astro';
 export { default as Section } from './Section.astro';
+export { default as SubscribeToFeed } from './SubscribeToFeed.astro';
 export { default as TopLine } from './TopLine.astro';

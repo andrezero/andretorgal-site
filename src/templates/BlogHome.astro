@@ -2,7 +2,7 @@
 import { Body, Document, Head, Layout } from '@components/document';
 import { PageNav } from '@components/navigation';
 import { NodeList } from '@components/node';
-import { Divider, Page, PageHeader, Section, TopLine } from '@components/page';
+import { Divider, Page, PageHeader, Section, SubscribeToFeed, TopLine } from '@components/page';
 import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
 import { fetchAllPosts, sortNodes, type BlogPost } from '@content/index';
 import { SectionTopTags } from './sections';
@@ -29,7 +29,9 @@ pages[0] = '/posts';
             <SiteHeader slot="header" />
             <SiteMain slot="main">
                 <Page>
-                    <PageHeader node={page} slot="header" />
+                    <PageHeader node={page} slot="header">
+                        <SubscribeToFeed title={`blog posts`} url={'/posts'} />
+                    </PageHeader>
                     <TopLine />
                     <Section>
                         <NodeList nodes={top} />

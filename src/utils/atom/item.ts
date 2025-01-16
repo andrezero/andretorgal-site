@@ -17,7 +17,7 @@ export async function nodeToAtomItem(feed: AtomFeed, node: BaseNode): Promise<At
     const html = await render(node);
 
     return {
-        id: node.url + '@' + date.toISOString().substring(0, 10),
+        id: link + '@' + date.toISOString().substring(0, 10),
         link,
         title: node.title,
         updated: date,

@@ -1,5 +1,6 @@
 ---
 import PrintWatermark from '@components/page/PrintWatermark.astro';
+import { SubscribeToFeed } from '../page';
 ---
 
 <footer role="contentinfo" class="layout-footer cs-tertiary">
@@ -72,8 +73,10 @@ import PrintWatermark from '@components/page/PrintWatermark.astro';
             <nav class="subscribe">
                 <h4 aria-hidden>Subscribe</h4>
                 <ul>
-                    <li><a href="/posts/atom.xml">Blog</a></li>
-                    <li><a href="/everything/atom.xml">Everything</a></li>
+                    <li><SubscribeToFeed title={`Blog`} url="/posts" compact reverse /></li>
+                    <li>
+                        <SubscribeToFeed title={`Everything`} url="/everything" compact reverse />
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -81,7 +84,7 @@ import PrintWatermark from '@components/page/PrintWatermark.astro';
         <div class="legal">
             <p class="copyright">
                 <span class="site-name">andretorgal.com</span>
-                <span class="version">v.3.1.0</span>
+                <span class="version">v.3.2</span>
                 <span class="year">Copyright © 2025</span>
                 <a href="/about">André Torgal</a>
             </p>
@@ -149,7 +152,7 @@ import PrintWatermark from '@components/page/PrintWatermark.astro';
         font-weight: 900;
         font-size: var(--t-type-size-1);
         line-height: var(--t-type-height-compact);
-        padding: var(--layout-s-quarter);
+        padding: var(--layout-shift) var(--layout-s-quarter) var(--layout-s-quarter);
         color: var(--scheme-alt-fg);
         background-color: var(--scheme-alt-bg);
         border-radius: var(--radius-action);

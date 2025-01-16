@@ -9,7 +9,7 @@ export async function GET(): Promise<Response> {
 
     const sorted = sortNodes(allNodes);
     const blogFeed = createFeed(
-        'everything',
+        '/everything',
         'Everything Feed',
         '(Experimental) Feed with *.* updates from this website: posts, media, tags, meta, ...',
     );

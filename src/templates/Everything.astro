@@ -2,7 +2,15 @@
 import { Body, Document, Head, Layout } from '@components/document';
 import { NavLink } from '@components/navigation';
 import { NodeList } from '@components/node';
-import { Divider, Markup, Page, PageHeader, Section, TopLine } from '@components/page';
+import {
+    Divider,
+    Markup,
+    Page,
+    PageHeader,
+    Section,
+    SubscribeToFeed,
+    TopLine,
+} from '@components/page';
 
 import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
 import { type BaseNode, type BlogPost, fetchAllNodes, shuffleEverything } from '@content/index';
@@ -29,7 +37,9 @@ const bottom = everything.slice(20, 99);
             <SiteHeader slot="header" />
             <SiteMain slot="main">
                 <Page>
-                    <PageHeader node={page} slot="header" />
+                    <PageHeader node={page} slot="header">
+                        <SubscribeToFeed title={`everything`} url={'/everything'} />
+                    </PageHeader>
                     <Section>
                         <Markup><slot /></Markup>
                     </Section>

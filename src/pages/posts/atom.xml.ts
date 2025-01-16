@@ -8,7 +8,7 @@ export async function GET(): Promise<Response> {
     const allPosts = await fetchAllPosts();
 
     const sorted = sortNodes(allPosts);
-    const blogFeed = createFeed('posts', 'Blog Feed', 'Feed with updates from my blog');
+    const blogFeed = createFeed('/posts', 'Blog Feed', 'Feed with updates from my blog');
     const items = await Promise.all(sorted.map(node => nodeToAtomItem(blogFeed, node)));
     const body = atomFeed(blogFeed, items);
 

@@ -1,0 +1,43 @@
+---
+import { Rss as RssIcon } from 'lucide-astro';
+
+export type Props = {
+    title: string;
+    url: string;
+    compact?: boolean;
+    reverse?: boolean;
+};
+
+const { title, url, compact, reverse } = Astro.props;
+---
+
+<p class:list={{ reverse }}>
+    {!compact && <span aria-hidden>Subscribe to</span>}
+    <a href={`${url}/atom.xml`} aria-label=`Subscribe to ${title} RSS Feed`>
+        <span class="title" aria-hidden>{title}</span>
+        <span class="icon" aria-hidden>
+            <RssIcon size={16} />
+        </span>
+    </a>
+</p>
+
+<style>
+    p,
+    a {
+        display: flex;
+        align-items: center;
+        gap: var(--layout-s-quarter);
+    }
+    .reverse a {
+        flex-direction: row-reverse;
+    }
+    a {
+        text-decoration: none;
+    }
+    .title {
+        text-decoration: underline;
+    }
+    .icon {
+        padding-top: 0.2rem;
+    }
+</style>
