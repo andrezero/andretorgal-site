@@ -1,14 +1,10 @@
 import { createProgram } from 'm2dx-utils';
 import type { Root, RootContent } from 'mdast';
 
-import type { RemarkPlugin } from '../types/RemarkPlugin';
-import type { VFile } from '../types/VFile';
+import type { RemarkPlugin, VFile } from '../types';
 
-import { findUnresolved } from './autoImports/findUnresolved';
-import { getExports } from './autoImports/getExports';
-import { toImport } from './autoImports/toImport';
-import { shortHash } from './common/shortHash';
-import { capitalize, toCamelCase } from './common/strings';
+import { findUnresolved, getExports, toImport } from './auto-imports';
+import { capitalize, shortHash, toCamelCase } from './common';
 
 type Options = {
     autoImportFile: string;

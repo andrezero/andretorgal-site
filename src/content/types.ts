@@ -1,6 +1,6 @@
-import type { MarkdownInstance, MarkdownLayoutProps } from 'astro';
+import type { MDXInstance, MarkdownLayoutProps } from 'astro';
 
-export type GlobResult<T extends BaseNode> = Record<string, () => Promise<MarkdownInstance<T>>>;
+export type GlobResult<T extends BaseNode> = Record<string, () => Promise<MDXInstance<T>>>;
 
 export type Link = {
     url: string;
@@ -43,6 +43,7 @@ export interface BaseNode {
     draft?: boolean;
     published: string;
     updated?: string;
+    markdown: string;
     abstract?: {
         text: string;
         markdown: string;

@@ -18,6 +18,7 @@ export type AtomItem = {
     title: string;
     link: string;
     updated: Date;
+    summary: string;
     content: string;
     categories: string[];
 };

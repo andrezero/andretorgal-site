@@ -4,12 +4,13 @@ import remarkA11yEmoji from '@fec/remark-a11y-emoji';
 import remarkEmoji from 'remark-emoji';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
-import { collectAndDecorateLinks } from './rehype/collectAndDecorateLinks.ts';
-import { collectImages } from './rehype/collectImages.ts';
-import { collectMdxFilenames } from './rehype/collectMdxFilenames.ts';
-import { autoAbstract } from './remark/autoAbstract.ts';
-import { autoImports } from './remark/autoImports.ts';
-import { customComponents } from './remark/customComponents.ts';
+import {
+    collectAndDecorateLinks,
+    collectImages,
+    collectMdxFilenames,
+    exposeRawContent,
+} from './rehype';
+import { autoAbstract, autoImports, customComponents } from './remark';
 
 const PKG_NAME = '@andrezero/mySite';
 
@@ -28,6 +29,7 @@ export function myAstro() {
                     remarkUnwrapImages,
                     [customComponents, { componentsFile }],
                     [autoImports, { autoImportFile }],
+                    [exposeRawContent],
                 ];
                 const rehypePlugins = [collectMdxFilenames, collectImages, collectAndDecorateLinks];
 

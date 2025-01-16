@@ -3,8 +3,7 @@ import { toString } from 'mdast-util-to-string';
 import type { Node } from 'unist';
 import { visit } from 'unist-util-visit';
 
-import type { RemarkPlugin } from '../types/RemarkPlugin';
-import type { VFile } from '../types/VFile';
+import type { RemarkPlugin, VFile } from '../types';
 
 function fixPonctuation(str: string): string {
     return str.replace(/([.?!])([\w]+)/g, '$1 $2');

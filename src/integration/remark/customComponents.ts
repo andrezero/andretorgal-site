@@ -2,10 +2,9 @@ import type { ObjectExpression } from 'estree';
 import { createProgram } from 'm2dx-utils';
 import type { Root, RootContent } from 'mdast';
 
-import type { RemarkPlugin } from '../types/RemarkPlugin';
-import type { VFile } from '../types/VFile';
+import type { RemarkPlugin, VFile } from '../types';
 
-import { findExportInMdx } from './common/findExportInMdx';
+import { findExportInMdx } from './common';
 
 type Options = {
     componentsFile: string;

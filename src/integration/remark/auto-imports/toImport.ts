@@ -1,4 +1,4 @@
-import { toLinux } from '../common/path';
+import { toLinux } from '../common';
 
 import type { Export } from './types';
 

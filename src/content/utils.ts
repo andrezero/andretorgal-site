@@ -1,4 +1,4 @@
-import type { MarkdownInstance } from 'astro';
+import type { MDXInstance } from 'astro';
 
 import type { BaseNode, GlobResult } from './types';
 
@@ -9,7 +9,7 @@ function filterDrafts(node: BaseNode): boolean {
     return !node.draft;
 }
 
-export function markdownToNode<T extends BaseNode>(node: MarkdownInstance<T>): T {
+export function markdownToNode<T extends BaseNode>(node: MDXInstance<T>): T {
     const fm = node.frontmatter;
     const url = node.url || '/';
     return { ...fm, url };

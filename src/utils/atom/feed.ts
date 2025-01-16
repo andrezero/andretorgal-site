@@ -1,13 +1,14 @@
 import type { AtomFeed, AtomItem } from './types';
 
 const atomItem = (data: AtomItem): string => {
-    const { id, title, link, updated, content } = data;
+    const { id, title, link, updated, summary, content } = data;
     return `
     <item>
         <id>${id}</id>
         <title>${title}</title>
         <link>${link}?source=rss</link>
         <updated>${updated.toISOString()}</updated>
+        <summary type="html">${summary}</summary>
         <content type="html">${content}</content>
     </item>`;
     // ${tags && tags.map(t => `<category>${t}</category>`).join('')}
