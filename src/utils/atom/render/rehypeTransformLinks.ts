@@ -24,32 +24,39 @@ function isAbsolute(src: string) {
 
 export function rehypeTransformLinks(baseUrl: string, n: BaseNode) {
     return async function (tree: Root): Promise<void> {
-        // Pre-resolve image sources before visiting nodes
-        const imagesToResolve: Array<ImportedImage | string> = [];
+        const imagesToResolve: Array<Promise<{ src: string; image: ImportedImage | string }>> = [];
         visit(tree, 'element', (node: LinkNode | ImageNode) => {
             if (node.tagName === 'img' && node.properties?.src) {
                 const src = node.properties.src as string;
                 if (!isAbsolute(src)) {
                     const resolved = getNodeImage(n, src);
-                    imagesToResolve.push(resolved ? resolved() : src);
+                    imagesToResolve.push(
+                        (async () => {
+                            const r = resolved?.();
+                            const image = (await r)?.default.src;
+                            return { src, image: image || src };
+                        })(),
+                    );
                 }
             }
         });
         const resolvedImages = await Promise.all(imagesToResolve);
+        const imageMap = new Map(resolvedImages.map(item => [item.src, item.image]));
 
-        const getImage = (index: number, src: string) => {
+        const getImage = (src: string) => {
             // eslint-disable-next-line security/detect-object-injection
-            const image = resolvedImages[index];
-            const resolved = typeof image === 'string' ? image : image?.default.src;
-            return resolved || src;
+            const image = imageMap.get(src);
+            if (!image) {
+                console.error(`🟥🟥 no image for "${src}" 🟥🟥 `);
+            }
+            return image || src;
         };
 
-        // Process the tree synchronously with resolved data
-        visit(tree, 'element', (node: LinkNode | ImageNode, index) => {
+        visit(tree, 'element', (node: LinkNode | ImageNode) => {
             if (node.tagName === 'img' && node.properties?.src) {
                 const src = node.properties.src as string;
                 if (!isAbsolute(src)) {
-                    node.properties.src = `${baseUrl}${getImage(index, src)}`;
+                    node.properties.src = `${baseUrl}${getImage(src)}`;
                 }
             }
 
