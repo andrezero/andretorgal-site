@@ -7,12 +7,13 @@ import '@styles/spacing.css';
 import '@styles/typography.css';
 
 import { getNodeMeta, type BaseNode } from '@content/index';
+import FeedLink from './parts/FeedLink.astro';
 
 export type Props = { node: BaseNode };
 
 const { node } = Astro.props;
 
-const { title, description, image, type } = await getNodeMeta(node);
+const { title, description, image, type, feed } = await getNodeMeta(node);
 ---
 
 <head>
@@ -22,12 +23,6 @@ const { title, description, image, type } = await getNodeMeta(node);
 
     <title>{title}</title>
     <meta name="title" content={title} />
-    <link
-        rel="alternate"
-        type="application/rss+xml"
-        title="andretorgal.com RSS feed"
-        href="https://andretorgal.com/rss.xml"
-    />
     <meta name="description" content={description} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,18 +43,9 @@ const { title, description, image, type } = await getNodeMeta(node);
         />
     </noscript>
 
-    <link
-        rel="alternate"
-        type="application/rss+xml"
-        title="André Torgal - Blog Feed"
-        href="https://andretorgal.com/posts/atom.xml"
-    />
-    <link
-        rel="alternate"
-        type="application/rss+xml"
-        title="André Torgal - Everything (!) Feed"
-        href="https://andretorgal.com/everything/atom.xml"
-    />
+    <FeedLink title="Blog" url="/posts/atom.xml" />
+    {feed && <FeedLink title={`#${node.title}`} url={feed} />}
+    <FeedLink title="Everything" url="/posts/everything.xml" />
 
     <link rel="icon" href="/assets/logos/favicon.ico" sizes="any" />
     <link rel="icon" href="/assets/logos/favicon.svg" type="image/svg+xml" />

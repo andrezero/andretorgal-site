@@ -1,24 +1,10 @@
-import { today } from '@utils/date';
-import type { MarkdownInstance } from 'astro';
+import type { MDXInstance } from 'astro';
 
+import { createTag } from './createNode';
+import { globResultToArray } from './private';
 import type { BaseNode, TagNode } from './types';
-import { globResultToArray } from './utils';
 
 export const TOP_TAGS_COUNT = 10;
-
-// WIP
-function newTag(name: string): TagNode {
-    return {
-        filename: '',
-        url: `/tags/${name}`,
-        type: 'tag',
-        title: name,
-        published: today(),
-        count: 0,
-        images: { external: [], internal: [] },
-        links: { external: [], internal: [] },
-    };
-}
 
 type TagMap = {
     [key: string]: TagNode;
@@ -26,7 +12,7 @@ type TagMap = {
 
 export async function fetchAllTags(): Promise<TagNode[]> {
     const allNodes = await globResultToArray<BaseNode>(
-        import.meta.glob<MarkdownInstance<BaseNode>>('/src/pages/**/*.(md|mdx)'),
+        import.meta.glob<MDXInstance<BaseNode>>('/src/pages/**/*.(md|mdx)'),
     );
 
     const tagNodes = allNodes.filter(node => node.type === 'tag');
@@ -43,7 +29,7 @@ export async function fetchAllTags(): Promise<TagNode[]> {
         .reduce((acc, item) => {
             item.tags?.forEach((tag: string) => {
                 // eslint-disable-next-line security/detect-object-injection
-                const node = acc[tag] || newTag(tag);
+                const node = acc[tag] || createTag(tag);
                 node.count++;
                 // eslint-disable-next-line security/detect-object-injection
                 acc[tag] = node;

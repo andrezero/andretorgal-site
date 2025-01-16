@@ -1,10 +1,10 @@
-import type { MarkdownInstance } from 'astro';
+import type { MDXInstance } from 'astro';
 
+import { globResultToArray } from './private';
 import type { BlogPost } from './types';
-import { globResultToArray } from './utils';
 
 export async function fetchAllMeta(): Promise<BlogPost[]> {
     return globResultToArray<BlogPost>(
-        import.meta.glob<MarkdownInstance<BlogPost>>('/src/pages/meta/**/*.(md|mdx)'),
+        import.meta.glob<MDXInstance<BlogPost>>('/src/pages/meta/**/*.(md|mdx)'),
     );
 }

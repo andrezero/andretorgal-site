@@ -1,16 +1,20 @@
 import type { AtomFeed, AtomItem } from './types';
 
+function toIso8601(date: Date | string): string {
+    return new Date(date).toISOString().split('.')[0] + 'Z';
+}
+
 const atomItem = (data: AtomItem): string => {
     const { id, title, link, updated, summary, content } = data;
     return `
-    <item>
+    <entry>
         <id>${id}</id>
         <title>${title}</title>
         <link>${link}?source=rss</link>
-        <updated>${updated.toISOString()}</updated>
+        <updated>${toIso8601(updated)}</updated>
         <summary type="html">${summary}</summary>
         <content type="html">${content}</content>
-    </item>`;
+    </entry>`;
     // ${tags && tags.map(t => `<category>${t}</category>`).join('')}
 };
 
@@ -27,7 +31,7 @@ const atomMeta = (feed: AtomFeed, items: AtomItem[]) => {
         <email>${feed.author.email}</email>
         <uri>${feed.author.uri}</uri>
     </author>
-    <updated>${new Date(updated).toUTCString()}</updated>
+    <updated>${toIso8601(updated)}</updated>
     `;
 };
 

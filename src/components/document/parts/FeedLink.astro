@@ -1,0 +1,14 @@
+---
+import { SITE_TITLE, SITE_URL } from '~/config';
+
+export type Props = { title: string; url: string };
+
+const { title, url } = Astro.props;
+---
+
+<link
+    rel="alternate"
+    type="application/rss+xml"
+    title={`${SITE_TITLE}: ${title} Feed`}
+    href={`${SITE_URL}${url}`}
+/>

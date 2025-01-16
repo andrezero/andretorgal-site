@@ -13,6 +13,13 @@ export const SITE_OG_IMAGE: NodeImageMeta = {
     height: '1950',
 };
 
+export const WEBFEED_ASSETS = {
+    cover: '/media/og-default.jpg',
+    icon: '/assets/logos/logo-192.png',
+    logo: '/assets/logos/logo.svg',
+    color: '#a81715',
+};
+
 export const SITE_AUTHOR = {
     name: SITE_TITLE,
     email: 'hello@andretorgal.com',

@@ -4,7 +4,8 @@ import { PageNav } from '@components/navigation';
 import { NodeList } from '@components/node';
 import { Divider, Page, PageHeader, PageSubTitle, Section, TopLine } from '@components/page';
 import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
-import { fetchAllPosts, sortNodes, type BaseNode } from '@content/index';
+import { createPage, fetchAllPosts, sortNodes } from '@content/index';
+
 import { SectionTopTags } from './sections';
 
 export type Props = {
@@ -13,6 +14,8 @@ export type Props = {
 
 const { page } = Astro.props;
 
+const node = createPage(`Blog archive page ${page}`, `posts/archive/${page}`);
+
 const nodes = await fetchAllPosts();
 const posts = sortNodes(nodes);
 const pageCount = Math.ceil(nodes.length / 10);
@@ -20,23 +23,6 @@ const pages = [...Array(pageCount).keys()].map((p: number) => `/posts/archive/${
 pages[0] = '/posts';
 
 const latest = posts.slice(0, 6);
-// WIP
-const node: BaseNode = {
-    filename: '',
-    url: `posts/archive/${page}`,
-    type: 'page',
-    title: `Blog archive page ${page}`,
-    published: '',
-    images: {
-        external: [],
-        internal: [],
-    },
-    links: {
-        external: [],
-        internal: [],
-    },
-};
-
 const sliced = posts.slice(page * 10 - 10, page * 10);
 ---
 

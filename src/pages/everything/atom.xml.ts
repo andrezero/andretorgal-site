@@ -11,7 +11,7 @@ export async function GET(): Promise<Response> {
     const blogFeed = createFeed(
         'everything',
         'Everything Feed',
-        '(Experimental) Feed with *.* updates from this website (posts, media, tags, meta, ...).',
+        '(Experimental) Feed with *.* updates from this website: posts, media, tags, meta, ...',
     );
     const items = await Promise.all(sorted.map(node => nodeToAtomItem(blogFeed, node)));
     const body = atomFeed(blogFeed, items);

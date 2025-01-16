@@ -1,8 +1,8 @@
-import type { MarkdownInstance } from 'astro';
+import type { MDXInstance } from 'astro';
 
 import { createImageMeta, resolveNodeImage } from './images';
+import { globResultToArray } from './private';
 import type { BaseNode, Image, NodeMeta } from './types';
-import { globResultToArray } from './utils';
 
 import { SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE } from '~/config';
 
@@ -10,7 +10,7 @@ const ARTICLE_TYPES = ['post', 'tag', 'link'];
 
 export async function fetchAllNodes(): Promise<BaseNode[]> {
     return globResultToArray<BaseNode>(
-        import.meta.glob<MarkdownInstance<BaseNode>>('/src/pages/**/*.(md|mdx)'),
+        import.meta.glob<MDXInstance<BaseNode>>('/src/pages/**/*.(md|mdx)'),
     );
 }
 
@@ -81,10 +81,13 @@ export async function getNodeMeta(node: BaseNode): Promise<NodeMeta> {
     const image = resolvedImage ? createImageMeta(resolvedImage, ogImage.alt) : SITE_OG_IMAGE;
     const type = getNodeType(node);
 
+    const feed = node.type === 'tag' ? node.url + '/atom.xml' : undefined;
+
     return {
         type,
         title,
         image,
         description,
+        feed,
     };
 }

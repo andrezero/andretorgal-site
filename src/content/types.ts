@@ -30,6 +30,7 @@ export type NodeMeta = {
     title: string;
     image: NodeImageMeta;
     description: string;
+    feed: string | undefined;
 };
 
 export interface BaseNode {
