@@ -4,7 +4,7 @@ import sanitizeHtml from 'sanitize-html';
 import { render } from './render/render';
 import type { AtomFeed, AtomItem } from './types';
 
-import type { BaseNode } from '~/content';
+import type { BaseNode } from '~/nodes';
 
 export const absolute = (base: string, path: string): string => `${base}${path}`;
 

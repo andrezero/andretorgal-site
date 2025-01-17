@@ -1,6 +1,6 @@
-import type { BaseNode, PageNode, TagNode } from './types';
+import { today } from '@utils/date';
 
-import { today } from '~/utils/date';
+import type { BaseNode, PageNode, TagNode } from './types';
 
 export function createNode(type: string, title: string, url: string): BaseNode {
     return {

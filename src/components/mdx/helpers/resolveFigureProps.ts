@@ -1,4 +1,4 @@
-import type { Attribution, FigureResolvedProps, ImageProps } from '~/integration/images/types';
+import type { Attribution, FigureResolvedProps, ImageProps } from '@integration/images';
 
 function resolveAttribution(attribution?: string): Attribution | undefined {
     const match = attribution && attribution.match(/(https:\/\/[^\s]+)\s*$/);

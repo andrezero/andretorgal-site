@@ -1,16 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {
-    type BaseNode,
-    type TagNode,
-    fetchAllNodes,
-    fetchAllTags,
-    sortNodes,
-} from '@content/index';
-import type { APIContext } from 'astro';
 
-import { createFeed } from '~/utils/atom/createFeed';
-import { atomFeed } from '~/utils/atom/feed';
-import { nodeToAtomItem } from '~/utils/atom/item';
+import { type BaseNode, type TagNode, fetchAllNodes, fetchAllTags, sortNodes } from '@nodes/index';
+import { atomFeed, createFeed, nodeToAtomItem } from '@utils/atom';
+import type { APIContext } from 'astro';
 
 export interface Props {
     tag: TagNode;

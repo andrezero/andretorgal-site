@@ -4,7 +4,9 @@ import remarkA11yEmoji from '@fec/remark-a11y-emoji';
 import remarkEmoji from 'remark-emoji';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
+import { LAYOUT_BY_TYPE, LAYOUT_DEFAULT } from './constants';
 import {
+    autoLayout,
     collectAndDecorateLinks,
     collectImages,
     collectMdxFilenames,
@@ -31,7 +33,12 @@ export function myAstro() {
                     [autoImports, { autoImportFile }],
                     [exposeRawContent],
                 ];
-                const rehypePlugins = [collectMdxFilenames, collectImages, collectAndDecorateLinks];
+                const rehypePlugins = [
+                    [autoLayout, LAYOUT_BY_TYPE, LAYOUT_DEFAULT],
+                    collectMdxFilenames,
+                    collectImages,
+                    collectAndDecorateLinks,
+                ];
 
                 updateConfig({
                     markdown: { remarkPlugins, rehypePlugins },

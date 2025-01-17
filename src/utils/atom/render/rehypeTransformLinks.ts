@@ -1,8 +1,7 @@
+import type { ImportedImage } from '@integration/images/types';
+import { type BaseNode, getNodeImage } from '@nodes/index';
 import type { Root } from 'mdast';
 import { visit } from 'unist-util-visit';
-
-import { type BaseNode, getNodeImage } from '~/content';
-import type { ImportedImage } from '~/integration/images/types';
 
 type LinkNode = {
     tagName: 'a';

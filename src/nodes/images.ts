@@ -1,10 +1,9 @@
 import { dirname, resolve } from 'node:path';
 
+import type { ImportedImageFn, ResolvedImage } from '@integration/images';
 import type { ImageInputFormat, ImageMetadata } from 'astro';
 
 import type { BaseNode, NodeImageMeta } from './types';
-
-import type { ImportedImageFn, ResolvedImage } from '~/integration/images/types';
 
 const FORMAT_TO_TYPE: Record<ImageInputFormat, string> = {
     jpeg: 'image/jpeg',

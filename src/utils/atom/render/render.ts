@@ -9,7 +9,7 @@ import { rehypeInsertHero } from './rehypeInsertHero';
 import { rehypeTransformLinks } from './rehypeTransformLinks';
 
 import { SITE_URL } from '~/config';
-import type { BaseNode } from '~/content';
+import type { BaseNode } from '~/nodes';
 
 export async function render(node: BaseNode): Promise<string> {
     const file = await unified()

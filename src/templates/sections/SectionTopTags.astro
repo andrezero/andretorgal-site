@@ -3,7 +3,7 @@ import { NavLink } from '@components/navigation';
 import { TagList } from '@components/node';
 import { PageSubTitle, Section } from '@components/page';
 
-import { type TagNode, fetchTopTags } from '@content/index';
+import { type TagNode, fetchTopTags } from '@nodes/index';
 
 const topTags: TagNode[] = await fetchTopTags();
 ---

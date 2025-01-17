@@ -1,4 +1,4 @@
-import type { NodeImageMeta } from './content';
+import type { NodeImageMeta } from './nodes';
 
 export const SITE_URL = 'https://andretorgal.com';
 export const SITE_TITLE = 'André Torgal';

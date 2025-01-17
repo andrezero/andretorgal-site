@@ -1,8 +1,5 @@
-import { fetchAllPosts, sortNodes } from '@content/index';
-
-import { createFeed } from '~/utils/atom/createFeed';
-import { atomFeed } from '~/utils/atom/feed';
-import { nodeToAtomItem } from '~/utils/atom/item';
+import { fetchAllPosts, sortNodes } from '@nodes/index';
+import { atomFeed, createFeed, nodeToAtomItem } from '@utils/atom';
 
 export async function GET(): Promise<Response> {
     const allPosts = await fetchAllPosts();

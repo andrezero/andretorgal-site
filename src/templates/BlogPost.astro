@@ -3,7 +3,7 @@ import { Body, Document, Head, Layout } from '@components/document';
 import { NodeAbstract, NodeDate, NodeMeta, NodePreviousNext, NodeTags } from '@components/node';
 import { Article, ArticleHeader, Divider, Markup, PageHero, Section } from '@components/page';
 import { SiteFooter, SiteHeader, SiteHeaderBlog, SiteMain } from '@components/site';
-import { fetchAllPosts, getPreviousAndNextPosts, sortNodes, type BlogPost } from '@content/index';
+import { fetchAllPosts, getPreviousAndNextPosts, sortNodes, type BlogPost } from '@nodes/index';
 
 export type Props = {
     content: BlogPost;
