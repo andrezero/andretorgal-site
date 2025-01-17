@@ -9,10 +9,18 @@ const { free } = Astro.props;
 ---
 
 <div class:list={['layout', { 'has-section': hasSection, contained: !free }]}>
-    <slot name="header" />
-    <slot name="section" />
-    <slot name="main" />
-    <slot name="footer" />
+    <div class="layout-header">
+        <slot name="header" />
+    </div>
+    <div class="layout-section">
+        <slot name="section" />
+    </div>
+    <div class="layout-main">
+        <slot name="main" />
+    </div>
+    <div class="layout-footer">
+        <slot name="footer" />
+    </div>
 </div>
 
 <style is:global>
@@ -20,24 +28,12 @@ const { free } = Astro.props;
         margin: 0 var(--layout-gutter);
     }
 
-    .layout-header {
-        padding-top: var(--layout-gap);
-        padding-bottom: var(--layout-gap);
-    }
-
     .layout-section {
         display: none;
-        padding-top: var(--layout-gap);
-        padding-bottom: var(--layout-gap);
     }
 
     .has-section .layout-section {
         display: block;
-    }
-
-    .layout-main {
-        padding-top: var(--layout-headroom);
-        padding-bottom: var(--layout-legroom);
     }
 
     @media screen {
@@ -52,11 +48,6 @@ const { free } = Astro.props;
             height: 100%;
         }
 
-        .layout > * {
-            color: var(--scheme-fg);
-            background-color: var(--scheme-bg);
-        }
-
         .layout-header {
             grid-area: head;
         }
@@ -66,23 +57,11 @@ const { free } = Astro.props;
         }
 
         .layout-main {
-            overflow: hidden;
             grid-area: main;
-            min-height: 80vh;
-            padding-top: var(--layout-headroom);
-            padding-bottom: var(--layout-legroom);
-            border-top: var(--layout-border-wide) solid var(--scheme-edge);
         }
 
         .layout-footer {
             grid-area: foot;
-        }
-    }
-
-    @media screen and (min-width: 650px) {
-        .contained .container {
-            max-width: var(--layout-container-width);
-            margin: 0 auto;
         }
     }
 
@@ -93,6 +72,8 @@ const { free } = Astro.props;
                 'foot foot';
             grid-template-columns: var(--layout-col-1) 1fr;
             max-width: initial;
+
+            --layout-footer-shift: var(--layout-col-1) + var(--layout-border-wide);
         }
 
         .has-section {
@@ -100,45 +81,6 @@ const { free } = Astro.props;
                 'head sect'
                 'head main'
                 'foot foot';
-        }
-
-        .contained .container {
-            margin: 0 var(--layout-gap) 0 var(--layout-gutter);
-        }
-
-        .layout-header {
-            min-height: 90vh;
-        }
-
-        .layout-header .container {
-            margin: 0 var(--layout-gap);
-        }
-
-        .layout-header,
-        .layout-section {
-            padding-top: var(--layout-headroom);
-            padding-bottom: var(--layout-gap);
-        }
-
-        .layout-section .container {
-            margin-left: var(--layout-gutter);
-        }
-
-        .layout-main {
-            border-top: none;
-        }
-
-        @media screen {
-            .layout-section,
-            .layout-main {
-                border-left: var(--layout-border-wide) solid var(--scheme-edge);
-            }
-        }
-
-        .layout-footer .container {
-            max-width: initial;
-            margin: 0 var(--layout-gutter) 0
-                calc(var(--layout-col-1) + var(--layout-border-wide) + var(--layout-gutter));
         }
     }
 
@@ -157,36 +99,13 @@ const { free } = Astro.props;
                 'foot foot foot';
             grid-template-columns: var(--layout-bi-col-1) var(--layout-bi-col-2) 1fr;
             grid-template-rows: repeat(2, min-content);
-        }
 
-        .layout-section {
-            display: none;
-            border-left: none;
-        }
-
-        .layout-section .container {
-            margin-left: var(--layout-gutter-min);
+            --layout-footer-shift: var(--layout-bi-col-1) + var(--layout-bi-col-2) +
+                var(--layout-border-wide);
         }
 
         .has-section .layout-section {
             display: block;
-        }
-
-        .layout-footer .container {
-            max-width: initial;
-            margin: 0 var(--layout-gutter) 0;
-            margin-left: calc(
-                var(--layout-col-1) + var(--layout-border-wide) + var(--layout-gutter)
-            );
-        }
-
-        .has-section .layout-footer .container {
-            max-width: initial;
-            margin: 0 var(--layout-gutter) 0;
-            margin-left: calc(
-                var(--layout-bi-col-1) + var(--layout-bi-col-2) + var(--layout-border-wide) +
-                    var(--layout-gutter)
-            );
         }
     }
 
@@ -194,10 +113,6 @@ const { free } = Astro.props;
         .layout > * {
             color: var(--print-fg);
             background-color: transparent;
-        }
-
-        .has-section .layout-section {
-            display: none;
         }
     }
 </style>

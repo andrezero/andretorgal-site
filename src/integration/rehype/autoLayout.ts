@@ -9,6 +9,6 @@ export function autoLayout(layoutMap: Record<string, string>, defaultLayout: str
         const { frontmatter } = file.data.astro;
         const { layout, type } = frontmatter as BaseNode;
         // eslint-disable-next-line security/detect-object-injection
-        frontmatter.layout = layout || layoutMap[type] || defaultLayout;
+        file.data.astro.frontmatter.layout = layout || layoutMap[type] || defaultLayout;
     };
 }

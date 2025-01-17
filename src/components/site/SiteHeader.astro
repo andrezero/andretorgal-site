@@ -11,7 +11,7 @@ export type Props = {
 const { hideWatermark } = Astro.props;
 ---
 
-<header class="layout-header cs-primary">
+<header class="cs-primary">
     <div class="container">
         <SiteHeaderHeading />
         {!hideWatermark && <PrintWatermark />}
@@ -24,12 +24,36 @@ const { hideWatermark } = Astro.props;
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
+        padding-top: var(--layout-gap);
+        padding-bottom: var(--layout-gap);
+        color: var(--scheme-fg);
+        background-color: var(--scheme-bg);
     }
 
     .container {
+        container: container / inline-size;
         display: flex;
         flex-direction: column;
         gap: var(--t-space-xs);
+    }
+
+    @media screen and (min-width: 650px) {
+        .container {
+            margin-inline: auto;
+            max-width: var(--layout-container-width);
+        }
+    }
+
+    @media screen and (min-width: 1060px) {
+        header {
+            height: 100%;
+            padding-top: var(--layout-headroom);
+            padding-bottom: var(--layout-gap);
+        }
+
+        .container {
+            margin: 0 var(--layout-gap);
+        }
     }
 
     @media screen and (min-width: 1060px) {

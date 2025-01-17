@@ -5,14 +5,14 @@ import { visit } from 'unist-util-visit';
 import type { RemarkPlugin } from '../types/RemarkPlugin';
 import type { VFile } from '../types/VFile';
 
-type Link = {
+type Url = {
     url: string;
     label: string;
 };
 
-type Links = {
-    internal: Link[];
-    external: Link[];
+type Urls = {
+    internal: Url[];
+    external: Url[];
 };
 
 type LinkNode = {
@@ -27,7 +27,7 @@ type LinkNode = {
 
 export function collectAndDecorateLinks(): RemarkPlugin {
     return function (tree: Root, file: VFile): void {
-        const links: Links = { internal: [], external: [] };
+        const urls: Urls = { internal: [], external: [] };
 
         visit(tree, 'element', (node: LinkNode) => {
             if (
@@ -41,16 +41,16 @@ export function collectAndDecorateLinks(): RemarkPlugin {
                 if (isAbsolute) {
                     node.properties.rel = 'noopener';
                     node.properties['data-external'] = '';
-                    links.external.push({ url, label });
+                    urls.external.push({ url, label });
                 } else {
                     const base = url.split('/')[1];
                     node.properties['data-type'] = base;
-                    links.internal.push({ url, label });
+                    urls.internal.push({ url, label });
                 }
             }
         });
 
         const { frontmatter } = file.data.astro;
-        frontmatter.links = links;
+        frontmatter.urls = urls;
     };
 }

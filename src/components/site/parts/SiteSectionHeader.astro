@@ -6,23 +6,28 @@ export type Props = {
 const { title } = Astro.props;
 ---
 
-<div class="layout-section cs-secondary">
-    <header class="container">
-        <h2 aria-label="Current section">{title}</h2>
-    </header>
-    <nav class="container">
-        <slot />
-    </nav>
+<div class="section-header cs-secondary">
+    <div class="container">
+        <header>
+            <h2 aria-label="Current section">{title}</h2>
+        </header>
+        <nav>
+            <slot />
+        </nav>
+    </div>
 </div>
 
 <style>
-    div {
+    .section-header {
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
         display: flex;
         flex-direction: column;
-        gap: var(--layout-unit);
+        padding-top: var(--layout-gap);
+        padding-bottom: var(--layout-gap);
+        color: var(--scheme-fg);
+        background-color: var(--scheme-bg);
     }
 
     header h2 {
@@ -35,11 +40,16 @@ const { title } = Astro.props;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: var(--t-space-2xs);
+        gap: var(--t-space-xs);
         font-family: var(--t-type-family-nav);
         font-weight: var(--t-type-weight-alt-bold);
         font-size: var(--t-type-size-0);
         line-height: var(--t-type-size-3);
+    }
+
+    .container {
+        container: container / inline-size;
+        width: 100%;
     }
 
     @media screen and (min-width: 480px) {
@@ -48,7 +58,25 @@ const { title } = Astro.props;
         }
     }
 
+    @media screen and (min-width: 650px) {
+        .container {
+            margin-inline: auto;
+            max-width: var(--layout-container-width);
+        }
+    }
+
     @media screen and (min-width: 1060px) {
+        .section-header {
+            padding-top: var(--layout-headroom);
+            padding-bottom: var(--layout-gap);
+            border-left: var(--layout-border-wide) solid var(--scheme-edge);
+        }
+
+        .container {
+            margin-inline: var(--layout-gutter);
+            max-width: var(--layout-container-width);
+        }
+
         nav {
             font-size: var(--t-type-size-1);
             line-height: var(--t-type-size-4);
@@ -56,10 +84,31 @@ const { title } = Astro.props;
     }
 
     @media screen and (min-width: 1420px) {
+        .section-header {
+            border-left: 0;
+            height: 100%;
+        }
+
+        .container {
+            margin-left: var(--layout-gutter-min);
+            width: calc(100% - var(--layout-gutter-min));
+        }
+
         nav {
             flex-direction: column;
             align-items: flex-start;
             gap: var(--t-space-2xs);
+        }
+    }
+
+    @media print {
+        .layout > * {
+            color: var(--print-fg);
+            background-color: transparent;
+        }
+
+        .has-section .layout-section {
+            display: none;
         }
     }
 </style>

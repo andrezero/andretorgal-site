@@ -49,60 +49,56 @@ const meta = nodes.filter(n => n.type.startsWith('meta'));
                         <NodeMeta node={page} noDate />
                         <Markup><slot /></Markup>
                     </Section>
-                    <Section>
-                        {
-                            pages.length > 0 && (
-                                <>
-                                    <Divider size="gap">
-                                        <PageSubTitle>
-                                            {pages.length}&nbsp;{plural(pages.length, 'page')} under
-                                            #{page.title}
-                                        </PageSubTitle>
-                                    </Divider>
-                                    <NodeList nodes={pages} variant="mini" />
-                                </>
-                            )
-                        }
-                        {
-                            posts.length > 0 && (
-                                <>
-                                    <Divider size="space">
-                                        <PageSubTitle>
-                                            {posts.length}&nbsp;{plural(posts.length, 'post')} under
-                                            #{page.title}
-                                        </PageSubTitle>
-                                    </Divider>
-                                    <NodeList nodes={posts} variant="mini" />
-                                </>
-                            )
-                        }
-                        {
-                            tags.length > 0 && (
-                                <>
-                                    <Divider size="space">
-                                        <PageSubTitle>
-                                            {tags.length}&nbsp;{plural(tags.length, 'tag')} under #
-                                            {page.title}
-                                        </PageSubTitle>
-                                    </Divider>
-                                    <NodeList nodes={tags} variant="mini" />
-                                </>
-                            )
-                        }
-                        {
-                            meta.length > 0 && (
-                                <>
-                                    <Divider size="space">
-                                        <PageSubTitle>
-                                            {meta.length}&nbsp;{plural(meta.length, 'meta doc')}{' '}
-                                            under #{page.title}
-                                        </PageSubTitle>
-                                    </Divider>
-                                    <NodeList nodes={meta} />
-                                </>
-                            )
-                        }
-                    </Section>
+
+                    {
+                        pages.length > 0 && (
+                            <Section>
+                                <Divider size="gap">
+                                    <PageSubTitle>
+                                        {pages.length}&nbsp;{plural(pages.length, 'page')} under #
+                                        {page.title}
+                                    </PageSubTitle>
+                                </Divider>
+                                <NodeList nodes={pages} variant="mini" />
+                            </Section>
+                        )
+                    }
+                    {
+                        posts.length > 0 && (
+                            <Section>
+                                <Divider size="space" />
+                                <PageSubTitle>
+                                    {posts.length}&nbsp;{plural(posts.length, 'post')} under #
+                                    {page.title}
+                                </PageSubTitle>
+                                <NodeList nodes={posts} variant="mini" />
+                            </Section>
+                        )
+                    }
+                    {
+                        tags.length > 0 && (
+                            <Section>
+                                <Divider size="space" />
+                                <PageSubTitle>
+                                    {tags.length}&nbsp;{plural(tags.length, 'tag')} under #
+                                    {page.title}
+                                </PageSubTitle>
+                                <NodeList nodes={tags} variant="mini" />
+                            </Section>
+                        )
+                    }
+                    {
+                        meta.length > 0 && (
+                            <Section>
+                                <Divider size="space" />
+                                <PageSubTitle>
+                                    {meta.length}&nbsp;{plural(meta.length, 'meta doc')} under #
+                                    {page.title}
+                                </PageSubTitle>
+                                <NodeList nodes={meta} />
+                            </Section>
+                        )
+                    }
                 </Article>
             </SiteMain>
             <SiteFooter slot="footer" />

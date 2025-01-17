@@ -63,45 +63,57 @@ const isMini = variant === 'mini';
         row-gap: var(--layout-gap);
     }
 
-    @media screen and (min-width: 480px) {
+    @container container (min-width: 540px) {
         .mini {
-            grid-template-columns: 47% 47%;
+            grid-template-columns: repeat(2, 47%);
         }
     }
 
-    @media screen and (min-width: 650px) {
-        .compact {
-            grid-template-columns: 47% 47%;
+    @container container (min-width: 840px) {
+        .mini {
+            grid-template-columns: repeat(3, 31%);
         }
     }
 
-    @media screen and (min-width: 650px) {
+    @container container (min-width: 1280px) {
         .mini {
-            grid-template-columns: 31% 31% 31%;
+            grid-template-columns: repeat(4, 23%);
         }
     }
 
-    @media screen and (min-width: 1060px) {
+    @container container (min-width: 1720px) {
         .mini {
-            grid-template-columns: 47% 47%;
+            grid-template-columns: repeat(5, 18%);
         }
     }
 
-    @media screen and (min-width: 1420px) {
+    @container container (min-width: 2160px) {
         .mini {
-            grid-template-columns: 31% 31% 31%;
+            grid-template-columns: repeat(6, 15%);
         }
     }
 
-    @media screen and (min-width: 1940px) {
+    @container container (min-width: 2600px) {
         .mini {
-            grid-template-columns: 23% 23% 23% 23%;
+            grid-template-columns: repeat(7, 13%);
         }
     }
 
-    @media screen and (min-width: 2160px) {
+    @container container (min-width: 3040px) {
         .mini {
-            grid-template-columns: 18% 18% 18% 18% 18%;
+            grid-template-columns: repeat(8, 11%);
+        }
+    }
+
+    @container container (min-width: 3480px) {
+        .mini {
+            grid-template-columns: repeat(9, 10%);
+        }
+    }
+
+    @container container (min-width: 3720px) {
+        .mini {
+            grid-template-columns: repeat(10, 9%);
         }
     }
 

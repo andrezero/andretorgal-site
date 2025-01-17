@@ -33,9 +33,9 @@ const bottom = everything.slice(20, 99);
 <Document>
     <Head node={page} />
     <Body>
-        <Layout free>
+        <Layout>
             <SiteHeader slot="header" />
-            <SiteMain slot="main">
+            <SiteMain slot="main" full>
                 <Page>
                     <PageHeader node={page} slot="header">
                         <SubscribeToFeed title={`everything`} url={'/everything'} />

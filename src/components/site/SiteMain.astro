@@ -5,12 +5,13 @@ import { ArrowUp } from '@components/icons';
 
 export type Props = {
     hideUp?: boolean;
+    full?: boolean;
 };
 
-const { hideUp } = Astro.props;
+const { hideUp, full } = Astro.props;
 ---
 
-<main id="main" class="layout-main">
+<main id="main" class:list={{ full }}>
     <div class="container">
         <slot />
         {
@@ -28,9 +29,43 @@ const { hideUp } = Astro.props;
 </main>
 
 <style>
+    .container {
+        container: container / inline-size;
+    }
+
     p {
         margin-top: var(--layout-headroom);
         text-align: right;
+    }
+
+    @media screen {
+        main {
+            overflow: hidden;
+            min-height: 80vh;
+            padding-top: var(--layout-headroom);
+            padding-bottom: var(--layout-legroom);
+            color: var(--scheme-fg);
+            background-color: var(--scheme-bg);
+            border-top: var(--layout-border-wide) solid var(--scheme-edge);
+        }
+    }
+
+    @media screen and (min-width: 650px) {
+        main:not(.full) .container {
+            margin-inline: auto;
+            max-width: var(--layout-container-width);
+        }
+    }
+
+    @media screen and (min-width: 1060px) {
+        main {
+            border-top: none;
+            border-left: var(--layout-border-wide) solid var(--scheme-edge);
+        }
+
+        .container {
+            margin-inline: var(--layout-gutter);
+        }
     }
 
     @media print {

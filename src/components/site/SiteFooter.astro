@@ -3,7 +3,7 @@ import PrintWatermark from '@components/page/PrintWatermark.astro';
 import { SubscribeToFeed } from '../page';
 ---
 
-<footer role="contentinfo" class="layout-footer cs-tertiary">
+<footer role="contentinfo" class="cs-tertiary">
     <div class="container">
         <PrintWatermark />
         <hr />
@@ -80,7 +80,6 @@ import { SubscribeToFeed } from '../page';
                 </ul>
             </nav>
         </div>
-        <hr />
         <div class="legal">
             <p class="copyright">
                 <span class="site-name">andretorgal.com</span>
@@ -112,16 +111,18 @@ import { SubscribeToFeed } from '../page';
 <style>
     footer {
         color: var(--scheme-fg);
+        background-color: var(--scheme-bg);
         font-family: var(--t-type-family-alt);
         line-height: var(--t-type-height-large);
         padding-top: var(--layout-pause);
-        padding-bottom: var(--layout-legroom);
+        padding-bottom: var(--layout-space);
     }
 
-    footer > * {
+    .container {
+        container: container / inline-size;
         display: flex;
         flex-direction: column;
-        gap: var(--layout-gap);
+        gap: var(--layout-space);
     }
 
     footer > * > * {
@@ -159,21 +160,31 @@ import { SubscribeToFeed } from '../page';
     }
 
     .legal {
-        margin-top: var(--layout-space);
+        margin-top: var(--layout-gap);
     }
 
     @media screen and (min-width: 650px) {
+        .container {
+            max-width: var(--layout-container-width);
+            margin-inline: auto;
+        }
+
         .navigation {
             gap: var(--layout-space);
             flex-direction: row;
         }
     }
 
-    @media screen and (min-width: 650px) {
+    @media screen and (min-width: 1060px) {
+        .container {
+            max-width: initial;
+            margin-inline: var(--layout-gutter);
+            margin-left: calc(var(--layout-footer-shift) + var(--layout-gutter));
+        }
     }
 
     @media print {
-        .layout-footer {
+        footer {
             border-top: var(--layout-unit) solid var(--print-brand);
         }
 

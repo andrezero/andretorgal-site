@@ -61,7 +61,7 @@
         --layout-headroom: var(--t-space-m);
         --layout-legroom: var(--t-space-3xl);
         --layout-space: var(--t-space-xl);
-        --layout-pause: var(--t-space-xl);
+        --layout-pause: calc(var(--t-space-xl) + var(--t-space-l));
 
         --layout-gutter: var(--t-space-xl-2xl);
         --layout-gutter-min: var(--t-space-l);

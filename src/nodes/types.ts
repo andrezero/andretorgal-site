@@ -53,7 +53,8 @@ export interface BaseNode {
         external: Image[];
         internal: Image[];
     };
-    links: {
+    links: string[];
+    urls: {
         external: Link[];
         internal: Link[];
     };
@@ -70,6 +71,14 @@ export type AboutNode = BaseNode & {
 };
 
 export type TagNode = BaseNode & {
+    count: number;
+};
+
+export type PersonLink = {
+    kind: 'person';
+};
+
+export type LinkNode = BaseNode & {
     count: number;
 };
 
