@@ -5,6 +5,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 
+import { rehypeInsertHero } from './rehypeInsertHero';
 import { rehypeTransformLinks } from './rehypeTransformLinks';
 
 import { SITE_URL } from '~/config';
@@ -15,6 +16,7 @@ export async function render(node: BaseNode): Promise<string> {
         .use(remarkParse)
         .use(remarkEmoji)
         .use(remarkRehype)
+        .use(rehypeInsertHero, node)
         .use(rehypeTransformLinks, SITE_URL, node)
         .use(rehypeFormat)
         .use(rehypeStringify)

@@ -4,6 +4,10 @@ export type AtomFeed = {
     subtitle: string;
     uri: string;
     site: {
+        cover: string;
+        icon: string;
+        logo: string;
+        color: string;
         uri: string;
     };
     author: {

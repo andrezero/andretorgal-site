@@ -51,6 +51,13 @@ const atomMeta = (feed: AtomFeed, items: AtomItem[]) => {
     <subtitle>${feed.subtitle}</subtitle>
     <link href="${feed.uri}" rel="self"/>
     <link href="${feed.site.uri}"/>
+
+    <webfeeds:cover image="${feed.site.cover}" />
+    <webfeeds:icon>${feed.site.icon}</webfeeds:icon>
+    <webfeeds:logo>${feed.site.logo}</webfeeds:logo>
+    <webfeeds:accentColor>${feed.site.color}</webfeeds:accentColor>
+    <webfeeds:related layout="card" target="browser"/>
+
     <author>
         <name>${feed.author.name}</name>
         <email>${feed.author.email}</email>
@@ -63,7 +70,7 @@ const atomMeta = (feed: AtomFeed, items: AtomItem[]) => {
 export const atomFeed = (feed: AtomFeed, items: AtomItem[]): string => {
     return `
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0">
     ${atomMeta(feed, items)}
     ${items.map(item => atomItem(item)).join('')}
 </feed>
