@@ -1,0 +1,17 @@
+---
+import type { LinkNode } from '~/nodes';
+import { LinkRollCard } from '../cards';
+import ListGrid from '../lists/ListGrid.astro';
+
+export type Props = {
+    node: LinkNode;
+};
+
+const { node } = Astro.props;
+
+const { roll } = node;
+---
+
+<ListGrid variant="mini">
+    {roll.map(r => <LinkRollCard node={node} roll={r} />)}
+</ListGrid>

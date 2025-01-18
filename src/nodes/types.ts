@@ -78,8 +78,15 @@ export type PersonLink = {
     kind: 'person';
 };
 
+export type LinkRoll = {
+    url: string;
+    label?: string;
+    description?: string;
+};
+
 export type LinkNode = BaseNode & {
     count: number;
+    roll: LinkRoll[];
 };
 
 export type BlogPost = BaseNode;

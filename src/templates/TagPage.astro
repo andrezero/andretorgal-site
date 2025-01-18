@@ -19,11 +19,11 @@ export type Props = {
     content: TagNode;
 };
 
-const { content: page } = Astro.props;
+const { content: tag } = Astro.props;
 
 const allNodes = await fetchAllNodes();
 
-const nodes = sortNodes(allNodes.filter(n => n.tags?.includes(page.title)));
+const nodes = sortNodes(allNodes.filter(n => n.tags?.includes(tag.title)));
 const pages = nodes.filter(n => n.type === 'page');
 const posts = nodes.filter(n => n.type === 'post');
 const tags = nodes.filter(n => n.type === 'tag');
@@ -31,22 +31,22 @@ const meta = nodes.filter(n => n.type.startsWith('meta'));
 ---
 
 <Document>
-    <Head node={page} />
+    <Head node={tag} />
     <Body>
         <Layout>
             <SiteHeader slot="header" />
             <SiteMain slot="main">
                 <Article>
-                    <ArticleHeader node={page} slot="header" override noDate>
+                    <ArticleHeader node={tag} slot="header" override noDate>
                         <PageTitle>
-                            #{page.title}
+                            #{tag.title}
                         </PageTitle>
-                        <SubscribeToFeed title={`#${page.title}`} url={page.url} />
+                        <SubscribeToFeed title={`#${tag.title}`} url={tag.url} />
                     </ArticleHeader>
                     <Section>
                         <TopLine />
-                        <NodeAbstract node={page} />
-                        <NodeMeta node={page} noDate />
+                        <NodeAbstract node={tag} />
+                        <NodeMeta node={tag} noDate />
                         <Markup><slot /></Markup>
                     </Section>
 
@@ -56,7 +56,7 @@ const meta = nodes.filter(n => n.type.startsWith('meta'));
                                 <Divider size="gap">
                                     <PageSubTitle>
                                         {pages.length}&nbsp;{plural(pages.length, 'page')} under #
-                                        {page.title}
+                                        {tag.title}
                                     </PageSubTitle>
                                 </Divider>
                                 <NodeList nodes={pages} variant="mini" />
@@ -69,7 +69,7 @@ const meta = nodes.filter(n => n.type.startsWith('meta'));
                                 <Divider size="space" />
                                 <PageSubTitle>
                                     {posts.length}&nbsp;{plural(posts.length, 'post')} under #
-                                    {page.title}
+                                    {tag.title}
                                 </PageSubTitle>
                                 <NodeList nodes={posts} variant="mini" />
                             </Section>
@@ -81,7 +81,7 @@ const meta = nodes.filter(n => n.type.startsWith('meta'));
                                 <Divider size="space" />
                                 <PageSubTitle>
                                     {tags.length}&nbsp;{plural(tags.length, 'tag')} under #
-                                    {page.title}
+                                    {tag.title}
                                 </PageSubTitle>
                                 <NodeList nodes={tags} variant="mini" />
                             </Section>
@@ -93,7 +93,7 @@ const meta = nodes.filter(n => n.type.startsWith('meta'));
                                 <Divider size="space" />
                                 <PageSubTitle>
                                     {meta.length}&nbsp;{plural(meta.length, 'meta doc')} under #
-                                    {page.title}
+                                    {tag.title}
                                 </PageSubTitle>
                                 <NodeList nodes={meta} />
                             </Section>

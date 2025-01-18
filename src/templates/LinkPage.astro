@@ -1,0 +1,64 @@
+---
+import { Body, Document, Head, Layout } from '@components/document';
+import { LinkRoll, NodeAbstract, NodeList, NodeMeta } from '@components/node';
+import {
+    Article,
+    ArticleHeader,
+    Divider,
+    Markup,
+    PageSubTitle,
+    PageTitle,
+    Section,
+    TopLine,
+} from '@components/page';
+import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
+import { fetchAllNodes, sortNodes, type LinkNode } from '@nodes/index';
+export type Props = {
+    content: LinkNode;
+};
+
+const { content: link } = Astro.props;
+
+const allNodes = await fetchAllNodes();
+
+const nodes = sortNodes(allNodes.filter(n => n.links?.includes(link.url)));
+---
+
+<Document>
+    <Head node={link} />
+    <Body>
+        <Layout>
+            <SiteHeader slot="header" />
+            <SiteMain slot="main" full>
+                <Article>
+                    <ArticleHeader node={link} slot="header" override noDate>
+                        <PageTitle>{link.title}</PageTitle>
+                    </ArticleHeader>
+                    <Section>
+                        <TopLine />
+                        <NodeAbstract node={link} />
+                        <NodeMeta node={link} noDate />
+                    </Section>
+                    {
+                        nodes.length > 0 && (
+                            <Section>
+                                <Divider size="gap" />
+                                <PageSubTitle>Related to {link.title}</PageSubTitle>
+                                <NodeList nodes={nodes} variant="mini" />
+                            </Section>
+                        )
+                    }
+                    <Section>
+                        <PageSubTitle>Link Roll</PageSubTitle>
+                        <LinkRoll node={link} />
+                    </Section>
+                    <Section>
+                        <PageSubTitle>Thoughts on {link.title}</PageSubTitle>
+                        <Markup><slot /></Markup>
+                    </Section>
+                </Article>
+            </SiteMain>
+            <SiteFooter slot="footer" />
+        </Layout>
+    </Body>
+</Document>
