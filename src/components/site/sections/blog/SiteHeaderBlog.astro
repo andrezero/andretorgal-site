@@ -5,28 +5,70 @@ import { SiteSectionHeader } from '@components/site';
 import type { BlogPost } from '@nodes/index';
 
 export type Props = {
-    previous: BlogPost | undefined;
-    next: BlogPost | undefined;
+    previous?: BlogPost | undefined;
+    next?: BlogPost | undefined;
+    page?: number;
 };
 
 const { previous, next } = Astro.props;
 ---
 
 <SiteSectionHeader title="Blog">
-    <ul>
-        <li>
-            <NavLink href="/posts" exact>Latest posts</NavLink>
-        </li>
-    </ul>
-    <div>
-        <NodePreviousNext {...{previous, next}} />
+    <div class="layout">
+        <div class="main">
+            <NavLink href="/posts" exact>Latest</NavLink>
+            <NavLink href="/posts/archive">Archive</NavLink>
+        </div>
+        {
+            (previous || next) && (
+                <div class="inline">
+                    <NodePreviousNext previous={previous} next={next} />
+                </div>
+            )
+        }
     </div>
 </SiteSectionHeader>
 
 <style>
-    div {
+    .layout {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-v-s);
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-v-xs);
+    }
+
+    .inline {
         min-width: 100%;
+    }
+
+    .inline {
         font-size: var(--t-type-size-0);
         line-height: var(--t-type-size-2);
+    }
+
+    @media screen and (min-width: 320px) {
+        .main {
+            flex-direction: row;
+            gap: var(--gap-h-m);
+        }
+    }
+
+    @media screen and (min-width: 1420px) {
+        .layout {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-v-space);
+        }
+
+        .main {
+            flex-direction: column;
+            gap: var(--gap-v-2xs);
+        }
     }
 </style>

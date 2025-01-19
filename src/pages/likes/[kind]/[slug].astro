@@ -1,0 +1,24 @@
+---
+import { fetchAllLikes, type LikeNode } from '@nodes/index';
+import LikePage from '@templates/LikePage.astro';
+
+export interface Props {
+    like: LikeNode;
+}
+
+export async function getStaticPaths() {
+    const likes = await fetchAllLikes();
+
+    return likes.map(like => {
+        const [kind, slug] = like.url.replace('/likes/', '').split('/');
+        return {
+            params: { kind, slug },
+            props: { like },
+        };
+    });
+}
+
+const { like } = Astro.props;
+---
+
+<LikePage content={like} />

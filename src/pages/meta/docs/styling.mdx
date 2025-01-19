@@ -4,7 +4,7 @@ type: meta-page
 title: 'My website: Styling'
 tags:
   - andretorgal-com
-  - css
+  - web-design
 published: 2019 May 16
 ---
 
@@ -53,26 +53,26 @@ Only 1 of the color schemes is overridden when `prefers-color-scheme: dark` and 
 
 The `--layout-*` are semantic tokens for organising scale and rhythm in a responsive way:
 
-- `--layout-legroom` - top padding for page layouts
-- `--layout-headroom` - bottom padding for page layouts
+- `--gap-v-legroom` - top padding for page layouts
+- `--gap-v-headroom` - bottom padding for page layouts
 
 For horizontal spacing:
 
 - `--layout-unit` - minimum space between atoms
-- `--layout-gutter` - on small screens
-- `--layout-gutter-min`
+- `--gap-h-gutter` - on small screens
+- `--gap-h-gutter-min`
 
 For vertical spacing:
 
 - `--layout-unit` - minimum space between atoms
-- `--layout-gap` - space between blocks
-- `--layout-space` - between molecules
-- `--layout-pause` - between page sections (organisms)
+- `--gap-h-s` - space between blocks
+- `--gap-v-space` - between molecules
+- `--gap-v-pause` - between page sections (organisms)
 
 Along with some extra tokens for tweaking space proportionally, but with precision:
 
 - `--layout-shift` and `--layout-unshift`
-- `--layout-s-quarter`, `--layout-s-half`, `--layout-s-one` - in relation to `1em`
+- `--proportional-quarter`, `--proportional-half`, `--proportional-one` - in relation to `1em`
 - `--layout-border-thin` - outline-offsets and thin borders should not be scalable
 
 <Note>

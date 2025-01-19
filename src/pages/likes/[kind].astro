@@ -1,0 +1,21 @@
+---
+import { fetchAllKinds, type KindNode } from '@nodes/index';
+import KindPage from '@templates/KindPage.astro';
+
+export interface Props {
+    kind: KindNode;
+}
+
+export async function getStaticPaths() {
+    const kinds = await fetchAllKinds();
+
+    return kinds.map(kind => ({
+        params: { kind: kind.title },
+        props: { kind },
+    }));
+}
+
+const { kind } = Astro.props;
+---
+
+<KindPage content={kind} />

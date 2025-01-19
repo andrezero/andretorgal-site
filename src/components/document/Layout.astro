@@ -1,14 +1,8 @@
 ---
-export type Props = {
-    free?: boolean;
-};
-
 const hasSection = Astro.slots.has('section');
-
-const { free } = Astro.props;
 ---
 
-<div class:list={['layout', { 'has-section': hasSection, contained: !free }]}>
+<div class:list={['layout', { 'has-section': hasSection }]}>
     <div class="layout-header">
         <slot name="header" />
     </div>
@@ -25,7 +19,7 @@ const { free } = Astro.props;
 
 <style is:global>
     .container {
-        margin: 0 var(--layout-gutter);
+        margin: 0 var(--gap-h-gutter);
     }
 
     .layout-section {
@@ -72,7 +66,6 @@ const { free } = Astro.props;
                 'foot foot';
             grid-template-columns: var(--layout-col-1) 1fr;
             max-width: initial;
-
             --layout-footer-shift: var(--layout-col-1) + var(--layout-border-wide);
         }
 
@@ -90,7 +83,6 @@ const { free } = Astro.props;
                 'head main'
                 'foot foot';
             grid-template-columns: var(--layout-col-1) 1fr;
-            grid-template-rows: repeat(2, min-content);
         }
 
         .has-section {
@@ -98,8 +90,6 @@ const { free } = Astro.props;
                 'head sect main'
                 'foot foot foot';
             grid-template-columns: var(--layout-bi-col-1) var(--layout-bi-col-2) 1fr;
-            grid-template-rows: repeat(2, min-content);
-
             --layout-footer-shift: var(--layout-bi-col-1) + var(--layout-bi-col-2) +
                 var(--layout-border-wide);
         }

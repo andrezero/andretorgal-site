@@ -34,6 +34,7 @@ const tabIndex = isActive ? -1 : 0;
         display: -webkit-box;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
+        font-family: var(--t-type-family-nav);
         text-overflow: ellipsis;
         overflow: hidden;
     }
@@ -44,8 +45,6 @@ const tabIndex = isActive ? -1 : 0;
 
     .nav {
         padding: 0 var(--layout-shift) 0;
-        margin-left: calc(-1 * var(--layout-shift));
-        margin-right: var(--layout-shift);
         text-decoration: underline;
     }
 

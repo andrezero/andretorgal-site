@@ -75,7 +75,7 @@ const classList = [variant, `type-${node.type}`, { 'has-date': showDate, 'has-ty
 <style>
     article {
         position: relative;
-        gap: var(--t-space-xs);
+        gap: var(--gap-h-s);
         height: var(--t-space-2xl-3xl);
         overflow: hidden;
         background-color: var(--scheme-container-bg);
@@ -87,9 +87,9 @@ const classList = [variant, `type-${node.type}`, { 'has-date': showDate, 'has-ty
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: var(--layout-s-half);
+        gap: var(--proportional-half);
         height: 100%;
-        padding: var(--layout-s-quarter);
+        padding: var(--proportional-quarter);
         text-decoration: none;
         border-radius: 0;
         background: linear-gradient(
@@ -102,7 +102,7 @@ const classList = [variant, `type-${node.type}`, { 'has-date': showDate, 'has-ty
     }
 
     .has-date .mini-layout {
-        padding-top: var(--layout-s-quarter);
+        padding-top: var(--proportional-quarter);
     }
 
     .mini-layout:hover {
@@ -140,14 +140,14 @@ const classList = [variant, `type-${node.type}`, { 'has-date': showDate, 'has-ty
     .node-details {
         display: flex;
         flex-direction: column-reverse;
-        gap: var(--layout-s-one);
+        gap: var(--proportional-one);
     }
 
     .badge {
         position: absolute;
         display: flex;
-        top: var(--layout-s-quarter);
-        right: var(--layout-s-quarter);
+        top: var(--proportional-quarter);
+        right: var(--proportional-quarter);
     }
 
     h3 {

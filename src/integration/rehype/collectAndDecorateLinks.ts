@@ -1,19 +1,11 @@
+import type { Link } from '@nodes/index';
 import type { Root } from 'mdast';
 import { toString } from 'mdast-util-to-string';
 import { visit } from 'unist-util-visit';
 
-import type { RemarkPlugin } from '../types/RemarkPlugin';
+import { isAbsolute } from '../../utils';
+import type { RemarkPlugin } from '../types/';
 import type { VFile } from '../types/VFile';
-
-type Url = {
-    url: string;
-    label: string;
-};
-
-type Urls = {
-    internal: Url[];
-    external: Url[];
-};
 
 type LinkNode = {
     tagName: string;
@@ -27,7 +19,15 @@ type LinkNode = {
 
 export function collectAndDecorateLinks(): RemarkPlugin {
     return function (tree: Root, file: VFile): void {
-        const urls: Urls = { internal: [], external: [] };
+        const { frontmatter } = file.data.astro;
+        const links: Link[] = (frontmatter.links as Link[]) || [];
+
+        function addLink(link: Link) {
+            const found = links.find(l => l.url === link.url);
+            if (!found) {
+                links.push(link);
+            }
+        }
 
         visit(tree, 'element', (node: LinkNode) => {
             if (
@@ -37,20 +37,19 @@ export function collectAndDecorateLinks(): RemarkPlugin {
             ) {
                 const url = node.properties.href;
                 const label = toString(node);
-                const isAbsolute = /^[a-z]+:/.test(url) || url.startsWith('//');
-                if (isAbsolute) {
+
+                if (isAbsolute(url)) {
                     node.properties.rel = 'noopener';
                     node.properties['data-external'] = '';
-                    urls.external.push({ url, label });
+                    addLink({ url, label });
                 } else {
                     const base = url.split('/')[1];
                     node.properties['data-type'] = base;
-                    urls.internal.push({ url, label });
+                    addLink({ url, label });
                 }
             }
         });
 
-        const { frontmatter } = file.data.astro;
-        frontmatter.urls = urls;
+        frontmatter.links = links;
     };
 }

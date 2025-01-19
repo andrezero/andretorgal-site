@@ -21,11 +21,9 @@ const { hideWatermark } = Astro.props;
 
 <style>
     header {
-        -webkit-user-select: none;
-        -moz-user-select: none;
         user-select: none;
-        padding-top: var(--layout-gap);
-        padding-bottom: var(--layout-gap);
+        padding-top: var(--gap-h-s);
+        padding-bottom: var(--gap-h-s);
         color: var(--scheme-fg);
         background-color: var(--scheme-bg);
     }
@@ -34,7 +32,7 @@ const { hideWatermark } = Astro.props;
         container: container / inline-size;
         display: flex;
         flex-direction: column;
-        gap: var(--t-space-xs);
+        gap: var(--gap-h-s);
     }
 
     @media screen and (min-width: 650px) {
@@ -47,24 +45,24 @@ const { hideWatermark } = Astro.props;
     @media screen and (min-width: 1060px) {
         header {
             height: 100%;
-            padding-top: var(--layout-headroom);
-            padding-bottom: var(--layout-gap);
+            padding-top: var(--gap-v-headroom);
+            padding-bottom: var(--gap-h-s);
         }
 
         .container {
-            margin: 0 var(--layout-gap);
+            margin: 0 var(--gap-h-s);
         }
     }
 
     @media screen and (min-width: 1060px) {
         .container {
-            gap: var(--t-space-s);
+            gap: var(--gap-v-s);
         }
     }
 
     @media screen and (min-width: 1420px) {
-        header {
-            gap: var(--t-space-m);
+        .container {
+            gap: var(--gap-v-m);
         }
     }
 </style>

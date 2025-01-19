@@ -13,8 +13,8 @@
     z-index: 11;
     position: absolute;
     width: max-content;
-    padding: var(--layout-shift) var(--layout-gap) var(--layout-shift);
-    inset: var(--layout-unit) auto auto var(--layout-gap);
+    padding: var(--layout-shift) var(--gap-h-s) var(--layout-shift);
+    inset: var(--layout-unit) auto auto var(--gap-h-s);
     font-family: var(--t-type-family-nav);
     font-weight: bold;
 }

@@ -3,8 +3,8 @@ import NavLink from '@components/navigation/NavLink.astro';
 ---
 
 <nav>
-    <NavLink href="/">Home</NavLink>
     <NavLink href="/posts">Blog</NavLink>
+    <NavLink href="/likes">Likes</NavLink>
     <NavLink href="/tags">Tags</NavLink>
     <NavLink href="/about">About</NavLink>
     <NavLink href="/meta">Meta</NavLink>
@@ -13,14 +13,27 @@ import NavLink from '@components/navigation/NavLink.astro';
 <style>
     nav {
         display: flex;
+        flex-direction: column;
         gap: var(--t-space-2xs);
         font-family: var(--t-type-family-nav);
         font-weight: var(--t-type-weight-alt-bold);
+        overflow: hidden;
+    }
+
+    nav > :global(*) {
+        flex-shrink: 0;
+    }
+
+    @media screen and (min-width: 320px) {
+        nav {
+            flex-direction: row;
+        }
     }
 
     @media screen and (min-width: 480px) {
         nav {
-            gap: var(--t-space-s);
+            gap: var(--gap-h-s);
+            font-size: var(--t-type-size-1);
         }
     }
 
@@ -29,7 +42,6 @@ import NavLink from '@components/navigation/NavLink.astro';
             flex-direction: column;
             align-items: center;
             gap: var(--t-space-2xs);
-            font-size: var(--t-type-size-1);
             line-height: var(--t-type-size-4);
         }
     }

@@ -3,12 +3,12 @@ import type { BaseNode } from '@nodes/index';
 
 import { NodeCard, NodeMini } from '../cards';
 import { NodeLink } from '../parts';
-import type { ListGridVariant } from './ListGrid.astro';
-import ListGrid from './ListGrid.astro';
+import type { GridListVariant } from './GridList.astro';
+import GridList from './GridList.astro';
 
 export type Props = {
     nodes: BaseNode[];
-    variant?: ListGridVariant;
+    variant?: GridListVariant;
     type?: boolean | undefined;
 };
 
@@ -19,7 +19,7 @@ const isLink = variant === 'textual';
 const isMini = variant === 'mini';
 ---
 
-<ListGrid variant={variant}>
+<GridList variant={variant}>
     {
         nodes.map(node => (
             <li>
@@ -29,4 +29,4 @@ const isMini = variant === 'mini';
             </li>
         ))
     }
-</ListGrid>
+</GridList>

@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@altano/tiny-async-pool": "^3.0.1",
+    "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "4.0.3",
     "@astrojs/sitemap": "3.2.1",
     "@astropub/md": "1.0.0",

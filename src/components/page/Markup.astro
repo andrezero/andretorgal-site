@@ -35,29 +35,29 @@ const show = Astro.slots.has('default');
     }
 
     .markup > h2 {
-        margin: var(--layout-gap) 0 var(--layout-s-quarter);
+        margin: var(--gap-h-s) 0 var(--proportional-quarter);
     }
 
     .markup > h3 {
-        margin: var(--layout-gap) 0 var(--layout-s-quarter);
+        margin: var(--gap-h-s) 0 var(--proportional-quarter);
     }
 
     .markup > h4 {
-        margin: var(--layout-s-quarter) 0 var(--layout-s-quarter);
+        margin: var(--proportional-quarter) 0 var(--proportional-quarter);
     }
 
     .markup > p {
-        margin: 0 0 var(--layout-s-quarter);
+        margin: 0 0 var(--proportional-quarter);
     }
 
     .markup > .large {
         font-size: var(--t-type-size-1);
-        margin: 0 0 var(--layout-s-quarter);
+        margin: 0 0 var(--proportional-quarter);
     }
 
     .markup > ol,
     .markup > ul {
-        margin: 0 0 var(--layout-s-quarter) var(--layout-gap);
+        margin: 0 0 var(--proportional-quarter) var(--gap-h-s);
     }
 
     .markup > ul > li {
@@ -65,20 +65,20 @@ const show = Astro.slots.has('default');
     }
 
     .markup > h4 {
-        margin: var(--layout-s-quarter) 0 var(--layout-s-quarter);
+        margin: var(--proportional-quarter) 0 var(--proportional-quarter);
     }
 
     .markup > pre {
-        margin: var(--layout-s-quarter) 0 var(--layout-gap);
-        padding: var(--layout-unit) var(--layout-gap);
+        margin: var(--proportional-quarter) 0 var(--gap-h-s);
+        padding: var(--layout-unit) var(--gap-h-s);
     }
 
     .markup > figure {
-        margin: var(--layout-unit) 0 var(--layout-gap);
+        margin: var(--layout-unit) 0 var(--gap-h-s);
     }
 
     .markup > iframe {
-        margin: var(--layout-unit) 0 var(--layout-gap);
+        margin: var(--layout-unit) 0 var(--gap-h-s);
     }
 
     .markup > iframe + div {
@@ -87,7 +87,7 @@ const show = Astro.slots.has('default');
 
     .markup > hr {
         width: 100%;
-        margin: var(--layout-gap) 0;
+        margin: var(--gap-h-s) 0;
         border: none;
         border-bottom: var(--layout-border-thin) solid var(--scheme-edge);
     }
@@ -96,7 +96,7 @@ const show = Astro.slots.has('default');
         position: relative;
         font-style: italic;
         font-size: var(--t-type-size-1);
-        margin: var(--layout-gap) 0 var(--layout-gap) var(--layout-space);
+        margin: var(--gap-h-s) 0 var(--gap-h-s) var(--gap-v-space);
     }
 
     .markup > blockquote::before {
@@ -109,7 +109,7 @@ const show = Astro.slots.has('default');
         font-size: 3.5em;
         font-weight: var(--t-type-weight-alt-bold);
         content: '“';
-        left: calc(-1 * var(--layout-space));
+        left: calc(-1 * var(--gap-v-space));
         top: calc(-1 * var(--layout-shift));
         line-height: 1em;
     }

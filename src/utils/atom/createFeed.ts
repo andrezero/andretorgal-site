@@ -1,6 +1,6 @@
-import type { AtomFeed } from './types';
+import { SITE_AUTHOR, SITE_FEED, SITE_TITLE, SITE_URL } from '../../config';
 
-import { SITE_AUTHOR, SITE_FEED, SITE_TITLE, SITE_URL } from '~/config';
+import type { AtomFeed } from './types';
 
 export function createFeed(
     route: string,

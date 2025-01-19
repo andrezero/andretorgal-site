@@ -1,0 +1,49 @@
+---
+import { extractIcon } from '@components/icons';
+import { type Link } from '@nodes/index';
+
+export type CardVariant = 'full' | 'compact';
+
+export type Props = {
+    link: Link;
+};
+
+const { link } = Astro.props;
+const { label, url } = link;
+const [Icon, iconColorLight, iconColorDark] = extractIcon(link);
+---
+
+<a href={url} rel="noreferrer noopener">
+    <span class="icon"><Icon /></span>
+    <span class="label">{label}</span>
+</a>
+
+<style define:vars={{ 'icon-color-light': iconColorLight, 'icon-color-dark': iconColorDark }}>
+    a {
+        display: inline-block;
+        min-height: var(--t-space-l);
+        font-size: var(--t-type-size-0);
+        text-decoration: none;
+    }
+
+    .icon {
+        display: inline-block;
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: var(--t-type-size-2);
+        height: var(--t-type-size-2);
+        color: var(--icon-color-light);
+        position: relative;
+        top: calc(var(--proportional-half) - var(--layout-shift));
+    }
+
+    .label {
+        text-decoration: underline;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .icon {
+            color: var(--icon-color-dark);
+        }
+    }
+</style>

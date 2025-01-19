@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE } from '~/config';
+import { SITE_TITLE } from '../../config';
 
 import SiteLogo from './SiteLogo.astro';
 ---
@@ -17,16 +17,16 @@ import SiteLogo from './SiteLogo.astro';
 <style>
     .title {
         margin: 0;
-        font-size: var(--t-type-size-4);
-        line-height: var(--t-type-size-4);
+        font-size: var(--t-type-size-1);
+        line-height: var(--t-type-size-1);
     }
 
     h1 a {
         display: inline-flex;
-        flex-direction: row-reverse;
+        flex-direction: column-reverse;
         justify-content: flex-end;
-        align-items: center;
-        gap: var(--t-space-xs);
+        align-items: start;
+        gap: var(--gap-h-s);
         padding: 0 var(--layout-shift);
         margin-left: calc(-1 * var(--layout-shift));
         text-decoration: none;
@@ -47,8 +47,21 @@ import SiteLogo from './SiteLogo.astro';
     }
 
     h1 picture {
+        flex-shrink: 0;
         display: inline-block;
         width: var(--t-type-size-6);
+    }
+
+    @media screen and (min-width: 300px) {
+        h1 a {
+            flex-direction: row-reverse;
+            align-items: center;
+        }
+
+        .title {
+            font-size: var(--t-type-size-4);
+            line-height: var(--t-type-size-4);
+        }
     }
 
     @media screen and (min-width: 1060px) {
@@ -63,7 +76,6 @@ import SiteLogo from './SiteLogo.astro';
         h1 a {
             flex-direction: column-reverse;
             align-items: center;
-            gap: var(--layout-unit);
             padding: var(--layout-shift);
             padding-bottom: var(--t-space-2xs);
         }
@@ -79,6 +91,7 @@ import SiteLogo from './SiteLogo.astro';
         h1 picture {
             display: flex;
             align-items: center;
+            min-width: var(--t-type-size-7);
             width: var(--t-type-size-7);
         }
     }
@@ -96,8 +109,14 @@ import SiteLogo from './SiteLogo.astro';
             padding: 0;
         }
 
+        h1 a {
+            flex-direction: row-reverse;
+            align-items: center;
+        }
+
         h1 span {
             color: var(--print-fg);
+            font-size: var(--t-type-size-4);
         }
     }
 </style>

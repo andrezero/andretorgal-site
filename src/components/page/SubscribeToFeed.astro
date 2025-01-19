@@ -22,11 +22,17 @@ const { title, url, compact, reverse } = Astro.props;
 </p>
 
 <style>
+    P {
+        user-select: none;
+        font-family: var(--t-type-family-nav);
+    }
+
     p,
     a {
         display: flex;
         align-items: center;
-        gap: var(--layout-s-quarter);
+        flex-wrap: wrap;
+        gap: var(--proportional-quarter);
     }
     .reverse a {
         flex-direction: row-reverse;
@@ -39,5 +45,11 @@ const { title, url, compact, reverse } = Astro.props;
     }
     .icon {
         padding-top: 0.2rem;
+    }
+
+    @media print {
+        p {
+            display: none;
+        }
     }
 </style>

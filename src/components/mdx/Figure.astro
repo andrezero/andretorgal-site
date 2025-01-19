@@ -17,7 +17,7 @@ const {
     attribution,
     width: titleWidth,
     height: titleHeight,
-} = await resolveFigureProps(Astro.props);
+} = resolveFigureProps(Astro.props);
 
 const bgColor = '#414141';
 const showLabel = !notitle && Boolean(title || attribution);
@@ -76,7 +76,7 @@ const imageProps = {
     }
 
     figcaption span {
-        padding-top: var(--layout-s-quarter);
+        padding-top: var(--proportional-quarter);
         font-size: var(--t-type-size--2);
         font-style: italic;
     }
@@ -85,7 +85,7 @@ const imageProps = {
         figcaption {
             background: var(--scheme-muted);
             color: var(--scheme-fg);
-            padding: var(--layout-s-quarter);
+            padding: var(--proportional-quarter);
         }
 
         .frame::before {

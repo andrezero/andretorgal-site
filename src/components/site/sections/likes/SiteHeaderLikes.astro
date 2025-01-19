@@ -1,0 +1,54 @@
+---
+import { NavLink } from '@components/navigation';
+import { SiteSectionHeader } from '@components/site';
+import {
+    fetchAllKinds,
+    fetchAllLikes,
+    filterLikesByKind,
+    type KindNode,
+    type LikeNode,
+} from '@nodes/index';
+
+export type Props = {
+    kind?: KindNode;
+    like?: LikeNode;
+};
+
+const allKinds = await fetchAllKinds();
+const allLikes = await fetchAllLikes();
+---
+
+<SiteSectionHeader title="Likes">
+    <ul>
+        {
+            allKinds.map(kind => (
+                <li class="kind">
+                    <NavLink inline href={kind.url}>
+                        {kind.plural} ({filterLikesByKind(allLikes, kind).length})
+                    </NavLink>
+                </li>
+            ))
+        }
+    </ul>
+</SiteSectionHeader>
+
+<style>
+    ul {
+        display: flex;
+        gap: var(--gap-h-m);
+        flex-wrap: wrap;
+        min-width: 100%;
+        line-height: var(--t-type-size-1);
+    }
+
+    li {
+        font-family: var(--t-type-family-nav);
+        font-weight: var(--t-type-weight-alt-bold);
+    }
+
+    @media screen and (min-width: 1420px) {
+        ul {
+            flex-direction: column;
+        }
+    }
+</style>

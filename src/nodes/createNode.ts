@@ -1,6 +1,7 @@
-import { today } from '@utils/date';
+import { capitalize } from '../integration/remark';
+import { today } from '../utils/date';
 
-import type { BaseNode, PageNode, TagNode } from './types';
+import type { BaseNode, KindNode, LikeNode, PageNode, TagNode } from './types';
 
 export function createNode(type: string, title: string, url: string): BaseNode {
     return {
@@ -9,16 +10,29 @@ export function createNode(type: string, title: string, url: string): BaseNode {
         type,
         title,
         published: today(),
-        links: [],
+        likes: [],
         images: { external: [], internal: [] },
-        urls: { external: [], internal: [] },
+        links: [],
         markdown: '',
     };
 }
 
 export function createTag(name: string): TagNode {
-    const base = createNode('tag', name, `tags/${name}`);
+    const base = createNode('tag', name, `/tags/${name}`);
     return { ...base, count: 0 };
+}
+
+export function createKind(name: string): KindNode {
+    const base = createNode('kind', name, `/likes/${name}`);
+    const slug = base.url.replace('/likes/', '');
+    const plural = capitalize(name) + 's';
+    return { ...base, plural, slug, count: 0 };
+}
+
+export function createLike(url: string): LikeNode {
+    const [kind, name] = url.split('/') as [string, string];
+    const base = createNode('like', name, `/likes/${url}`);
+    return { ...base, kind, data: {} };
 }
 
 export function createPage(name: string, url: string): PageNode {

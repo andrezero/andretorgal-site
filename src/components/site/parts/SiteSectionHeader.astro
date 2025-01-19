@@ -8,52 +8,52 @@ const { title } = Astro.props;
 
 <div class="section-header cs-secondary">
     <div class="container">
-        <header>
-            <h2 aria-label="Current section">{title}</h2>
-        </header>
-        <nav>
-            <slot />
-        </nav>
+        <div class="layout">
+            <header>
+                <h2 aria-label="Current section">{title}</h2>
+            </header>
+            <nav>
+                <slot />
+            </nav>
+        </div>
     </div>
 </div>
 
 <style>
     .section-header {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
         display: flex;
         flex-direction: column;
-        padding-top: var(--layout-gap);
-        padding-bottom: var(--layout-gap);
+        padding-top: var(--gap-h-s);
+        padding-bottom: var(--gap-h-s);
         color: var(--scheme-fg);
         background-color: var(--scheme-bg);
-    }
-
-    header h2 {
-        font-size: var(--t-type-size-3);
-        line-height: var(--t-type-size-7);
-        padding: var(--layout-shift) 0 var(--layout-s-quarter);
-    }
-
-    nav {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: var(--t-space-xs);
-        font-family: var(--t-type-family-nav);
-        font-weight: var(--t-type-weight-alt-bold);
-        font-size: var(--t-type-size-0);
-        line-height: var(--t-type-size-3);
+        user-select: none;
     }
 
     .container {
         container: container / inline-size;
+    }
+
+    .layout {
         width: 100%;
+    }
+
+    .layout,
+    nav {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: start;
+        gap: var(--gap-h-s);
+    }
+
+    header {
+        display: none;
     }
 
     @media screen and (min-width: 480px) {
         nav {
+            flex-direction: row;
             gap: var(--t-space-s);
         }
     }
@@ -61,19 +61,24 @@ const { title } = Astro.props;
     @media screen and (min-width: 650px) {
         .container {
             margin-inline: auto;
+            width: 100%;
             max-width: var(--layout-container-width);
         }
     }
 
     @media screen and (min-width: 1060px) {
+        header {
+            display: block;
+        }
+
         .section-header {
-            padding-top: var(--layout-headroom);
-            padding-bottom: var(--layout-gap);
+            padding-top: calc(var(--gap-v-headroom) + var(--proportional-half));
+            padding-bottom: var(--gap-h-s);
             border-left: var(--layout-border-wide) solid var(--scheme-edge);
         }
 
         .container {
-            margin-inline: var(--layout-gutter);
+            margin-inline: var(--gap-h-gutter);
             max-width: var(--layout-container-width);
         }
 
@@ -90,25 +95,16 @@ const { title } = Astro.props;
         }
 
         .container {
-            margin-left: var(--layout-gutter-min);
-            width: calc(100% - var(--layout-gutter-min));
+            margin-left: var(--gap-h-gutter-min);
+            margin-right: var(--gap-h-s);
+            width: calc(100% - var(--gap-h-gutter-min) - var(--gap-h-s));
         }
 
         nav {
+            padding-top: calc(var(--gap-h-s) + var(--gap-h-s));
             flex-direction: column;
             align-items: flex-start;
-            gap: var(--t-space-2xs);
-        }
-    }
-
-    @media print {
-        .layout > * {
-            color: var(--print-fg);
-            background-color: transparent;
-        }
-
-        .has-section .layout-section {
-            display: none;
+            gap: var(--gap-h-s);
         }
     }
 </style>

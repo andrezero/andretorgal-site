@@ -1,7 +1,9 @@
-import type { ImportedImage } from '@integration/images/types';
-import { type BaseNode, getNodeImage } from '@nodes/index';
 import type { Root } from 'mdast';
 import { visit } from 'unist-util-visit';
+
+import type { ImportedImage } from '../../../integration/images';
+import { type BaseNode, getNodeImage } from '../../../nodes';
+import { isAbsolute } from '../../../utils';
 
 type LinkNode = {
     tagName: 'a';
@@ -16,10 +18,6 @@ type ImageNode = {
         src?: string;
     };
 };
-
-function isAbsolute(src: string) {
-    return src.startsWith('http') || src.startsWith('//');
-}
 
 export function rehypeTransformLinks(baseUrl: string, n: BaseNode) {
     return async function (tree: Root): Promise<void> {
@@ -43,7 +41,6 @@ export function rehypeTransformLinks(baseUrl: string, n: BaseNode) {
         const imageMap = new Map(resolvedImages.map(item => [item.src, item.image]));
 
         const getImage = (src: string) => {
-            // eslint-disable-next-line security/detect-object-injection
             const image = imageMap.get(src);
             if (!image) {
                 console.error(`🟥🟥 no image for "${src}" 🟥🟥 `);

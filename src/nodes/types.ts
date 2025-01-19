@@ -4,7 +4,10 @@ export type GlobResult<T extends BaseNode> = Record<string, () => Promise<MDXIns
 
 export type Link = {
     url: string;
-    label: string;
+    label?: string;
+    icon?: string;
+    description?: string;
+    hide?: boolean;
 };
 
 export type Image = {
@@ -48,23 +51,23 @@ export interface BaseNode {
     abstract?: {
         text: string;
         markdown: string;
+        source?: string;
     };
     images: {
         external: Image[];
         internal: Image[];
     };
-    links: string[];
-    urls: {
-        external: Link[];
-        internal: Link[];
-    };
+    links: Link[];
+    likes?: string[];
     hero?: boolean | string | Image;
     thumb?: boolean | string | Image;
     og?: NodeOG;
     [key: string]: unknown;
 }
 
-export type PageNode = BaseNode;
+export type PageNode = BaseNode & {
+    type: 'page';
+};
 
 export type AboutNode = BaseNode & {
     thumbnail?: 'logo' | 'work' | 'story' | 'music';
@@ -74,19 +77,60 @@ export type TagNode = BaseNode & {
     count: number;
 };
 
-export type PersonLink = {
+export type KindNode = BaseNode & {
+    slug: string;
+    count: number;
+};
+
+export type LikeBase = {
+    wikipedia?: string;
+    spotify?: string;
+    github?: string;
+};
+
+type LikePerson = LikeBase & {
     kind: 'person';
 };
 
-export type LinkRoll = {
-    url: string;
-    label?: string;
-    description?: string;
+type LikePlace = LikeBase & {
+    kind: 'place';
 };
 
-export type LinkNode = BaseNode & {
-    count: number;
-    roll: LinkRoll[];
+type LikeAlbum = LikeBase & {
+    kind: 'album';
+};
+
+type LikeMovie = LikeBase & {
+    kind: 'movie';
+};
+
+type LikeBook = LikeBase & {
+    kind: 'book';
+};
+
+type LikeCompany = LikeBase & {
+    kind: 'company';
+    homepage: string;
+};
+
+type LikeSoftware = LikeBase & {
+    kind: 'software';
+    code?: string;
+    docs?: string;
+};
+
+type LikeSubject =
+    | LikePerson
+    | LikePlace
+    | LikeAlbum
+    | LikeMovie
+    | LikeBook
+    | LikeCompany
+    | LikeSoftware;
+
+export type LikeNode = BaseNode & {
+    kind: string;
+    data: Omit<LikeSubject, 'kind'>;
 };
 
 export type BlogPost = BaseNode;

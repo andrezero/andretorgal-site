@@ -4,9 +4,11 @@ import { globResultToArray } from './private';
 import type { BlogPost } from './types';
 
 export async function fetchAllPosts(): Promise<BlogPost[]> {
-    return globResultToArray<BlogPost>(
+    const pages = await globResultToArray<BlogPost>(
         import.meta.glob<MDXInstance<BlogPost>>('/src/pages/posts/**/*.(md|mdx)'),
     );
+
+    return pages.filter(page => !page.url.startsWith('/posts/archive'));
 }
 
 type PreviousAndNext = {

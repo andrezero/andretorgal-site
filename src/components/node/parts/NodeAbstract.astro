@@ -1,4 +1,6 @@
 ---
+import { ExternalLink } from '@components/atoms';
+import { autoLabel } from '@components/icons';
 import Markdown from '@components/page/Markdown.astro';
 import type { BaseNode } from '@nodes/index';
 
@@ -19,19 +21,29 @@ function trim(str: string | undefined, max?: number): string | undefined {
 
 const text = (max ? abstract?.text : abstract?.markdown) || description;
 const content = max ? trim(text, max) : text;
+const source = abstract?.source;
+const sourceLink = source ? { url: source, label: autoLabel(source) } : undefined;
 ---
 
 {
     content && (
-        <div class:list={[variant]}>
+        <div class:list={[variant, { 'has-source': Boolean(sourceLink) }]}>
             <Markdown content={content} />
+            {sourceLink && <ExternalLink link={sourceLink} />}
         </div>
     )
 }
 
 <style>
     div {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-h-s);
         font-size: var(--t-type-size-1);
+    }
+
+    .has-source {
+        font-style: italic;
     }
 
     .compact {

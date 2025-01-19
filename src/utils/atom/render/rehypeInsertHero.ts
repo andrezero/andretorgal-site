@@ -1,6 +1,6 @@
 import type { Element, Root } from 'hast';
 
-import { type BaseNode, getNodeHeroImage } from '~/nodes';
+import { type BaseNode, getNodeHeroImage } from '../../../nodes/index';
 
 export function rehypeInsertHero(n: BaseNode) {
     return async function (tree: Root): Promise<void> {

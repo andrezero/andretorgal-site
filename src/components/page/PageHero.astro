@@ -18,7 +18,7 @@ const src = heroImage && getNodeImage(node, heroImage.src);
 <style is:global>
     .hero {
         --hero-width: 101vw;
-        margin-bottom: var(--layout-gap);
+        margin-bottom: var(--gap-h-s);
     }
 
     @media screen {
@@ -31,7 +31,7 @@ const src = heroImage && getNodeImage(node, heroImage.src);
             max-width: var(--hero-width);
             min-height: 100%;
             max-height: 100%;
-            margin-left: calc(-1 * var(--layout-gutter));
+            margin-left: calc(-1 * var(--gap-h-gutter));
         }
     }
 
@@ -43,18 +43,18 @@ const src = heroImage && getNodeImage(node, heroImage.src);
 
     @media screen and (min-width: 1060px) {
         .hero {
-            --hero-width: calc(100vw - var(--layout-col-1) - var(--layout-gap));
+            --hero-width: calc(100vw - var(--layout-col-1) - var(--gap-h-s));
         }
 
         .hero .block {
-            margin-left: calc(-1 * var(--layout-gutter));
+            margin-left: calc(-1 * var(--gap-h-gutter));
         }
     }
 
     @media screen and (min-width: 1420px) {
         .hero .block {
             --hero-width: calc(
-                101vw - var(--layout-col-1) - var(--layout-bi-col-2) + var(--layout-space)
+                101vw - var(--layout-col-1) - var(--layout-bi-col-2) + var(--gap-v-space)
             );
         }
 

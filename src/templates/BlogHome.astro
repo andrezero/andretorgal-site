@@ -1,6 +1,6 @@
 ---
 import { Body, Document, Head, Layout } from '@components/document';
-import { PageNav } from '@components/navigation';
+import { NavLink, PageNav } from '@components/navigation';
 import { NodeList } from '@components/node';
 import { Divider, Page, PageHeader, Section, SubscribeToFeed, TopLine } from '@components/page';
 import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
@@ -30,20 +30,33 @@ pages[0] = '/posts';
             <SiteMain slot="main">
                 <Page>
                     <PageHeader node={page} slot="header">
-                        <SubscribeToFeed title={`blog posts`} url={'/posts'} />
+                        <nav>
+                            <SubscribeToFeed title={`blog posts`} url={'/posts'} />
+                            <NavLink href="/posts/archive">Blog archive</NavLink>
+                        </nav>
                     </PageHeader>
                     <TopLine />
                     <Section>
                         <NodeList nodes={top} />
                     </Section>
+                    <Divider size="space" />
+                    <SectionTopTags />
                     <Divider size="space">
                         <PageNav pages={pages} />
                     </Divider>
-                    <Divider size="pause" />
-                    <SectionTopTags />
                 </Page>
             </SiteMain>
             <SiteFooter slot="footer" />
         </Layout>
     </Body>
 </Document>
+
+<style>
+    @media screen and (min-width: 480px) {
+        nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+</style>

@@ -1,0 +1,57 @@
+---
+import { Body, Document, Head, Layout } from '@components/document';
+import { NodeAbstract, NodeList, NodeMeta } from '@components/node';
+import {
+    Article,
+    ArticleHeader,
+    Divider,
+    Markup,
+    PageTitle,
+    Section,
+    TopLine,
+} from '@components/page';
+import { SiteFooter, SiteHeader, SiteHeaderLikes, SiteMain } from '@components/site';
+import { fetchLikesByKind, type KindNode } from '@nodes/index';
+export type Props = {
+    content: KindNode;
+};
+
+const { content: kind } = Astro.props;
+
+const likes = await fetchLikesByKind(kind);
+---
+
+<Document>
+    <Head node={kind} />
+    <Body>
+        <Layout>
+            <SiteHeader slot="header" />
+            <SiteHeaderLikes slot="section" kind={kind} />
+            <SiteMain slot="main">
+                <Article>
+                    <ArticleHeader node={kind} slot="header" override noDate>
+                        <PageTitle>
+                            ❤️ {kind.plural}
+                        </PageTitle>
+                    </ArticleHeader>
+                    <Section>
+                        <TopLine />
+                        <NodeAbstract node={kind} />
+                        <NodeMeta node={kind} noDate />
+                        <Markup><slot /></Markup>
+                    </Section>
+
+                    {
+                        likes.length > 0 && (
+                            <Section>
+                                <Divider size="space" />
+                                <NodeList nodes={likes} variant="mini" />
+                            </Section>
+                        )
+                    }
+                </Article>
+            </SiteMain>
+            <SiteFooter slot="footer" />
+        </Layout>
+    </Body>
+</Document>

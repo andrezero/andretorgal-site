@@ -1,21 +1,37 @@
-<section>
+---
+export type Props = {
+    contain?: boolean;
+    area?: string;
+};
+
+const { area, contain } = Astro.props;
+---
+
+<section class:list={{ contain }}>
     <slot name="header" />
     <div class="content">
         <slot />
     </div>
 </section>
 
-<style>
+<style define:vars={{ area }}>
     section {
+        grid-area: var(--area);
         display: flex;
         flex-direction: column;
-        gap: var(--layout-gap);
+        gap: var(--gap-h-s);
+    }
+
+    .contain {
+        container: section / inline-size;
+        width: 100%;
+        max-width: var(--layout-container-width);
     }
 
     .content {
         display: flex;
         flex-direction: column;
-        gap: var(--layout-gap);
+        gap: var(--gap-h-s);
         align-items: flex-start;
     }
 </style>

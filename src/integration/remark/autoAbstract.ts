@@ -9,12 +9,21 @@ function fixPonctuation(str: string): string {
     return str.replace(/([.?!])([\w]+)/g, '$1 $2');
 }
 
+type Attribute = {
+    type: string;
+    name: string;
+    value: string;
+};
+
 export function autoAbstract(): RemarkPlugin {
     return function (tree: Root, file: VFile): void {
         const { frontmatter } = file.data.astro;
 
         visit(tree, { type: 'mdxJsxFlowElement', name: 'Abstract' }, (node: Node) => {
             const normalised = fixPonctuation(toString(node));
+
+            const attr = ('attributes' in node && (node.attributes as Attribute[])) || [];
+            const source = attr.find(a => a.name === 'source')?.value;
 
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             const position = node.position;
@@ -27,7 +36,7 @@ export function autoAbstract(): RemarkPlugin {
                 .slice(start.line, end.line - 1)
                 .join('\n')
                 .trim();
-            frontmatter.abstract = { text: normalised, markdown };
+            frontmatter.abstract = { text: normalised, markdown, source };
         });
     };
 }

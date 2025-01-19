@@ -4,11 +4,11 @@ import { createTag } from './createNode';
 import { globResultToArray } from './private';
 import type { BaseNode, TagNode } from './types';
 
-export const TOP_TAGS_COUNT = 10;
-
 type TagMap = {
     [key: string]: TagNode;
 };
+
+export const TOP_TAGS_COUNT = 10;
 
 export async function fetchAllTags(): Promise<TagNode[]> {
     const allNodes = await globResultToArray<BaseNode>(
@@ -16,10 +16,8 @@ export async function fetchAllTags(): Promise<TagNode[]> {
     );
 
     const tagNodes = allNodes.filter(node => node.type === 'tag');
-
     const tagAccumulator = tagNodes.reduce((acc, node) => {
         const tag = node.title || '!';
-        // eslint-disable-next-line security/detect-object-injection
         acc[tag] = { ...node, count: 0 };
         return acc;
     }, {} as TagMap);
@@ -28,10 +26,8 @@ export async function fetchAllTags(): Promise<TagNode[]> {
         .filter(item => item.tags?.length)
         .reduce((acc, item) => {
             item.tags?.forEach((tag: string) => {
-                // eslint-disable-next-line security/detect-object-injection
                 const node = acc[tag] || createTag(tag);
                 node.count++;
-                // eslint-disable-next-line security/detect-object-injection
                 acc[tag] = node;
             });
             return acc;

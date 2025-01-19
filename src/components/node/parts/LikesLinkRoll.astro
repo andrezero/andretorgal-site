@@ -1,0 +1,23 @@
+---
+import type { LikeNode } from '~/nodes';
+import { LinkCard } from '../cards';
+import GridList from '../lists/GridList.astro';
+
+export type Props = {
+    node: LikeNode;
+};
+
+const { node } = Astro.props;
+const { links: l } = node;
+const links = l.filter(link => link.label || !link.hide);
+---
+
+{
+    links.length > 0 && (
+        <GridList variant="mini">
+            {links.map(link => (
+                <LinkCard link={link} />
+            ))}
+        </GridList>
+    )
+}

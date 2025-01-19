@@ -21,7 +21,6 @@ export function fetchImages(): Record<string, () => Promise<{ default: ImageMeta
 }
 
 export function imageFormatToMimeType(format: ImageInputFormat): string {
-    // eslint-disable-next-line security/detect-object-injection
     return FORMAT_TO_TYPE[format];
 }
 

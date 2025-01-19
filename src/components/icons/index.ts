@@ -3,3 +3,6 @@ export { default as ArrowUp } from './ArrowUp.astro';
 export { default as ChevronLeft } from './ChevronLeft.astro';
 export { default as ChevronRight } from './ChevronRight.astro';
 export { default as External } from './External.astro';
+// @endindex
+
+export * from './links';

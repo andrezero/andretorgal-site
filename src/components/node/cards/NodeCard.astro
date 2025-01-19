@@ -53,7 +53,7 @@ const maxChars = thumbImage && variant === 'compact' ? 100 : undefined;
     article {
         display: flex;
         flex-direction: column;
-        gap: var(--t-space-xs);
+        gap: var(--gap-h-s);
     }
 
     header {
@@ -64,14 +64,14 @@ const maxChars = thumbImage && variant === 'compact' ? 100 : undefined;
 
     div {
         display: flex;
-        gap: var(--layout-gap);
+        gap: var(--gap-h-s);
         flex-direction: column;
     }
 
     @media screen and (min-width: 650px) {
         div {
             display: grid;
-            gap: var(--layout-wall);
+            gap: var(--gap-h-m);
             grid-template-columns: 50% auto;
         }
     }

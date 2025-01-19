@@ -22,7 +22,7 @@ const { previous, next } = getPreviousAndNextPosts(posts, node);
     <Body>
         <Layout>
             <SiteHeader slot="header" />
-            <SiteHeaderBlog slot="section" {...{previous, next}} />
+            <SiteHeaderBlog slot="section" previous={previous} next={next} />
             <SiteMain slot="main">
                 <Article>
                     <ArticleHeader node={node} slot="header" noDate>
@@ -39,7 +39,7 @@ const { previous, next } = getPreviousAndNextPosts(posts, node);
                         <NodeMeta node={node} />
                     </Section>
                     <Section>
-                        <NodePreviousNext {...{previous, next}} />
+                        <NodePreviousNext previous={previous} next={next} />
                     </Section>
                 </Article>
             </SiteMain>

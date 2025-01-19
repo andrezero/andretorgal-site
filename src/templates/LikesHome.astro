@@ -1,0 +1,71 @@
+---
+import { Body, Document, Head, Layout } from '@components/document';
+import { GridList, NodeAbstract, NodeList } from '@components/node';
+import { Divider, Page, PageHeader, PageSubTitle, Section, TopLine } from '@components/page';
+import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
+import {
+    LIKES_COUNT,
+    fetchAllKinds,
+    fetchAllLikes,
+    filterLikesByKind,
+    type PageNode,
+} from '@nodes/index';
+import { NavLink } from '~/components/navigation';
+
+export type Props = {
+    content: PageNode;
+};
+
+const { content: page } = Astro.props;
+
+const allKinds = await fetchAllKinds();
+const allLikes = await fetchAllLikes();
+
+const likes = allLikes.slice(0, LIKES_COUNT);
+---
+
+<Document>
+    <Head node={page} />
+    <Body>
+        <Layout>
+            <SiteHeader slot="header" />
+            <SiteMain slot="main">
+                <Page>
+                    <PageHeader node={page} slot="header" />
+                    <TopLine />
+                    <NodeAbstract node={page} />
+                    <Section>
+                        <Divider size="gap">
+                            <PageSubTitle>All kinds of</PageSubTitle>
+                        </Divider>
+                        <GridList variant="mini">
+                            {
+                                allKinds.map(kind => (
+                                    <li class="kind">
+                                        <h3>
+                                            <NavLink inline href={kind.url}>
+                                                {kind.plural || kind.title}
+                                            </NavLink>
+                                            ({filterLikesByKind(allLikes, kind).length})
+                                        </h3>
+                                    </li>
+                                ))
+                            }
+                        </GridList>
+                    </Section>
+                    <Section>
+                        <Divider size="gap" />
+                        <PageSubTitle>Latest likes</PageSubTitle>
+                        <NodeList nodes={likes} variant="mini" type />
+                    </Section>
+                </Page>
+            </SiteMain>
+            <SiteFooter slot="footer" />
+        </Layout>
+    </Body>
+</Document>
+
+<style>
+    h3 {
+    }
+</style>

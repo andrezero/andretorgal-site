@@ -10,7 +10,10 @@ const { node } = Astro.props;
 const type = node.type.split('-')[0];
 ---
 
-<span class="type">{type}</span>
+<span class:list={['type', type]}>
+    <span class="label" aria-hidden>{type === 'like' ? '❤️' : type}</span>
+    <span class="sr-only">Type: {type}</span>
+</span>
 
 <style is:global>
     .type {
@@ -23,10 +26,10 @@ const type = node.type.split('-')[0];
         text-wrap: nowrap;
         text-decoration: none;
         text-transform: uppercase;
-        color: var(--scheme-dim);
-        background-color: var(--scheme-muted);
     }
 
-    @media screen and (min-width: 800px) {
+    .type:not(.like) {
+        color: var(--scheme-dim);
+        background-color: var(--scheme-muted);
     }
 </style>

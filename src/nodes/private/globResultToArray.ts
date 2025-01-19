@@ -18,7 +18,12 @@ function markdownToNode<T extends BaseNode>(node: MDXInstance<T>): T {
 export async function globResultToArray<T extends BaseNode>(result: GlobResult<T>): Promise<T[]> {
     const raw = await Promise.all(Object.values(result).map(fn => fn()));
     return raw
-        .filter(node => !!node.frontmatter.type)
+        .filter(node => {
+            if (!node.frontmatter) {
+                console.error(node);
+            }
+            return Boolean(node.frontmatter?.type);
+        })
         .map(node => markdownToNode<T>(node))
         .filter(filterDrafts);
 }

@@ -1,0 +1,113 @@
+---
+export type GridListVariant = 'full' | 'compact' | 'mini' | 'textual';
+
+export type Props = {
+    variant?: GridListVariant;
+    type?: boolean | undefined;
+};
+
+const { variant = 'full' } = Astro.props;
+---
+
+<div>
+    <ul class:list={[variant]}>
+        <slot />
+    </ul>
+</div>
+
+<style>
+    div {
+        width: 100%;
+        container: list / inline-size;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    ul {
+        gap: var(--gap-v-space);
+    }
+
+    .compact {
+        display: grid;
+        width: 100%;
+        column-gap: var(--gap-h-m);
+        row-gap: var(--gap-v-space);
+    }
+
+    .mini {
+        display: grid;
+        width: 100%;
+        column-gap: var(--gap-h-gutter-min);
+        row-gap: var(--gap-h-gutter-min);
+    }
+
+    .textual {
+        display: grid;
+        width: 100%;
+        column-gap: var(--gap-h-m);
+        row-gap: var(--gap-h-s);
+    }
+
+    @container list (min-width: 540px) {
+        .mini {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @container list (min-width: 840px) {
+        .mini {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @container list (min-width: 1280px) {
+        .mini {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    @container list (min-width: 1720px) {
+        .mini {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+
+    @container list (min-width: 2160px) {
+        .mini {
+            grid-template-columns: repeat(6, 1fr);
+        }
+    }
+
+    @container list (min-width: 2600px) {
+        .mini {
+            grid-template-columns: repeat(7, 1fr);
+        }
+    }
+
+    @container list (min-width: 3040px) {
+        .mini {
+            grid-template-columns: repeat(8, 1fr);
+        }
+    }
+
+    @container list (min-width: 3480px) {
+        .mini {
+            grid-template-columns: repeat(9, 1fr);
+        }
+    }
+
+    @container list (min-width: 3720px) {
+        .mini {
+            grid-template-columns: repeat(10, 1fr);
+        }
+    }
+
+    p {
+        font-size: var(--t-type-size-1);
+    }
+</style>

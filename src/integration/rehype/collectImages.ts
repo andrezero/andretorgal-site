@@ -1,6 +1,7 @@
 import type { Root } from 'mdast';
 import { visit } from 'unist-util-visit';
 
+import { isAbsolute } from '../../utils';
 import type { RemarkPlugin } from '../types/RemarkPlugin';
 import type { VFile } from '../types/VFile';
 
@@ -34,8 +35,8 @@ export function collectImages(): RemarkPlugin {
             ) {
                 const src = node.properties.src;
                 const alt = node.properties.alt || '';
-                const isAbsolute = /^[a-z]+:/.test(src) || src.startsWith('//');
-                if (isAbsolute) {
+
+                if (isAbsolute(src)) {
                     images.external.push({ src, alt });
                 } else {
                     images.internal.push({ src, alt });

@@ -1,10 +1,10 @@
 import type { MDXInstance } from 'astro';
 
+import { SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE } from '../config';
+
 import { createImageMeta, resolveNodeImage } from './images';
 import { globResultToArray } from './private';
 import type { BaseNode, Image, NodeMeta } from './types';
-
-import { SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TITLE } from '~/config';
 
 const ARTICLE_TYPES = ['post', 'tag', 'link'];
 

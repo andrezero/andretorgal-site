@@ -1,0 +1,165 @@
+---
+import { Body, Document, Head, Layout } from '@components/document';
+import { LikesLinkRoll, NodeAbstract, NodeList, NodeMeta, NodeThumb } from '@components/node';
+import {
+    Article,
+    ArticleHeader,
+    Divider,
+    Markup,
+    PageSubTitle,
+    PageTitle,
+    Section,
+    TopLine,
+} from '@components/page';
+import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
+import { fetchNodesByLike, getNodeImage, getNodeThumbImage, type LikeNode } from '@nodes/index';
+export type Props = {
+    content: LikeNode;
+};
+
+const { content: like } = Astro.props;
+const nodes = await fetchNodesByLike(like);
+
+const thumbImage = getNodeThumbImage(like);
+const thumb = thumbImage && getNodeImage(like, thumbImage.src);
+const links = like.links.filter(link => link.label || !link.hide);
+
+const showId = Boolean(thumb);
+const showNotes = Boolean(like.markdown);
+const showLinks = links.length > 0;
+const showNodes = nodes.length > 0;
+---
+
+<Document>
+    <Head node={like} />
+    <Body>
+        <Layout>
+            <SiteHeader slot="header" />
+            <SiteMain slot="main" full>
+                <Article>
+                    <ArticleHeader node={like} slot="header" override noDate>
+                        <PageTitle>❤️ {like.title}</PageTitle>
+                    </ArticleHeader>
+                    <TopLine />
+                    <div class:list={['layout', { 'has-thumb': Boolean(thumb) }]}>
+                        {
+                            showId && (
+                                <Section area="id" contain>
+                                    <div class="id">
+                                        <NodeThumb node={like} />
+                                        <div class="abstract">
+                                            <NodeAbstract node={like} />
+                                            <NodeMeta node={like} noDate />
+                                        </div>
+                                    </div>
+                                </Section>
+                            )
+                        }
+                        {
+                            showNotes && (
+                                <Section area="notes" contain>
+                                    <Divider size="gap" id="notes" />
+                                    <Markup>
+                                        <slot />
+                                    </Markup>
+                                </Section>
+                            )
+                        }
+                        {
+                            showLinks && (
+                                <Section area="roll">
+                                    <Divider size="gap" id="roll" />
+                                    <PageSubTitle>Links</PageSubTitle>
+                                    <LikesLinkRoll node={like} />
+                                </Section>
+                            )
+                        }
+                        {
+                            showNodes && (
+                                <Section area="related">
+                                    <Divider size="gap" id="related" />
+                                    <PageSubTitle>Related to {like.title}</PageSubTitle>
+                                    <NodeList nodes={nodes} variant="mini" />
+                                </Section>
+                            )
+                        }
+                    </div>
+                </Article>
+            </SiteMain>
+            <SiteFooter slot="footer" />
+        </Layout>
+    </Body>
+</Document>
+
+<style>
+    .layout {
+        display: grid;
+        row-gap: var(--gap-v-space);
+        column-gap: var(--gap-h-gutter);
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'id'
+            'notes'
+            'related'
+            'roll';
+    }
+
+    .id,
+    .abstract {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-h-s);
+    }
+
+    .has-thumb .id > :global(:first-child) {
+        aspect-ratio: 1;
+        width: 100%;
+        height: auto;
+    }
+
+    @container section (min-width: 540px) {
+        .id {
+            flex-direction: row;
+            align-items: start;
+            gap: var(--gap-h-m);
+        }
+
+        .has-thumb .id > :global(:first-child) {
+            aspect-ratio: 1;
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+        }
+    }
+
+    @container container (min-width: 1200px) {
+        .layout {
+            grid-template-areas:
+                'id roll'
+                'notes roll'
+                'related roll';
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: min-content min-content 1fr;
+        }
+
+        :global(#roll) {
+            display: none;
+        }
+    }
+
+    @container container (min-width: 1600px) {
+        .layout {
+            grid-template-areas:
+                'id roll related'
+                'notes roll related';
+            grid-template-columns:
+                min(50%, calc(var(--layout-container-width) + var(--gap-h-m)))
+                1fr 1fr;
+            grid-template-rows: min-content 1fr;
+        }
+
+        :global(#related) {
+            display: none;
+        }
+    }
+</style>

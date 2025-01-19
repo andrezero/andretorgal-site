@@ -19,7 +19,7 @@
 </style>
 
 <script>
-    function shortDate(date) {
+    function shortDate(date: Date) {
         const year = date.getFullYear();
         const day = date.getDate();
         const month = date.toLocaleString('default', { month: 'short' });
@@ -32,7 +32,7 @@
 
     const node = () => {
         const n = document.createElement('p');
-        n.setAttribute('class', p.getAttribute('class'));
+        n.setAttribute('class', p?.getAttribute('class') || '');
         n.innerHTML = `printed on ${date}`;
         return n;
     };

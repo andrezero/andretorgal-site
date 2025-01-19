@@ -1,0 +1,70 @@
+---
+import { Body, Document, Head, Layout } from '@components/document';
+import { NodeMeta } from '@components/node';
+import { Article, ArticleHeader, Divider, Markup, Section, TopLine } from '@components/page';
+import { SiteFooter, SiteHeader, SiteMain } from '@components/site';
+import type { AboutNode } from '~/nodes/types';
+
+export type Props = {
+    content: AboutNode;
+};
+
+const { content: node } = Astro.props;
+---
+
+<Document>
+    <Head node={node} />
+    <Body>
+        <Layout>
+            <SiteHeader slot="header" />
+            <SiteMain slot="main">
+                <Article>
+                    <ArticleHeader node={node} noDate slot="header" />
+                    <Section>
+                        <TopLine />
+                        <Section>
+                            <Divider />
+                            <Markup><slot /></Markup>
+                        </Section>
+                        <Section>
+                            <Divider />
+                            <NodeMeta node={node} />
+                        </Section>
+                    </Section>
+                </Article>
+            </SiteMain>
+            <SiteFooter slot="footer" />
+        </Layout>
+    </Body>
+</Document>
+
+<style>
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        gap: var(--gap-h-s);
+        overflow: hidden;
+    }
+
+    .image {
+        min-width: 100%;
+        object-fit: cover;
+        border-radius: 100%;
+        overflow: hidden;
+    }
+
+    @media screen and (min-width: 620px) {
+        header {
+            flex-direction: row;
+        }
+
+        .image {
+            min-width: 12em;
+            max-width: 12em;
+            height: 12em;
+            border-radius: 100%;
+        }
+    }
+</style>

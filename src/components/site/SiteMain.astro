@@ -29,12 +29,16 @@ const { hideUp, full } = Astro.props;
 </main>
 
 <style>
+    main {
+        height: 100%;
+    }
+
     .container {
         container: container / inline-size;
     }
 
     p {
-        margin-top: var(--layout-headroom);
+        margin-top: var(--gap-v-headroom);
         text-align: right;
     }
 
@@ -42,8 +46,8 @@ const { hideUp, full } = Astro.props;
         main {
             overflow: hidden;
             min-height: 80vh;
-            padding-top: var(--layout-headroom);
-            padding-bottom: var(--layout-legroom);
+            padding-top: var(--gap-v-headroom);
+            padding-bottom: var(--gap-v-legroom);
             color: var(--scheme-fg);
             background-color: var(--scheme-bg);
             border-top: var(--layout-border-wide) solid var(--scheme-edge);
@@ -51,7 +55,7 @@ const { hideUp, full } = Astro.props;
     }
 
     @media screen and (min-width: 650px) {
-        main:not(.full) .container {
+        .container {
             margin-inline: auto;
             max-width: var(--layout-container-width);
         }
@@ -63,8 +67,13 @@ const { hideUp, full } = Astro.props;
             border-left: var(--layout-border-wide) solid var(--scheme-edge);
         }
 
-        main:not(.full) .container {
-            margin-inline: var(--layout-gutter);
+        :not(.full) .container {
+            margin-inline: var(--gap-h-gutter);
+        }
+
+        .full .container {
+            max-width: none;
+            margin-inline: var(--gap-h-gutter);
         }
     }
 

@@ -5,11 +5,11 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 
+import { SITE_URL } from '../../../config';
+import type { BaseNode } from '../../../nodes';
+
 import { rehypeInsertHero } from './rehypeInsertHero';
 import { rehypeTransformLinks } from './rehypeTransformLinks';
-
-import { SITE_URL } from '~/config';
-import type { BaseNode } from '~/nodes';
 
 export async function render(node: BaseNode): Promise<string> {
     const file = await unified()

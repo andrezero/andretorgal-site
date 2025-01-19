@@ -11,5 +11,15 @@ const topTags: TagNode[] = await fetchTopTags();
 <Section>
     <PageSubTitle slot="header">Top tags</PageSubTitle>
     <TagList tags={topTags} />
-    <NavLink inline href="/tags">Explore all tags</NavLink>
+    <p>
+        <NavLink inline href="/tags">Explore all tags</NavLink>
+    </p>
 </Section>
+
+<style>
+    @media print {
+        p {
+            display: none;
+        }
+    }
+</style>
