@@ -24,7 +24,7 @@ const thumbImage = getNodeThumbImage(like);
 const thumb = thumbImage && getNodeImage(like, thumbImage.src);
 const links = like.links.filter(link => link.label || !link.hide);
 
-const showId = Boolean(thumb);
+const showId = Boolean(thumb || like.abstract?.markdown);
 const showNotes = Boolean(like.markdown);
 const showLinks = links.length > 0;
 const showNodes = nodes.length > 0;
