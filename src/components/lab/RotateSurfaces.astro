@@ -1,0 +1,127 @@
+<div class="rotate-surfaces">
+    <button id="rotate-button">Click me</button>
+    <div class="schemes">
+        <div class="cs-primary">Primary</div>
+        <div class="cs-secondary">Secondary</div>
+        <div class="cs-tertiary">Tertiary</div>
+    </div>
+</div>
+
+<style>
+    .rotate-surfaces {
+        flex-direction: column;
+        padding: var(--t-space-l);
+        gap: var(--gap-v-m);
+        font-family: var(--t-type-family-alt);
+    }
+
+    .rotate-surfaces,
+    .schemes {
+        display: flex;
+        gap: var(--gap-h-m);
+        align-items: center;
+    }
+
+    .schemes > * {
+        position: relative;
+        padding: var(--t-space-m);
+        color: var(--scheme-fg);
+        background-color: var(--scheme-bg);
+    }
+
+    .selected:before {
+        position: absolute;
+        inset: var(--t-space-2xs);
+        display: block;
+        content: ' ';
+        border-bottom: 4px solid white;
+    }
+
+    button {
+        transform: all;
+        color: var(--scheme-alt-fg);
+        height: var(--t-space-l);
+        background-color: var(--scheme-a);
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: var(--scheme-a-on);
+    }
+
+    button:active {
+        background-color: var(--scheme-a-active);
+    }
+</style>
+
+<script>
+    const initial = ['', 'cs-primary', 'cs-secondary', 'cs-tertiary'];
+    const selectors = [
+        '.layout-main > *',
+        '.layout-header > *',
+        '.layout-section > *',
+        '.layout-footer > *',
+    ];
+    let current = [...initial];
+
+    const button = document.getElementById('rotate-button');
+    const schemes = document.querySelectorAll<HTMLDivElement>('.rotate-surfaces .schemes > *');
+    let resetTimeout: ReturnType<typeof window.setTimeout> | null;
+
+    function updateClasses() {
+        schemes.forEach((element, index) => {
+            if (initial[index + 1] === current[0]) {
+                element.classList.add('selected');
+            } else {
+                element.classList.remove('selected');
+            }
+        });
+        selectors.forEach((sel, idx) => {
+            const element = document.querySelector(sel) as HTMLDivElement;
+            if (!element) {
+                return;
+            }
+            initial.forEach(className => className && element.classList.remove(className));
+
+            const newClass = current[idx];
+            if (newClass) {
+                element.style.transition = 'background-color 1s ease-in-out';
+                element.classList.add(newClass);
+            }
+        });
+    }
+
+    function rotateClasses() {
+        current.push(current.shift() as string);
+        updateClasses();
+    }
+
+    button?.addEventListener('click', () => {
+        rotateClasses();
+    });
+
+    const handleIntersection = (entry: IntersectionObserverEntry) => {
+        if (!entry.isIntersecting) {
+            resetTimeout = setTimeout(() => {
+                current = [...initial];
+                updateClasses();
+                resetTimeout = null;
+            }, 5000);
+        } else if (resetTimeout) {
+            clearTimeout(resetTimeout);
+            resetTimeout = null;
+        }
+    };
+
+    const options = {
+        threshold: 0.1,
+    };
+    const observer = new IntersectionObserver(
+        entries => entries.forEach(handleIntersection),
+        options,
+    );
+    if (button) {
+        observer.observe(button);
+    }
+</script>

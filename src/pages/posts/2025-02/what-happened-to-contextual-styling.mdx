@@ -1,0 +1,218 @@
+---
+layout: ~/templates/BlogPost.astro
+type: post
+title: What happened to contextual styling?
+hero:
+  src: ./_media/what-happened-to-contextual-styles.jpg
+  alt: 'An illustration of the evolution of web buttons across the ages displaying a grid of wireframe-ish buttons merged against a colorful abstract backdrop'
+tags:
+  - design-contexts
+  - design-systems
+  - css
+published: 2025 Feb 5
+---
+
+<Abstract>
+In the early 2000s, list items and links were simple `<li>` and `<a>`. Not all mighty components as they are today. Still, it felt like there was nothing you couldn't do with CSS. Alas, somewhere along the way, things got complicated. These days everything feels slower and somewhat stiffer. How did we get this far from the simplicity of CSS? I try to answer as best as I can.
+
+</Abstract>
+
+Back in the days, you could style any elements with basic common rules first and then tweak them – contextually – based on where they appeared. The same list of blog posts inside a `.sidebar` could automatically adjust its dimensions or even receive a complete restyle.
+
+```css
+/* piece-of-cake.css */
+.sidebar .posts li .tag {
+  display: inline;
+  color: #fff;
+  background-color: #333;
+  padding: 8px 12px;
+}
+```
+
+I am kidding :innocent:. You can still do this today! But if you work with a design system, you know ... :see_no_evil: :hear_no_evil: ... you probably shouldn't. And that's no picnic, I hear you.
+
+## Context was once explicit
+
+In the golden age of CSS, as lame as it might sound...
+
+> Just tell me how to get back to it, old man!
+
+Thanks! :older_adult:
+
+I know I am the nostalgic type but I know better than trying to roll back time. There's only forward! And yes, from here I can see a few paths out of these woods. If you want to jump straight into that :point_right: [Design contexts in design systems, the missing conversation](/posts/2025-02/design-contexts-in-design-systems-the-missing-conversation) is my best effort so far.
+
+Or stay with me for a while. I find it useful to track back our steps, analyse the decisions that lead us astray, and appreciate the magnitude of the pickle :broccoli: we find ourselves in.
+
+## Refactoring for fun and profit
+
+In the first years of this millennium, the web industry was finding its footing after the [first browser war](https://en.wikipedia.org/wiki/Browser_wars). Thanks to very cool :sunglasses: people, with a healthy attitude toward sharing bold ideas, the community began to take shape, and "best practices" became part of the lexicon.
+
+The [web standards movement](https://en.wikipedia.org/wiki/Web_Standards_Project) was gaining ground, and one of the first visible impacts was the return of HTML to its dignity. By fully embracing the separation of concerns – or a [clean dependency flow](https://css-tricks.com/css-utility-classes-separation-concerns/), if you prefer – documents could refocus on structure and content, while CSS distributed design decisions in layers, always anchored in explicit application contexts.
+
+By this time, [backend rendering was _the paradigm_](https://andretorgal.com/posts/2019-06/static-site-generators-brief-history#actually-the-dark-age-of-mvc), and _the document_ was already the result of orchestrating multiple templates and partials – the precursors to components, if you will.
+
+If you can extrapolate from your experience today :wink:, the typical templating layer was quite the mess. The templates mixed heavy logic around complex data structures with layout and style concerns, all at once. And at the mercy of last-minute decisions and design whims, it all degraded fast. Small design changes often resulted in refactoring snowballs. Iterating on the [IA](https://andrearesmini.com/blog/classical-to-contemporary-information-architecture/) – think routes, navigation – typically meant re-architecting the whole thing.
+
+![Screenshot of CSS Zen Garden homepage currently "A demonstration of what can be accomplished through CSS-based design."](./_media/css-zen-garden.png 'Two decades after it first appeared, still a compelling demo. // Copyright Dave Shea. https://www.csszengarden.com/')
+
+In this scenario, extracting all CSS into an elegant collection of styles, softly coupled via class names, was _sooooo_ much welcome! Hopeless codebases were refactored and granted a second life.
+
+Glory days :rainbow: ahead.
+
+## The golden age :innocent: of the cascade
+
+Before the holy dawn of components, **Context** was the backbone of design decisions as code. Every CSS selector, and every folder and file inside `styles/`, was purposefully tied to a specific context and carefully crafted in layers.
+
+```
+styles/
+- reset.css
+- typography.css
+- modules/
+  ...
+- sections/
+  ...
+- pages/
+  ...
+- shame.css
+```
+
+An open book :book: If you were willing to dig in. :sweat_smile:
+
+For a while, it seemed like CSS alone managed the job remarkably well. The paradigm was holding up at scale, proving it could handle dynamic content, complex layouts, and frequent design updates.
+
+The community drive to improving the craft exploded into a nebula of blogs, newsletters, and experimental websites. Not only web design was an established craft, it had already built - _in the commons_ - its own platform for bringing more people into the fold. :face_with_monocle: Brilliant, innit?
+
+And let's not forget the growing collection of open-source languages and frameworks – and cheap hosting! – that allowed anyone to run their own thing. Honestly, The [web 2.0](https://en.wikipedia.org/wiki/Web_2.0) days were truly glorious and **_Punk as F_**.
+
+## And its limitations
+
+But separating CSS from the code that consumed it was not without some serious tradeoffs: maintaining and developing large scale CSS codebases across many teams and products was proving to be a hard task. Guaranteeing consistent application of patterns was nearly impossible and deleting unused code ... :thinking_face: Was it really not used?
+
+> It's just a few bytes, leave it! How much harm can it do?
+
+Soon enough, the collective came up with ideas on how to deal with the :elephant: elephant in the room. A number of CSS conventions were proposed ([BEM](https://getbem.com/), [Smacss](https://smacss.com/), [OOCSS](https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/)) providing a marginal safety net of sorts for working with CSS at scale. Later, pre-processors ([Less](https://lesscss.org/), [Sass](https://sass-lang.com/)) and finally [PostCSS](https://postcss.org/) and [Stylelint](https://stylelint.io/) helped solved a some of the issues around repetition and maintainability.
+
+But the experience of authoring and debugging CSS is still disappointing. Its nature simply doesn't allow our IDEs to use the same level of static analysis and refactoring tools available for other languages.
+
+Also, it certainly didn't help that the [history of CSS](https://css3.com/css3-history/) was slow and rather chaotic at times, with browser implementations lagging and riddled with bugs, and a second browser war (tired of this metaphor? :stuck_out_tongue_closed_eyes:) that seemed to last forever.
+
+![Three memes combined into one: Peter Griffin messing with the window blinds (CSS), A CSS is Awesome mug, and a sweaty cartoon deciding button to press, not learning CSS and hating it.](./_media/css-is-awesome.png 'But seriously, though. It is.')
+
+It’s no wonder that, especially in the eyes of a new generation of frontend developers, CSS’s reputation was at an all time low.
+
+More on that in a second.
+
+## Responsive context
+
+Fast forward a few years to 2009 and the little screens on our pockets are suddenly browsing the web. Ouch! [320px](https://stuffandnonsense.co.uk/blog/this_is_the_new_320_and_up)? Really!? :sweat_smile: Not fair!
+
+Techniques for designing effectively for different resolutions had been around for some time: fluid layouts, liquid layouts, and many clever tricks involving width clamps and (properly cleared) _floats_. Mobile phones was an entirely different challenge, though.
+
+Media queries, introduced in Firefox in late 2009 and Chrome early 2010, were the most needed add-on to CSS. And the most awaited. Seriously. :smile: A whole decade waiting for them!
+
+Still, the web design hive mind lacked the vocabulary to reason about what was going on. For a while, "best practices" for dealing with mobile were all over the place. Without a solid mental model on which to rebase our design processes and rearchitect our codebases, we were struggling to adapt to this new reality.
+
+In one of the industry's seminal articles, published on A List Apart only a few months into 2010, Ethan Marcotte introduced the term [Responsive Web Design](https://alistapart.com/article/responsive-web-design/) and did us a very big favour.
+
+Yet, here we are – 15 years since the dawn of mobile-first – and teams still struggle to communicate specs across multiple contexts:
+
+> Where are the specs for mobile? I thought we were mobile-first here.
+
+It's a good thing that we can, at least, use a shared vocabulary to rant about responsive issues :grinning:.
+
+## Switching gears to hyper mode
+
+Compared to what was about to happen in the 2010s, everything up to here feels like pre-history.
+
+The art of doing business online was becoming more and more sophisticated. And competitive!Fueled and standardized by VC networks and advisors, the same organisational templates and technological choices were being rolled out everywhere.
+
+The web design and development space was not as prominent as it was in the `www` days, now sharing the stage with many other new disciplines. But the community was also swiftly transformed by a couple of seismic shifts that fit the invisible hands of the market like a :gloves: glove:
+
+- The [rise of the UX discipline](https://www.geeksforgeeks.org/origin-and-evolution-of-ux/);
+- The [modern frontend framework](https://code.angularjs.org/1.0.8/docs/guide/overview).
+
+With this tidal wave, practices shifted monumentally. Several times around.
+
+Amidst the storm, the DYI spirit of CSS artisanship was about to fade into the background.
+
+## Worlds colliding
+
+Sketch was now the de-facto standard for designing for the web. Superior to all preceding software by an order of magnitude – vector based and _almost_ web native – Sketch shaped web design trends around what the medium had to offer.
+
+The design craft was also maturing by leaps and bounds. Low fidelity prototypes, a structured approach to user journeys, and user research – just to name a few "innovations" – became an integral part of the process.
+
+Coincidently, equipped with the new frontend framework, web-development graduated into frontend engineering. While up to here architecture was still mostly informed by IA or design choices, from this point on the technical concerns started dictating the shape of the codebase.
+
+Serious conversations about modularisation and encapsulation of styles erupted everywhere. On the internet, and your regular morning stand-up alike :grimacing:. The "new" frontend engineering culture seemed to have strong opinions about everything, but it wasn't quite grasping the complexity of design.
+
+In another seminal post, Brad Frost introduced [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) in 2013. This particular metaphor – along with the skillful delivery – resonated strongly throughout the industry.
+
+Once again, our vocabulary caught up with the times and we started having structured – and constructive – conversations. We found a common ground to approach the tough task of breaking down compositions into smaller and smaller components and then re-building everything up from solid primitives.
+
+Once gain, what a timing!
+
+## Packaging context in little boxes :package:
+
+The frontend revolution was swift.
+
+Most companies were meanwhile sold on refactoring their old monoliths to open-source technologies – and many were aggressively hiring the new breed of 10x full-stack developers :laughing:.
+
+Encapsulation of variants and scoped styles became the dominant dogma. New frameworks and build tools were developed just to optimise these workflows and the industry started ditching contextual CSS as the baseline, keeping it around just to hack things when needed :smirk:.
+
+Mid-2010s, no matter how much was being added to CSS – new selectors, layout modes, variables! – the `<component>` status quo was impenetrable and irreversible.
+
+> But just when that changed, and more CSS selectors were introduced and supported, we observed a large number of frameworks tie presentation to structure, specifically by use of presentational class names.
+>
+> In [What Happened to Separation of Concerns in Frontend Development](https://meiert.com/en/blog/what-happened-to-separation-of-concerns/) by Oliver Meiert.
+
+At some point, a whole movement of "CSS in JS" or as I used to joke - `#nocss` - was claiming to have solved everything by eliminating CSS altogether. No need to elaborate why this was a :pray: short-lived experiment and why it doesn't fit the cannon of...
+
+## The _modern_ design system
+
+The modern [design system](https://andretorgal.com/posts/2023-02/what-is-a-design-system) needs to support both client-side and server-side rendering, eventually [SSG](/posts/2019-06/static-site-generators-brief-history) as well. Sometimes it needs to provide libraries for specific native targets, or at least some degree of design tokens integration.
+
+It needs to play well with responsiveness and be mindful of – even better, a champion of – accessibility; It needs to be compliant with SEO requirements; It needs to be applied to the main product pages and landing pages alike. And don't forget the company blog! [Multi-dimensional design systems](/posts/2022-11/multidimensional-omni-channel-design-systems) also need to provide for newsletters, marketing content, ... :tired_face:. Oh! And there might be a couple of different brands. With light/dark modes on both, of course.
+
+It is a lot of work! :sweat_smile: And a lot of tough problems to solve under the pressure of shifting constraints. It's the stuff of nightmares are made of, to be honest, and it's no wonder that we find ourselves dreaming about [ideal design system teams](https://iknowdavehouse.medium.com/the-design-system-dream-team-ebf169b97149) that could fill an entire bus.
+
+I empathise fully with the struggle, I do!
+
+I am just wondering if we can do better in some places, instead of embracing all the toil we have today as cost of doing business.
+
+We have done it the punk way before, so why not?
+
+## What exactly is wrong, then?
+
+The modern design system displays all the symptoms of having been built on strict encapsulation practices: effective, disciplined, standardized. But none of that fire :fire: and :magic_wand: magic we once witnessed.
+
+Meanwhile, CSS it still here, and still evolving like crazy :heart_eyes: but the mainstream is not using its recent features, let alone experiment with the bleeding edge.
+
+I believe this to be one of the reasons behind the public design systems out there having such unoriginal designs for common interaction patterns. When it comes to atoms and other [common components](https://component.gallery/components/) – Buttons and Banners, for instance - they feel almost standardised across completely different brands.
+
+![Screenshot of LinkedIn and Cloudspace documentation side by side, showcasing similar primary and secondary buttons](./_media/linkedin-cloudspace.png 'How many token changes does it take to make them look exactly the same?')
+
+The same does not happen with Layouts, Containers and Surfaces, though. They are actually missing from most design systems documentation websites. And if in some cases one can claim that these don't belong in a design system, and I would agree, I witnessed many cases of components being blocked because of technical constraints, or simply because they would have no Figma parity.
+
+Large scale design systems can always try to tackle these problem with complex token engineering. It's not for everyone, though. And as I recently described on a [article about design tokens limitations](/posts/2025-01/the-problem-with-design-tokens), tokens alone are not sufficient to fill the gap.
+
+In other news, design tools still don’t provide the features necessary to explore and express dynamic compositions. Or in other words, they lack support for contextual and dynamic design decisions.
+
+## Where do we go from here?
+
+Looking at the last three decades of web development with these :face_with_monocle: lenses, provided me with valuable insights on how we got here, and especially on what we gave up along the way.
+
+Writing this post was also a walk down memory lane, through the creativity, the feeling of _possibility_ :rainbow: and the impressive pace of design innovation of those days.
+
+When we manage to merge the level of control we have over components and variants with the flexibility of CSS, we will finally break free from these constraints and the toil that stifles our creativity and inspiration.
+
+We still have to bridge the context gap, though. The potential of CSS is rooted in its contextual super powers :muscle: but tools such as Figma are still deprived of features that support contextual decisions at scale.
+
+As a consequence, teams struggle to discover and address design contexts throughout their process, generating a lot waste and delivering subpar experiences to the customer and suboptimal outcomes for the business.
+
+We have quite some work to do and I believe a good chunk revolves around modeling design contexts, maybe even (re)inventing the way we talk about them.
+
+Seminal post?! Anyone? :pleading_face:
+
+Meanwhile, I have been working with some friends on [Designer Decisions](https://designer-decisions.noodlestan.org) with the first goal being to provide a comprehensive set of primitives for visualising contextual design decisions.
+
+Writing posts like this one is also a form of research for this project. Not sure who's reading, though – but hey there :wave: you rock!

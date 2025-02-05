@@ -1,0 +1,112 @@
+---
+layout: ~/templates/BlogPost.astro
+type: post
+title: 'Design Contexts in Design Systems: The Missing Conversation'
+hero:
+  src: ./_media/design-contexts-in-design-systems.png
+  alt: 'Abstract illustration of web-design containers, surfaces, and layouts overlayed on grid paper, in tones of blue, red, and gray'
+tags:
+  - design-contexts
+  - design-systems
+published: 2025 Feb 10
+---
+
+import { RotateSurfaces } from '@components/lab';
+
+<Abstract>
+Some call it _Surfaces_, others _Containers_. It surfaces here and there as Elevation (pun intended) or under other peculiar, unfortunate names. Placement within a layout, hierarchy and purpose of the containing section, and current background colour are all examples of design contexts that lack a common name to go by. This article explores why this concept remains underdeveloped and suggests a few paths forward.
+
+</Abstract>
+
+If you are a product designer or engineer you probably struggle often to use the components and variants provided by the design system you are using. Assuming your organisation is using some sort of component library at this point :grimacing:.
+
+Moreover, if you are a product designer you know that designing the best possible composition for that unique use case requires you to make a ton of decisions with the user journey and business context in mind. And within the context of the composition you create, the role and purpose of each section define new **visual or functional** contexts that the libraries are typically not prepared to deal with.
+
+## Context is hiding in plain sight
+
+If you are a design system designer or engineer, on the other hand, your role demands you to understand these contexts, identify patterns, and distill them into reusable components and variants.
+
+And, as I mentioned in a recent post about [limitations of design tokens](/posts/2025-01/the-problem-with-design-tokens) this is not an easy job.
+
+Many times, the last resort – right after considering adding yet a new prop or variant – is to clarify application guidelines.
+
+And by clarify, I mean **add more** guidelines. Everyone is reading our precious documentation, right? :sweat_smile:
+
+- _Inside banners use only button variant `plain`._
+- _Link hover state on inverted background should be `white`._
+- _In hero sections, prefer `medium` and `large` button sizes._
+- _In "danger" sections, dividers should use `danger` colour._
+
+All of the above fictitious guidelines acknowledge the context where _friction_ or _conflict_ appeared.
+
+Some serve only - in the absence of contextual continuity between components - to carry over a specific context from component to component, manually mapping props to props :grin:.
+
+It begs the question:
+
+> Why can't we just use CSS?
+
+In my previous post, I wrote about [why the industry ditched contextual styling](/posts/2025-02/design-contexts-in-design-systems-the-missing-conversation) in favour of encapsulation of variants and scoped styles. Much of it is accidental, I believe, a sequence of mishaps, wrong order of operations, bad timing.
+
+Meanwhile we have built these crazy cool design systems, and putting one together from scratch is becoming easier by the day. But it still requires assembling :hammer: a panoply of moving parts, plugins, and custom scripts, along with specialised documentation tools.
+
+## No context in design tools
+
+In the last design system project I worked, my team was approached daily with requests for variants and tokens.
+
+Many times we asked:
+
+> Can't we just make the components automatically behave according to this context? We can implement that!
+
+But was it worth it?
+
+> Designers won’t be able to do that in Figma. They still need a prop.
+
+It's a tiring conversation, but the struggle to express contextual and dynamic design decisions in Figma is a bottleneck for the craft. As much as Photoshop was in 99.
+
+I am not alone on this frustration, right?
+
+> _“Hi! I’m creating a design system and building a Figma library for it. I can’t seem to find any info on how to handle ‘inverted’ colour situations. I don’t mean system-wide dark mode, I just mean when components are placed on darker backgrounds within an otherwise light-mode context.”_
+>
+> [Figma Forum Thread](https://forum.figma.com/ask-the-community-7/thoughts-on-inverted-not-dark-mode-components-and-tokens-36475)
+
+It's a fascinating, sad, state of affairs :no_mouth:.
+
+Context was an unthinkable idea in a tool like Photoshop but it was made trivial in CSS and design tools had to adapt.
+
+We then made it harder again with our layer of components and scoped styles, but CSS has our back again, unlocking a world of new possibilities (topic for another post) that these systems can already begin to leverage.
+
+But you won't see it Figma any time soon. :dizzy_face: (I promise to also come back to this topic).
+
+## So, design contexts! How to?
+
+Wait, wait! Too soon, too fast. :sweat_smile:
+
+At some point, we will surely be applying to contexts and guidelines the same process we now apply routinely to patterns and components. The same drill, from the top, starting with thorough discovery and inventory phases.
+
+Are you as excited as I am? :smile:
+
+But at the moment I feel we still lack the vocabulary and mental models. If you consider both visual and functional categories, anything can be a design context :sweat_smile:. Hierarchy, role, state and content have been informing contextual decisions as much as layout or surface backgrounds.
+
+How do we even start to organise all these contexts into abstractions we can apply to our workflows?
+
+Will we see some sort of `context: ...` in our JSON tokens at some point?
+
+Another rhetorical question :innocent: sorry! I just saw it this week (another post!).
+
+## How do we evolve this conversation?
+
+We could use a little upgrade to our shared language. Just like "responsive" and "atomic" introduced new concepts, along with practical approaches, that changed the way we design, code, and most importantly talk about design.
+
+We need a way to name and define these design contexts that communicates the general intent well. It's bot just about state or style. Contexts can also be derived from content or the goals of the task the user is trying to complete.
+
+Container contexts, style contexts, layout, space, dimensions, colour contrast, the list of use cases is long and varied, hard to combine into a single name. Maybe it's just "Contextual Design Decisions".
+
+I would also love to see a resurgence of CSS-first approaches. We would benefit from a wave of creative development, such as we experienced in the golden age of CSS. But it's much harder these days to just DIY your way into innovation. There are so many moving pieces!
+
+Meanwhile we can continue to build on top of our sophisticated platforms – both component libraries and token systems – and take them to the next step: being able to manage multiple contexts end-to-end. That includes context-aware sources of truth, integrations, and documentation tools.
+
+Finally: design tools must catch up. They should also support context-dependent styling, starting with media-queries. I suggest looking at CSS :sweat_smile: for inspiration: naming contexts has proven that it goes a long way!
+
+Let's keep an eye on Figma, Penpot, TokenStudio. Can they break through the stagnation and bridge the gap to what CSS currently offers?
+
+Do you know any other tool worth looking into? I am sure something new will appear at some point.
