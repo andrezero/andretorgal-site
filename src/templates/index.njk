@@ -1,0 +1,38 @@
+{% set description = page.description if page.description else site.meta.description%}
+{% set description = page.description if page.description else site.meta.description%}
+
+<!doctype html>
+<html lang={{ page.lang }}>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title}} | {{site.meta.title }}</title>
+  <meta name="description" content="{{ description }}">
+
+  <meta property="og:title" content="{{ page.title }} | {{ site.meta.title }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.meta.url }}{{ page.url }}">
+  <meta property="og:image" content="/media/og-default.png">
+
+  <link rel="stylesheet" href="/assets/index.css">
+
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css2?family=rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon.png">
+
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0e0e0e">
+
+  <script type="module" src="/assets/index.js"></script>
+</head>
+
+<body>
+
+{{ html|safe }}
+
+</body>
+</html>

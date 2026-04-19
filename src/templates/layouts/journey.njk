@@ -1,0 +1,13 @@
+{% extends "layouts/private/base-page.njk" %}
+
+{% from "components/action/get_in_touch.njk" import get_in_touch %}
+
+{% block content %}
+  <div class="formatted-content">
+    {{ page.html | safe }}
+  </div>
+{% endblock %}
+
+{% block after %}
+    {{ get_in_touch() }}
+{% endblock %}

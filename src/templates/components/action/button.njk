@@ -1,0 +1,31 @@
+{% macro button(params) %}
+
+    {# Set button type #}
+    {% if params.type %}
+        {% set buttonType = params.type %}
+    {% else %}
+        {% set buttonType = 'submit' %}
+    {% endif %}
+
+    {# {% set buttonType = params.type if params.type else 'submit' %} #}
+
+    {# Set button variant #}
+    {% if params.variant %}
+        {% set buttonVariant = params.variant %}
+    {% else %}
+        {% set buttonVariant = 'primary' %}
+    {% endif %}
+
+    {# {% set buttonVariant = params.variant if params.variant else 'primary' %} #}
+
+    <button type="{{ buttonType }}"
+        class="button button-{{ buttonVariant }}"
+        {% if params.disabled %}disabled{% endif %}
+        {% if params.ariaLabel %}aria-label="{{ params.ariaLabel }}"{% endif %}
+    >
+        <span class="button button-variant-{{ buttonVariant }}">
+            {{- params.html | safe if params.html else params.text -}}
+        </span>
+
+    </button>
+{% endmacro %}

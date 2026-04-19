@@ -1,0 +1,61 @@
+{% import "components/icons.njk" as icons %}
+{% import "components/flags.njk" as flags %}
+
+{% set langName = t('site.languages.names.' + page.lang) %}
+
+{% set lang = page.lang %}
+
+<div class="lang-switcher">
+
+    <button popovertarget="lang-popover" aria-label="{{ 'site.lang-switcher.label' | t({ langName: langName }) }}">
+
+    {{ icons.language({ size: "small" }) }}
+    {{ flags[lang]({ size: 'small' }) }}
+    </button>
+
+    <div id="lang-popover" popover class="container">
+        <div class="layout">
+            <h4 aria-hidden>{{ 'site.lang-switcher.title' | t}}</h4>
+            <nav class="languages" aria-label="{{ 'site.lang-switcher.aria-label' | t}}">
+
+                {% for language in locale.languages %}
+                <p>
+
+                {% set translation = page.translations[language] %}
+                {% set url = page.url if page.lang == language  else translation.url %}
+                {% set langName = t('site.languages.names.' + language, { lng: language }) %}
+                {% set linkLabel = t('site.lang-switcher.switch', { lng: language, langName: langName }) %}
+                {% set unavailableLabel = t('site.lang-switcher.unavailable', { lng: language, langName: langName }) %}
+
+                {% if url %}
+
+                <a
+                    href="{{ url }}"
+                    hreflang="{{ language }}"
+                    lang="{{ language }}"
+                    {% if page.lang == language %}
+                    aria-current="page"
+                    class="current"
+                    {% endif %}
+                    title="{{ linkLabel }}"
+                >
+
+                    {{ flags[language]({ size: 'small' }) }}
+                    <span class="name" aria-hidden>{{ langName }}</span>
+                </a>
+
+                {% else %}
+
+                <span class="not-available" title="{{ unavailableLabel }}">
+                    {{ flags[language]({ size: 'small' }) }}
+                    <span class="name" aria-hidden>{{ langName }}</span>
+                </span>
+
+                {% endif %}
+
+                </p>
+                {% endfor %}
+            </nav>
+        </div>
+    </div>
+</div>

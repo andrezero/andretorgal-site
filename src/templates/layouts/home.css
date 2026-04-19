@@ -1,0 +1,11 @@
+.layout-home {
+    .main-layout {
+        gap: var(--space-l);
+    }
+
+    .intro {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-v-l);
+    }
+}

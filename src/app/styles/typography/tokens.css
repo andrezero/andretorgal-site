@@ -1,0 +1,19 @@
+@layer tokens {
+    /* https://www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=400&minRatio=1.25&maxFontSize=20&maxWidth=1200&maxRatio=1.333&steps=0%2C1%2C2%2C3%2C4%2C5%2C6%2C7&baseStep=2&prefix=type-scale&useContainerWidth=false&includeFallbacks=false&useRems=false&remValue=16&decimals=2&previewFont=Rubik&previewText=Post+jazz+ensemble&previewWidth=1200 */
+    :root {
+        --type-size-0: clamp(10.24px, 0.13vi + 9.73px, 11.26px);
+        --type-size-1: clamp(12.8px, 0.28vi + 11.7px, 15px);
+        --type-size-2: clamp(16px, 0.5vi + 14px, 20px);
+        --type-size-3: clamp(20px, 0.83vi + 16.67px, 26.66px);
+        --type-size-4: clamp(25px, 1.32vi + 19.73px, 35.54px);
+        --type-size-5: clamp(31.25px, 2.02vi + 23.19px, 47.37px);
+        --type-size-6: clamp(39.06px, 3.01vi + 27.02px, 63.15px);
+        --type-size-7: clamp(48.83px, 4.42vi + 31.15px, 84.17px);
+    }
+
+    :root {
+        /* https://www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=400&minRatio=1.25&maxFontSize=76&maxWidth=1200&maxRatio=1.333&steps=site-title&baseStep=site-title&prefix=type-scale&useContainerWidth=false&includeFallbacks=false&useRems=false&remValue=16&decimals=2&previewFont=Rubik&previewText=Lorem+rocksum&previewWidth=1200 */
+        --type-size-site-title: clamp(36px, 5.45vi + 18.55px, 84px);
+        --type-family: var(--type-family-default), sans-serif;
+    }
+}

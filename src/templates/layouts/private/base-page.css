@@ -1,0 +1,18 @@
+@layer layout {
+    .layout-base-page {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-v-l);
+
+        main {
+            padding: var(--gap-v-xl) var(--gap-h-m);
+            background-color: var(--surface-page-bg);
+        }
+    }
+
+    @media screen and (width >= 600px) {
+        .layout-base-page {
+            gap: var(--gap-v-2xl);
+        }
+    }
+}

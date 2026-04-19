@@ -1,0 +1,28 @@
+@layer components {
+    [data-external] {
+        padding-inline-end: var(--gap-h-xs);
+    }
+
+    [data-external]::after {
+        display: inline-block;
+        content: '⇲';
+        transform: rotate(-90deg) translateY(0.1em);
+        transition: all var(--motion-duration-0);
+    }
+
+    a {
+        border-radius: 1.5px;
+    }
+
+    :focus-visible {
+        outline-style: solid;
+        outline-color: var(--color-i-active);
+        outline-width: 0.2rem;
+        outline-offset: var(--space-3xs);
+    }
+
+    ::selection {
+        color: var(--surface-page-bg);
+        background-color: var(--surface-page-fg-base);
+    }
+}

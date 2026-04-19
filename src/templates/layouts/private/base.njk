@@ -1,0 +1,28 @@
+<div id="site-layout" class="layout-base layout-{{page.layout}} {% block layoutClass %}{% endblock %}">
+
+  {% block before %}{% endblock %}
+
+  {% block header %}
+    {% include 'partials/site/header.njk' %}
+  {% endblock %}
+
+  {% block top %}{% endblock %}
+
+  {% block main %}
+    <main id="main-content" class="{% block mainClass %}{% endblock %}">
+      <div class="main-layout {% block mainLayoutClass %}{% endblock %}">
+        {% block content %}{% endblock %}
+      </div>
+    </main>
+  {% endblock %}
+
+  {% block bottom %}{% endblock %}
+
+  {% block footer %}
+    {% include 'partials/site/footer.njk' %}
+  {% endblock %}
+
+  {% block after %}{% endblock %}
+
+</div>
+

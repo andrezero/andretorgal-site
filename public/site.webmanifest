@@ -1,0 +1,14 @@
+{
+    "short_name": "André Torgal",
+    "name": "André Torgal",
+    "icons": [
+        {
+            "src": "assets/icon.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
+    "start_url": "/en",
+    "background_color": "#0c0c0c",
+    "theme_color": "#0c0c0c"
+}

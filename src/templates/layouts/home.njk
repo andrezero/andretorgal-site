@@ -1,0 +1,35 @@
+{% from "components/layouts/hero.njk" import hero %}
+{% from "components/action/learn_more.njk" import learn_more %}
+
+{% extends "layouts/private/base.njk" %}
+
+{% block mainLayoutClass %}container-centered{% endblock%}
+
+{% block top %}
+  {{
+      hero({
+          title: page.sections.hero.title,
+          html: page.sections.hero.html
+      })
+  }}
+  <div class="intro container-centered">
+    <div class="formatted-content">
+      {{ page.sections.collab.html | safe }}
+    </div>
+
+    {{ learn_more({ url:  iurl("/work", page.lang)  }) }}
+
+    <div class="formatted-content">
+      {{ page.sections.music.html | safe }}
+    </div>
+
+    {{ learn_more({ url:  iurl("/music", page.lang)  }) }}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="formatted-content">
+    {{ page.html | safe }}
+  </div>
+{% endblock %}
+

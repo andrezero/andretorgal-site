@@ -1,0 +1,21 @@
+.flag {
+    --__flag-size: 24px;
+    --__flag-width: calc(var(--__flag-size) * 1.4);
+    display: inline-block;
+    width: var(--__flag-width);
+    min-width: var(--__flag-width);
+    max-width: var(--__flag-width);
+    height: var(--__flag-size);
+    min-height: var(--__flag-size);
+    max-height: var(--__flag-size);
+
+    &.small {
+        --__flag-size: 16px;
+    }
+
+    svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}

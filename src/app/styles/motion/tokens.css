@@ -1,0 +1,8 @@
+@layer tokens {
+    :root {
+        --motion-duration-0: 0.1s;
+        --motion-duration-1: 0.3s;
+        --motion-duration-2: 0.5s;
+        --motion-duration-3: 1s;
+    }
+}

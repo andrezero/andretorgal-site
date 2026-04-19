@@ -1,0 +1,16 @@
+.get-in-touch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-h-xs);
+    padding: var(--block-padding);
+
+    p {
+        display: flex;
+        gap: var(--gap-h-s);
+    }
+
+    p > span {
+        display: flex;
+        gap: var(--gap-h-3xs);
+    }
+}

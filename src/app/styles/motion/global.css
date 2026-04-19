@@ -1,0 +1,22 @@
+@layer global {
+    body {
+        color: var(--surface-page-fg-base);
+        background-color: var(--surface-stage-bg);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        color: var(--surface-page-fg-highlight);
+    }
+
+    a {
+        color: var(--color-i-base);
+    }
+
+    a:hover {
+        color: var(--color-i-active);
+    }
+}

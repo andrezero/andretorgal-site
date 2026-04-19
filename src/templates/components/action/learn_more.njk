@@ -1,0 +1,13 @@
+{% import "components/icons.njk" as icons %}
+
+{% macro learn_more(params) %}
+
+<div class="learn-more">
+    <p class="text-large">
+        {{ icons.arrow_right() }}
+        <a href="{{ params.url }}">
+            {{ 'components.action.learn-more.label' | t}}
+        </a>
+    </p>
+</div>
+{% endmacro %}

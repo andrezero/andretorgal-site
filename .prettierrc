@@ -1,41 +1,33 @@
 {
-    "trailingComma": "all",
-    "printWidth": 100,
-    "singleQuote": true,
-    "tabWidth": 4,
-    "arrowParens": "avoid",
-    "plugins": ["./node_modules/prettier-plugin-astro"],
-    "overrides": [
-        {
-            "files": "*.astro",
-            "options": {
-                "parser": "astro"
-            }
-        },
-        {
-            "files": "*.json",
-            "options": {
-                "tabWidth": 2
-            }
-        },
-        {
-            "files": "*.yml",
-            "options": {
-                "tabWidth": 2
-            }
-        },
-        {
-            "files": "*.md",
-            "options": {
-                "tabWidth": 2
-            }
-        },
-        {
-            "files": "*.mdx",
-            "options": {
-                "parser": "astro",
-                "tabWidth": 2
-            }
-        }
-    ]
+  "trailingComma": "all",
+  "printWidth": 100,
+  "singleQuote": true,
+  "tabWidth": 4,
+  "arrowParens": "avoid",
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": "*.css",
+      "options": {
+        "printWidth": 180
+      }
+    },
+    {
+      "files": "*.yml",
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": "*.md",
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
 }

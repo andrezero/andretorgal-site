@@ -1,0 +1,18 @@
+#site-header {
+    padding-block-start: var(--gap-v-xs);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-v-s);
+
+    > .layout {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--gap-h-s);
+    }
+
+    .tools {
+        z-index: 1;
+    }
+}

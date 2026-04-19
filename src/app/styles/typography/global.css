@@ -1,0 +1,47 @@
+@layer global {
+    body {
+        font-family: var(--type-family);
+        font-size: var(--type-size-2);
+        font-weight: var(--type-weight-base);
+        line-height: var(--type-height-base);
+    }
+
+    h1 {
+        text-transform: uppercase;
+        font-size: var(--type-size-6);
+        font-weight: var(--type-weight-heavy);
+        line-height: var(--type-height-compact);
+    }
+
+    h2 {
+        font-size: var(--type-size-5);
+        font-weight: var(--type-weight-bold);
+        line-height: var(--type-height-tight);
+    }
+
+    h3 {
+        font-size: var(--type-size-4);
+        font-weight: var(--type-weight-bold);
+        line-height: var(--type-height-tight);
+    }
+
+    h4 {
+        font-size: var(--type-size-3);
+        font-weight: var(--type-weight-bold);
+        line-height: var(--type-height-tight);
+    }
+
+    strong {
+        font-weight: var(--type-weight-medium);
+    }
+
+    .text-large {
+        font-size: var(--type-size-3);
+        font-weight: var(--type-weight-base);
+    }
+
+    .text-small {
+        font-size: var(--type-size-1);
+        font-weight: var(--type-weight-base);
+    }
+}

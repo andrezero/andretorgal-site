@@ -1,0 +1,9 @@
+{% macro hero(params) %}
+    <div class="hero {{ params.className }}"
+        {% if params.ariaLabel %}aria-label="{{ params.ariaLabel }}"{% endif %}
+    >
+    <h2>{{ params.title }}</h2>
+    {{- params.html | safe if params.html else params.text -}}
+
+    </div>
+{% endmacro %}

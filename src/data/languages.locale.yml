@@ -1,0 +1,134 @@
+key: site.languages
+resources:
+  ar:
+    names.ar: Arabic
+    names.ca: Catalan
+    names.en: English
+    names.es: Spanish
+    names.de: German
+    names.it: Italia
+    names.fr: French
+    names.pt: Portuguese
+    names.ua: Ukranian
+    levels.native: Native
+    levels.professional: Professional
+    levels.studying: Studying
+    levels.conversational: Conversational, actively improving
+    levels.basic: Basic
+  ca:
+    names.ar: Àrab
+    names.ca: Català
+    names.en: Anglès
+    names.es: Espanyol
+    names.de: Alemanh
+    names.it: italià
+    names.fr: Francès
+    names.pt: Portuguès
+    names.ua: Ucraïnès
+    levels.native: Idioma nadiu
+    levels.professional: Professional
+    levels.studying: Estudiant
+    levels.conversational: Conversacional, millorant activament
+    levels.basic: Bàsic
+  en:
+    names.ar: Arabic
+    names.ca: Catalan
+    names.en: English
+    names.es: Spanish
+    names.de: German
+    names.it: Italian
+    names.fr: French
+    names.pt: Portuguese
+    names.ua: Ukranian
+    levels.native: Native
+    levels.professional: Professional
+    levels.studying: Studying
+    levels.conversational: Conversational, actively improving
+    levels.basic: Basic
+  es:
+    names.ar: Arabic
+    names.ca: Catalan
+    names.en: English
+    names.es: Spanish
+    names.de: German
+    names.it: Italian
+    names.fr: French
+    names.pt: Portuguese
+    levels.native: Native
+    levels.professional: Professional
+    levels.studying: Studying
+    levels.conversational: Conversational, actively improving
+    levels.basic: Basic
+  de:
+    names.ar: Arabic
+    names.ca: Catalan
+    names.en: English
+    names.es: Spanish
+    names.de: German
+    names.it: Italian
+    names.fr: French
+    names.pt: Portuguese
+    levels.native: Native
+    levels.professional: Professional
+    levels.studying: Studying
+    levels.conversational: Conversational, actively improving
+    levels.basic: Basic
+  it:
+    names.ar: Arabic
+    names.ca: Catalan
+    names.en: English
+    names.es: Spanish
+    names.de: German
+    names.it: Italian
+    names.fr: French
+    names.pt: Portuguese
+    levels.native: Native
+    levels.professional: Professional
+    levels.studying: Studying
+    levels.conversational: Conversational, actively improving
+    levels.basic: Basic
+  fr:
+    names.ar: Arabic
+    names.ca: Catalan
+    names.en: English
+    names.es: Spanish
+    names.de: German
+    names.it: Italian
+    names.fr: French
+    names.pt: Portuguese
+    names.ua: Ukranian
+    levels.native: Native
+    levels.professional: Professional
+    levels.studying: Studying
+    levels.conversational: Conversational, actively improving
+    levels.basic: Basic
+  pt:
+    names.ar: Árabe
+    names.ca: Catalão
+    names.en: Inglês
+    names.es: Espanhol
+    names.de: Alemão
+    names.it: Italiano
+    names.fr: Francês
+    names.pt: Português
+    names.ua: Ucraniano
+    levels.native: Nativo
+    levels.professional: Profissional
+    levels.studying: Estudante
+    levels.conversational: Conversacional, melhorando activamente
+    levels.basic: Básico
+  ua:
+    names.ar: Arabic
+    names.ca: Catalan
+    names.en: English
+    names.es: Spanish
+    names.de: German
+    names.it: Italian
+    names.fr: French
+    names.pt: Portuguese
+    names.ua: Ukranian
+    levels.native: Native
+    levels.professional: Professional
+    levels.studying: Studying
+    levels.conversational: Conversational, actively improving
+    levels.basic: Basic
