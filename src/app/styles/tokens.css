@@ -1,0 +1,34 @@
+/* auto-generated */
+:root {
+    --type-spacing-tight: -1;
+    --type-spacing-compact: -3;
+    --type-spacing-base: 0;
+    --type-family-default: Rubik;
+    --type-weight-heavy: 800;
+    --type-weight-medium: 500;
+    --type-weight-base: 300;
+    --type-weight-bold: 700;
+    --type-height-base: 145%;
+    --type-height-tight: 120%;
+    --type-height-compact: 100%;
+    --type-height-reduced: 133%;
+    --palette-neutral-0: oklch(16.38% 0 none);
+    --palette-neutral-1: oklch(17.76% 0 none);
+    --palette-neutral-2: oklch(21.78% 0 none);
+    --palette-neutral-3: oklch(26.45% 0 none);
+    --palette-neutral-4: oklch(30.52% 0 none);
+    --palette-neutral-5: oklch(69.28% 0 none);
+    --palette-neutral-6: oklch(87.92% 0 none);
+    --palette-neutral-7: oklch(93.7% 0 none);
+    --palette-neutral-8: oklch(95.81% 0 none);
+    --palette-neutral-9: oklch(98.51% 0 none);
+    --palette-identity-4: oklch(45.13% 0.19 29.23deg);
+    --palette-identity-5: oklch(51.24% 0.21 29.05deg);
+    --palette-identity-6: oklch(58.88% 0.23 28.46deg);
+    --palette-secondary-4: oklch(62.07% 0.15 156.29deg);
+    --palette-secondary-5: oklch(71.44% 0.18 153.69deg);
+    --palette-secondary-6: oklch(82.49% 0.17 164.89deg);
+    --palette-accent-4: oklch(49.48% 0.09 218.06deg);
+    --palette-accent-5: oklch(65.07% 0.11 216.96deg);
+    --palette-accent-6: oklch(75.58% 0.12 215.88deg);
+}

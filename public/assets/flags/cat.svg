@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="15px" viewBox="0 0 21 15" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: sketchtool 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>DE</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FCDD09" offset="0%"></stop>
+            <stop stop-color="#FCDD09" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#DA121A" offset="0%"></stop>
+            <stop stop-color="#DA121A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DE">
+            <rect fill="url(#linearGradient-1)" x="0" y="0" width="21" height="1.667"></rect>
+            <rect fill="url(#linearGradient-2)" x="0" y="1.667" width="21" height="1.667"></rect>
+            <rect fill="url(#linearGradient-1)" x="0" y="3.334" width="21" height="1.667"></rect>
+            <rect fill="url(#linearGradient-2)" x="0" y="5" width="21" height="1.667"></rect>
+            <rect fill="url(#linearGradient-1)" x="0" y="6.668" width="21" height="1.667"></rect>
+            <rect fill="url(#linearGradient-2)" x="0" y="8.335" width="21" height="1.667"></rect>
+            <rect fill="url(#linearGradient-1)" x="0" y="10.002" width="21" height="1.667"></rect>
+            <rect fill="url(#linearGradient-2)" x="0" y="11.669" width="21" height="1.667"></rect>
+            <rect fill="url(#linearGradient-1)" x="0" y="13.336" width="21" height="1.667"></rect>
+        </g>
+    </g>
+</svg>

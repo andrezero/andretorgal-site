@@ -1,0 +1,11 @@
+key: site.common-exp
+resources:
+  en:
+    collaborate: Let's collaborate
+    listen: Listen to some music
+  pt:
+    collaborate: LetCol·laborem
+    listen: Ouve um pouco de música
+  ca:
+    collaborate: Colaboremos
+    listen: Escolta una mica de música

@@ -1,0 +1,17 @@
+#skip-link {
+    z-index: var(--layer-top);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: calc(var(--space-2xl) * -1);
+    left: var(--gap-v-xs);
+    height: var(--space-xl);
+    padding: var(--gap-v-xs) var(--gap-h-xs);
+    background-color: var(--surface-overlay-bg);
+    transition-property: top;
+    transition-duration: var(--motion-duration-0);
+}
+
+#skip-link:focus {
+    top: var(--gap-v-s);
+}

@@ -6,9 +6,5 @@ pre-push:
 pre-commit:
   parallel: true
   commands:
-    lint:
-      run: npm run lint
     build:
       run: npm run build
-    # test:
-    #     run: npm run test

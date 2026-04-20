@@ -1,0 +1,9 @@
+.learn-more {
+    opacity: 1;
+
+    p {
+        display: flex;
+        align-items: center;
+        gap: var(--gap-h-3xs);
+    }
+}

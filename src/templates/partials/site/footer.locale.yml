@@ -1,0 +1,20 @@
+key: site.footer
+resources:
+  en:
+    legal:
+      license: Code and content available on {{ github }} under a {{ license }}, unless otherwise noted.
+      privacy: 'This site respects your privacy: no cookies, analytics, or tracking tools are used.'
+      oss: This site is built with open source knowledge and tools.
+      ai: An AI model was used to correct mistakes and assist with research.
+  pt:
+    legal:
+      license: Código e conteúdo disponíveis no {{ github }} sob licença {{ license }}, salvo indicação em contrário.
+      privacy: 'Este site respeita a tua privacidade: não são usados cookies, analytics ou ferramentas de tracking.'
+      oss: Este site é construído com conhecimento e ferramentas de código aberto.
+      ai: Um modelo de IA foi usado para corrigir erros e ajudar com a pesquisa.
+  ca:
+    legal:
+      license: Codi i contingut disponibles a {{ github }} sota llicència {{ license }}, llevat que s'indiqui el contrari.
+      privacy: 'Aquest lloc respecta la teva privacitat: no s’utilitzen cookies, analítica ni eines de seguiment.'
+      oss: Aquest lloc està construït amb coneixement i eines de codi obert.
+      ai: S’ha utilitzat un model d’IA per corregir errors i ajudar en la recerca.

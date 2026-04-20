@@ -1,0 +1,16 @@
+{% extends "layouts/private/base-page.njk" %}
+
+{% import "components/icons.njk" as icons %}
+{% from "components/action/back_to.njk" import back_to %}
+
+{% block content %}
+  <div class="formatted-content">
+    {{ page.html | safe }}
+  </div>
+{% endblock %}
+
+{% block after %}
+  {% set linkLabel = pagename('/') %}
+  {{ back_to({ url: iurl("/"), label: linkLabel}) }}
+{% endblock %}
+

@@ -1,0 +1,8 @@
+key: components.action.learn-more
+resources:
+  en:
+    label: Learn more
+  pt:
+    label: Saber mais
+  ca:
+    label: Més informació

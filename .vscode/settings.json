@@ -1,25 +1,7 @@
 {
-  "spellright.language": ["en"],
-  "spellright.documentTypes": [
-    "plaintext",
-    "markdown",
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "html",
-    "css",
-    "mdx",
-    "astro"
-  ],
+  "spellright.language": ["en", "es", "de", "fr", "it", "pt", "uk", "ar"],
+  "spellright.documentTypes": ["plaintext", "markdown", "javascript", "typescript", "html", "css"],
   "spellright.notificationClass": "warning",
-  "spellright.parserByClass": {
-    "astro": {
-      "parser": "code"
-    },
-    "mdx": {
-      "parser": "markdown"
-    }
-  },
   "editor.tabSize": 4,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
@@ -27,10 +9,6 @@
   },
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
-  "files.associations": {
-    "*.astro": "astro",
-    "*.mdx": "markdown"
-  },
   "explorer.excludeGitIgnore": true,
   "search.useIgnoreFiles": true,
   "search.useGlobalIgnoreFiles": true,
@@ -65,27 +43,10 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "eslint.options": {
-    "extensions": [".astro", ".js", ".jsx", ".mdx", ".ts", ".tsx"]
+    "extensions": [".js", ".ts"]
   },
-  "eslint.validate": [
-    "astro",
-    "mdx",
-    "javascript",
-    "javascriptreact",
-    "html",
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.validate": ["javascript", "html", "typescript"],
   "editor.minimap.maxColumn": 400,
-  "editor.scrollbar.verticalScrollbarSize": 30,
-  "zenMode.centerLayout": true,
-  "zenMode.fullScreen": false,
-  "zenMode.hideLineNumbers": false,
-  "zenMode.hideStatusBar": false,
-  "zenMode.restore": true,
-  "zenMode.silentNotifications": false
+  "editor.scrollbar.verticalScrollbarSize": 20
 }

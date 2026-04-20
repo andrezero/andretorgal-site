@@ -1,0 +1,27 @@
+#dev-server-error-overlay {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    padding: 10px;
+    color: white;
+    background: black;
+    border: 5px solid red;
+    z-index: 999999;
+}
+
+#dev-server-error-overlay pre {
+    padding: 5px;
+    overflow: auto;
+}
+
+#dev-server-error-overlay button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    font-size: 1.5rem;
+    color: red;
+    background: white;
+    border: none;
+}

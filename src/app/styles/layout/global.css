@@ -1,0 +1,34 @@
+@layer layout {
+    :root {
+        --gap-container-h: var(--gap-h-2xs);
+    }
+
+    @media screen and (width >= 600px) {
+        :root {
+            --gap-container-h: var(--gap-h-m);
+        }
+    }
+
+    @media screen and (width >= 800px) {
+        :root {
+            --gap-container-h: var(--gap-h-l);
+        }
+    }
+
+    .container {
+        margin-block: 0;
+        margin-inline: var(--gap-container-h);
+    }
+
+    .container-centered {
+        margin-block: 0;
+        margin-inline: var(--gap-container-h);
+    }
+
+    @media screen and (width >= 1000px) {
+        .container-centered {
+            max-width: 886px;
+            margin-inline-start: calc(20vw - 143px);
+        }
+    }
+}

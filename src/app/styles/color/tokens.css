@@ -1,0 +1,19 @@
+@layer tokens {
+    :root {
+        --surface-stage-bg: var(--palette-neutral-2);
+        --surface-page-fg-base: var(--palette-neutral-7);
+        --surface-page-fg-highlight: var(--palette-neutral-8);
+        --surface-page-bg: var(--palette-neutral-0);
+        --surface-overlay-bg: var(--palette-neutral-1);
+
+        --color-i-base: var(--palette-secondary-5);
+        --color-i-active: var(--palette-secondary-6);
+        --color-i-contrast: var(--palette-neutral-8);
+
+        --color-nav-base: var(--palette-identity-4);
+        --color-nav-base-hover: var(--palette-identity-5);
+        --color-nav-base-active: var(--palette-identity-6);
+        --color-nav-contrast: var(--palette-neutral-7);
+        --color-nav-contrast-hover: var(--palette-neutral-9);
+    }
+}

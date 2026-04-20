@@ -1,0 +1,34 @@
+
+{% set githubLink = '<a class="external-link" href="https://github.com/andrezero/site.git"><span>Github</span></a>' %}
+{% set licenseLink = '<a class="external-link" href="https://raw.githubusercontent.com/andrezero/site/master/LICENSE-MIT"><span>MIT LICENSE</span></a>' %}
+
+<footer id="site-footer">
+  <div class="layout container">
+    <div class="copyright">
+      <p>
+        <span class="site-name">andretorgal.com</span>
+        <span class="version">v.4.0</span>
+      </p>
+      <p class="small">
+        <span class="year">Copyright © 2026</span>
+        <a href="{{ "/work" | iurl(page.lang) }}">André Torgal</a>
+      </p>
+    </div>
+    <div class="legal text-small">
+      <p class="license">
+        {{- 'site.footer.legal.license' | t({ github: githubLink, license: licenseLink }) | safe -}}
+      </p>
+      <div class="notices">
+        <p class="notice">
+          {{ 'site.footer.legal.privacy' | t }}
+        </p>
+        <p class="notice">
+          {{ 'site.footer.legal.oss' | t }}
+        </p>
+        <p class="notice">
+          {{ 'site.footer.legal.ai' | t }}
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

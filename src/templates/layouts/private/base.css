@@ -1,0 +1,56 @@
+:root {
+    --displacement: 5px;
+}
+
+@layer layout {
+    @layer base {
+        .layout-base {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-v-l);
+            overflow: hidden;
+
+            .main-layout {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+#site-layout {
+    view-transition-name: site-layout;
+}
+
+::view-transition-old(site-layout) {
+    animation: site-layout-out 200ms ease-out both;
+}
+
+::view-transition-new(site-layout) {
+    animation: site-layout-in 300ms ease-out both;
+    animation-delay: 150ms;
+}
+
+@keyframes site-layout-out {
+    from {
+        opacity: 0.5;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(calc(var(--displacement) * 3));
+    }
+}
+
+@keyframes site-layout-in {
+    from {
+        opacity: 0;
+        transform: translateY(calc(var(--displacement)));
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -4,44 +4,28 @@ This repository contains the content and code for my website.
 
 > Visit the site: https://andretorgal.com/
 >
-> ![](./src/pages/meta/preoject/_media/andretorgal-com.png)
+> ![Screeshot of my site. Work in progress](./public/media/screenshot-andretorgal-com.png)
 
-## What's on the site?
+## Built with
 
-A little bit [about me](https://andretorgal.com/about/), [my work](https://andretorgal.com/about/work/), and my [music](https://andretorgal.com/about/music/).
+This is site is built with:
 
-A blog, where I post about my favorite [topics](https://andretorgal.com/tags/).
+- [Markdown](https://www.markdownlang.com/)
+- [Unifiedjs](https://unifiedjs.com/)
+- [Nunjucks](https://mozilla.github.io/nunjucks/)
+- [i18next](https://www.i18next.com/)
+- [Vanilla.js](http://vanilla-js.com/)
+- [Chroma.js](https://gka.github.io/chroma.js/)
+- [PostCSS](https://postcss.org/)
 
-## How does is it work?
+## Typography and Icons
 
-This is site is built with [Astro](https://asrtro.build), and heavily customised using tools from [astro-m2dx](https://astro-m2dx.netlify.app/) and [unified](https://unifiedjs.com/).
-
-Where's what?
-
-```
-src/
-  + components/
-  + integration/   - extending Astro
-  + sources/       - querying for posts
-  + templates/     - "layouts"
-  + pages/         - all the content (and routing)
-```
-
-There's a lot more information in the [meta section](https://andretorgal.com/meta/) and in some posts I wrote while I migrated to Astro:
-
-- [Advanced MDX authoring experience: Requirements](https://andretorgal.com/posts/2023-01/advanced-mdx-authoring-experience-requirements/)
-- [MDX authoring experience in Astro: Shortcomings](https://andretorgal.com/posts/2023-01/mdx-authoring-experience-in-astro-shortcomings-and-astro-m2dx/)
-- [Improving (MDX) authoring experience in Astro: Solutions](https://andretorgal.com/posts/2023-01/improving-mdx-experience-in-astro-with-relative-paths-responsive-images-and-more/)
-
-## Kudos :100: \* :100:
-
-:raised_hands: [The Astro community](https://astro.build/blog/community-awards-22/), the [Astro Technology Company](https://astro.build/blog/the-astro-technology-company/), the core team, the documentation team, all the teams, yeah! :raised_hands:
-
-:raised_hands: The remarkable [astro-m2dx](https://astro-m2dx.netlify.app/) project which shares the same ideas of what great `markdown` experience looks like. :raised_hands:
-
-:raised_hands: The clever functional design, the rigor in principles, and patterns of the [unified collective](/posts/2023-01/unified-js-is-going-to-be-around-for-a-long-time)!
+- [Rubik](https://fonts.google.com/specimen/Rubik?script=Arab&preview.script=Arab&query=rubik), hosted by [Bunny.net](https://fonts.bunny.net/)
+- [Lucide icons](https://lucide.dev/icons/)
+- [Yammadev's flags](https://github.com/yammadev/flag-icons/)
 
 ## MIT License
 
-Copyright (c) 2019-2025 André Torgal https://andrezero.mit-license.org/2019-2025
-https://andrezero.mit-license.org/2019-2023
+Copyright (c) 2026 André Torgal
+
+https://andrezero.mit-license.org/2019-2026

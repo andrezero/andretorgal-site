@@ -1,0 +1,13 @@
+{% import "components/icons.njk" as icons %}
+
+{% macro back_to(params) %}
+
+<div class="back-to">
+    <p class="text-large">
+        {{ icons.arrow_left() }}
+        <a href="{{ params.url }}">
+            {{ 'components.action.back-to.label' | t({ target: params.label })}}
+        </a>
+    </p>
+</div>
+{% endmacro %}

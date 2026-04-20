@@ -1,0 +1,7 @@
+.hero {
+    margin-block-start: calc(-1 * var(--gap-v-l));
+    margin-block-end: calc(-1 * var(--gap-v-xs));
+    padding-block: var(--gap-v-3xl);
+    padding-inline: 7vw;
+    background-color: var(--palette-neutral-0);
+}

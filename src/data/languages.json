@@ -1,0 +1,57 @@
+[
+  {
+    "lang": "ar",
+    "name": "site.languages.names.ar",
+    "level": "site.languages.levels.studying",
+    "rtl": true,
+    "order": 7
+  },
+  {
+    "lang": "ca",
+    "name": "site.languages.names.ca",
+    "level": "site.languages.levels.conversational",
+    "order": 4
+  },
+  {
+    "lang": "de",
+    "name": "site.languages.names.de",
+    "level": "site.languages.levels.basic",
+    "order": 9
+  },
+  {
+    "lang": "en",
+    "name": "site.languages.names.en",
+    "level": "site.languages.levels.professional",
+    "order": 2
+  },
+  {
+    "lang": "es",
+    "name": "site.languages.names.es",
+    "level": "site.languages.levels.professional",
+    "order": 3
+  },
+  {
+    "lang": "fr",
+    "name": "site.languages.names.fr",
+    "level": "site.languages.levels.conversational",
+    "order": 5
+  },
+  {
+    "lang": "it",
+    "name": "site.languages.names.it",
+    "level": "site.languages.levels.basic",
+    "order": 8
+  },
+  {
+    "lang": "pt",
+    "name": "site.languages.names.pt",
+    "level": "site.languages.levels.native",
+    "order": 1
+  },
+  {
+    "lang": "ua",
+    "name": "site.languages.names.ua",
+    "level": "site.languages.levels.studying",
+    "order": 6
+  }
+]

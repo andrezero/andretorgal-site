@@ -1,0 +1,8 @@
+key: site.header.skip-link
+resources:
+  en:
+    title: Skip to main content
+  pt:
+    title: Avançar para o conteúdo
+  ca:
+    title: Anar al contingut

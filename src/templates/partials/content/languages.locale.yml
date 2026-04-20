@@ -1,0 +1,8 @@
+key: site.content.languages
+resources:
+  en:
+    title: Languages
+  pt:
+    title: Idiomas
+  ca:
+    title: Idiomas

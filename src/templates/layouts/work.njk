@@ -1,0 +1,51 @@
+{% extends "layouts/private/base.njk" %}
+
+{% from "components/action/get_in_touch.njk" import get_in_touch %}
+
+{% block mainClass %}container{% endblock %}
+
+{% block top %}
+{# GRAPHIC: On a mission to experiment, learn, and grow in collaboration, inspiring others to do the same.
+
+GRAPHIC: Love, Freedom, and Imagination
+
+GRAPHIC: Courage, Integrity, and Loyalty
+
+GRAPHIC: Based in Barcelona Spain #}
+{% endblock %}
+
+{% block content %}
+  <div class="intro">
+    <div class="formatted-content">
+      {{ page.sections.intro.html | safe }}
+    </div>
+
+    {{ get_in_touch() }}
+  </div>
+
+  <div class="collaboration">
+    <div class="formatted-content">
+      {{ page.sections['leaders-and-orgs'].html | safe }}
+    </div>
+    <div class="formatted-content">
+      {{ page.sections['education-programmes'].html | safe }}
+    </div>
+    <div class="formatted-content">
+      {{ page.sections['students-and-juniors'].html | safe }}
+    </div>
+
+    {{ get_in_touch() }}
+  </div>
+
+  <div class="approach">
+    <div class="formatted-content">
+      {{ page.sections.approach.html | safe }}
+    </div>
+
+    {{ get_in_touch() }}
+
+    <div class="formatted-content">
+    {% include 'partials/content/languages.njk' %}
+    </div>
+  </div>
+{% endblock %}

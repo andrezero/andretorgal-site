@@ -1,0 +1,32 @@
+{
+  "site": {
+    "url": "https://andretorgal.com",
+    "title": "André Torgal",
+    "description": "Web developer, drummer, builder, mentor.",
+    "email": "hello@andretorgal.com"
+  },
+  "locale": {
+    "languages": ["en", "pt", "ca"],
+    "defaultLang": "en",
+    "scanPaths": ["src/"],
+    "outputDir": "locale/",
+    "debug": true
+  },
+  "build": {
+    "css": {
+      "tokens": {
+        "src": "tokens.json",
+        "target": "tokens.css"
+      },
+      "layers": {
+        "src": "layers.css"
+      }
+    },
+    "watch": {
+      "ignore": []
+    }
+  },
+  "server": {
+    "port": 9999
+  }
+}

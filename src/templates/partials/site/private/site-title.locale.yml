@@ -1,0 +1,8 @@
+key: site.title
+resources:
+  en:
+    home: Go back to the home page
+  pt:
+    home: Voltar à página principal
+  ca:
+    home: Torna a la pàgina principal
