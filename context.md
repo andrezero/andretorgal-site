@@ -51,12 +51,12 @@ src/
 
 ## Build scripts
 
-### npm run build:locale => build/locale.js
+### npm run build:locale => build/bin/locale.js
 
 - Scan for locale files `src/{lang}.locale.yml`
 - Build i18n resources in `locale/{lang}.locale.json`
 
-### npm run build:site => build/site.js
+### npm run build:site => build/bin/site.js
 
 - Copy public assets
 - Scan: Read all .md files in src/content.
@@ -67,7 +67,7 @@ src/
 - Optimize: Minify CSS/JS
 - Output: Write to dist/ folder ready for S3.
 
-### npm run build:app => build/app.js
+### npm run build:app => build/bin/app.js
 
 - Build client-side entry point and page
 - Optimize: Minify CSS/JS, inline critical CSS if needed.

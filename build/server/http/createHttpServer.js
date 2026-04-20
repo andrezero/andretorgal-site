@@ -1,6 +1,5 @@
 import express from 'express';
 import http from 'http';
-import * as logger from '../../shared/logger.js';
 import { redirector } from '../middlewares/redirector.js';
 import { injectClientScript } from '../reload/injectClientScript.js';
 import { interceptHtml } from '../reload/interceptHtml.js';
@@ -49,10 +48,8 @@ export function createHttpServer(port, distPath, base) {
         res.send(payload);
     });
 
-    const listen = () => {
-        server.listen(port, () => {
-            logger.box(`Dev server running at http://localhost:${port}`);
-        });
+    const listen = callback => {
+        server.listen(port, callback);
     };
 
     const close = () => {

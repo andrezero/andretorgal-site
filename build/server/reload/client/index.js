@@ -15,7 +15,6 @@ function refreshStyle(link) {
 
         next.href = url.toString();
         const finish = success => {
-            console.log(next, success);
             resolve(success ? { link, next } : { link });
         };
 
@@ -96,7 +95,6 @@ function getSocketURL() {
 
 function handleSocketMessage(event) {
     const data = JSON.parse(event.data);
-    console.info(data);
 
     if (data.type === 'error') {
         handleErrorMessage(data.payload);

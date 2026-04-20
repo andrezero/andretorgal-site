@@ -8,8 +8,6 @@ export function initSiteConfig(data) {
     const description = ensureString(`site.description`, data.description);
     const email = ensureString(`site.email`, data.email);
 
-    console.log(email);
-
     return {
         url,
         title,

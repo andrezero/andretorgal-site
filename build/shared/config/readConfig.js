@@ -4,10 +4,10 @@ import * as logger from '../../shared/logger.js';
 import { ConfigError } from './ConfigError.js';
 import { readConfigFile } from './readConfigFile.js';
 
-export async function readConfig(_filename) {
+export async function readConfig(_filename, relativeRoot) {
     const __dirname = path.dirname(_filename);
 
-    const rootDir = path.resolve(__dirname, '..');
+    const rootDir = path.resolve(__dirname, relativeRoot);
     const filePath = path.join(rootDir, 'config.json');
 
     logger.info(`Using config: ${filePath}`);

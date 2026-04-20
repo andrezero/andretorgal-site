@@ -1,12 +1,9 @@
 import fs from 'fs-extra';
 import path from 'node:path';
-import { fileURLToPath } from 'url';
-
 import { loadLocaleData } from './locale/loadLocaleData.js';
-import { readConfig } from './shared/config/readConfig.js';
 import * as logger from './shared/logger.js';
 
-async function main(config) {
+export async function buildLocale(config) {
     const { languages, scanPaths, outputDir } = config.locale;
 
     await fs.emptyDir(outputDir);
@@ -27,14 +24,4 @@ async function main(config) {
     await Promise.all(promises);
 
     logger.progress(`Generated ${entries.length} locale files in '${outputDir}'.`);
-}
-
-try {
-    logger.title('build/locale');
-    const config = await readConfig(fileURLToPath(import.meta.url));
-    await main(config);
-    logger.success('build/locale complete');
-} catch (err) {
-    logger.fatal(`build/locale failed`, err);
-    process.exit(1);
 }

@@ -10,10 +10,10 @@
     "node": "24.10.0"
   },
   "scripts": {
-    "dev": "node build/server.js",
-    "build:locale": "node build/locale.js",
-    "build:site": "node build/site.js",
-    "build:app": "node build/app.js",
+    "dev": "node build/bin/server.js",
+    "build:locale": "node build/bin/locale.js",
+    "build:site": "node build/bin/site.js",
+    "build:app": "node build/bin/app.js",
     "build": "npm run build:locale && npm run build:site && npm run build:app",
     "clean": "rm -rf dist",
     "poor-man-redirect": "cp dist/en/404/index.html dist/404.html && cp dist/en/index.html dist/index.html",

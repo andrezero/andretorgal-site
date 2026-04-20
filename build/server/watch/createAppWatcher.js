@@ -10,7 +10,7 @@ export function createAppWatcher(config, wss) {
     const { ignore } = watch || [];
 
     async function rebuild() {
-        const buildError = await runCommand('node', ['build/app.js']);
+        const buildError = await runCommand('node', ['build/bin/app.js']);
         if (buildError) {
             wss.notify('error', buildError.stderr || buildError.stdout);
             return;

@@ -3,7 +3,6 @@ export function createInstanceContainer() {
 
     function add(instance) {
         instances.add(instance);
-        console.log('new instance created', instance);
     }
 
     function remove(instance) {

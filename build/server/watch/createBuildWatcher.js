@@ -14,13 +14,16 @@ export function createBuildWatcher(config, wss) {
     ignore.push(REGEXP_LOCALE_FILE, tokensOutputPath, REGEXP_JS_FILE);
 
     async function rebuild(filePath) {
-        const buildError = await runCommand('node', ['build/site.js']);
-        if (buildError) {
-            wss.notify('error', buildError.stderr || buildError.stdout);
-            return;
+        if (!filePath.endsWith('.js')) {
+            const extraArgs = filePath.endsWith('.css') ? ['--css-only'] : [];
+            const buildError = await runCommand('node', ['build/bin/site.js', ...extraArgs]);
+            if (buildError) {
+                wss.notify('error', buildError.stderr || buildError.stdout);
+                return;
+            }
         }
 
-        const clientBuildError = await runCommand('node', ['build/app.js']);
+        const clientBuildError = await runCommand('node', ['build/bin/app.js']);
         if (clientBuildError) {
             wss.notify('error', clientBuildError.stderr || clientBuildError.stdout);
             return;

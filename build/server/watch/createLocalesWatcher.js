@@ -9,7 +9,7 @@ export function createLocalesWatcher(config, wss) {
     const { ignore } = watch || [];
 
     async function rebuild(filePath) {
-        const buildError = await runCommand('node', ['build/locale.js']);
+        const buildError = await runCommand('node', ['build/bin/locale.js']);
         if (buildError) {
             wss.notify('error', error.stderr || error.stdout);
             return;

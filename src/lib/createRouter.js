@@ -17,8 +17,6 @@ export function createRouter(context) {
         };
 
         history.replaceState({ scroll: scrollState }, '');
-        console.log('replace', scrollState);
-
         const response = await fetch(url);
         const html = await response.text();
 
@@ -82,7 +80,6 @@ export function createRouter(context) {
     function handlePopState() {
         const { anchor, y } = history.state?.scroll || {};
         navigateTo(window.location.href);
-        console.log('pop', { anchor, y });
         restoreScroll(anchor, y);
     }
 
