@@ -1,7 +1,11 @@
-{% extends "layouts/private/base-page.njk" %}
-
 {% import "components/icons.njk" as icons %}
 {% from "components/action/back_to.njk" import back_to %}
+
+{% extends "layouts/private/base-page.njk" %}
+
+{% block mainLayoutName %}404{% endblock%}
+{% block mainLayoutClass %}container-centered{% endblock%}
+
 
 {% block content %}
   <div class="formatted-content">

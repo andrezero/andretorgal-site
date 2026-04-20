@@ -1,24 +1,61 @@
-@layer layout {
-    .layout-base-page {
-        display: flex;
-        flex-direction: column;
-        gap: var(--gap-v-l);
+:root {
+    --layout-base-page-gap: var(--gap-v-l);
+}
 
-        main {
-            display: flex;
-            flex-direction: column;
-            gap: var(--gap-v-l);
+@layer layout {
+    @layer base-page {
+        #site-layout.layout-base-page {
+            #main-layout {
+                display: flex;
+                flex-direction: column;
+                gap: var(--layout-base-page-gap);
+            }
         }
 
-        .main-layout {
-            padding: var(--gap-v-xl) var(--gap-h-m);
-            background-color: var(--surface-page-bg);
+        @media screen and (width >= 600px) {
+            #site-layout.layout-base-page {
+                --layout-base-page-gap: var(--gap-v-xl);
+            }
         }
     }
+}
 
-    @media screen and (width >= 600px) {
-        .layout-base-page {
-            gap: var(--gap-v-2xl);
-        }
+#main-layout {
+    view-transition-name: main-layout;
+}
+
+::view-transition-old(main-layout) {
+    animation: main-layout-out var(--motion-duration-0) ease-out both;
+}
+
+::view-transition-new(main-layout) {
+    animation: main-layout-in var(--motion-duration-0) ease-out both;
+}
+
+@keyframes main-layout-out {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes main-layout-in {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }

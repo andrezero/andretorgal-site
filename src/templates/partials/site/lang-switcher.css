@@ -25,7 +25,7 @@
     }
 
     [popover]::backdrop {
-        backdrop-filter: blur(5px) saturate(50%);
+        backdrop-filter: blur(3px) saturate(50%) brightness(0.5) contrast(0.8);
     }
 
     [popover] {
@@ -60,10 +60,11 @@
     }
 
     h4 {
-        font-size: var(--type-size-2);
-        font-weight: var(--type-weight-medium);
         padding-block-end: var(--gap-v-3xs);
-        border-block-end: 2px solid var(--palette-neutral-6);
+        border-block-end: var(--border-size-thin) solid var(--palette-neutral-5);
+        font-size: var(--type-size-1);
+        /* font-weight: var(--type-weight-medium); */
+        color: var(--surface-page-fg-muted);
     }
 
     a,

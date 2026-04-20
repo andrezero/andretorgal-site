@@ -1,25 +1,18 @@
+<div id="site-layout" class="layout-base-site layout-base-page">
 
-<div id="site-layout" class="layout-base layout-base-page layout-{{page.layout}} {% block layoutClass %}{% endblock %}">
+  {% include 'partials/site/header.njk' %}
 
-  {% block header %}
-    {% include 'partials/site/header.njk' %}
-  {% endblock %}
+  <main id="main-layout" data-replace class="layout-{% block mainLayoutName %}{% endblock %} {% block mainLayoutClass %}{% endblock %}">
+    {% block before %}{% endblock %}
 
-  {% block main %}
-    <main id="main-content" class="container-centered {% block mainClass %}{% endblock %}">
-      {% block top %}{% endblock %}
+    <div id="main-content" class="{% block mainContentClass %}{% endblock %}">
+      {% block content %}{% endblock %}
+    </div>
 
-      <div class="main-layout {% block mainLayoutClass %}{% endblock %}">
-        {% block content %}{% endblock %}
-      </div>
+    {% block after %}{% endblock %}
+  </main>
 
-      {% block after %}{% endblock %}
-    </main>
-  {% endblock %}
-
-  {% block footer %}
-    {% include 'partials/site/footer.njk' %}
-  {% endblock %}
+  {% include 'partials/site/footer.njk' %}
 
 </div>
 

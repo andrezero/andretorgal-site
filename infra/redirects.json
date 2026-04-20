@@ -1,10 +1,10 @@
 [
   {
     "Condition": {
-      "KeyPrefixEquals": ""
+      "KeyPrefixEquals": "/index.html"
     },
     "Redirect": {
-      "ReplaceKeyWith": "en/"
+      "ReplaceKeyWith": "en/index.html"
     }
   },
   {
@@ -12,7 +12,7 @@
       "KeyPrefixEquals": "about"
     },
     "Redirect": {
-      "ReplaceKeyWith": "en/work/"
+      "ReplaceKeyWith": "en/work/index.html"
     }
   },
   {
@@ -20,7 +20,7 @@
       "KeyPrefixEquals": "about/work"
     },
     "Redirect": {
-      "ReplaceKeyWith": "en/work/"
+      "ReplaceKeyWith": "en/work/index.html"
     }
   },
   {
@@ -28,7 +28,7 @@
       "KeyPrefixEquals": "about/story"
     },
     "Redirect": {
-      "ReplaceKeyWith": "en/work/journey/"
+      "ReplaceKeyWith": "en/work/journey/index.html"
     }
   },
   {
@@ -36,7 +36,7 @@
       "KeyPrefixEquals": "about/music"
     },
     "Redirect": {
-      "ReplaceKeyWith": "en/music/"
+      "ReplaceKeyWith": "en/music/index.html"
     }
   },
   {
@@ -44,7 +44,7 @@
       "KeyPrefixEquals": "tags"
     },
     "Redirect": {
-      "ReplaceKeyWith": "en/"
+      "ReplaceKeyWith": "en/index.html"
     }
   },
   {
@@ -52,7 +52,7 @@
       "KeyPrefixEquals": "posts"
     },
     "Redirect": {
-      "ReplaceKeyWith": "en/"
+      "ReplaceKeyWith": "en/index.html"
     }
   },
   {
@@ -60,7 +60,7 @@
       "KeyPrefixEquals": "posts/archive"
     },
     "Redirect": {
-      "ReplaceKeyWith": "en/"
+      "ReplaceKeyWith": "en/index.html"
     }
   },
   {
@@ -68,7 +68,7 @@
       "KeyPrefixEquals": "meta"
     },
     "Redirect": {
-      "ReplaceKeyWith": "en/"
+      "ReplaceKeyWith": "en/index.html"
     }
   }
 ]

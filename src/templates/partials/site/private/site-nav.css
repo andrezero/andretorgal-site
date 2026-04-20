@@ -15,11 +15,12 @@
 
     a {
         display: block;
-        padding: var(--gap-v-2xs);
+        padding: var(--gap-v-3xs);
         font-weight: var(--type-weight-bold);
+        line-height: 1;
+        text-decoration: none;
         color: var(--color-nav-contrast);
         background-color: var(--color-nav-base);
-        text-decoration: none;
         transition-duration: var(--motion-duration-2);
         transition-property: color, background-color;
 
@@ -39,6 +40,18 @@
         &:hover {
             color: var(--color-nav-base-hover);
             background-color: var(--color-nav-contrast-hover);
+        }
+    }
+
+    @media screen and (width >= 600px) {
+        a {
+            padding: var(--gap-v-2xs);
+        }
+    }
+
+    @media screen and (width >= 800px) {
+        a {
+            padding: var(--gap-v-xs);
         }
     }
 }

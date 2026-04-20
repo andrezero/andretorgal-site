@@ -19,4 +19,9 @@
     a:hover {
         color: var(--color-i-active);
     }
+
+    ::selection {
+        color: var(--surface-page-bg);
+        background-color: var(--surface-page-fg-base);
+    }
 }

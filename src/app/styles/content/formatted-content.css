@@ -52,5 +52,13 @@
             display: block;
             background: var(--palette-neutral-1);
         }
+
+        hr {
+            height: var(--border-size-thin);
+            border: none;
+            background: var(--palette-neutral-5);
+            margin-block-start: var(--gap-v-l);
+            margin-block-end: var(--gap-v-l);
+        }
     }
 }

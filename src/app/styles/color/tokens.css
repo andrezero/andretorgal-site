@@ -3,6 +3,7 @@
         --surface-stage-bg: var(--palette-neutral-2);
         --surface-page-fg-base: var(--palette-neutral-7);
         --surface-page-fg-highlight: var(--palette-neutral-8);
+        --surface-page-fg-muted: var(--palette-neutral-6);
         --surface-page-bg: var(--palette-neutral-0);
         --surface-overlay-bg: var(--palette-neutral-1);
 

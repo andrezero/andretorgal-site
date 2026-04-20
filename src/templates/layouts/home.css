@@ -1,9 +1,5 @@
-.layout-home {
-    .main-layout {
-        gap: var(--space-l);
-    }
-
-    .intro {
+#main-layout.layout-home {
+    #main-content {
         display: flex;
         flex-direction: column;
         gap: var(--gap-v-l);

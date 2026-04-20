@@ -1,0 +1,34 @@
+@layer components {
+    .box {
+        padding-block: var(--__padding-block);
+        padding-inline: var(--__padding-inline);
+        background-color: var(--surface-page-bg);
+
+        /* size-m */
+        --__padding-block: var(--gap-v-s);
+        --__padding-inline: var(--gap-h-s);
+    }
+
+    .box-highlight {
+        border-top: var(--border-size-normal) solid var(--palette-identity-4);
+    }
+
+    .box-size-s {
+        --__padding-block: var(--gap-v-xs);
+        --__padding-inline: var(--gap-h-xs);
+    }
+
+    .box-size-l {
+        --__padding-block: var(--gap-v-l);
+        --__padding-inline: var(--gap-h-l);
+    }
+
+    .box-size-xl {
+        --__padding-block: var(--gap-v-xl);
+        --__padding-inline: var(--gap-h-xl);
+    }
+
+    .box-aligned {
+        padding-inline: var(--gap-h-m);
+    }
+}

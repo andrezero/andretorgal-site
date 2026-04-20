@@ -1,0 +1,54 @@
+:root {
+    --layout-base-site-gap: var(--gap-v-l);
+}
+
+@layer layout {
+    @layer base {
+        #site-layout.layout-base-site {
+            display: flex;
+            flex-direction: column;
+            gap: var(--layout-base-site-gap);
+            overflow: hidden;
+        }
+    }
+}
+
+#site-layout {
+    view-transition-name: site-layout;
+}
+
+::view-transition-old(site-layout) {
+    animation: site-layout-out var(--motion-duration-1) ease-out both;
+}
+
+::view-transition-new(site-layout) {
+    animation: site-layout-in var(--motion-duration-1) ease-out both;
+}
+
+@keyframes site-layout-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes site-layout-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

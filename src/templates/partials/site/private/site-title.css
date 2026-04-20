@@ -15,16 +15,18 @@
         padding-inline: var(--gap-v-3xs);
         background-color: var(--surface-page-bg);
         transform: rotate(-2deg) translateX(var(--__translate-x)) translateY(var(--__translate-y));
+        transition-duration: var(--motion-duration-1);
+        transition-property: opacity;
     }
 
     @media screen and (width >= 600px) {
         --__height: var(--space-xl);
-        --__translate-x: calc(-1.2 * var(--space-l));
+        --__translate-x: calc(-1 * var(--space-l));
     }
 
     @media screen and (width >= 800px) {
         --__height: var(--space-2xl);
-        --__translate-x: calc(-1.5 * var(--space-l));
+        --__translate-x: calc(-1.3 * var(--space-l));
     }
 
     @media screen and (width >= 1200px) {

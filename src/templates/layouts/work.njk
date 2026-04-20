@@ -1,8 +1,9 @@
-{% extends "layouts/private/base.njk" %}
-
 {% from "components/action/get_in_touch.njk" import get_in_touch %}
 
-{% block mainClass %}container{% endblock %}
+{% extends "layouts/private/base-page.njk" %}
+
+{% block mainLayoutName %}work{% endblock%}
+{% block mainContentClass %}container{% endblock %}
 
 {% block top %}
 {# GRAPHIC: On a mission to experiment, learn, and grow in collaboration, inspiring others to do the same.
@@ -24,13 +25,13 @@ GRAPHIC: Based in Barcelona Spain #}
   </div>
 
   <div class="collaboration">
-    <div class="formatted-content">
+    <div class="formatted-content box box-highlight">
       {{ page.sections['leaders-and-orgs'].html | safe }}
     </div>
-    <div class="formatted-content">
+    <div class="formatted-content box box-highlight">
       {{ page.sections['education-programmes'].html | safe }}
     </div>
-    <div class="formatted-content">
+    <div class="formatted-content box box-highlight">
       {{ page.sections['students-and-juniors'].html | safe }}
     </div>
 
@@ -42,10 +43,10 @@ GRAPHIC: Based in Barcelona Spain #}
       {{ page.sections.approach.html | safe }}
     </div>
 
-    {{ get_in_touch() }}
-
     <div class="formatted-content">
     {% include 'partials/content/languages.njk' %}
     </div>
+
+    {{ get_in_touch() }}
   </div>
 {% endblock %}

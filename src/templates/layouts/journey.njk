@@ -3,16 +3,23 @@
 {% from "components/action/get_in_touch.njk" import get_in_touch %}
 {% from "components/action/back_to.njk" import back_to %}
 
+{% block mainLayoutName %}journey{% endblock%}
+{% block mainLayoutClass %}container-centered{% endblock%}
+
 {% block content %}
-  <div class="formatted-content">
+  <div class="formatted-content box box-size-l">
     {{ page.html | safe }}
   </div>
 {% endblock %}
 
 
 {% block after %}
+  <div class="box-aligned box-size-l">
     {% set linkLabel = pagename('/work') %}
     {{ back_to({ url: iurl("/work"), label: linkLabel}) }}
+  </div>
 
+  <div class="box-aligned">
     {{ get_in_touch() }}
+  </div>
 {% endblock %}

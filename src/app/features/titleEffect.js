@@ -6,7 +6,7 @@ export default function createTitleEffectFeature(context) {
     const { destroy: superDestroy, init: superInit } = base;
 
     const titles = createQuery(
-        root => root.querySelectorAll('h1,h2'),
+        root => root.querySelectorAll('h1'),
         el => {
             el.style.opacity = '0.9';
         },

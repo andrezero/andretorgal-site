@@ -1,7 +1,10 @@
 {% extends "layouts/private/base-page.njk" %}
 
+{% block mainLayoutName %}page{% endblock%}
+{% block mainLayoutClass %}container-centered{% endblock%}
+
 {% block content %}
-  <div class="formatted-content">
+  <div class="formatted-content box box-size-l">
     {{ page.html | safe }}
   </div>
 {% endblock %}

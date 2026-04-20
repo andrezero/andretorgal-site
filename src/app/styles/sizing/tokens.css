@@ -1,5 +1,9 @@
-/* https://utopia.fyi/space/calculator/?c=400,16,1.2,1200,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6|8,s-l&g=s,l,xl,12 */
 @layer tokens {
+    :root {
+        --space-4xs: clamp(1.5px, 1px + 0.1vw, 2px);
+    }
+
+    /* https://utopia.fyi/space/calculator/?c=400,16,1.2,1200,20,1.25,5,2,&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6%7C8%7C10,s-l&g=s,l,xl,12 */
     :root {
         --space-3xs: clamp(0.25rem, 0.2188rem + 0.125vw, 0.3125rem);
         --space-2xs: clamp(0.5rem, 0.4375rem + 0.25vw, 0.625rem);
@@ -11,5 +15,11 @@
         --space-2xl: clamp(4rem, 3.5rem + 2vw, 5rem);
         --space-3xl: clamp(6rem, 5.25rem + 3vw, 7.5rem);
         --space-4xl: clamp(8rem, 7rem + 4vw, 10rem);
+        --space-5xl: clamp(10rem, 8.75rem + 5vw, 12.5rem);
+    }
+
+    :root {
+        --border-size-thin: var(--space-4xs);
+        --border-size-normal: var(--space-3xs);
     }
 }
