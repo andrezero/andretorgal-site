@@ -1,6 +1,6 @@
 ---
 title: Música
-description: Low Grade Arcade e outros
+description: Low Grade Arcade e outros.
 layout: page
 ---
 

@@ -1,4 +1,4 @@
-## Músic
+## Music
 
 [![Follow the link to lsiten to my music](/media/music/a-heavy-price-to-pay-thumb.png)](/music)
 

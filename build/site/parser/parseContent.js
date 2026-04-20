@@ -41,7 +41,7 @@ export async function parseContent(contentPath, files) {
             layout,
             url: getUrl(lang, slug),
             raw: content,
-            frontmatter: { ...data },
+            data: { ...data },
         };
 
         if (fileSectionId) {

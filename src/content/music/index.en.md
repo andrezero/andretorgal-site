@@ -74,3 +74,5 @@ Originally from Lisbon, Portugal, I first bled on cheap guitars and demo tapes i
 I have been bashing guitar, bass, and drums ever since. From Lisbon to London, now Barcelona, always chasing my own - loud, messy, often senseless - mix of post-rock, alt-metal, and whatever else sneaks into the mix.
 
 I am currently playing guitar and drums in a few different projects here in Barcelona. Look forward to share more once interesting things happen.
+
+<!-- component get_in-touch({email: low_grade ... }) -->

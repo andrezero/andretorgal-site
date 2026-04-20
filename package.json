@@ -6,6 +6,9 @@
   "license": "MIT",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "24.10.0"
+  },
   "scripts": {
     "dev": "node build/server.js",
     "build:locale": "node build/locale.js",
@@ -13,8 +16,9 @@
     "build:app": "node build/app.js",
     "build": "npm run build:locale && npm run build:site && npm run build:app",
     "clean": "rm -rf dist",
-    "pre-deploy:staging": "cp dist/_staging.robots.txt dist/robots.txt",
-    "pre-deploy:production": "echo ."
+    "poor-man-redirect": "cp dist/en/404/index.html dist/404.html && cp dist/en/index.html dist/index.html",
+    "pre-deploy:staging": "cp dist/_staging.robots.txt dist/robots.txt && npm run poor-man-redirect",
+    "pre-deploy:production": "npm run poor-man-redirect"
   },
   "dependencies": {
     "chroma-js": "^3.2.0",

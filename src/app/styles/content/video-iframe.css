@@ -2,5 +2,7 @@
     .video-iframe {
         width: 100%;
         aspect-ratio: 16 / 9;
+        background-color: var(--palette-neutral-7);
+        border: none;
     }
 }

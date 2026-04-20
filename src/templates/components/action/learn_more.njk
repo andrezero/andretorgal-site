@@ -2,11 +2,13 @@
 
 {% macro learn_more(params) %}
 
+{% set linkLabel = params.label if params.label else 'components.action.learn-more.label' %}
+
 <div class="learn-more">
     <p class="text-large">
         {{ icons.arrow_right() }}
         <a href="{{ params.url }}">
-            {{ 'components.action.learn-more.label' | t}}
+            {{ linkLabel | t}}
         </a>
     </p>
 </div>

@@ -16,13 +16,6 @@
         grid-template-rows: repeat(min-content, 1fr);
     }
 
-    > .formatted-content {
-        padding-block-start: var(--__padding-block-start);
-        padding-block-end: var(--__padding-block-end);
-        padding-inline: var(--__padding-inline);
-        background-color: var(--surface-page-bg);
-    }
-
     .intro,
     .approach {
         flex: 50%;
@@ -31,6 +24,13 @@
     .collaboration {
         grid-row: span 2 / span 2;
         flex: 50%;
+
+        .formatted-content {
+            padding-block-start: var(--__padding-block-start);
+            padding-block-end: var(--__padding-block-end);
+            padding-inline: var(--__padding-inline);
+            background-color: var(--surface-page-bg);
+        }
     }
 
     .approach {

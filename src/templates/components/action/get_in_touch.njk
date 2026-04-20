@@ -2,13 +2,19 @@
 
 {% macro get_in_touch(params) %}
 
+{% set email = params.email if params.email else 'hello@andretorgal.com' %}
+{% set siteUrl = params.siteUrl if params.siteUrl else 'https://www.linkedin.com/in/andretorgal/' %}
+{% set siteName = params.siteName if params.siteName else 'LinkedIn' %}
+
 <div class="get-in-touch">
     {% if not paramns.hideTitle %}
     <h3>{{ 'components.action.get-in-touch.label' | t }}</h3>
     {% endif %}
     <p class="text-large">
-        <span>{{ icons.arrow_right() }} <a class="email" href="mailto:hello@andretorgal.com">Email</a></span>
-        <span>{{ icons.arrow_right() }} <a class="linkedIn" href="https://www.linkedin.com/in/andretorgal/">LinkedIn</a></span>
+        <span>{{ icons.arrow_right() }} <a class="email" href="mailto:{{ email }}">Email</a></span>
+        {% if not paramns.hideSite %}
+        <span>{{ icons.arrow_right() }} <a class="site" href="{{ siteUrl }}">{{ siteName }}</a></span>
+        {% endif %}
     </p>
 </div>
 {% endmacro %}

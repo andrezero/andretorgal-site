@@ -1,5 +1,4 @@
-{% set description = page.description if page.description else site.meta.description%}
-{% set description = page.description if page.description else site.meta.description%}
+{% set description = page.data.description if page.data.description else site.meta.description %}
 
 <!doctype html>
 <html lang={{ page.lang }}>

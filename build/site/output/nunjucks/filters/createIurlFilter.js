@@ -3,7 +3,6 @@ export function createIurlFilter(siteIndex, defaultLang, currentLang) {
         let normalizedId = `${targetId}/`.replace(/\/\/$/, '/');
 
         const page = siteIndex[normalizedId];
-
         const lang = targetLang || currentLang;
 
         if (page) {

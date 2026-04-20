@@ -1,0 +1,8 @@
+key: components.action.back-to
+resources:
+  en:
+    label: Go back to “{{ target }}”
+  pt:
+    label: Voltar a “{{ target }}”
+  ca:
+    label: Torna a “{{ target }}”

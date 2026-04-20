@@ -14,8 +14,8 @@
 
     <ul>
       {% for item in site.map %}
-        {% if item.level <= 2 %}
-          {% if item.lang == page.lang %}
+        {% if item.level <= 2 and not item.data.nav.hide %}
+          {% if  item.lang == page.lang %}
             <li>
               {% set isCurrent = item.url === page.url if item.isRoot else page.url.startsWith(item.url) %}
               <a

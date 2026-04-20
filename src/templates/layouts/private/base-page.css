@@ -5,6 +5,12 @@
         gap: var(--gap-v-l);
 
         main {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-v-l);
+        }
+
+        .main-layout {
             padding: var(--gap-v-xl) var(--gap-h-m);
             background-color: var(--surface-page-bg);
         }

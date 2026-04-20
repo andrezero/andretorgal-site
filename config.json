@@ -2,7 +2,8 @@
   "site": {
     "url": "https://andretorgal.com",
     "title": "André Torgal",
-    "description": "Web developer, drummer, builder, mentor."
+    "description": "Web developer, drummer, builder, mentor.",
+    "email": "hello@andretorgal.com"
   },
   "locale": {
     "languages": ["en", "pt", "ca"],

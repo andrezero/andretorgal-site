@@ -3,6 +3,7 @@ import nunjucks from 'nunjucks';
 import { createLocaleExtension } from './extensions/createLocaleExtension.js';
 import { createIurlFilter } from './filters/createIurlFilter.js';
 import { createJsonFilter } from './filters/createJsonFilter.js';
+import { createPageNameFilter } from './filters/createPageNameFilter.js';
 import { createTranslateFilter } from './filters/createTranslateFilter.js';
 
 export function createRendererEnv(templateDir, siteIndex, i18n, localeConfig, currentLang) {
@@ -24,6 +25,10 @@ export function createRendererEnv(templateDir, siteIndex, i18n, localeConfig, cu
     const iUrlFilter = createIurlFilter(siteIndex, localeConfig.defaultLang, currentLang);
     env.addGlobal('iurl', iUrlFilter);
     env.addFilter('iurl', iUrlFilter);
+
+    const pageNameFilter = createPageNameFilter(siteIndex, localeConfig.defaultLang, currentLang);
+    env.addGlobal('pagename', pageNameFilter);
+    env.addFilter('pagename', pageNameFilter);
 
     env.addFilter('json', createJsonFilter());
 

@@ -1,6 +1,6 @@
 {% extends "layouts/private/base-page.njk" %}
 
-{% from "components/action/get_in_touch.njk" import get_in_touch %}
+{% import "components/icons.njk" as icons %}
 {% from "components/action/back_to.njk" import back_to %}
 
 {% block content %}
@@ -9,10 +9,8 @@
   </div>
 {% endblock %}
 
-
 {% block after %}
-    {% set linkLabel = pagename('/work') %}
-    {{ back_to({ url: iurl("/work"), label: linkLabel}) }}
-
-    {{ get_in_touch() }}
+  {% set linkLabel = pagename('/') %}
+  {{ back_to({ url: iurl("/"), label: linkLabel}) }}
 {% endblock %}
+

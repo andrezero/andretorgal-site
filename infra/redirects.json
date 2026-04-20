@@ -1,0 +1,74 @@
+[
+  {
+    "Condition": {
+      "KeyPrefixEquals": ""
+    },
+    "Redirect": {
+      "ReplaceKeyWith": "en/"
+    }
+  },
+  {
+    "Condition": {
+      "KeyPrefixEquals": "about"
+    },
+    "Redirect": {
+      "ReplaceKeyWith": "en/work/"
+    }
+  },
+  {
+    "Condition": {
+      "KeyPrefixEquals": "about/work"
+    },
+    "Redirect": {
+      "ReplaceKeyWith": "en/work/"
+    }
+  },
+  {
+    "Condition": {
+      "KeyPrefixEquals": "about/story"
+    },
+    "Redirect": {
+      "ReplaceKeyWith": "en/work/journey/"
+    }
+  },
+  {
+    "Condition": {
+      "KeyPrefixEquals": "about/music"
+    },
+    "Redirect": {
+      "ReplaceKeyWith": "en/music/"
+    }
+  },
+  {
+    "Condition": {
+      "KeyPrefixEquals": "tags"
+    },
+    "Redirect": {
+      "ReplaceKeyWith": "en/"
+    }
+  },
+  {
+    "Condition": {
+      "KeyPrefixEquals": "posts"
+    },
+    "Redirect": {
+      "ReplaceKeyWith": "en/"
+    }
+  },
+  {
+    "Condition": {
+      "KeyPrefixEquals": "posts/archive"
+    },
+    "Redirect": {
+      "ReplaceKeyWith": "en/"
+    }
+  },
+  {
+    "Condition": {
+      "KeyPrefixEquals": "meta"
+    },
+    "Redirect": {
+      "ReplaceKeyWith": "en/"
+    }
+  }
+]
