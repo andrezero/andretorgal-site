@@ -42,7 +42,7 @@ Vaig acumular temes inacabades als meus discs durs, de vegades perdudes per semp
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FAmbivalent-Red--06--A-Heavy-Price-to-Pay%3A7?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 
-Massa coses per processar, una resposta agorafòbica al _desconfinament_ i una mica més de temps al voltant dels instruments. Bon feedback d’amics que van escoltar les primeres peces. “Sona cinematogràfic”, van dir. Era exactament això el que buscava.
+Massa coses per processar, una resposta agorafòbica al _desconfinament_ i una mica més de temps al voltant dels instruments. Bon feedback d’amics que van escoltar les primeres peces. “Sona cinematogràfic”, van dir. Estimulant! Era exactament això el que buscava.
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FAmbivalent-Red--02--Latent-Predicament%3Ac?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 

@@ -44,7 +44,7 @@ Fui acumulando canções inacabadas ao longo dos anos em discos rígidos, por ve
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FAmbivalent-Red--06--A-Heavy-Price-to-Pay%3A7?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 
-Demasiadas coisas para processar, uma resposta agorafóbica ao _desconfinamento_ e algum tempo extra à volta dos instrumentos. Bom feedback de amigos que ouviram as primeiras faixas. “Soa cinematográfico”, disseram. Estimulante. Era exatamente isso que eu procurava.
+Demasiadas coisas para processar, uma resposta agorafóbica ao _desconfinamento_ e algum tempo extra à volta dos instrumentos. Bom feedback de amigos que ouviram as primeiras faixas. “Soa cinematográfico”, disseram. Estimulante! Era exatamente isso que eu procurava.
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FAmbivalent-Red--02--Latent-Predicament%3Ac?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 

@@ -18,7 +18,7 @@ Everything below was recorded at home. I played all guitar and bass tracks and p
 
 ### “Interesting Times” (work in progress)
 
-I am putting together a soundtrack for these absurdo, stupid times. And since I found that video editting is as enjoyable and therapeutical as making music, I have been witing tracks already with an idea of how to present them visually.
+I am putting together a soundtrack for these absurd, stupid times. And since I found that video editting is as enjoyable and therapeutical as making music, I have been writing tracks already with an idea of how to present them visually.
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FInteresting-Times--04--Breaking-News%3Ae?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 
@@ -44,11 +44,11 @@ Unfinished songs kept piling up on my hard drives, sometimes lost forever and I 
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FAmbivalent-Red--06--A-Heavy-Price-to-Pay%3A7?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 
-Too much to process, an agoraphobic response to the _unconfinement_, and some extra time around the instruments. Good feedback from friends that heard the first tracks. Sounds cinematic” - they said. Estimulante. That's exactly what I was going for.
+Too much to process, an agoraphobic response to the _unconfinement_, and some extra time around the instruments. Good feedback from friends that heard the first tracks. Sounds cinematic” - they said. Energizing! That's exactly what I was going for.
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FAmbivalent-Red--02--Latent-Predicament%3Ac?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 
-Thes videos were done with [iMovie](https://www.apple.com/imovie/) and stock footage only. It was my first time doing video editting since 1997, and I got really excited with the process, even if limited to just a few effects.
+These videos were done with [iMovie](https://www.apple.com/imovie/) and stock footage only. It was my first time doing video editting since 1997, and I got really excited with the process, even if limited to just a few effects.
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FAmbivalent-Red--04--Nowhere-Fucking-Junction%3A1?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 
