@@ -1,7 +1,7 @@
 @layer global {
     :focus-visible {
         outline-style: solid;
-        outline-color: var(--color-i-active);
+        outline-color: var(--color-i-base-active);
         outline-width: 0.2rem;
         outline-offset: var(--space-3xs);
     }

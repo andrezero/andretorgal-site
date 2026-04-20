@@ -18,6 +18,10 @@ This is site is built with:
 - [Chroma.js](https://gka.github.io/chroma.js/)
 - [PostCSS](https://postcss.org/)
 
+I used [PenPot](https://penpot.app/) to sketch the initial ideas and as the source of truth for the design tokens.
+
+An AI model was used to correct mistakes and assist with research but the concepts and coding are essentially human.
+
 ## Typography and Icons
 
 - [Rubik](https://fonts.google.com/specimen/Rubik?script=Arab&preview.script=Arab&query=rubik), hosted by [Bunny.net](https://fonts.bunny.net/)

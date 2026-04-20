@@ -1,28 +1,28 @@
 @layer layout {
     :root {
-        --gap-container-h: var(--gap-h-2xs);
+        --layout-responsive-margin-h: var(--gap-h-2xs);
     }
 
     @media screen and (width >= 400px) {
         :root {
-            --gap-container-h: var(--gap-h-m);
+            --layout-responsive-margin-h: var(--gap-h-m);
         }
     }
 
     @media screen and (width >= 600px) {
         :root {
-            --gap-container-h: var(--gap-h-xl);
+            --layout-responsive-margin-h: var(--gap-h-xl);
         }
     }
 
     .container {
         margin-block: 0;
-        margin-inline: var(--gap-container-h);
+        margin-inline: var(--layout-responsive-margin-h);
     }
 
     .container-centered {
         margin-block: 0;
-        margin-inline: var(--gap-container-h);
+        margin-inline: var(--layout-responsive-margin-h);
     }
 
     @media screen and (width >= 1000px) {

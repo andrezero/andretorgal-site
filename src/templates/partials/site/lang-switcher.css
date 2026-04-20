@@ -1,9 +1,9 @@
 .lang-switcher {
     color: var(--color-i-contrast);
-    font-size: var(--type-size-1);
+    font-size: var(--type-size-2);
     font-weight: var(--type-weight-medium);
 
-    button {
+    [popovertarget] {
         display: flex;
         align-items: center;
         gap: var(--gap-h-3xs);
@@ -15,12 +15,12 @@
         cursor: pointer;
     }
 
-    button:hover,
-    button:active {
+    [popovertarget]:hover,
+    [popovertarget]:active {
         color: var(--color-i-contrast);
     }
 
-    button:active {
+    [popovertarget]:active {
         background-color: var(--palette-neutral-4);
     }
 
@@ -30,8 +30,6 @@
 
     [popover] {
         opacity: 0;
-        margin-right: var(--gap-container-h);
-        margin-left: auto;
         transition-property: opacity;
         transition-duration: (--motion-duration-3);
     }
@@ -40,10 +38,18 @@
         opacity: 1;
         display: flex;
         justify-content: end;
+        margin-inline: auto;
         margin-block-start: calc(var(--type-size-2) + var(--gap-v-xl));
-        padding: 0;
+        padding: var(--space-m);
         background-color: transparent;
         border: none;
+    }
+
+    .layout {
+        position: relative;
+        padding-block: var(--gap-v-m);
+        padding-inline: var(--gap-h-l);
+        background-color: var(--palette-neutral-1);
     }
 
     .layout,
@@ -53,25 +59,27 @@
         gap: var(--gap-v-xs);
     }
 
-    .layout {
-        padding-block: var(--gap-v-2xs) var(--gap-v-xs);
-        padding-inline: var(--gap-h-xs);
-        background-color: var(--palette-neutral-4);
+    a,
+    .not-available,
+    .header {
+        display: flex;
+        align-items: center;
+        gap: var(--gap-h-3xs);
+    }
+
+    .header {
+        padding-block-end: var(--gap-v-xs);
+        border-block-end: var(--border-size-thin) solid var(--palette-neutral-5);
     }
 
     h4 {
-        padding-block-end: var(--gap-v-3xs);
-        border-block-end: var(--border-size-thin) solid var(--palette-neutral-5);
-        font-size: var(--type-size-1);
+        font-size: var(--type-size-2);
         /* font-weight: var(--type-weight-medium); */
         color: var(--surface-page-fg-muted);
     }
 
     a,
     .not-available {
-        display: flex;
-        align-items: center;
-        gap: var(--gap-h-3xs);
         line-height: 1;
     }
 
@@ -92,5 +100,21 @@
 
     .not-available .flag {
         opacity: 0.5;
+    }
+
+    .button-close {
+        position: absolute;
+        top: 0;
+        /* var(--gap-v-3xs); */
+        right: 0;
+        /* var(--gap-v-3xs); */
+    }
+
+    .blur-sensor {
+        position: absolute;
+        width: 0;
+        height: 0;
+        padding: 0;
+        border: none;
     }
 }

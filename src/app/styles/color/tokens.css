@@ -8,8 +8,9 @@
         --surface-overlay-bg: var(--palette-neutral-1);
 
         --color-i-base: var(--palette-secondary-5);
-        --color-i-active: var(--palette-secondary-6);
-        --color-i-contrast: var(--palette-neutral-8);
+        --color-i-base-active: var(--palette-secondary-6);
+        --color-i-contrast: var(--palette-neutral-7);
+        --color-i-contrast-active: var(--palette-neutral-9);
 
         --color-nav-base: var(--palette-identity-4);
         --color-nav-base-hover: var(--palette-identity-5);

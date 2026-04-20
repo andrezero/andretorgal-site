@@ -1,6 +1,9 @@
 {% import "components/icons.njk" as icons %}
 {% import "components/flags.njk" as flags %}
 
+{% from "components/action/button_close.njk" import button_close %}
+
+
 {% set langName = t('site.languages.names.' + page.lang) %}
 
 {% set lang = page.lang %}
@@ -15,47 +18,45 @@
 
     <div id="lang-popover" popover class="container">
         <div class="layout">
-            <h4 aria-hidden>{{ 'site.lang-switcher.title' | t}}</h4>
+            <div class="header">
+                {{ flags[page.lang]({ size: 'small' }) }}
+                <h4 aria-hidden>{{ 'site.lang-switcher.title' | t}}</h4>
+            </div>
             <nav class="languages" aria-label="{{ 'site.lang-switcher.aria-label' | t}}">
 
                 {% for language in locale.languages %}
-                <p>
+                    {% set translation = page.translations[language] %}
+                    {% set url = page.url if page.lang == language  else translation.url %}
+                    {% if url and language != page.lang %}
 
-                {% set translation = page.translations[language] %}
-                {% set url = page.url if page.lang == language  else translation.url %}
-                {% set langName = t('site.languages.names.' + language, { lng: language }) %}
-                {% set linkLabel = t('site.lang-switcher.switch', { lng: language, langName: langName }) %}
-                {% set unavailableLabel = t('site.lang-switcher.unavailable', { lng: language, langName: langName }) %}
+                    <p>
+                    {% set langName = t('site.languages.names.' + language, { lng: language }) %}
+                    {% set linkLabel = t('site.lang-switcher.switch', { lng: language, langName: langName }) %}
+                    {% set unavailableLabel = t('site.lang-switcher.unavailable', { lng: language, langName: langName }) %}
+                        <a
+                            href="{{ url }}"
+                            hreflang="{{ language }}"
+                            lang="{{ language }}"
+                            title="{{ linkLabel }}"
+                            {% if page.lang == language %}
+                            class="current"
+                            aria-current="page"
+                            {% endif %}
+                        >
 
-                {% if url %}
-
-                <a
-                    href="{{ url }}"
-                    hreflang="{{ language }}"
-                    lang="{{ language }}"
-                    {% if page.lang == language %}
-                    aria-current="page"
-                    class="current"
+                            {{ flags[language]({ size: 'small' }) }}
+                            <span class="name" aria-hidden>{{ langName }}</span>
+                        </a>
+                    </p>
                     {% endif %}
-                    title="{{ linkLabel }}"
-                >
-
-                    {{ flags[language]({ size: 'small' }) }}
-                    <span class="name" aria-hidden>{{ langName }}</span>
-                </a>
-
-                {% else %}
-
-                <span class="not-available" title="{{ unavailableLabel }}">
-                    {{ flags[language]({ size: 'small' }) }}
-                    <span class="name" aria-hidden>{{ langName }}</span>
-                </span>
-
-                {% endif %}
-
-                </p>
                 {% endfor %}
             </nav>
+            {{ button_close({
+                ariaLabel: 'site.lang-switcher.close-label' | t,
+                onClick: "_q('#lang-popover').hidePopover()"
+            }) }}
+
+            <button class="blur-sensor" onFocus="_q('#lang-popover').hidePopover()">
         </div>
     </div>
 </div>

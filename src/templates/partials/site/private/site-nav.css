@@ -21,7 +21,7 @@
         text-decoration: none;
         color: var(--color-nav-contrast);
         background-color: var(--color-nav-base);
-        transition-duration: var(--motion-duration-2);
+        transition-duration: var(--motion-duration-1);
         transition-property: color, background-color;
 
         &:hover {

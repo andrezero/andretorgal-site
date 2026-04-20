@@ -1,0 +1,22 @@
+.button-close {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: var(--gap-h-2xs);
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 1.5px;
+    cursor: pointer;
+    color: var(--color-i-contrast);
+    transition-duration: var(--motion-duration-1);
+    transition-property: color, background-color;
+
+    &:hover,
+    &:active {
+        color: var(--color-i-contrast-active);
+    }
+
+    :active {
+        background-color: var(--palette-neutral-4);
+    }
+}

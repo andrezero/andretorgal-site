@@ -1,0 +1,15 @@
+{% import "components/icons.njk" as icons %}
+
+{% macro button_close(params) %}
+    <button type="button" class="button-close"
+        {% if params.onClick %}onClick="{{ params.onClick }}"{% endif %}
+        {% if params.ariaLabel %}aria-label="{{ params.ariaLabel }}"{% endif %}
+    >
+        {{ icons.x({size: 's'}) }}
+        {% if params.html or params.text %}
+        <div>
+            {{- params.html | safe if params.html else params.text -}}
+        </div>
+        {% endif %}
+    </button>
+{% endmacro %}

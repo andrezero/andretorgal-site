@@ -2,18 +2,21 @@ key: site.lang-switcher
 resources:
   en:
     label: Open language switcher. Current language is {{langName}}
+    close-label: Close language switcher. Current language is {{langName}}
     aria-label: Language list
     title: Switch to
     switch: Switch to the {{ langName }} version of this page
     unavailable: This page is not available in {{ langName }}
   pt:
-    label: Abrir selector de idiomas. Versão actual {{langName}}
+    label: Abrir o selector de idiomas. O idioma actual é {{langName}}
+    close-label: Fechar o selector de idiomas. O idioma actual é {{langName}}
     aria-label: Lista de idiomas
     title: Mudar para
     switch: Navegar para a versão em {{ langName }} desta página
     unavailable: Esta página não está disponível em {{ langName }}
   ca:
     label: Ovrir el selector d'idiomas. L'idioma actual és {{langName}}
+    close-label: Tancar el selector d'idiomas. L'idioma actual és {{langName}}
     aria-label: Lista d'idiomas
     title: Canviar a
     switch: Canviar a la versió em {{langName}} d'aquesta pàgina
