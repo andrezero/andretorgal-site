@@ -1,4 +1,6 @@
 {% import "components/icons.njk" as icons %}
+{% from "components/graphics/tape.njk" import tape_1 %}
+{% from "components/graphics/tape.njk" import tape_2 %}
 {% from "components/action/back_to.njk" import back_to %}
 
 {% extends "layouts/private/base-page.njk" %}
@@ -8,9 +10,15 @@
 
 
 {% block content %}
-  <div class="formatted-content">
-    {{ page.html | safe }}
-  </div>
+  <div class="box">
+    {{ tape_2({rotate: 'n' }) }}
+    {{ tape_2({rotate: 'ne' }) }}
+    {{ tape_2({rotate: 'w' }) }}
+    {{ tape_2({rotate: 'n' }) }}
+    <div class="formatted-content">
+      {{ page.html | safe }}
+    </div>
+</div>
 {% endblock %}
 
 {% block after %}

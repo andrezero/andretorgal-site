@@ -9,6 +9,5 @@
         inset-inline: 0;
         inset-block-start: calc(-1 * var(--layout-base-site-gap));
         inset-block-end: calc(-1 * var(--layout-base-page-gap));
-        /* background: yellow; */
     }
 }

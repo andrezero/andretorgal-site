@@ -1,5 +1,8 @@
 #site-nav {
     position: relative;
+    --__inset: 5px;
+    --__bg-color: var(--color-nav-base);
+    --__border-color: transparent;
 
     svg {
         width: 0px;
@@ -11,35 +14,63 @@
         display: flex;
         flex-direction: row;
         gap: var(--gap-h-xs);
+        overflow-x: auto;
+        margin: calc(-1 * var(--space-m));
+        padding: var(--space-m);
     }
 
     a {
+        position: relative;
         display: block;
         padding: var(--gap-v-3xs);
         font-weight: var(--type-weight-bold);
         line-height: 1;
         text-decoration: none;
         color: var(--color-nav-contrast);
-        background-color: var(--color-nav-base);
         transition-duration: var(--motion-duration-1);
-        transition-property: color, background-color;
+        transition-property: color;
 
         &:hover {
-            background-color: var(--color-nav-base-hover);
+            --__bg-color: var(--color-nav-base-hover);
+            --__border-color: var(--color-nav-contrast);
         }
 
         &:active {
-            background-color: var(--color-nav-base-active);
+            --__bg-color: var(--color-nav-base-active);
+            --__inset: 4px;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: var(--__inset);
+            right: var(--__inset);
+            bottom: var(--__inset);
+            left: var(--__inset);
+            background-color: var(--__bg-color);
+            transition-duration: var(--motion-duration-1);
+            transition-property: background-color;
+            /* filter: url(#noise-2); */
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 3px solid var(--__border-color);
+            /* filter: url(#noise-1); */
         }
     }
 
     .current {
         color: var(--color-nav-base);
-        background-color: var(--color-nav-contrast);
+        --__bg-color: var(--color-nav-contrast);
+        --__inset: 1px;
 
         &:hover {
             color: var(--color-nav-base-hover);
-            background-color: var(--color-nav-contrast-hover);
+            --__bg-color: var(--color-nav-contrast-hover);
         }
     }
 

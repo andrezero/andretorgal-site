@@ -26,19 +26,20 @@
         flex-direction: column;
         align-items: start;
         gap: var(--gap-h-s);
-        max-width: calc(var(--type-size-1) * 20);
+        max-width: calc(var(--type-size-1) * 30);
     }
 
     .legal {
         display: flex;
         flex-direction: column;
-        gap: var(--gap-v-2xs);
+        gap: var(--gap-v-xs);
     }
 
     .notices {
         display: flex;
         flex-direction: column;
         font-style: italic;
+        gap: var(--gap-v-3xs);
     }
 
     @media screen and (width > 800px) {

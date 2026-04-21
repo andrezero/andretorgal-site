@@ -5,10 +5,7 @@
 @layer layout {
     @layer base {
         #site-layout.layout-base-site {
-            display: flex;
-            flex-direction: column;
             gap: var(--layout-base-site-gap);
-            overflow: hidden;
         }
     }
 }

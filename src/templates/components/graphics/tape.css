@@ -1,0 +1,42 @@
+:root {
+    --global-tilt: -1deg;
+    --global-rotate: 7deg;
+}
+
+.tape {
+    --__tape-rotate: 6deg;
+    --__tape-height: 50px;
+    --__tape-rotate: 0deg;
+    display: block;
+    width: calc(var(--__tape-height) * var(--__tape-len, 1));
+    height: var(--__tape-height);
+    transform: rotate(calc(var(--__tape-rotate) + var(--global-rotate))) scale(var(--__tape-size, 1));
+
+    &.rotate-ne {
+        --__tape-rotate: 45deg;
+    }
+    &.rotate-e {
+        --__tape-rotate: 90deg;
+    }
+    &.rotate-se {
+        --__tape-rotate: 135deg;
+    }
+    &.rotate-s {
+        --__tape-rotate: 180deg;
+    }
+    &.rotate-sw {
+        --__tape-rotate: 225deg;
+    }
+    &.rotate-w {
+        --__tape-rotate: 270deg;
+    }
+    &.rotate-nw {
+        --__tape-rotate: 315deg;
+    }
+
+    svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}

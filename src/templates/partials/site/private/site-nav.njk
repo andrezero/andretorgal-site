@@ -1,5 +1,23 @@
 <nav id="site-nav" aria-label="Main navigation">
 
+  <svg>
+    <defs>
+        <filter id="noise-1">
+            <feTurbulence type="fractalNoise" baseFrequency=".1" numOctaves="10" />
+            <feDisplacementMap in="SourceGraphic" scale="2" />
+        </filter>
+    </defs>
+  </svg>
+
+  <svg>
+    <defs>
+        <filter id="noise-2">
+            <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="5" />
+            <feDisplacementMap in="SourceGraphic" scale="2" />
+        </filter>
+    </defs>
+  </svg>
+
   {# <svg viewBox="0 0 180 100">
     <filter id='noise' x='0%' y='0%' width='100%' height='100%'>
       <feTurbulence type="fractalNoise" baseFrequency="0 0.1" result="NOISE" numOctaves="2"/>
@@ -7,9 +25,6 @@
     </filter>
   </svg>
 
-  .noise {
-      filter: url(#noise);
-  }
  #}
 
     <ul>

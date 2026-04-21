@@ -1,0 +1,48 @@
+{% macro tape_1(params) %}
+    {% set size = params.size if params.size else 1 %}
+    {% set len = params.len if params.len else 3 %}
+    {% set rotate = params.rotate if params.rotate else 'n' %}
+    <span class="graphic tape rotate-{{ rotate }}" aria-hidden style="--__tape-size: {{ size }}; --__tape-len: {{ len }}">
+        <svg viewBox="0 0 90 36" fill="none" preserveAspectRatio="none">
+            <g>
+                <path
+                d="M6 8
+                    L84 6
+                    L80 30
+                    L10 28
+                    Q4 26 6 8Z"
+                fill="rgba(255,255,255,.08)"
+                stroke="rgba(255,255,255,.18)"
+                stroke-width="1"
+                />
+                <path
+                d="M18 10 L72 9"
+                stroke="rgba(255,255,255,.06)"
+                stroke-width="2"
+                />
+            </g>
+        </svg>
+    </span>
+{% endmacro %}
+
+{% macro tape_2(params) %}
+    {% set size = params.size if params.size else 1 %}
+    {% set len = params.len if params.len else 3 %}
+    {% set rotate = params.rotate if params.rotate else 'n' %}
+    <span class="graphic tape rotate-{{ rotate }}" aria-hidden style="--__tape-size: {{ size }}; --__tape-len: {{ len }}">
+        <svg viewBox="0 0 90 36" fill="none" preserveAspectRatio="none">
+            <g id="shape-2d658437-94aa-80c0-8007-e69cf2a9b4d3" preserveAspectRatio="none" rx="0" ry="0" style="fill: rgb(0, 0, 0);">
+                <g id="shape-2d658437-94aa-80c0-8007-e69cf2aa373b" style="display: none;">
+                    <g class="fills" id="fills-2d658437-94aa-80c0-8007-e69cf2aa373b">
+                        <rect width="90" height="36" x="0" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: none;" ry="0" fill="none" rx="0" y="0"/>
+                    </g>
+                </g>
+                <g id="shape-2d658437-94aa-80c0-8007-e69cf2aa5ff0">
+                    <g class="fills" id="fills-2d658437-94aa-80c0-8007-e69cf2aa5ff0">
+                        <path d="M7,8L40.6279296875,8L76,8C76,8,76,14,78,20C67,20,76.2425537109375,20.0299072265625,76,21C75,25,78,28,78,28L5,28C6,16,9,18,9,16C7.607421875,16,6,16,5,16C5,14,7,11,7,8L7,8L7,8L7,8L7,8L7,8L7,8L7,8L7,8" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)" style="fill: rgba(255, 255, 255, 0.08);"/></g></g><g id="shape-2d658437-94aa-80c0-8007-e69cf2aa9275"><g class="fills" id="fills-2d658437-94aa-80c0-8007-e69cf2aa9275"><path d="M15,12L73,10" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="2" style="fill: none;"/>
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </span>
+{% endmacro %}
