@@ -4,5 +4,5 @@
 - Shaping deliberate technology choices aligned with goals and constraints
 - Supporting teams in defining clear, shared ways of working that fit their context
 - Consolidating organisational knowledge so it stays current and easy to update
-- Making risk and debt visible, understood, and manageable over time
+- Making risk and technical debt visible, understood, and manageable over time
 - Offering leadership education across technical and organisational topics

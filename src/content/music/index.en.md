@@ -28,7 +28,7 @@ This song was written with the shitty evening news in mind. In the process of re
 
 ### “Heist Montage” (2025)
 
-I put together this EP mostly to share with friends and other musicians that I have been jamming with what I have been working on. The title track will be included in the upcoming _Interesting Times_, while the other two are sketches for potential tracks.
+I put together this EP mostly to share what I have been working on with friends and with other musicians that I have been jamming with. The title track will be included in the upcoming _Interesting Times_, while the other two are sketches for potential tracks.
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FInteresting-Times--03--Heist-Montage-21%3A3?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 

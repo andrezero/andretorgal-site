@@ -23,13 +23,13 @@ No recordo tots els llenguatges de programació i sistemes amb què he treballat
 <!-- GRAPHIC:
 “Oh! Això és exactament el que està fent el nostre equip!” -->
 
-En algun punt del camí, vaig liderar màrqueting i R+D d’un producte pioner de mobilitat modular, utilitzat per gestionar pics de trànsit en aparcaments de grans recintes i monitoritzar milers de places en aeroports amb sensors acústics, entre altres aventures d’automatització industrial.
+En algun punt del camí, vaig liderar màrqueting i R+D d’un producte pioner de mobilitat, utilitzat per gestionar pics de trànsit en aparcaments de grans recintes i monitoritzar milers de places en aeroports amb sensors acústics, entre altres aventures d’automatització industrial.
 
 Aquest continua sent el projecte que cito quan em pregunten quin projecte m’ha ensenyat més.
 
 <!-- GRAPHIC:
 Només per descobrir que no m’agraden tant els cotxes, l’automatització industrial i els espais en construcció.
-Back to sites under construction -->
+Tornat a websites under construction -->
 
 A mesura que la indústria web es va fer més madura, vaig tendir a treballar amb productes digitals centrats en l’usuari i una atracció pels reptes a la intersecció entre producte, disseny i enginyeria.
 

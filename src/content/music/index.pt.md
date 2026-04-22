@@ -14,7 +14,7 @@ Tudo o que está abaixo foi gravado em casa. Toquei todas as guitarras e baixos 
 
 → [Bandcamp](https://low-grade-arcade.bandcamp.com) (Downloads Gratuitos)
 
-→ [Subvert](https://alpha.subvert.fm/low-grade-arcade) _(Brevemente)_
+→ [Subvert](https://alpha.subvert.fm/low-grade-arcade) _(Em breve)_
 
 ### “Interesting Times” (trabalho em curso)
 
@@ -28,7 +28,7 @@ Este tema foi escrito a pensar no telejornal de merda da hora de jantar. No proc
 
 ### “Heist Montage” (2025)
 
-Juntei estas faixas num EP sobretudo para partilhar com amigos e outros músicos com quem tenho tocado aquilo em que tenho andado a trabalhar. A faixa principal fará parte do futuro _Interesting Times_, enquanto as outras duas são rascunhos para possíveis temas.
+Juntei estas faixas num EP sobretudo para partilhar com amigos, e com outros músicos com quem tenho tocado, aquilo em que tenho vindo a trabalhar. A faixa principal fará parte do futuro _Interesting Times_, enquanto as outras duas são rascunhos para possíveis temas.
 
 <ifraze class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FInteresting-Times--03--Heist-Montage-21%3A3?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 
@@ -40,7 +40,7 @@ Esta foi a primeira vez que editei video com [Da Vinci Resolve](https://www.blac
 
 ### “Ambivalent Red” (2022)
 
-Fui acumulando canções inacabadas ao longo dos anos em discos rígidos, por vezes perdidas para sempre, e sempre me perguntei o que seria preciso para me comprometer a publicar alguma coisa. A resposta foi uma _pandemia_, um _confinamento_, ansiedade extrema e ataques de pânico.
+Fui acumulando canções inacabadas ao longo dos anos em discos rígidos, por vezes perdidas para sempre. Já me tinha perguntado o que seria preciso para me comprometer a publicar alguma coisa. A resposta foi uma _pandemia_, um _confinamento_, ansiedade extrema e ataques de pânico.
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FAmbivalent-Red--06--A-Heavy-Price-to-Pay%3A7?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 
@@ -48,7 +48,7 @@ Demasiadas coisas para processar, uma resposta agorafóbica ao _desconfinamento_
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FAmbivalent-Red--02--Latent-Predicament%3Ac?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 
-Os vídeos foram feitos com o [iMovie](https://www.apple.com/imovie/) e apenas stock footage. Foi a primeira vez que editei vídeo desde 1997, e entusiasmei-me bastante com o processo, mesmo que limitado a meia dúzia de efeitos.
+Os vídeos foram feitos com o [iMovie](https://www.apple.com/imovie/) e apenas stock footage. Foi a primeira vez que editei vídeo desde 1997, e entusiasmei-me bastante com o processo, apesar de estar limitado a meia dúzia de efeitos.
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FAmbivalent-Red--04--Nowhere-Fucking-Junction%3A1?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 

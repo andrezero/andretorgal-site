@@ -23,13 +23,13 @@ Não me recordo de todas as linguagens de programação e sistemas com que traba
 <!-- GRAPHIC:
 “Oh! Isto é exatamente o que a nossa equipa está a fazer!” -->
 
-Algures pelo caminho, liderei marketing e I&D de um produto pioneiro de mobilidade modular, usado para gerir picos de tráfego em parques de estacionamento de grandes recintos e monitorizar milhares de lugares em aeroportos com sensores acústicos, entre outras aventuras em automação industrial.
+Algures pelo caminho, liderei marketing e I&D de um produto pioneiro de mobilidade, usado para gerir picos de tráfego em parques de estacionamento de grandes recintos e monitorizar milhares de lugares em aeroportos com sensores acústicos, entre outras aventuras em automação industrial.
 
 Esse continua a ser o projeto que menciono quando me perguntam qual foi o projeto onde mais aprendi.
 
 <!-- GRAPHIC:
 Só para descobrir que não gosto assim tanto de carros, automação industrial e estaleiros de construção.
-Back to sites under construction -->
+De volta a websites under construction -->
 
 À medida que a indústria da web se tornou mais madura, desenvolvi uma tendência para trabalhar com produtos digitais centrados no utilizador e uma atração pelos desafios na interseção entre produto, design e engenharia.
 

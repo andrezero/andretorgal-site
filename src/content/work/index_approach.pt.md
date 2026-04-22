@@ -1,6 +1,6 @@
 ## Abordagem
 
-A minha abordagem é fundamentada em bases sólidas, inspirada em disciplinas como systems thinking, design thinking e práticas lean/agile, informada por [experiência real](/work/journey) e guiada pela curiosidade, empatia e uma preferência por impacto a longo prazo.
+A minha abordagem é fundamentada em bases sólidas, inspirada em disciplinas como systems thinking, design thinking e práticas lean/agile – informada por [experiência real](/work/journey) e guiada pela curiosidade, empatia e uma preferência por impacto a longo prazo.
 
 Trabalho através de ciclos curtos, focados e iterativos — clarificando direção, testando pressupostos e criando momentum através de progresso incremental e sustentável.
 

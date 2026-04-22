@@ -22,14 +22,14 @@ I don't remember all the programming languages and systems I have worked with so
 <!-- GRAPHIC:
 “Oh! This is exactly what our team is doing!” -->
 
-Somewhere in the middle, I led marketing and R&D for a pioneering modular mobility product, used to manage traffic peaks in large venue car parks, and monitor thousands of airport parking spaces with acoustic sensors, among other wild adventures in industrial automation.
+Somewhere in the middle, I led marketing and R&D for a pioneering mobility product, used to manage traffic peaks in large venue car parks, and monitor thousands of airport parking spaces with acoustic sensors, among other wild adventures in industrial automation.
 
 This continues to be the project I mention when people ask which project taught me the most.
 
 <!--
 GRAPHIC:
 Only to find out I don't like cars, industrial automation, and construction sites that much.
-Back to sites under construction -->
+Back to websites under construction -->
 
 As all things web became more mature, I developed a tendency toward working with user-centered digital products, and an attraction for the challenges at the intersection of the product, design, and engineering crafts.
 

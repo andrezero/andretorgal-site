@@ -1,6 +1,6 @@
 ## Approach
 
-My approach is grounded in solid foundations, drawing on systems thinking, design thinking, and lean/agile practices, informed by [real-word experience](/work/journey), and guided by curiosity, empathy, and a bias toward long-term impact.
+My approach is grounded in solid foundations – drawing on systems thinking, design thinking, and lean/agile practices – informed by [real-word experience](/work/journey), and guided by curiosity, empathy, and a bias toward long-term impact.
 
 I work through short, focused, iterative cycles — clarifying direction, testing assumptions, and building momentum through incremental, sustainable progress.
 

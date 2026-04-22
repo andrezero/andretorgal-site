@@ -30,7 +30,7 @@ Aquesta tema es va escriure pensant en el telenotícies de merda del vespre. Dur
 
 ### “Heist Montage” (2025)
 
-Vaig reunir aquest EP sobretot per compartir amb amics i altres músics amb qui he estat tocant allò en què he estat treballant. La peça principal formarà part del futur _Interesting Times_, mentre que les altres dues són esbossos de possibles temes.
+Vaig reunir aquest EP sobretot per compartir allò en què he estat treballant amb amics i altres músics amb qui he estat tocant. La peça principal formarà part del futur _Interesting Times_, mentre que les altres dues són esbossos de possibles temes.
 
 <ifraze class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FInteresting-Times--03--Heist-Montage-21%3A3?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 
@@ -38,7 +38,7 @@ Va ser la meva primera vegada editant amb [Da Vinci Resolve](https://www.blackma
 
 ### “Ambivalent Red” (2022)
 
-Vaig acumular temes inacabades als meus discs durs, de vegades perdudes per sempre, i sempre em preguntava què caldria perquè em comprometés a publicar alguna cosa. La resposta va ser una _pandèmia_, un _confinament_, ansietat extrema i atacs de pànic.
+Vaig acumular temes inacabades als meus discs durs, de vegades perdudes per sempre. i sempre em preguntava què caldria perquè em comprometés a publicar alguna cosa. La resposta va ser una _pandèmia_, un _confinament_, ansietat extrema i atacs de pànic.
 
 <iframe class="video-iframe" src="https://odysee.com/%24/embed/%40low_grade_arcade%3A6%2FAmbivalent-Red--06--A-Heavy-Price-to-Pay%3A7?r=7LbCCzV1nF1JWQDiXfdxsNdbq7E51Npd" allowfullscreen></iframe>
 
