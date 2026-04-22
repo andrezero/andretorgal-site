@@ -6,6 +6,9 @@ resources:
   pt:
     collaborate: Colaboremos
     listen: Ouve um pouco de música
-  ca:
+  cat:
     collaborate: Col·laborem
     listen: Escolta una mica de música
+  es:
+    collaborate: ¡Colaboramos!
+    listen: Escucha un poco de música

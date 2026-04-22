@@ -12,9 +12,15 @@ resources:
       privacy: 'Este site respeita a tua privacidade: não são usados cookies, analytics ou ferramentas de tracking.'
       oss: Este site é construído com conhecimento e ferramentas de código aberto.
       ai: Um modelo de IA foi usado para corrigir erros e ajudar com a pesquisa.
-  ca:
+  cat:
     legal:
-      license: Codi i contingut disponibles a {{ github }} sota llicència {{ license }}, llevat que s'indiqui el contrari.
+      license: 'Codi i contingut disponibles a {{ github }} sota llicència {{ license }}, llevat que s’indiqui el contrari.'
       privacy: 'Aquest lloc respecta la teva privacitat: no s’utilitzen cookies, analítica ni eines de seguiment.'
       oss: Aquest lloc està construït amb coneixement i eines de codi obert.
       ai: S’ha utilitzat un model d’IA per corregir errors i ajudar en la recerca.
+  es:
+    legal:
+      license: Código y contenido disponible en {{ github }} bajo licencia {{ license }}, a menos que se indique lo contrario.
+      privacy: 'Este sitio respeta tu privacidad: no se usan cookies, análisis ni herramientas de seguimiento.'
+      oss: Este sitio está construido con conocimiento y herramientas de código abierto.
+      ai: Se utilizó un modelo de IA para corregir errores y ayudar en la investigación.

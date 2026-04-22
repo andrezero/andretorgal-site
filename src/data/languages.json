@@ -7,15 +7,15 @@
     "order": 7
   },
   {
-    "lang": "ca",
-    "name": "site.languages.names.ca",
-    "level": "site.languages.levels.conversational",
+    "lang": "cat",
+    "name": "site.languages.names.cat",
+    "level": "site.languages.levels.intermediate",
     "order": 4
   },
   {
     "lang": "de",
     "name": "site.languages.names.de",
-    "level": "site.languages.levels.basic",
+    "level": "site.languages.levels.beginner",
     "order": 9
   },
   {
@@ -33,13 +33,13 @@
   {
     "lang": "fr",
     "name": "site.languages.names.fr",
-    "level": "site.languages.levels.conversational",
+    "level": "site.languages.levels.intermediate",
     "order": 5
   },
   {
     "lang": "it",
     "name": "site.languages.names.it",
-    "level": "site.languages.levels.basic",
+    "level": "site.languages.levels.beginner",
     "order": 8
   },
   {

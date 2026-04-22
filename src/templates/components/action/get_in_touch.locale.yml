@@ -1,8 +1,10 @@
 key: components.action.get-in-touch
 resources:
   en:
-    label: Get in touch
+    label: Get in touch!
   pt:
-    label: Entra em contacto
-  ca:
-    label: Posa't en contacte
+    label: Entra em contacto!
+  cat:
+    label: Posa't en contacte!
+  es:
+    label: ¡Ponte en contacto!

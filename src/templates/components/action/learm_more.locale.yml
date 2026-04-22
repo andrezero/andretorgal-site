@@ -4,5 +4,7 @@ resources:
     label: Learn more
   pt:
     label: Saber mais
-  ca:
+  cat:
     label: Més informació
+  es:
+    label: Más información

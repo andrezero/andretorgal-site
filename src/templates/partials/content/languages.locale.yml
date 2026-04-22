@@ -4,5 +4,7 @@ resources:
     title: Languages
   pt:
     title: Idiomas
-  ca:
+  cat:
+    title: Idiomas
+  es:
     title: Idiomas

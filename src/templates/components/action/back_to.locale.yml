@@ -4,5 +4,7 @@ resources:
     label: Go back to “{{ target }}”
   pt:
     label: Voltar a “{{ target }}”
-  ca:
+  cat:
     label: Torna a “{{ target }}”
+  es:
+    label: Volver a “{{ target }}”

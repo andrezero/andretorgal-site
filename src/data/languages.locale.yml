@@ -2,7 +2,7 @@ key: site.languages
 resources:
   ar:
     names.ar: Arabic
-    names.ca: Catalan
+    names.cat: Catalan
     names.en: English
     names.es: Spanish
     names.de: German
@@ -12,27 +12,27 @@ resources:
     names.ua: Ukranian
     levels.native: Native
     levels.professional: Professional
-    levels.studying: Studying
-    levels.conversational: Conversational, actively improving
-    levels.basic: Basic
-  ca:
+    levels.studying: Studying, but little practice but little practice
+    levels.intermediate: Intermediate, practicing and improving
+    levels.beginner: Beginner
+  cat:
     names.ar: Àrab
-    names.ca: Català
+    names.cat: Català
     names.en: Anglès
     names.es: Espanyol
     names.de: Alemany
-    names.it: italià
+    names.it: Italià
     names.fr: Francès
     names.pt: Portuguès
     names.ua: Ucraïnès
     levels.native: Idioma nadiu
     levels.professional: Professional
-    levels.studying: Estudiant
-    levels.conversational: Conversacional, millorant activament
-    levels.basic: Bàsic
+    levels.studying: Estudiant, però poca pràctica
+    levels.intermediate: Intermedi, practicant i millorant
+    levels.beginner: Principiant
   en:
     names.ar: Arabic
-    names.ca: Catalan
+    names.cat: Catalan
     names.en: English
     names.es: Spanish
     names.de: German
@@ -42,26 +42,26 @@ resources:
     names.ua: Ukranian
     levels.native: Native
     levels.professional: Professional
-    levels.studying: Studying
-    levels.conversational: Conversational, actively improving
-    levels.basic: Basic
+    levels.studying: Studying, but little practice
+    levels.intermediate: Intermediate, practicing and improving
+    levels.beginner: Beginner
   es:
-    names.ar: Arabic
-    names.ca: Catalan
-    names.en: English
-    names.es: Spanish
-    names.de: German
-    names.it: Italian
-    names.fr: French
-    names.pt: Portuguese
-    levels.native: Native
-    levels.professional: Professional
-    levels.studying: Studying
-    levels.conversational: Conversational, actively improving
-    levels.basic: Basic
+    names.ar: Árabe
+    names.cat: Catalán
+    names.en: Inglés
+    names.es: Español
+    names.de: Alemán
+    names.it: Italiano
+    names.fr: Francés
+    names.pt: Portugués
+    levels.native: Nativo
+    levels.professional: Profesional
+    levels.studying: Estudiando, pero poca pràctica
+    levels.intermediate: Intermédio, practicando y mejorando
+    levels.beginner: Principiante
   de:
     names.ar: Arabic
-    names.ca: Catalan
+    names.cat: Catalan
     names.en: English
     names.es: Spanish
     names.de: German
@@ -70,12 +70,12 @@ resources:
     names.pt: Portuguese
     levels.native: Native
     levels.professional: Professional
-    levels.studying: Studying
-    levels.conversational: Conversational, actively improving
-    levels.basic: Basic
+    levels.studying: Studying, but little practice
+    levels.intermediate: Intermediate, practicing and improving
+    levels.beginner: Beginner
   it:
     names.ar: Arabic
-    names.ca: Catalan
+    names.cat: Catalan
     names.en: English
     names.es: Spanish
     names.de: German
@@ -84,12 +84,12 @@ resources:
     names.pt: Portuguese
     levels.native: Native
     levels.professional: Professional
-    levels.studying: Studying
-    levels.conversational: Conversational, actively improving
-    levels.basic: Basic
+    levels.studying: Studying, but little practice
+    levels.intermediate: Intermediate, practicing and improving
+    levels.beginner: Beginner
   fr:
     names.ar: Arabic
-    names.ca: Catalan
+    names.cat: Catalan
     names.en: English
     names.es: Spanish
     names.de: German
@@ -99,12 +99,12 @@ resources:
     names.ua: Ukranian
     levels.native: Native
     levels.professional: Professional
-    levels.studying: Studying
-    levels.conversational: Conversational, actively improving
-    levels.basic: Basic
+    levels.studying: Studying, but little practice
+    levels.intermediate: Intermediate, practicing and improving
+    levels.beginner: Beginner
   pt:
     names.ar: Árabe
-    names.ca: Catalão
+    names.cat: Catalão
     names.en: Inglês
     names.es: Espanhol
     names.de: Alemão
@@ -114,12 +114,12 @@ resources:
     names.ua: Ucraniano
     levels.native: Nativo
     levels.professional: Profissional
-    levels.studying: Estudante
-    levels.conversational: Conversacional, melhorando activamente
-    levels.basic: Básico
+    levels.studying: Estudante, mas pouca prática
+    levels.intermediate: Intermédio, praticando e melhorarando
+    levels.beginner: Principiante
   ua:
     names.ar: Arabic
-    names.ca: Catalan
+    names.cat: Catalan
     names.en: English
     names.es: Spanish
     names.de: German
@@ -129,6 +129,6 @@ resources:
     names.ua: Ukranian
     levels.native: Native
     levels.professional: Professional
-    levels.studying: Studying
-    levels.conversational: Conversational, actively improving
-    levels.basic: Basic
+    levels.studying: Studying, but little practice
+    levels.intermediate: Intermediate, practicing and improving
+    levels.beginner: Beginner

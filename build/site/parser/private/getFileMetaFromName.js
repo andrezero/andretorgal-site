@@ -2,7 +2,7 @@ export function getFileMetaFromName(contentPath, filePath) {
     let relativePath = filePath.replace(contentPath, '').replace(/^[/\\]/, '');
     const nameWithLang = relativePath.replace(/\.(md|mdx)$/, '');
 
-    const match = nameWithLang.match(/^(.+?)(?:_(.+))?\.([a-z]{2,})$/i);
+    const match = nameWithLang.match(/^(.+?)(?:_(.+))?\.([a-z]{2,3})$/i);
     if (!match) {
         throw new Error(
             `Invalid filename '${relativePath}'. Should be "slug.lang.md" or "slug_section.lang.md"`,
@@ -17,7 +17,7 @@ export function getFileMetaFromName(contentPath, filePath) {
     const lang = maybeLang ? maybeLang : maybeSectionOrLang;
     const section = maybeLang ? maybeSectionOrLang : undefined;
 
-    if (!/^[a-z]{2,}$/i.test(lang)) {
+    if (!/^[a-z]{2,3}$/i.test(lang)) {
         throw new Error(`Invalid lang: '${lang}'.`);
     }
 

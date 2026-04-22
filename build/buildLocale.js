@@ -10,8 +10,8 @@ export async function buildLocale(config) {
     await fs.ensureDir(outputDir);
 
     logger.busy('Scanning content');
-    const allLocales = await loadLocaleData(languages, scanPaths);
-    const entries = Array.from(allLocales.entries());
+    const { resourceMap, errors } = await loadLocaleData(languages, scanPaths);
+    const entries = Array.from(resourceMap.entries());
     logger.info(`  - discovered ${entries.length} items.`);
 
     logger.busy('Generarting i18n resources');
@@ -24,4 +24,9 @@ export async function buildLocale(config) {
     await Promise.all(promises);
 
     logger.progress(`Generated ${entries.length} locale files in '${outputDir}'.`);
+
+    if (errors.length) {
+        logger.warn(`Errors in locale data: ${errors.length}`);
+        throw errors[0];
+    }
 }

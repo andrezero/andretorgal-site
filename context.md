@@ -26,12 +26,12 @@ locale/                        # build i18n resources, 1 per language
 src/
 ├── content/                   # Markdown source filess
 │   ├── index.en.md            # /en
-│   ├── index.ca.md            # /ca
+│   ├── index.cat.md           # /cat
 │   ├── work/
 │   │   ├── index.en.md        # /en/work/
-│   │   ├── index.ca.md        # /ca/feina/
+│   │   ├── index.cat.md       # /cat/feina/
 │   │   └── journey.en.md      # /en/work/journey
-│   │   └── journey.en.md      # /ca/feina/viatge
+│   │   └── journey.en.md      # /cat/feina/viatge
 ├── templates/                 # Templates (e.g., Nunjucks, Handlebars)
 │   ├── components             # Components used in other templates
 │   │   ├── lang-switcher.njk  #

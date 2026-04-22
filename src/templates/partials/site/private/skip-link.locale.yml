@@ -4,5 +4,7 @@ resources:
     title: Skip to main content
   pt:
     title: Avançar para o conteúdo
-  ca:
+  cat:
     title: Anar al contingut
+  es:
+    title: Saltar al contenido principal

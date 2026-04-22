@@ -6,7 +6,7 @@
     "email": "hello@andretorgal.com"
   },
   "locale": {
-    "languages": ["en", "pt", "ca"],
+    "languages": ["en", "pt", "cat", "es"],
     "defaultLang": "en",
     "scanPaths": ["src/"],
     "outputDir": "locale/",

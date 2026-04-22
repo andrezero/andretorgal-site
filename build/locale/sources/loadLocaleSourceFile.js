@@ -27,8 +27,7 @@ export async function loadLocaleFile(filePath, languages) {
         }
         return getResourcesFromSingleLangSource(source, languages);
     } catch (err) {
-        logger.error(err);
-        logger.warn(`Error processing file: '${filePath}': ${err.message}`);
-        return;
+        logger.error(`Error processing file: '${filePath}': ${err.message}`);
+        return { error: err };
     }
 }

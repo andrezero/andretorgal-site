@@ -14,10 +14,17 @@ resources:
     title: Mudar para
     switch: Navegar para a versão em {{ langName }} desta página
     unavailable: Esta página não está disponível em {{ langName }}
-  ca:
+  cat:
     label: Ovrir el selector d'idiomas. L'idioma actual és {{langName}}
     close-label: Tancar el selector d'idiomas. L'idioma actual és {{langName}}
     aria-label: Lista d'idiomas
     title: Canviar a
     switch: Canviar a la versió em {{langName}} d'aquesta pàgina
     unavailable: Aquesta pàgina encara no està disponible en {{ langName }}
+  es:
+    label: Abrir el selector de idiomas. El idioma actual es {{langName}}
+    close-label: Cerrar el selector de idiomas. El idioma actual es {{langName}}
+    aria-label: Lista de idiomas
+    title: Cambiar a
+    switch: Cambiar a la versión en {{ langName }} de esta página
+    unavailable: Esta página no está disponible en {{ langName }}

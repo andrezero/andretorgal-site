@@ -4,5 +4,7 @@ resources:
     home: Go back to the home page
   pt:
     home: Voltar à página principal
-  ca:
+  cat:
     home: Torna a la pàgina principal
+  es:
+    home: Volver a la página de inicio

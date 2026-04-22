@@ -14,9 +14,10 @@ export async function loadLocaleData(languages, scanPaths) {
 
     const promises = files.map(filePath => loadLocaleFile(filePath, languages));
     const resourceEntries = await Promise.all(promises);
-    const entries = resourceEntries.flat().filter(d => d !== undefined);
+    const entries = resourceEntries.flat().filter(d => d.error == undefined);
+    const errors = resourceEntries.flat().filter(d => d.error !== undefined);
 
-    const resources = mergeLocaleData(entries);
+    const resourceMap = mergeLocaleData(entries);
 
-    return resources;
+    return { resourceMap, errors };
 }
