@@ -32,12 +32,6 @@
         flex: 50%;
     }
 
-    .collaboration {
-        .get-in-touch {
-            display: none;
-        }
-    }
-
     @media screen and (width >= 600px) {
         #main-content {
             --__padding-block-start: var(--gap-v-s);
@@ -57,19 +51,6 @@
 
         .intro {
             gap: var(--gap-v-3xl);
-        }
-
-        .collaboration {
-            margin-top: var(--space-5xl);
-            .get-in-touch {
-                display: block;
-            }
-        }
-
-        .approach {
-            .get-in-touch {
-                display: none;
-            }
         }
     }
 }

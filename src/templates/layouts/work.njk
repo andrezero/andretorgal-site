@@ -34,8 +34,6 @@ GRAPHIC: Based in Barcelona Spain #}
     <div class="formatted-content box box-highlight">
       {{ page.sections['students-and-juniors'].html | safe }}
     </div>
-
-    {{ get_in_touch() }}
   </div>
 
   <div class="approach">
@@ -51,5 +49,8 @@ GRAPHIC: Based in Barcelona Spain #}
     {% include 'partials/content/languages.njk' %}
   </div>
 
-  {{ get_in_touch() }}
+  <div class="contact">
+    {{ get_in_touch() }}
+  </div>
+
 {% endblock %}
