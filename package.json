@@ -7,7 +7,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": "24.10.0"
+    "node": "24"
   },
   "scripts": {
     "dev": "node build/bin/server.js",

@@ -2,10 +2,15 @@
     #main-content,
     .intro,
     .collaboration,
-    .approach {
+    .approach,
+    .languages {
         display: flex;
         flex-direction: column;
         gap: var(--gap-v-l);
+    }
+
+    .languages {
+        gap: var(--gap-v-s);
     }
 
     #main-content {

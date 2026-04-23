@@ -12,16 +12,22 @@
         display: flex;
         flex-direction: column;
         align-items: start;
-        gap: var(--gap-v-2xs);
+        gap: var(--gap-v-xs);
     }
 
     .item,
+    .flag,
     .labels {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
         gap: var(--gap-h-s);
+        line-height: 1;
+    }
+
+    a {
+        display: block;
     }
 
     .labels {

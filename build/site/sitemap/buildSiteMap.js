@@ -25,12 +25,14 @@ export function buildSiteMap(pageDataMap) {
         const level = translations[0].url.split('/').length - 2;
 
         for (const [, entry] of langMap.entries()) {
+            const pageTranslations = translationsForEntry(translations, entry);
             const page = {
                 ...entry,
                 id: id,
                 level,
                 sections: entry.sections || {},
-                translations: translationsForEntry(translations, entry),
+                translations: pageTranslations,
+                hasTranslations: Object.values(pageTranslations).length > 1,
             };
             siteMap.push(page);
         }

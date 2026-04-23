@@ -42,11 +42,14 @@ GRAPHIC: Based in Barcelona Spain #}
     <div class="formatted-content">
       {{ page.sections.approach.html | safe }}
     </div>
-
-    <div class="formatted-content">
-    {% include 'partials/content/languages.njk' %}
-    </div>
-
-    {{ get_in_touch() }}
   </div>
+
+  <div class="languages">
+    <div class="formatted-content">
+      {{ page.sections['languages'].html | safe }}
+    </div>
+    {% include 'partials/content/languages.njk' %}
+  </div>
+
+  {{ get_in_touch() }}
 {% endblock %}

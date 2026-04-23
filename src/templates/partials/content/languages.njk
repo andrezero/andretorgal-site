@@ -1,22 +1,35 @@
 {% import "components/flags.njk" as flags %}
 
-<languages class="site-languages">
-  <h2>{{ 'site.content.languages.title' | t }}</h2>
+<div class="site-languages">
   <ul class="layout">
     {% for item in data.languages %}
+    {% set exists = item.lang in locale.languages %}
+    {% set translation = page.translations[item.lang] if exists %}
     <li class="item">
+      {% if exists %}
+        <a href="{{ translation.url }}" hreflang="{{ item.lang }}" lang="{{ item.lang }}">
+      {% endif %}
       {{ flags[item.lang]({ size: 'small' }) }}
-      <span class="labels">
-        <span class="language">
-          {% set name = t(item.name) %}
-          {{ name }}
+      {% if exists %}
+        </a>
+      {% endif %}
+        <span class="labels">
+          <span class="language">
+            {% if exists %}
+              <a href="{{ translation.url }}" hreflang="{{ item.lang }}" lang="{{ item.lang }}">
+            {% endif %}
+              {{ item.name | t }}
+            {% if exists %}
+              </a>
+            {% endif %}
+
+          </span>
+          <span class="level">
+            {% set level = t(item.level) %}
+            {{ level }}
+          </span>
         </span>
-        <span class="level">
-          {% set level = t(item.level) %}
-          {{ level }}
-        </span>
-      </span>
     </li>
     {% endfor %}
   </ul>
-</languages>
+</div>
