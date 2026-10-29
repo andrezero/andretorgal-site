@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "chokidar": "^3.6.0",
-    "express": "^4.19.2",
+    "express": "^4.22.3",
     "lefthook": "^2.1.6",
     "ws": "^8.17.0"
   }
